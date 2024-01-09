@@ -7,7 +7,6 @@
 build/
 /tmp
 /dist
-/bo
 compte
 *.env
 *.env.*

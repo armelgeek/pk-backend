@@ -33,4 +33,4 @@ services:
     external_links:
       - mongo
     volumes:
-      - ./VOLUMES/minio:/data/upload
+      - ./VOLUMES/data:/data/db

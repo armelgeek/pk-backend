@@ -1,7 +1,8 @@
-FROM node:v20.10.0
+FROM node:20
 WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
+CMD npm start
 EXPOSE 3003
-CMD ["npm", "run", "build"]
+

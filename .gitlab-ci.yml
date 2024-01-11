@@ -1,0 +1,28 @@
+stages:
+  - deploy
+
+deploy_dev:
+  stage: deploy
+  image: alpine
+  before_script:
+  - cd
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan $NETWORK > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+  script:
+    - |
+      ssh -t -oStrictHostKeyChecking=no "$USER@$NETWORK" "
+        cd /home/mobile-app-backend
+        git pull
+        docker-compose stop backend 
+        docker-compose up -d --build backend
+        sleep 20
+        docker image prune -f
+        docker system prune -f"
+  only:
+    - DevOps/modifie_CI

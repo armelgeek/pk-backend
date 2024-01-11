@@ -1,4 +1,4 @@
-FROM node:v20.10.0
+FROM node:latest
 WORKDIR /app
 COPY package.json ./
 RUN npm install

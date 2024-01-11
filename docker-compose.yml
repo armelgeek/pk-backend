@@ -7,6 +7,13 @@ services:
       - ./VOLUMES/data:/data/db
     ports:
       - '27017:27017'
+    environment:
+      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    volumes:
+      - db:/data/db    
 
   # minio:
   #   image: minio/minio:edge
@@ -26,7 +33,6 @@ services:
       - "4000:3003"
     # command: bash -c "while ! curl -s postgres:5432 > /dev/null; do echo waiting for mongodb to be ready ...; sleep 1; pg-god db-create -o postgres -w ${TYPEORM_PASSWORD} -n fullstack || true"
     # entrypoint: bash -c "npm run ${SEED} && npm run ${ENTRYPOINT}"
-    entrypoint: bash -c "npm run start"
     depends_on:
       # - minio
       - mongo
@@ -34,5 +40,6 @@ services:
       - .env
     external_links:
       - mongo
-    volumes:
-      - ./VOLUMES/data:/data/db
+
+volumes:
+  db:

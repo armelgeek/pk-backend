@@ -2,13 +2,15 @@
 #
 .DS_Store
 
+
 # Xcode
 #
 build/
 /tmp
 /dist
+/VOLUMES
 compte
-*.env
+# *.env
 *.env.*
 !default.pbxuser
 *.mode1v3
@@ -62,3 +64,4 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 *.log
+firebase-admin-sdk.json

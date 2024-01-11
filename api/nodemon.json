@@ -1,5 +1,0 @@
-{
-  "watch": ["src"],
-  "ext": "ts",
-  "exec": "cross-env NODE_ENV=local ts-node ./src/index.ts"
-}

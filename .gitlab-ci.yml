@@ -20,9 +20,9 @@ deploy_dev:
         cd /home/mobile-app-backend
         git pull
         docker-compose stop backend 
-        docker-compose up -d --build backend
+        docker-compose up -d --build 
         sleep 20
         docker image prune -f
         docker system prune -f"
   only:
-    - DevOps/modifie_CI
+    - develop

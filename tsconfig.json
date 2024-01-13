@@ -13,8 +13,10 @@
     "paths": {
       "dto": ["./src/data/dto"],
     },
+    "skipLibCheck": true
   },
   "errorReporting": {
     "excludeCodes": [2307]
-  }
+  },
+  "exclude": ["**/*.spec.ts", "./bo"],
 }

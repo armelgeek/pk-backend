@@ -11,7 +11,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "paths": {
-      "dto": ["./src/data/dto"],
+      // "dto": ["./src/data/dto"],
     },
     "skipLibCheck": true
   },

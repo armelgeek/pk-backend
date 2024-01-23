@@ -23,6 +23,7 @@ deploy_dev:
         docker-compose up -d --build 
         sleep 20
         docker image prune -f
-        docker system prune -f"
+        docker system prune -f
+        docker-compose logs backend"
   only:
     - develop

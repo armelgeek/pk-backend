@@ -32,7 +32,7 @@ RUN mkdir -p /var/www/backend
 # Set the workdir to /var/www/backend
 WORKDIR /var/www/backend
 
-COPY --from=build-bo /var/www/bo/dist ./bo
+# COPY --from=build-bo /var/www/bo/dist ./bo
 
 # # Install pg-god globally
 # RUN npm i -g pg-god
@@ -40,20 +40,20 @@ COPY --from=build-bo /var/www/bo/dist ./bo
 # Copy the package.json & package.lock.json first
 # If there's no change in package.json,
 # Docker will skip this step and we will win more times in build process
-COPY ./api/package*.json ./
+COPY ./package*.json ./
 
 # Install dependencies
 # This step will be skipped if there's no change to package.json
 RUN npm i
 
 # Copy project folders & files
-COPY ./api/. .
+COPY ./. .
 
-RUN npm i
+# RUN npm i
 
 # Run build
 RUN npm run build
 
-COPY ./api/src/data/Fragment.json ./dist/data/
+COPY ./src/data/Fragment.json ./dist/data/
 
-CMD npm run prod --bind 0.0.0.0:$PORT
+CMD npm run prod --bind 0.0.0.0:4000

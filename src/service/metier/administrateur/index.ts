@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm';
 
 import { GenericSM } from '../../../common/service/generic.sm';
 import { AdministrateurDO } from '../../../data/do/administrateur';
-import { AdministrateurRepository } from '../../../repository';
+import { AdministrateurRepository } from '../../../repository/Administrateur';
 
 export class AdministrateurSM extends GenericSM<AdministrateurDO, string, AdministrateurRepository> {
   count() {

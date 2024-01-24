@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:16.13.0
 
 # Create the workdir 
 RUN mkdir -p /var/www/bo

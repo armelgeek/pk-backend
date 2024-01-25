@@ -7,9 +7,9 @@ services:
       - '27017:27017'
     environment:
       - .env
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
+    #   - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
     volumes:
       - db:/data/db    
 

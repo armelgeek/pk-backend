@@ -1,6 +1,7 @@
 export type UtilisateurRequestDTO = {
    nom: string;
    prenom: string;
+   username: string;
    email: string;
    role: number;
    password: string;
@@ -28,6 +29,7 @@ export type UtilisateurRequestDTO = {
  * @typedef {object} UtilisateurRequestDTO
  * @property {string} nom
  * @property {string} prenom
+ * @property {string} username
  * @property {string} email
  * @property {number} role
  * @property {string} password

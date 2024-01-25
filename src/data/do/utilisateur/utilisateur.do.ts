@@ -38,6 +38,9 @@ export class UtilisateurDO {
   @Column({ length: 10, nullable: true, unique: true })
   telephone: string;
 
+  @Column({ length: 50 })
+  username: string;
+
   @Column({ unique: true })
   email: string;
 

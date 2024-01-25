@@ -66,11 +66,21 @@ export const sendMail = async (message: MailMessage) => {
     auth: {
       user: 'no-reply@thoussein.fr', // generated ethereal user
       pass: 'notif-Selene2020', // generated ethereal password
+      // user: 'pockerapps@gmail.com',
+      // pass: 'PockerApps123',
     },
+    // service: "Gmail",
+    // host: "smtp.gmail.com",
+    // port: 465,
+    // secure: false,
+    // auth: {
+    //   user: "pockerapps@gmail.com",
+    //   pass: "PockerApps123",
+    // },
   });
 
   const messageContent = {
-    from: "no-reply@thoussein.fr",
+    from: "pockerApps@gmail.com",
     to: message.to,
     subject: message.subject,
     html: message.body,

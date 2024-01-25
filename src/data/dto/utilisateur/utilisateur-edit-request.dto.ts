@@ -3,6 +3,7 @@ import { ObjectID } from "typeorm";
 export interface UtilisateurEditRequestDTO {
   id: ObjectID;
   telephone: string;
+  username: string;
   imageUrl?: string;
   email: string;
   ville: string;

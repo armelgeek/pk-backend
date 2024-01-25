@@ -2,6 +2,7 @@ export type UtilisateurResponseDTO = {
    nom: string;
    prenom: string;
    email: string;
+   username: string;
    role: number;
    password: string;
    phone: string;
@@ -29,6 +30,7 @@ export type UtilisateurResponseDTO = {
  * @typedef {object} UtilisateurResponseDTO
  * @property {string} nom
  * @property {string} prenom
+ * @property {string} username
  * @property {string} email
  * @property {number} role
  * @property {string} password

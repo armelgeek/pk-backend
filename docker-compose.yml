@@ -3,13 +3,15 @@ services:
   mongo:
     container_name: mongo
     image: mongo
+    restart: always
     ports:
       - '27017:27017'
-    environment:
-      - .env
     # environment:
-    #   - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USER
-    #   - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    #   - MONGO_INITDB_DATABASE=docker-node-mongo
+    #   - MONGO_INITDB_ROOT_USERNAME=root
+    #   - MONGO_INITDB_ROOT_PASSWORD=node1234
+    # environment:
+
     volumes:
       - db:/data/db    
 

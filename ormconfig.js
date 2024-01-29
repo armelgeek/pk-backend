@@ -10,10 +10,10 @@ module.exports = {
   "synchronize": false,
   "entities": [
     "dist/data/do/**/*.js",
-    "src/data/do/**/*.ts"
+    // "src/data/do/**/*.ts"
   ],
   "seeds": [
     "dist/seeds/*.js",
-    "src/seeds/*.ts"
+    // "src/seeds/*.ts"
   ],
 }

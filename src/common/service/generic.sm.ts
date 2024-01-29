@@ -16,9 +16,9 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     this.repository = repository;
   }
 
-  create(entity: TDo): Promise<any> {
-    // return this.repository.save({ ...entity, dateCreation: new Date() });
-    return Promise.resolve();
+  async create(entity: DeepPartial<TDo>): Promise<any> {
+    return await this.repository.save(entity);
+    // return Promise.resolve();
   }
 
   async partialUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {

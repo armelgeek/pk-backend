@@ -3,7 +3,7 @@ export interface AuthentificationResponseDTO {
   nom: string;
   prenom: string;
   imageUrl: string;
-  telephone: string;
+  phone: string;
   email: string;
   ville: string;
   adresse: string;

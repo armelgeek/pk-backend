@@ -83,9 +83,9 @@ export class AuthentificationController {
         body: { email },
       } = req;
 
-      await this.serviceSA.passwordResetRequest(email, `http://${req.headers.host}`);
+      const success = await this.serviceSA.passwordResetRequest(email, `http://${req.headers.host}`);
 
-      res.locals.data = true;
+      res.locals.data = success;
 
       next();
     } catch (error) {
@@ -119,9 +119,9 @@ export class AuthentificationController {
         body: { id, password },
       } = req;
 
-      await this.serviceSA.resetPassword(id, password);
+      const data = await this.serviceSA.resetPassword(id, password);
 
-      res.locals.data = true;
+      res.locals.data = data;
 
       next();
     } catch (error) {

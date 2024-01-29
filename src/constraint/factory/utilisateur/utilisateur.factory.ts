@@ -2,7 +2,7 @@ import { GenericFactory } from '../../../common/constraint/factory/generic.facto
 import { formatDateToLocale } from '../../../common/service/date.service';
 import { imageToBase64 } from '../../../common/service/image';
 import { dataTDO } from '../../../data';
-import { UtilisateurDO } from '../../../data/do/utilisateur/utilisateur.do';
+import { UtilisateurDO } from '../../../data/do/Utilisateur';
 // @ts-ignore
 import { UtilisateurEditRequestDTO } from '../../../data/dto/Utilisateur/utilisateur-edit-request.dto';
 // @ts-ignore
@@ -18,6 +18,7 @@ const schema = {
   ...commonSchema,
   nom: 'nom',
   prenom: 'prenom',
+  username: 'username',
   dateInscription: 'dateInscription',
   dateDerniereConnexion: 'dateDerniereConnexion',
 };
@@ -41,6 +42,7 @@ const responseSchema = {
   },
   nom: 'nom',
   prenom: 'prenom',
+  username: 'username',
 };
 const boResponseSchema = {
   ...commonSchema,
@@ -54,7 +56,7 @@ const odooRequestSchema = {
   bo_id: '_id',
   nom: 'nom',
   prenom: 'prenom',
-  mobile: 'telephone',
+  mobile: 'phone',
   email: 'email',
   street: 'adresse',
   date_of_birth: 'dateNaissance',

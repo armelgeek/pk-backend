@@ -2,7 +2,7 @@ import { ObjectID } from "typeorm";
 
 export interface UtilisateurEditRequestDTO {
   id: ObjectID;
-  telephone: string;
+  phone: string;
   username: string;
   imageUrl?: string;
   email: string;
@@ -13,7 +13,7 @@ export interface UtilisateurEditRequestDTO {
 /**
  * @typedef {object} UtilisateurEditRequestDTO
  * @property {string} id.required
- * @property {string} telephone.required
+ * @property {string} phone.required
  * @property {string} email.required
  * @property {string} ville.required
  * @property {string} adresse.required
@@ -25,7 +25,7 @@ export interface UtilisateurEditRequestDTO {
  * @property {string} id.required
  * @property {string} nom.required
  * @property {string} prenom.required
- * @property {string} telephone.required
+ * @property {string} phone.required
  * @property {string} email.required
  * @property {string} ville.required
  * @property {string} adresse.required

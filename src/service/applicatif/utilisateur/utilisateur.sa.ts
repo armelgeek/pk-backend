@@ -8,7 +8,7 @@ import {
 } from '../../../constraint/factory/utilisateur/utilisateur.factory';
 import { HttpStatus } from '../../../data/constants/http-status';
 // import { utilisateur } from '../../../data/constants/urls';
-import { UtilisateurDO } from '../../../data/do/utilisateur/utilisateur.do';
+import { UtilisateurDO } from '../../../data/do/Utilisateur';
 // @ts-ignore
 import { UtilisateurEditRequestDTO } from '../../../data/dto/Utilisateur/utilisateur-edit-request.dto';
 // @ts-ignore
@@ -42,10 +42,10 @@ export class UtilisateurSA extends GenericSA<
 
   private async updateOdoo(dto) {
     try {
-      const { email, telephone, id } = dto;
+      const { email, phone, id } = dto;
       const odooDTO = this.factory.toOdooRequestDTO(dto);
       const utilisateurByEmail = await this.serviceSM.findOneNotFail({ email });
-      const utilisateurByPhone = await this.serviceSM.findOneNotFail({ telephone });
+      const utilisateurByPhone = await this.serviceSM.findOneNotFail({ phone });
 
       if (utilisateurByEmail && utilisateurByEmail._id !== id) {
         throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
@@ -63,8 +63,8 @@ export class UtilisateurSA extends GenericSA<
 
   async partialUpdate(_id: ObjectID, partialEntity): Promise<any> {
     try {
-      const utilisateurByPhone = await this.serviceSM.findOneNotFail({ telephone: partialEntity.telephone });
-      if (partialEntity.telephone && utilisateurByPhone && utilisateurByPhone._id?.toString() !== _id?.toString()) {
+      const utilisateurByPhone = await this.serviceSM.findOneNotFail({ phone: partialEntity.phone });
+      if (partialEntity.phone && utilisateurByPhone && utilisateurByPhone._id?.toString() !== _id?.toString()) {
         throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
       }
       const { email, id, password, ...withOutEmail } = partialEntity;
@@ -168,19 +168,20 @@ export class UtilisateurSA extends GenericSA<
 
   async getDeviceTokensFromUtilisateurIds(utilisateurIds: string[], tous: boolean) {
     try {
-      const utilisateurs = tous
-        ? await this.serviceSM.getAllUtilisateurWithDeviceToken()
-        : await this.serviceSM.findByIds(utilisateurIds, {
-            relations: ['deviceTokens'],
-          });
+      // const utilisateurs = tous
+      //   ? await this.serviceSM.getAllUtilisateurWithDeviceToken()
+      //   : await this.serviceSM.findByIds(utilisateurIds, {
+      //       relations: ['deviceTokens'],
+      //     });
 
-      return {
-        utilisateurs,
-        // tokens: utilisateurs.reduce(
-        //   (res, { deviceTokens }) => [...res, ...deviceTokens.map(({ token }: any) => token)],
-        //   [],
-        // ),
-      };
+      // return {
+      //   utilisateurs,
+      //   // tokens: utilisateurs.reduce(
+      //   //   (res, { deviceTokens }) => [...res, ...deviceTokens.map(({ token }: any) => token)],
+      //   //   [],
+      //   // ),
+      // };
+      return {};
     } catch (error) {
       return Promise.reject(error);
     }
@@ -188,9 +189,10 @@ export class UtilisateurSA extends GenericSA<
 
   async getDateInscription(minDate: string, maxDate: string) {
     try {
-      const data = await this.serviceSM.getDateInscription(minDate, maxDate);
+      // const data = await this.serviceSM.getDateInscription(minDate, maxDate);
 
-      return data.map(({ dateCreation }) => formatToShortFormat(dateCreation));
+      // return data.map(({ dateCreation }) => formatToShortFormat(dateCreation));
+      return "";
     } catch (error) {
       return Promise.reject(error);
     }
@@ -208,9 +210,10 @@ export class UtilisateurSA extends GenericSA<
 
   async getSocketIdByNotifToken(notifToken: string) {
     try {
-      const utilisateur = await this.serviceSM.getSocketIdByNotifToken(notifToken);
+      // const utilisateur = await this.serviceSM.getSocketIdByNotifToken(notifToken);
 
-      return utilisateur?.socketId;
+      // return utilisateur?.socketId;
+      return "";
     } catch (error) {
       return Promise.resolve('');
     }
@@ -218,9 +221,10 @@ export class UtilisateurSA extends GenericSA<
 
   async getSocketIdByTransactionId(transactionId: string) {
     try {
-      const utilisateur = await this.serviceSM.getSocketIdByTransactionId(transactionId);
+      // const utilisateur = await this.serviceSM.getSocketIdByTransactionId(transactionId);
 
-      return utilisateur?.socketId;
+      // return utilisateur?.socketId;
+      return;
     } catch (error) {
       return Promise.resolve('');
     }

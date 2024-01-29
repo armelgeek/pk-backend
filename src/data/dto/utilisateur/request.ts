@@ -1,7 +1,6 @@
 export type UtilisateurRequestDTO = {
    nom: string;
    prenom: string;
-   username: string;
    email: string;
    role: number;
    password: string;
@@ -16,20 +15,19 @@ export type UtilisateurRequestDTO = {
    actif: boolean;
    socketId: string;
    nomPrenom: string;
-   Attribute1: string;
    code: string;
    googleId: string;
    facebookId: string;
    appleId: string;
    online: boolean;
    lague: string;
+   username: string;
 }
 
 /**
  * @typedef {object} UtilisateurRequestDTO
  * @property {string} nom
  * @property {string} prenom
- * @property {string} username
  * @property {string} email
  * @property {number} role
  * @property {string} password
@@ -44,12 +42,12 @@ export type UtilisateurRequestDTO = {
  * @property {boolean} actif
  * @property {string} socketId
  * @property {string} nomPrenom
- * @property {string} Attribute1
  * @property {string} code
  * @property {string} googleId
  * @property {string} facebookId
  * @property {string} appleId
  * @property {boolean} online
  * @property {string} lague
+ * @property {string} username
  */
 

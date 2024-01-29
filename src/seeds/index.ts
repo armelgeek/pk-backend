@@ -18,7 +18,7 @@ export class InitSeeds implements Seeder {
             password: await bcrypt.hashSync('PockerApp#123', 10),
             nom: "PockerApp",
             prenom: "Test",
-            telephone: "",
+            phone: "",
             email: "pockerapps@gmail.com",
             ville: "",
             adresse: "",

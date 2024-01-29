@@ -10,11 +10,9 @@ export class InscriptionController {
     try {
       const { body, files } = req;
       console.log({ body });
-      const utilisateur = await this.serviceSA.create({
-        ...body,
-      });
+      const utilisateur = await this.serviceSA.create(body);
 
-      console.log({ utilisateur, body });
+      console.log({ utilisateur });
 
       res.locals.data = utilisateur;
       res.locals.statusCode = HttpStatus.CREATED;
@@ -35,6 +33,23 @@ export class InscriptionController {
 
       res.locals.data = utilisateur;
       res.locals.statusCode = HttpStatus.CREATED;
+
+      next();
+
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  validationCode = async (req, res, next) => {
+    try {
+      const { body } = req;
+      const utilisateur = await this.serviceSA.validationCode(body);
+
+      console.log({ utilisateur, body });
+
+      res.locals.data = utilisateur;
+      res.locals.statusCode = HttpStatus.OK;
 
       next();
 

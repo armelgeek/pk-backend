@@ -2,7 +2,6 @@ export type UtilisateurResponseDTO = {
    nom: string;
    prenom: string;
    email: string;
-   username: string;
    role: number;
    password: string;
    phone: string;
@@ -16,13 +15,13 @@ export type UtilisateurResponseDTO = {
    actif: boolean;
    socketId: string;
    nomPrenom: string;
-   Attribute1: string;
    code: string;
    googleId: string;
    facebookId: string;
    appleId: string;
    online: boolean;
    lague: string;
+   username: string;
   id: string;
 }
 
@@ -30,7 +29,6 @@ export type UtilisateurResponseDTO = {
  * @typedef {object} UtilisateurResponseDTO
  * @property {string} nom
  * @property {string} prenom
- * @property {string} username
  * @property {string} email
  * @property {number} role
  * @property {string} password
@@ -45,12 +43,12 @@ export type UtilisateurResponseDTO = {
  * @property {boolean} actif
  * @property {string} socketId
  * @property {string} nomPrenom
- * @property {string} Attribute1
  * @property {string} code
  * @property {string} googleId
  * @property {string} facebookId
  * @property {string} appleId
  * @property {boolean} online
  * @property {string} lague
+ * @property {string} username
  */
 

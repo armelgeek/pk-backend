@@ -10,7 +10,7 @@ import { exceptionHandler } from './service/middleware/exception-handler';
 import swaggerMiddleware from './service/middleware/swagger';
 import { responseFormatter } from './service/middleware/response-formatter';
 import cloudinary from './utils/cloudinary';
-import { UtilisateurDO } from './data/do/utilisateur/utilisateur.do';
+import { UtilisateurDO } from './data/do/Utilisateur';
 import { AdministrateurDO } from './data/do/administrateur';
 import { TestDO } from './data/do/Test';
 

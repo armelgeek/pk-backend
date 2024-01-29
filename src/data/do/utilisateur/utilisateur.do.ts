@@ -23,7 +23,7 @@ export class UtilisateurDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({ length: 50 })
+  @Column({ length: 50, nullable: true })
   nom: string;
 
   @Column({ length: 100, nullable: true })
@@ -36,7 +36,7 @@ export class UtilisateurDO {
   code: string;
 
   @Column({ length: 10, nullable: true, unique: true })
-  telephone: string;
+  phone: string;
 
   @Column({ length: 50 })
   username: string;

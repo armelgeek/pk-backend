@@ -45,6 +45,9 @@ export const localStrategy = new LocalStrategy(
       if (user && user.actif === true) {
         const validPassword = authentificationSA.validatePassword(password, user.password);
 
+        console.log('validPassword ====================================');
+        console.log(validPassword);
+        console.log('====================================');
         const { password: pwd, ...withoutPassword } = user;
 
         if (validPassword) {

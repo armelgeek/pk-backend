@@ -117,7 +117,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * @summary Liste des utilisateurs
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:nom,telephone,email,ville,dateInscription,dateDerniereConnexion
+ * @param {string} sortField.query - enum:nom,phone,email,ville,dateInscription,dateDerniereConnexion
  * @param {string} direction.query - enum:ASC,DESC
  * @param {string} nom.query
  * @return {array<UtilisateurResponseDTO>} 200

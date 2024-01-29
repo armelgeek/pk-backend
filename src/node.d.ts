@@ -1,1 +1,10 @@
-declare interface TestAPIRequestDTO { }
+  declare interface MessageRequestDTO { }
+  declare interface MessageResponseDTO { }
+  declare interface NotificationRequestDTO { }
+  declare interface NotificationResponseDTO { }
+  declare interface ParrainageRequestDTO { }
+  declare interface ParrainageResponseDTO { }
+  declare interface UtilisateurRequestDTO { }
+  declare interface UtilisateurResponseDTO { }
+  declare interface LangueRequestDTO { }
+  declare interface LangueResponseDTO { }

@@ -4,7 +4,7 @@
  * @property {string} nom
  * @property {string} prenom
  * @property {string} imageUrl
- * @property {string} telephone
+ * @property {string} phone
  * @property {string} email
  * @property {string} ville
  * @property {string} adresse

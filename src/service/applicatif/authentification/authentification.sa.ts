@@ -8,6 +8,7 @@ import { Exception } from '../../middleware/exception-handler';
 import { sendMail } from '../../middleware/nodemailer';
 import { generateResetToken } from '../../middleware/passport/passport-local';
 import { utilisateurSA } from '../utilisateur/utilisateur.sa';
+import { entierAleatoire } from '../inscription/inscription.sa';
 
 export class AuthentificationSA {
   findByEmail(email: string): Promise<any> {
@@ -27,7 +28,7 @@ export class AuthentificationSA {
     return bcrypt.compareSync(password, hashedPassword);
   }
 
-  async passwordResetRequest(email: string, boHost: string) {
+  async passwordResetRequestBo(email: string, boHost: string) {
     try {
       const found = await utilisateurSA.findOneNotFail({ email });
 
@@ -64,8 +65,44 @@ export class AuthentificationSA {
     }
   }
 
-  resetPassword(id: ObjectID, password: string) {
-    return utilisateurSA.resetPassword(id, password);
+  async passwordResetRequest(email: string, boHost: string) {
+    try {
+      const found = await utilisateurSA.findOneNotFail({ email });
+
+      if (!found) {
+        throw new Exception(HttpStatus.BAD_REQUEST, 'Email non trouvé dans la base de données');
+      }
+
+      const code = entierAleatoire(1111, 9999).toString();
+      const saved = await utilisateurSM.partialUpdate(found.id, { code });
+
+      console.log({ saved });
+      await sendMail({
+        to: email,
+        subject: '[Pocker Apps] - Rénitialisation mot de passe',
+        body: `
+      Bonjour ${found.username},
+      <br /> <br />
+      <span>
+        <p>Voici votre code de rénitialisation: ${code}</p>
+      <br />
+      <br /> 
+      Si vous n'êtes pas à l'origine de ce changement de mot de passe, veuillez ignorer ce mail.
+      <br /> <br /> <br />
+      Cordialement,
+      <br /> <br />
+      L'équipe Pocker Apps.
+      `,
+      });
+
+      return true;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async resetPassword(id: ObjectID, password: string) {
+    return await utilisateurSA.resetPassword(id, password);
   }
 }
 

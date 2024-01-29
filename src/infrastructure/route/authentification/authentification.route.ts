@@ -38,7 +38,7 @@ const authentificationRoutes = () => {
     .post(
       schemaValidator(utilisateurPasswordResetRequestDTOSchema),
       authentificationController.passwordResetRequest,
-      // responseFormatter,
+      responseFormatter,
     );
 
   router.get(

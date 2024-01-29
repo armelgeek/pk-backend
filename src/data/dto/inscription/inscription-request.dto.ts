@@ -2,8 +2,9 @@ export interface InscriptionRequestDTO {
   nom: string;
   prenom: string;
   imageUrl: string;
-  telephone: string;
+  phone: string;
   email: string;
+  username: string;
   ville: string;
   adresse: string;
   password: string;
@@ -14,8 +15,9 @@ export interface InscriptionRequestDTO {
  * @typedef {object} InscriptionRequestDTO
  * @property {string} nom
  * @property {string} prenom
- * @property {string} telephone
+ * @property {string} phone
  * @property {string} email
+ * @property {string} username
  * @property {string} ville
  * @property {string} adresse
  * @property {string} role

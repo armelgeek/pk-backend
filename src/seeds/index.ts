@@ -7,11 +7,11 @@ export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
   async run(factory: Factory, connection: Connection): Promise<void> {
     const user = connection.getCustomRepository(UtilisateurRepository);
-    const user_count = await user.find();
-    console.log('user_count ====================================');
-    console.log(user_count);
+    const users = await user.count();
+    console.log('users ====================================');
+    console.log(users);
     console.log('====================================');
-    if (user_count?.length < 3) {
+    if (users === 0) {
       try {
         const res = await user.save([
           {
@@ -54,7 +54,7 @@ export class InitSeeds implements Seeder {
             actif: true,
           },
         ]);
-        console.log('user_count.length = 0 ====================================');
+        console.log('users.length = 0 ====================================');
         console.log(res);
         console.log('====================================');
       } catch (error) {

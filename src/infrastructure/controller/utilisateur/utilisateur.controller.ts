@@ -47,10 +47,7 @@ export class UtilisateurController {
     try {
       const { params, body } = req;
       console.log({ body });
-      res.locals.data = await this.serviceSA.partialUpdate(params.id, {
-        ...body,
-        // ...(file ? { imageUrl: file.filename } : {}),
-      });
+      res.locals.data = await this.serviceSA.partialUpdate(params.id, body);
 
       next();
     } catch (error) {

@@ -89,7 +89,9 @@ export class UtilisateurDO {
   async beforeInsert() {
     try {
       this.dateCreation = new Date();
-      this.password = await bcrypt.hashSync(this.password, 10);
+      if (!this.password.includes('$2a$')) {
+        this.password = await bcrypt.hashSync(this.password, 10);
+      }
     } catch (error) {
       logger.error(error);
     }

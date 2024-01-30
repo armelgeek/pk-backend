@@ -17,13 +17,15 @@ export const utilisateurEditRequestDTOSchema = Joi.object({
 });
 
 export const utilisateurEditBORequestDTOSchema = Joi.object({
-  id: Joi.string().uuid().required(),
-  nom: Joi.string().max(50).required(),
+  // id: Joi.string().uuid().required(),
+  nom: Joi.string().max(50),
   prenom: Joi.string().max(100),
-  phone: Joi.string().pattern(regexPatternValidator.phone),
-  email: Joi.string().email().required(),
-  ville: Joi.string().max(25).required(),
-  adresse: Joi.string().max(50).required(),
+  // phone: Joi.string().pattern(regexPatternValidator.phone),
+  // email: Joi.string().email().required(),
+  ville: Joi.string().max(25),
+  adresse: Joi.string().max(50),
+  dateNaissance: Joi.string(),
+  imageUrl: Joi.string(),
 });
 
 export const utilisateurPasswordResetRequestDTOSchema = Joi.object({

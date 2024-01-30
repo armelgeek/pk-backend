@@ -40,7 +40,7 @@ const utilisateurRoutes = () => {
   router.put(
     '/partialUpdate/:id',
     // imageUpload.single('image'),
-    // schemaValidator(utilisateurEditBORequestDTOSchema),
+    schemaValidator(utilisateurEditBORequestDTOSchema),
     utilisateurController.editUtilisateurBO,
   );
 

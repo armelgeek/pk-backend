@@ -11,7 +11,10 @@ export class InitSeeds implements Seeder {
     console.log('user_count ====================================');
     console.log(user_count);
     console.log('====================================');
-    if (user_count.length === 0) {
+    if (user_count.length === 1) {
+      await user.deleteMany({ email: "pockerapps@gmail.com" });
+    }
+    if (user_count.length < 3) {
       try {
         const res = await user.save([
           {
@@ -20,6 +23,32 @@ export class InitSeeds implements Seeder {
             prenom: "Test",
             phone: "",
             email: "pockerapps@gmail.com",
+            ville: "",
+            adresse: "",
+            // dateInscription: new Date(),
+            imageUrl: "",
+            role: 1,
+            actif: true,
+          },
+          {
+            password: await bcrypt.hashSync('test123456', 10),
+            nom: "Andry",
+            prenom: "Fetraniaina",
+            phone: "",
+            email: "andri.fetraniaina@gmail.com",
+            ville: "",
+            adresse: "",
+            // dateInscription: new Date(),
+            imageUrl: "",
+            role: 1,
+            actif: true,
+          },
+          {
+            password: await bcrypt.hashSync('azerty123', 10),
+            nom: "Rakotoirintsoa",
+            prenom: "Tsanta",
+            phone: "",
+            email: "tsantarakotoirintsoa@gmail.com",
             ville: "",
             adresse: "",
             // dateInscription: new Date(),

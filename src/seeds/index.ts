@@ -7,14 +7,11 @@ export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
   async run(factory: Factory, connection: Connection): Promise<void> {
     const user = connection.getCustomRepository(UtilisateurRepository);
-    const user_count = await user.find({ email: "pockerapps@gmail.com" });
+    const user_count = await user.find();
     console.log('user_count ====================================');
     console.log(user_count);
     console.log('====================================');
-    if (user_count.length === 1) {
-      await user.deleteMany({ email: "pockerapps@gmail.com" });
-    }
-    if (user_count.length < 3) {
+    if (user_count?.length < 3) {
       try {
         const res = await user.save([
           {

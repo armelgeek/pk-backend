@@ -10,9 +10,6 @@ import { exceptionHandler } from './service/middleware/exception-handler';
 import swaggerMiddleware from './service/middleware/swagger';
 import { responseFormatter } from './service/middleware/response-formatter';
 import cloudinary from './utils/cloudinary';
-import { UtilisateurDO } from './data/do/Utilisateur';
-import { AdministrateurDO } from './data/do/administrateur';
-import { TestDO } from './data/do/Test';
 
 const fileupload = require('express-fileupload');
 
@@ -70,7 +67,7 @@ class App {
     //   res.json({ message: 'It works ok ok ok !!!' });
     // });
     this.app.use(express.static(path.resolve(__dirname, '../public/')));
-    this.app.use(express.static(path.resolve(__dirname, '../bo/')));
+    this.app.use(express.static(path.resolve(__dirname, '../bo2/dist')));
     this.app.use(express.static(path.resolve(__dirname, '../client/')));
     this.app.use('/public', express.static(path.resolve(__dirname, '../public')));
 

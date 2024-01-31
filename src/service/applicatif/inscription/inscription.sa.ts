@@ -3,12 +3,15 @@ import * as bcrypt from 'bcryptjs';
 
 import { inscriptionFactory } from '../../../constraint/factory/inscription/inscription.factory';
 import { HttpStatus } from '../../../data/constants/http-status';
-// @ts-ignore
 import { InscriptionRequestDTO } from '../../../data/dto/inscription/inscription-request.dto';
-import { ResendCodeRequestDTO, ValidationCodeRequestDTO } from '../../../data/dto/inscription/re-send-code-request.dto';
+import {
+  ResendCodeRequestDTO,
+  ValidationCodeRequestDTO,
+} from '../../../data/dto/inscription/re-send-code-request.dto';
 import { utilisateurSM } from '../../metier/utilisateur/utilisateur.sm';
 import { Exception } from '../../middleware/exception-handler';
 import { sendMail } from '../../middleware/nodemailer';
+import { generateTokens } from '../../middleware/passport/passport-local';
 
 export function entierAleatoire(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -35,10 +38,12 @@ export class InscriptionSA {
 
       const code = entierAleatoire(1111, 9999).toString();
 
-      const saved = await utilisateurSM.create(Object.assign(utilisateurDO, { password: await bcrypt.hashSync(password, 10), code }));
+      const saved = await utilisateurSM.create(
+        Object.assign(utilisateurDO, { password: await bcrypt.hashSync(password, 10), code }),
+      );
 
       console.log({ saved });
-      if(!saved) {
+      if (!saved) {
         return {
           create: false,
         };
@@ -60,7 +65,7 @@ export class InscriptionSA {
       L'équipe Pocker Apps.
       `,
       });
-    
+
       // const utilisateur = this.factory.toResponseDto(saved);
 
       return {
@@ -68,6 +73,57 @@ export class InscriptionSA {
       };
     } catch (error) {
       return Promise.reject(error);
+    }
+  }
+
+  async socialAuth(dto: InscriptionRequestDTO) {
+    try {
+      const utilisateurDO = this.factory.toDo(dto);
+      const { email, googleId, facebookId, appleId } = dto;
+      const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
+      let user = null;
+      if (utilisateurByEmail) {
+        if (googleId) {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+            googleId,
+          });
+          user = value;
+        } else if (facebookId) {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+            facebookId,
+          });
+          user = value;
+        } else if (appleId) {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+            appleId,
+          });
+          user = value;
+        }
+        const { accessToken, refreshToken } = await generateTokens(user);
+
+        return {
+          accessToken,
+          refreshToken,
+          deviceToken: '',
+          utilisateur: { ...user },
+        };
+      } else {
+        const { value } = await utilisateurSM.create(utilisateurDO);
+
+        const { accessToken, refreshToken } = await generateTokens(value);
+
+        return {
+          id: value?._id,
+          create: true,
+          accessToken,
+          refreshToken,
+          deviceToken: '',
+          utilisateur: value,
+        };
+      }
+    } catch (error) {
+      console.log('socialAuth error', error);
+      return null;
     }
   }
 
@@ -117,17 +173,9 @@ export class InscriptionSA {
   async validationCode(dto: ValidationCodeRequestDTO) {
     try {
       const { email, code } = dto;
-
-      const users = await utilisateurSM.findAll({ email: "pocker" }, "");
-      console.log('====================================');
-      console.log({ users });
-      console.log('====================================');
       const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
-      console.log('====================================');
-      console.log({ utilisateurByEmail });
-      console.log('====================================');
       if (utilisateurByEmail?.code === code) {
-        await utilisateurSM.partialUpdate(utilisateurByEmail?._id, { code: "", actif: true });
+        await utilisateurSM.partialUpdate(utilisateurByEmail?._id, { code: '', actif: true });
         return {
           id: utilisateurByEmail?._id,
           validation: true,

@@ -8,13 +8,29 @@ export class InscriptionController {
 
   signup = async (req, res, next) => {
     try {
-      const { body, files } = req;
+      const { body } = req;
       console.log({ body });
       const utilisateur = await this.serviceSA.create(body);
 
       console.log({ utilisateur });
 
       res.locals.data = utilisateur;
+      res.locals.statusCode = HttpStatus.CREATED;
+
+      next();
+
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  socialAuth = async (req, res, next) => {
+    try {
+      const { body } = req;
+      console.log({ body });
+      const data = await this.serviceSA.socialAuth(body);
+
+      res.locals.data = data;
       res.locals.statusCode = HttpStatus.CREATED;
 
       next();

@@ -65,3 +65,5 @@ buck-out/
 /ios/Pods/
 *.log
 firebase-admin-sdk.json
+# *.env
+/bo2

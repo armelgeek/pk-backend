@@ -1,4 +1,7 @@
 export interface InscriptionRequestDTO {
+  googleId: string;
+  facebookId: string;
+  appleId: string;
   nom: string;
   prenom: string;
   imageUrl: string;
@@ -22,5 +25,8 @@ export interface InscriptionRequestDTO {
  * @property {string} adresse
  * @property {string} role
  * @property {string} password
+ * @property {string} googleId
+ * @property {string} facebookId
+ * @property {string} appleId
  * @property {object} image - de type file
  */

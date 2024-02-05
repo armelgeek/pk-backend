@@ -27,8 +27,8 @@ export const socialInscriptionRequestDTOSchema = Joi.object({
   imageUrl: Joi.string().allow(''),
   prenom: Joi.string().allow(''),
   nom: Joi.string().allow(''),
-  email: Joi.string().email().required(),
-  googleId: Joi.string().allow(''),
+  email: Joi.string().email().allow(''),
   facebookId: Joi.string().allow(''),
   appleId: Joi.string().allow(''),
+  googleId: Joi.string().allow(''),
 });

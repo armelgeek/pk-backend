@@ -14,7 +14,7 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   prenom: string;
 
-  @Column({nullable: false, unique: true})
+  @Column({nullable: true, unique: true})
   email: string;
 
   @Column({nullable: true, unique: false})
@@ -99,7 +99,7 @@ export class UtilisateurDO {
 
   @BeforeUpdate()
   async hashPasswordUpdate() {
-    if (!this.password.includes('$2a$')) {
+    if (this.password && !this.password.includes('$2a$')) {
       this.password = await bcrypt.hashSync(this.password, 10);
     }
 

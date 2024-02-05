@@ -22,7 +22,7 @@
 
 # RUN npm run build:prod
 
-FROM node:20
+FROM node:20.11.0
 
 # Create the workdir 
 RUN mkdir -p /var/www/backend

@@ -38,7 +38,7 @@ export class UtilisateurDO {
   @Column({ length: 10, nullable: true, unique: true })
   phone: string;
 
-  @Column({ length: 50 })
+  @Column({ default: "" })
   username: string;
 
   @Column({ unique: true })
@@ -50,7 +50,7 @@ export class UtilisateurDO {
   @Column({ length: 50, default: "" })
   adresse: string;
 
-  @Column()
+  @Column({ default: "" })
   password: string;
 
   @Column({

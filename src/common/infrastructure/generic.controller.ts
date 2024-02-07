@@ -116,7 +116,7 @@ export class GenericController<
    */
   findAll = async (req, res, next) => {
     const {
-      query: { page, rowPerPage, light, direction, sortField, match, recherche, ...queries },
+      query: { page = 1, rowPerPage = 10, light, direction, sortField, match, recherche, ...queries },
     } = req;
 
     try {

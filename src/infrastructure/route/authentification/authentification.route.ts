@@ -3,14 +3,14 @@ import { Router } from 'express';
 import {
   authentificationRequestDTOSchema,
   authentificationSignoutRequestDTOSchema,
-  andoomAuthentificationRequestDTOSchema,
+  adminAuthentificationRequestDTOSchema,
   resetPasswordRequestDTOSchema,
 } from '../../../constraint/validator/joi/authentification.validator';
 import { utilisateurPasswordResetRequestDTOSchema } from '../../../constraint/validator/joi/utilisateur.validator';
 import { schemaValidator } from '../../../service/middleware/joi';
 import { responseFormatter } from '../../../service/middleware/response-formatter';
 import { authentificationController } from '../../controller/authentification/authentification.controller';
-import { andoomAuthentificationController } from '../../controller/andoom-authentification/andoom-authentification.controller';
+import { adminAuthentificationController } from '../../controller/admin-authentification/admin-authentification.controller';
 
 const authentificationRoutes = () => {
   const router = Router();
@@ -48,9 +48,9 @@ const authentificationRoutes = () => {
   );
 
   router.post(
-    '/andoom',
-    schemaValidator(andoomAuthentificationRequestDTOSchema),
-    andoomAuthentificationController.signIn,
+    '/admin',
+    schemaValidator(adminAuthentificationRequestDTOSchema),
+    adminAuthentificationController.signIn,
   );
 
   router.post(
@@ -85,10 +85,13 @@ export const authentificationRouter = authentificationRoutes();
  */
 
 /**
- * POST /api/authentification/andoom
+ * POST /api/authentification/admin
  * @tags Authentification
  * @summary Se connecter au BO
- * @param
+ * @param {AuthentificationRequestDTO} request.body.required
+ * @return {AuthentificationResponseDTO} 200
+ * @return {object} 400 - Mot de passe ou email éronné
+ * @return {object} 500 - Erreur côté serveur
  */
 
 /**

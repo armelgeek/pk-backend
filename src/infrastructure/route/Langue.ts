@@ -7,11 +7,11 @@ const langueRoutes = () => genericRoute({ controller: langueController, schema: 
 export const langueRouter = langueRoutes();
 
 /**
- * GET /api/langue
+ * GET /api/langues
  * @tags Langue
  * @security BearerAuth
  * @summary Créer un Langue (getAllLangue)
- * @param {LangueRequestDTO} request.body.required
+ * @param {LangueRequestDTO} request.body
  * @param {number} page.query
  * @param {number} rowPerPage.query
  * @return {LangueResponseDTO} 201
@@ -24,7 +24,7 @@ export const langueRouter = langueRoutes();
  * @tags Langue
  * @security BearerAuth
  * @summary Créer un Langue (addLangue)
- * @param {LangueRequestDTO} request.body.required
+ * @param {LangueRequestDTO} request.body
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -35,7 +35,7 @@ export const langueRouter = langueRoutes();
  * @tags Langue
  * @security BearerAuth
  * @summary Créer un Langue (deleteLangue)
- * @param {LangueRequestDTO} request.body.required
+ * @param {LangueRequestDTO} request.body
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -46,7 +46,7 @@ export const langueRouter = langueRoutes();
  * @tags Langue
  * @security BearerAuth
  * @summary Créer un Langue (updateLangue)
- * @param {LangueRequestDTO} request.body.required
+ * @param {LangueRequestDTO} request.body
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

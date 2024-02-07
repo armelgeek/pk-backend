@@ -2,9 +2,9 @@ import { HttpStatus } from '../../../data/constants/http-status';
 import passport from '../../../service/middleware/passport';
 import { passportStrategies } from '../../../service/middleware/passport/passport-strategies';
 
-class OdooAuthentificationController {
+class AdminAuthentificationController {
   signIn = async (req, res, next) => {
-    passport.authenticate(passportStrategies.andoom, { session: false }, (err, data) => {
+    passport.authenticate(passportStrategies.admin, { session: false }, (err, data) => {
       if (err && !data) {
         res.locals.statusCode = HttpStatus.BAD_REQUEST;
 
@@ -17,4 +17,4 @@ class OdooAuthentificationController {
   };
 }
 
-export const andoomAuthentificationController = new OdooAuthentificationController();
+export const adminAuthentificationController = new AdminAuthentificationController();

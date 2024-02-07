@@ -8,3 +8,23 @@
   declare interface UtilisateurResponseDTO { }
   declare interface LangueRequestDTO { }
   declare interface LangueResponseDTO { }
+  declare interface CountryRequestDTO { }
+  declare interface CountryResponseDTO { }
+  declare interface SignInRequestDTO { }
+  declare interface SignInResponseDTO { }
+  declare interface SocialMediaRequestDTO { }
+  declare interface SocialMediaResponseDTO { }
+  declare interface ComplementaryInformationRequestDTO { }
+  declare interface ComplementaryInformationResponseDTO { }
+  declare interface ProfileRequestDTO { }
+  declare interface ProfileResponseDTO { }
+  declare interface SponsorRequestDTO { }
+  declare interface SponsorResponseDTO { }
+  declare interface PartenerRequestDTO { }
+  declare interface PartenerResponseDTO { }
+  declare interface LinksRequestDTO { }
+  declare interface LinksResponseDTO { }
+  declare interface CasinoProfileRequestDTO { }
+  declare interface CasinoProfileResponseDTO { }
+  declare interface CasinoProfileAdditionalRequestDTO { }
+  declare interface CasinoProfileAdditionalResponseDTO { }

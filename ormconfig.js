@@ -1,9 +1,9 @@
 module.exports = {
   "type": "mongodb",
-  "host": "mongo",
+  "host": "localhost",
   "port": 27017,
-  // "password": "node1234",
-  // "username": "root",
+  // "password": "admin",
+  // "username": "adminpassword",
   "database": "docker-node-mongo",
   "useUnifiedTopology": true,
   "useNewUrlParser": true,

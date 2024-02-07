@@ -35,6 +35,7 @@ const icons = {
 };
 
 // eslint-disable-next-line react/prop-types
+// export const SideMenu = ({ }) => {
 export const SideMenu = ({ role }) => {
   // create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -43,6 +44,26 @@ export const SideMenu = ({ role }) => {
     // condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
   };
+
+  const routes = Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {
+    const {
+      route, iconBo,
+    } = dataTDO[entity];
+    return (
+      {
+        id: `gestion-${entity}`,
+        title: `Gestion ${entity}`,
+        icon: icons[iconBo] || calendar,
+        children: [
+          {
+            id: `gestion-${entity}`,
+            title: `${entity}`,
+            url: `/app/${route}`,
+            icon: '',
+          },
+        ],
+      });
+  });
 
   return (
     <>
@@ -68,39 +89,21 @@ export const SideMenu = ({ role }) => {
               <Sidebar
                 collapse={menuCollapse}
                 items={[
-                  // {
-                  //   id: 'Tableau-de-bord',
-                  //   title: 'Tableau de bord',
-                  //   icon: calendar,
-                  //   children: [
-                  //     {
-                  //       id: 'tableau-bord',
-                  //       title: 'Tableau de bord',
-                  //       url: '/app',
-                  //       icon: '',
-                  //     },
-                  //   ],
-                  // },
-                  // eslint-disable-next-line max-len
-                  ...Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {
-                    const {
-                      route, iconBo,
-                    } = dataTDO[entity];
-                    return (
+                  {
+                    id: 'Tableau-de-bord',
+                    title: 'Tableau de bord',
+                    icon: calendar,
+                    children: [
                       {
-                        id: `gestion-${entity}`,
-                        title: `Gestion ${entity}`,
-                        icon: icons[iconBo] || calendar,
-                        children: [
-                          {
-                            id: `gestion-${entity}`,
-                            title: `${entity}`,
-                            url: `/app/${route}`,
-                            icon: '',
-                          },
-                        ],
-                      });
-                  }),
+                        id: 'tableau-bord',
+                        title: 'Tableau de bord',
+                        url: '/app',
+                        icon: '',
+                      },
+                    ],
+                  },
+                  // eslint-disable-next-line max-len
+                  ...routes
                 ]}
               />
             </Menu>

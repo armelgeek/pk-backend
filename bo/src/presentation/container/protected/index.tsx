@@ -19,7 +19,7 @@ export default Object.keys(dataTDO).reduce((acc, entity) => {
               const pResect = await Promise.all(
                 // eslint-disable-next-line @typescript-eslint/no-shadow
                 selects.map(async ({ entity, name }) => {
-                  const { data } = await applicatif[entity.name]().getAll({});
+                  const { data } = await applicatif[entity.name]().getAll({page: 1, rowPerPage:10});
                   if (data?.items) {
                     return { value: data?.items, key: name };
                   }

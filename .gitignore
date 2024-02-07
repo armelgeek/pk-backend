@@ -66,4 +66,5 @@ buck-out/
 *.log
 firebase-admin-sdk.json
 # *.env
-/bo2
+/bo/dist
+ormconfig.*

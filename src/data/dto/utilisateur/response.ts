@@ -22,6 +22,7 @@ export type UtilisateurResponseDTO = {
    online: boolean;
    lague: string;
    username: string;
+   profileId: string;
   id: string;
 }
 
@@ -50,5 +51,6 @@ export type UtilisateurResponseDTO = {
  * @property {boolean} online
  * @property {string} lague
  * @property {string} username
+ * @property {string} profileId
  */
 

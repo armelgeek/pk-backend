@@ -39,22 +39,15 @@ export const localStrategy = new LocalStrategy(
   },
   async (email, password, done) => {
     try {
-      console.log('{ user }', { email, password });
       const user = await authentificationSA.findByEmailUsers(email);
-      console.log('{ user }', { user });
       if (user && user.actif === true) {
         const validPassword = authentificationSA.validatePassword(password, user.password);
-
-        console.log('validPassword ====================================');
-        console.log(validPassword);
-        console.log('====================================');
         const { password: pwd, ...withoutPassword } = user;
 
         if (validPassword) {
           await utilisateurSM.partialUpdate(withoutPassword._id, {
             dateDerniereConnexion: new Date(),
           });
-
           done(null, withoutPassword);
         } else {
           done({ message: 'Mot de passe invalide' });

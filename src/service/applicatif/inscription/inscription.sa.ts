@@ -175,10 +175,17 @@ export class InscriptionSA {
       const { email, code } = dto;
       const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
       if (utilisateurByEmail?.code === code) {
-        await utilisateurSM.partialUpdate(utilisateurByEmail?._id, { code: '', actif: true });
+        const {value} = await utilisateurSM.partialUpdate(utilisateurByEmail?._id, { code: '', actif: true });
+
+        const { accessToken, refreshToken } = await generateTokens(value);
+
         return {
-          id: utilisateurByEmail?._id,
+          id: value?._id,
           validation: true,
+          accessToken,
+          refreshToken,
+          deviceToken: '',
+          utilisateur: value,
         };
       }
       return {

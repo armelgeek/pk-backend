@@ -22,6 +22,7 @@ export type UtilisateurRequestDTO = {
    online: boolean;
    lague: string;
    username: string;
+   profileId: string;
 }
 
 /**
@@ -49,5 +50,6 @@ export type UtilisateurRequestDTO = {
  * @property {boolean} online
  * @property {string} lague
  * @property {string} username
+ * @property {string} profileId
  */
 

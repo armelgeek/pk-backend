@@ -17,14 +17,13 @@ export const useRequest = (url, method) => {
   const credentials = JSON.parse(localStorage.getItem(LocalStorageKeys.credentials) || 'null');
   return async (options: RequestOptions) => {
     const { body, params, customUrl, customHeader = {} } = options;
-    let newBody = body; let
-      idUrl = '';
+    let newBody = body; let idUrl = '';
     if (method === 'PUT' && body?.id && !body?.password) {
       const { id, ...all } = body;
       newBody = all;
       idUrl = `/partialUpdate/${id}`;
     }
-    console.log({ newBody });
+
     try {
       const result = await axios({
         params,

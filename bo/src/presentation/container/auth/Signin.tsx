@@ -23,10 +23,13 @@ export const Signin = () => {
       setLoading(false);
     }
   };
-
+  // {
+  //   "email": "pockerapps@gmail.com",
+  //   "password": "PockerApp#123"
+  // }
   React.useEffect(() => {
-    setValue('email', 'fullstackadmin@gmail.com');
-    setValue('password', 'admin@fullstack');
+    setValue('email', 'pockerapps@gmail.com');
+    setValue('password', 'PockerApp#123');
   }, []);
 
   return (

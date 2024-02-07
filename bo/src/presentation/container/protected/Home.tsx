@@ -34,7 +34,8 @@ export const Home = () => {
     updateBreadcrumb(pathname);
   }, [pathname]);
 
-  const role = state?.auth?.credentials?.utilisateur?.role;
+  // const role = state?.auth?.credentials?.utilisateur?.role;
+  const role = 4;
 
   return (
     <div className="h-full flex">
@@ -76,9 +77,9 @@ export const Home = () => {
             <Route path={getFullPath('/tableau-bord')}>
               <TableauBord />
             </Route>
-            <Route path={getFullPath('/utilisateur')}>
+            {/* <Route path={getFullPath('/utilisateur')}>
               <Utilisateur />
-            </Route>
+            </Route> */}
             {
               // eslint-disable-next-line max-len
               ...Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {

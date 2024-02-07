@@ -11,7 +11,7 @@ export const messageRouter = messageRoutes();
  * @tags Message
  * @security BearerAuth
  * @summary Créer un Message (getAllMessage)
- * @param {MessageRequestDTO} request.body.required
+ * @param {MessageRequestDTO} request.body
  * @param {number} page.query
  * @param {number} rowPerPage.query
  * @return {MessageResponseDTO} 201

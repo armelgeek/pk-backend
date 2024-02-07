@@ -12,8 +12,8 @@ export const resetPasswordRequestDTOSchema = Joi.object({
   password: Joi.string().required().regex(regexPatternValidator.password),
 });
 
-export const andoomAuthentificationRequestDTOSchema = Joi.object({
-  login: Joi.string().required(),
+export const adminAuthentificationRequestDTOSchema = Joi.object({
+  email: Joi.string().required(),
   password: Joi.string().required(),
 });
 

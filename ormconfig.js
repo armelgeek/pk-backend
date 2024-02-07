@@ -9,10 +9,12 @@ module.exports = {
   "useNewUrlParser": true,
   "synchronize": false,
   "entities": [
+    // 
     "dist/data/do/**/*.js",
     // "src/data/do/**/*.ts"
   ],
   "seeds": [
+    // 
     "dist/seeds/*.js",
     // "src/seeds/*.ts"
   ],

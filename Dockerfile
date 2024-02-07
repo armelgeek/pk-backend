@@ -1,26 +1,26 @@
-# FROM node:16.13.0
+FROM node:16.13.0
 
-# # Create the workdir 
-# RUN mkdir -p /var/www/bo
+# Create the workdir 
+RUN mkdir -p /var/www/bo
 
-# # RUN rm -rf /var/www/bo/models
+# RUN rm -rf /var/www/bo/models
 
-# # Set the workdir to /var/www/bo
-# WORKDIR /var/www/bo
+# Set the workdir to /var/www/bo
+WORKDIR /var/www/bo
 
-# # Copy the package.json & package.lock.json first
-# # If there's no change in package.json,
-# # Docker will skip this step and we will win more times in build process
-# COPY ./bo/package*.json ./
+# Copy the package.json & package.lock.json first
+# If there's no change in package.json,
+# Docker will skip this step and we will win more times in build process
+COPY ./bo/package*.json ./
 
-# # Install dependencies
-# # This step will be skipped if there's no change to package.json
-# RUN npm i
+# Install dependencies
+# This step will be skipped if there's no change to package.json
+RUN npm i
 
-# # Copy project folders & files
-# COPY ./bo/. .
+# Copy project folders & files
+COPY ./bo/. .
 
-# RUN npm run build:prod
+RUN npm run build:prod
 
 FROM node:20.11.0
 

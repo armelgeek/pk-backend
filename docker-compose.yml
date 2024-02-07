@@ -9,8 +9,8 @@ services:
     # environment: 
     #   MONGO_INITDB_ROOT_USERNAME: admin
     #   MONGO_INITDB_ROOT_PASSWORD: adminpassword
-    # environment:
-    #   - MONGO_INITDB_DATABASE=docker-node-mongo
+    environment:
+      - MONGO_INITDB_DATABASE=docker-node-mongo
     #   - MONGO_INITDB_ROOT_USERNAME=root
     #   - MONGO_INITDB_ROOT_PASSWORD=node1234
     # environment:

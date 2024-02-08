@@ -11,14 +11,14 @@ WORKDIR /var/www/bo
 # Copy the package.json & package.lock.json first
 # If there's no change in package.json,
 # Docker will skip this step and we will win more times in build process
-COPY ./bo/package*.json ./
+COPY ./bo/* ./
 
 # Install dependencies
 # This step will be skipped if there's no change to package.json
 RUN npm i
 
 # Copy project folders & files
-COPY ./bo/. .
+# COPY ./bo/. .
 
 RUN npm run build:prod
 

@@ -67,7 +67,7 @@ class App {
     //   res.json({ message: 'It works ok ok ok !!!' });
     // });
     this.app.use(express.static(path.resolve(__dirname, '../public/')));
-    this.app.use(express.static(path.resolve(__dirname, '../bo2/dist')));
+    this.app.use(express.static(path.resolve(__dirname, '../bo/dist')));
     this.app.use(express.static(path.resolve(__dirname, '../client/')));
     this.app.use('/public', express.static(path.resolve(__dirname, '../public')));
 

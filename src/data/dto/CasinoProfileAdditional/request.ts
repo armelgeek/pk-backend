@@ -14,6 +14,7 @@ export type CasinoProfileAdditionalRequestDTO = {
    sponsors: string;
    parteners: string;
    links: string;
+   user: string;
 }
 
 /**
@@ -33,5 +34,6 @@ export type CasinoProfileAdditionalRequestDTO = {
  * @property {string} sponsors
  * @property {string} parteners
  * @property {string} links
+ * @property {string} user
  */
 

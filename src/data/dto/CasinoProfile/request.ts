@@ -7,6 +7,7 @@ export type CasinoProfileRequestDTO = {
    adress: string;
    email: string;
    description: string;
+   user: string;
 }
 
 /**
@@ -19,5 +20,6 @@ export type CasinoProfileRequestDTO = {
  * @property {string} adress
  * @property {string} email
  * @property {string} description
+ * @property {string} user
  */
 

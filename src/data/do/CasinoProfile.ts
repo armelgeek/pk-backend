@@ -29,6 +29,9 @@ export class CasinoProfileDO {
   @Column({nullable: true, unique: false})
   description: string;
 
+  @Column({nullable: true, unique: false})
+  user: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;
 

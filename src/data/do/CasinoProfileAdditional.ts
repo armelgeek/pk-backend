@@ -5,26 +5,26 @@ export class CasinoProfileAdditionalDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  monday: Date;
+  @Column({nullable: true, unique: false})
+  monday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  tuesday: Date;
+  @Column({nullable: true, unique: false})
+  tuesday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  wednesday: Date;
+  @Column({nullable: true, unique: false})
+  wednesday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  thursday: Date;
+  @Column({nullable: true, unique: false})
+  thursday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  friday: Date;
+  @Column({nullable: true, unique: false})
+  friday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  saturday: Date;
+  @Column({nullable: true, unique: false})
+  saturday: string;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  sunday: Date;
+  @Column({nullable: true, unique: false})
+  sunday: string;
 
   @Column({nullable: true, unique: false})
   members: number;
@@ -49,6 +49,9 @@ export class CasinoProfileAdditionalDO {
 
   @Column({nullable: true, unique: false})
   links: string;
+
+  @Column({nullable: true, unique: false})
+  user: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

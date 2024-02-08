@@ -1,4 +1,7 @@
-import { BeforeInsert, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import * as bcrypt from 'bcryptjs';
+
+import { logger } from '../../common/logger';
 
 @Entity('utilisateur')
 export class UtilisateurDO {
@@ -11,7 +14,7 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   prenom: string;
 
-  @Column({nullable: false, unique: true})
+  @Column({nullable: true, unique: true})
   email: string;
 
   @Column({nullable: true, unique: false})
@@ -74,15 +77,32 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   username: string;
 
-  @Column({nullable: true, unique: false})
-  profileId: string;
-
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;
 
+  // @BeforeInsert()
+  // beforeInsert() {
+  //   this.dateCreation = new Date();
+  // }
+
   @BeforeInsert()
-  beforeInsert() {
-    this.dateCreation = new Date();
+  async beforeInsert() {
+    try {
+      this.dateCreation = new Date();
+      if (!this.password.includes('$2a$')) {
+        this.password = await bcrypt.hashSync(this.password, 10);
+      }
+    } catch (error) {
+      logger.error(error);
+    }
+  }
+
+  @BeforeUpdate()
+  async hashPasswordUpdate() {
+    if (this.password && !this.password.includes('$2a$')) {
+      this.password = await bcrypt.hashSync(this.password, 10);
+    }
+
+    this.dateModification = new Date();
   }
 }
-

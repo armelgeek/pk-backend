@@ -218,7 +218,6 @@
 					"type": "string",
 					"isReadOnly": true,
 					"form": "Password",
-					"bo": true,
 					"isNotUpdate": true
 				},
 				{

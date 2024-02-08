@@ -32,7 +32,13 @@ const rejectStyle = {
 };
 
 export const MyDropzone = ({ setFile, file, name, keyName }: any) => {
-  const onDrop = (acceptedFiles) => setFile(acceptedFiles, keyName);
+  const [paths, setPaths] = React.useState([]);
+
+  const onDrop = React.useCallback(acceptedFiles => {
+    setPaths(acceptedFiles.map(file => URL.createObjectURL(file)));
+    setFile(acceptedFiles, keyName)
+  }, [setPaths]);
+  // const onDrop = (acceptedFiles) => setFile(acceptedFiles, keyName);
   const {
     getRootProps,
     getInputProps,
@@ -52,13 +58,16 @@ export const MyDropzone = ({ setFile, file, name, keyName }: any) => {
     isDragAccept,
   ]);
 
-  console.log(Array.isArray(file));
+  console.log("paths paths", paths);
 
   return (
     <div className="container">
       {/* @ts-ignore */}
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
+        {paths?.map(path =>
+          <img key={path} src={path} style={{ maxHeight: 80 }} />)
+        }
         {
           Array.isArray(file) ? (
             <Carousel listItem={file.map((url) => ({
@@ -79,7 +88,7 @@ export const MyDropzone = ({ setFile, file, name, keyName }: any) => {
             )
             // eslint-disable-next-line react/no-unescaped-entities
             : <p>{name || "Drag 'n' drop some files here, or click to select files"}</p>
-}
+        }
       </div>
     </div>
   );

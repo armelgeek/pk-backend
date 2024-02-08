@@ -52,7 +52,7 @@ export class InscriptionSA {
         to: email,
         subject: '[Pocker Apps] - Validation compte',
         body: `
-      Bonjour ${utilisateurDO.username},
+      Bonjour ${utilisateurDO.username || utilisateurDO.nom},
       <br /> <br />
       <span>
         <p>Voici votre code de validation: ${code}</p>
@@ -150,7 +150,7 @@ export class InscriptionSA {
         to: email,
         subject: '[Pocker Apps] - Validation compte',
         body: `
-      Bonjour ${utilisateurByEmail.username},
+      Bonjour ${utilisateurByEmail.username || utilisateurByEmail.nom},
       <br /> <br />
       <span>
         <p>Voici votre code de validation: ${code}</p>

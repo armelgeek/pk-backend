@@ -9,6 +9,9 @@ export class ComplementaryInformationDO {
   nationality: string;
 
   @Column({nullable: true, unique: false})
+  langues: string;
+
+  @Column({nullable: true, unique: false})
   email: string;
 
   @Column({nullable: true, unique: false})
@@ -19,6 +22,15 @@ export class ComplementaryInformationDO {
 
   @Column({nullable: true, unique: false})
   headonmob: string;
+
+  @Column({nullable: true, unique: false})
+  nb_titre: number;
+
+  @Column({nullable: true, unique: false})
+  rang_time_money: string;
+
+  @Column({nullable: true, unique: false})
+  date_first: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

@@ -1,8 +1,8 @@
 export type NotificationRequestDTO = {
-   titre: string;
-   message: string;
-   tous: boolean;
-   usersIds: string;
+   titre?: string;
+   message?: string;
+   tous?: boolean;
+   usersIds?: string;
 }
 
 /**

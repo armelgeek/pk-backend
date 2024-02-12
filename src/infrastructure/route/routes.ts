@@ -5,12 +5,16 @@ import { notificationRouter } from './Notification';
 import { utilisateurRouter } from './Utilisateur';
 import { langueRouter } from './Langue';
 import { socialmediaRouter } from './SocialMedia';
-import { complementaryinformationRouter } from './ComplementaryInformation';
+import { baseinformationRouter } from './BaseInformation';
+import { profileRouter } from './Profile';
 import { sponsorRouter } from './Sponsor';
 import { partenerRouter } from './Partener';
 import { linksRouter } from './Links';
 import { casinoprofileRouter } from './CasinoProfile';
 import { casinoprofileadditionalRouter } from './CasinoProfileAdditional';
+import { pseudosRouter } from './Pseudos';
+import { roleRouter } from './Role';
+import { complementaryinformationRouter } from './ComplementaryInformation';
 
 export const routes = () => {
   const router = Router();
@@ -20,12 +24,16 @@ export const routes = () => {
  router.use('/utilisateur', utilisateurRouter);
  router.use('/langue', langueRouter);
  router.use('/social-media', socialmediaRouter);
- router.use('/complementary-information', complementaryinformationRouter);
+ router.use('/base-information', baseinformationRouter);
+ router.use('/profile', profileRouter);
  router.use('/sponsors', sponsorRouter);
  router.use('/partener', partenerRouter);
  router.use('/Links', linksRouter);
  router.use('/CasinoProfile', casinoprofileRouter);
  router.use('/CasinoProfileAdditional', casinoprofileadditionalRouter);
+ router.use('/pseudos', pseudosRouter);
+ router.use('/roles', roleRouter);
+ router.use('/complementary-information', complementaryinformationRouter);
   
   return router;
 };

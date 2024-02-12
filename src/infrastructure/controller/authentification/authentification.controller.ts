@@ -29,7 +29,6 @@ export class AuthentificationController {
     const {
       body: { token },
     } = req;
-    console.log(`${token}, ${token} ====> err, user`);
     passport.authenticate(passportStrategies.local, { session: false }, async (err, user) => {
       console.log(`${err}, ${user} ====> err, user`);
       if (err && !user) {

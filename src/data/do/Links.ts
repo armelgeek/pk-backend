@@ -14,6 +14,9 @@ export class LinksDO {
   @Column({nullable: true, unique: false})
   description: string;
 
+  @Column({nullable: true, unique: false})
+  profile: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;
 

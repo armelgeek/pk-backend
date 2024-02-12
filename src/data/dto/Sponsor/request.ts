@@ -1,7 +1,7 @@
 export type SponsorRequestDTO = {
-   name: string;
-   logo: string;
-   description: string;
+   name?: string;
+   logo?: string;
+   description?: string;
 }
 
 /**

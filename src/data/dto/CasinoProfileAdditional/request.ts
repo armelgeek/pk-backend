@@ -1,20 +1,20 @@
 export type CasinoProfileAdditionalRequestDTO = {
-   monday: string;
-   tuesday: string;
-   wednesday: string;
-   thursday: string;
-   friday: string;
-   saturday: string;
-   sunday: string;
-   members: number;
-   cardMember: boolean;
-   restaurant: boolean;
-   hotel: boolean;
-   parking: boolean;
-   sponsors: string;
-   parteners: string;
-   links: string;
-   user: string;
+   monday?: string;
+   tuesday?: string;
+   wednesday?: string;
+   thursday?: string;
+   friday?: string;
+   saturday?: string;
+   sunday?: string;
+   members?: number;
+   cardMember?: boolean;
+   restaurant?: boolean;
+   hotel?: boolean;
+   parking?: boolean;
+   sponsors?: string;
+   parteners?: string;
+   links?: string;
+   user?: string;
 }
 
 /**

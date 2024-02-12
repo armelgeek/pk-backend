@@ -1,5 +1,5 @@
 export type ParrainageRequestDTO = {
-   Attribute1: string;
+   Attribute1?: string;
 }
 
 /**

@@ -12,7 +12,6 @@ import { entierAleatoire } from '../inscription/inscription.sa';
 
 export class AuthentificationSA {
   findByEmail(email: string): Promise<any> {
-    console.log({ email });
     return utilisateurSM.findOne({ email, actif: true });
   }
 

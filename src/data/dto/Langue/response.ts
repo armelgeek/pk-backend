@@ -1,6 +1,6 @@
 export type LangueResponseDTO = {
-   code: string;
-   nom: string;
+   code?: string;
+   nom?: string;
   id: string;
 }
 

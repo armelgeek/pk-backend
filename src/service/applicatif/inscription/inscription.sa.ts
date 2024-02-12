@@ -1,5 +1,6 @@
 // import { v4 as uuidV4 } from 'uuid';
 import * as bcrypt from 'bcryptjs';
+import { ObjectID } from 'mongodb';
 
 import { inscriptionFactory } from '../../../constraint/factory/inscription/inscription.factory';
 import { HttpStatus } from '../../../data/constants/http-status';
@@ -12,6 +13,10 @@ import { utilisateurSM } from '../../metier/utilisateur/utilisateur.sm';
 import { Exception } from '../../middleware/exception-handler';
 import { sendMail } from '../../middleware/nodemailer';
 import { generateTokens } from '../../middleware/passport/passport-local';
+import { profileSA } from '../Profile';
+import { profileFactory } from '../../../constraint/factory/Profile';
+import { complementaryinformationSA } from '../ComplementaryInformation';
+import { baseinformationSA } from '../BaseInformation';
 
 export function entierAleatoire(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -19,11 +24,36 @@ export function entierAleatoire(min, max) {
 
 export class InscriptionSA {
   private factory = inscriptionFactory;
+  private profileFactory = profileFactory;
+
+  async createProfile(dto: InscriptionRequestDTO) {
+    const {
+      email,
+      phone = '',
+      nom = '',
+      prenom = '',
+      imageUrl = '',
+    } = dto;
+    const base = await baseinformationSA.create({
+      email,
+      phone,
+      nom,
+      prenom,
+      imageUrl,
+    });
+    const info = await complementaryinformationSA.create({
+      email,
+      phone,
+    });
+    return await profileSA.create(
+      this.profileFactory.toDo({ info: new ObjectID(info?.id), photo: imageUrl, type: 'VIP', base: new ObjectID(base?.id) }),
+    );
+  }
 
   async create(dto: InscriptionRequestDTO) {
     try {
-      const utilisateurDO = this.factory.toDo({ ...dto });
-      const { email, phone, password } = dto;
+      const utilisateurDO = this.factory.toDo(dto);
+      const { email, password, phone } = dto;
 
       const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
       const utilisateurByPhone = await utilisateurSM.findOneNotFail({ phone });
@@ -38,16 +68,21 @@ export class InscriptionSA {
 
       const code = entierAleatoire(1111, 9999).toString();
 
-      const saved = await utilisateurSM.create(
-        Object.assign(utilisateurDO, { password: await bcrypt.hashSync(password, 10), code }),
-      );
-
-      console.log({ saved });
+      const saved = await utilisateurSM.create(utilisateurDO);
+  
       if (!saved) {
         return {
           create: false,
         };
       }
+
+      const profile = await this.createProfile(dto);
+      await utilisateurSM.partialUpdate(saved._id, {
+        code,
+        profile: new ObjectID(profile?.id),
+        password: await bcrypt.hashSync(password, 10),
+      });
+
       await sendMail({
         to: email,
         subject: '[Pocker Apps] - Validation compte',
@@ -65,8 +100,6 @@ export class InscriptionSA {
       L'équipe Pocker Apps.
       `,
       });
-
-      // const utilisateur = this.factory.toResponseDto(saved);
 
       return {
         create: true,
@@ -109,7 +142,11 @@ export class InscriptionSA {
         };
       } else {
         const { value } = await utilisateurSM.create(utilisateurDO);
-
+        const profile = await this.createProfile(dto);
+        const { value: utilisateur } = await utilisateurSM.partialUpdate(value._id, {
+          profile: profile?.id,
+        });
+      
         const { accessToken, refreshToken } = await generateTokens(value);
 
         return {
@@ -118,7 +155,7 @@ export class InscriptionSA {
           accessToken,
           refreshToken,
           deviceToken: '',
-          utilisateur: value,
+          utilisateur,
         };
       }
     } catch (error) {
@@ -145,7 +182,6 @@ export class InscriptionSA {
       const code = entierAleatoire(1111, 9999).toString();
       const saved = await utilisateurSM.partialUpdate(utilisateurByEmail._id, { code });
 
-      console.log({ saved });
       await sendMail({
         to: email,
         subject: '[Pocker Apps] - Validation compte',
@@ -175,7 +211,10 @@ export class InscriptionSA {
       const { email, code } = dto;
       const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
       if (utilisateurByEmail?.code === code) {
-        const {value} = await utilisateurSM.partialUpdate(utilisateurByEmail?._id, { code: '', actif: true });
+        const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail?._id, {
+          code: '',
+          actif: true,
+        });
 
         const { accessToken, refreshToken } = await generateTokens(value);
 

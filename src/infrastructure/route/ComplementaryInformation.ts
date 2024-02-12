@@ -7,13 +7,12 @@ const complementaryinformationRoutes = () => genericRoute({ controller: compleme
 export const complementaryinformationRouter = complementaryinformationRoutes();
 
 /**
- * GET /api/complementary-informations
+ * GET /api/complementary-information/{id}
  * @tags ComplementaryInformation
  * @security BearerAuth
- * @summary Créer un ComplementaryInformation (getAllComplementaryInformation)
+ * @summary Créer un ComplementaryInformation (getComplementaryInformation)
  * @param {ComplementaryInformationRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @param {string} id.path.required
  * @return {ComplementaryInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

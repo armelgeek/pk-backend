@@ -14,8 +14,8 @@
   declare interface SignInResponseDTO { }
   declare interface SocialMediaRequestDTO { }
   declare interface SocialMediaResponseDTO { }
-  declare interface ComplementaryInformationRequestDTO { }
-  declare interface ComplementaryInformationResponseDTO { }
+  declare interface BaseInformationRequestDTO { }
+  declare interface BaseInformationResponseDTO { }
   declare interface ProfileRequestDTO { }
   declare interface ProfileResponseDTO { }
   declare interface SponsorRequestDTO { }
@@ -28,3 +28,11 @@
   declare interface CasinoProfileResponseDTO { }
   declare interface CasinoProfileAdditionalRequestDTO { }
   declare interface CasinoProfileAdditionalResponseDTO { }
+  declare interface PseudosRequestDTO { }
+  declare interface PseudosResponseDTO { }
+  declare interface RoleRequestDTO { }
+  declare interface RoleResponseDTO { }
+  declare interface PaysRequestDTO { }
+  declare interface PaysResponseDTO { }
+  declare interface ComplementaryInformationRequestDTO { }
+  declare interface ComplementaryInformationResponseDTO { }

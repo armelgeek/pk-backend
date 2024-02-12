@@ -41,6 +41,7 @@ export const localStrategy = new LocalStrategy(
     try {
       const user = await authentificationSA.findByEmailUsers(email);
       if (user && user.actif === true) {
+        console.log(`${user.password} ====> password, password`);
         const validPassword = authentificationSA.validatePassword(password, user.password);
         const { password: pwd, ...withoutPassword } = user;
 

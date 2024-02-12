@@ -1,7 +1,7 @@
 export type PartenerRequestDTO = {
-   name: string;
-   logo: string;
-   description: string;
+   name?: string;
+   logo?: string;
+   description?: string;
 }
 
 /**

@@ -1,6 +1,6 @@
 export type CountryResponseDTO = {
-   name: string;
-   iso: string;
+   name?: string;
+   iso?: string;
   id: string;
 }
 

@@ -1,6 +1,6 @@
 export type SocialMediaRequestDTO = {
-   name: string;
-   base_url: string;
+   name?: string;
+   base_url?: string;
 }
 
 /**

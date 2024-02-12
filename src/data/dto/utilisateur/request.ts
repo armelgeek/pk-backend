@@ -1,28 +1,28 @@
 export type UtilisateurRequestDTO = {
-   nom: string;
-   prenom: string;
+   nom?: string;
+   prenom?: string;
    email: string;
-   role: number;
-   password: string;
-   phone: string;
-   imageUrl: string;
-   adresse: string;
-   ville: string;
-   dateInscription: string;
-   dateNaissance: string;
-   dateDerniereConnexion: string;
-   dateModification: string;
-   actif: boolean;
-   socketId: string;
-   nomPrenom: string;
-   code: string;
-   googleId: string;
-   facebookId: string;
-   appleId: string;
-   online: boolean;
-   lague: string;
-   username: string;
-   profileId: string;
+   role?: number;
+   password?: string;
+   phone?: string;
+   imageUrl?: string;
+   adresse?: string;
+   ville?: string;
+   dateInscription?: string;
+   dateNaissance?: string;
+   dateDerniereConnexion?: string;
+   dateModification?: string;
+   actif?: boolean;
+   socketId?: string;
+   nomPrenom?: string;
+   code?: string;
+   googleId?: string;
+   facebookId?: string;
+   appleId?: string;
+   online?: boolean;
+   lague?: string;
+   username?: string;
+   profile?: string;
 }
 
 /**
@@ -50,6 +50,6 @@ export type UtilisateurRequestDTO = {
  * @property {boolean} online
  * @property {string} lague
  * @property {string} username
- * @property {string} profileId
+ * @property {string} profile
  */
 

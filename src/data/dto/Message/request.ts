@@ -1,8 +1,8 @@
 export type MessageRequestDTO = {
-   text: string;
-   imagesUrl: string;
-   sender: string;
-   reciever: string;
+   text?: string;
+   imagesUrl?: string;
+   sender?: string;
+   reciever?: string;
 }
 
 /**

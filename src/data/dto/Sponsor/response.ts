@@ -1,7 +1,7 @@
 export type SponsorResponseDTO = {
-   name: string;
-   logo: string;
-   description: string;
+   name?: string;
+   logo?: string;
+   description?: string;
   id: string;
 }
 

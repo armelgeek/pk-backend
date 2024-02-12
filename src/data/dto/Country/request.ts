@@ -1,6 +1,6 @@
 export type CountryRequestDTO = {
-   name: string;
-   iso: string;
+   name?: string;
+   iso?: string;
 }
 
 /**

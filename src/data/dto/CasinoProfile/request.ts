@@ -1,13 +1,13 @@
 export type CasinoProfileRequestDTO = {
-   photoCover: string;
-   photo: string;
-   name: string;
-   country: string;
-   phone: string;
-   adress: string;
-   email: string;
-   description: string;
-   user: string;
+   photoCover?: string;
+   photo?: string;
+   name?: string;
+   country?: string;
+   phone?: string;
+   adress?: string;
+   email?: string;
+   description?: string;
+   user?: string;
 }
 
 /**

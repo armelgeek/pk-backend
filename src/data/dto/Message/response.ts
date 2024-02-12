@@ -1,8 +1,8 @@
 export type MessageResponseDTO = {
-   text: string;
-   imagesUrl: string;
-   sender: string;
-   reciever: string;
+   text?: string;
+   imagesUrl?: string;
+   sender?: string;
+   reciever?: string;
   id: string;
 }
 

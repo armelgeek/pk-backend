@@ -1,15 +1,24 @@
 import { BeforeInsert, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('test')
-export class TestDO {
+@Entity('profile')
+export class ProfileDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  name: string;
+  info: string;
 
   @Column({nullable: true, unique: false})
-  contact: string;
+  photo: string;
+
+  @Column({nullable: true, unique: false})
+  cover: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
+  @Column({nullable: true, unique: false})
+  base: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

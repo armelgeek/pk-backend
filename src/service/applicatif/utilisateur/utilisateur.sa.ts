@@ -33,29 +33,7 @@ export class UtilisateurSA extends GenericSA<
 > {
   async editUtilisateur(dto: UtilisateurEditRequestDTO) {
     try {
-      await this.updateOdoo(dto);
       return this.partialUpdate(dto.id, dto);
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }
-
-  private async updateOdoo(dto) {
-    try {
-      const { email, phone, id } = dto;
-      const odooDTO = this.factory.toOdooRequestDTO(dto);
-      const utilisateurByEmail = await this.serviceSM.findOneNotFail({ email });
-      const utilisateurByPhone = await this.serviceSM.findOneNotFail({ phone });
-
-      if (utilisateurByEmail && utilisateurByEmail._id !== id) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
-      }
-
-      if (utilisateurByPhone && utilisateurByPhone._id !== id) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
-      }
-
-      return utilisateurBDL.update(odooDTO);
     } catch (error) {
       return Promise.reject(error);
     }
@@ -91,7 +69,6 @@ export class UtilisateurSA extends GenericSA<
   async resetPassword(utilisateurId: ObjectID, password: string) {
     try {
       const utilisateurDO = await this.serviceSM.partialUpdate(new ObjectID(utilisateurId), { password: await bcrypt.hashSync(password, 10) });
-      console.log({ utilisateurDO });
       return this.factory.toResponseDto(utilisateurDO);
     } catch (error) {
       return Promise.reject(error);

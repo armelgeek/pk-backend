@@ -17,8 +17,10 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async create(entity: DeepPartial<TDo>): Promise<any> {
+    console.log('====================================');
+    console.log(entity);
+    console.log('====================================');
     return await this.repository.save(entity);
-    // return Promise.resolve();
   }
 
   async partialUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {

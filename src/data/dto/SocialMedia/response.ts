@@ -1,6 +1,6 @@
 export type SocialMediaResponseDTO = {
-   name: string;
-   base_url: string;
+   name?: string;
+   base_url?: string;
   id: string;
 }
 

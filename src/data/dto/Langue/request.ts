@@ -1,6 +1,6 @@
 export type LangueRequestDTO = {
-   code: string;
-   nom: string;
+   code?: string;
+   nom?: string;
 }
 
 /**

@@ -18,7 +18,7 @@ export class ComplementaryInformationDO {
   phone: string;
 
   @Column({nullable: true, unique: false})
-  metier: string;
+  job: string;
 
   @Column({nullable: true, unique: false})
   headonmob: string;
@@ -30,7 +30,7 @@ export class ComplementaryInformationDO {
   rang_time_money: string;
 
   @Column({nullable: true, unique: false})
-  date_first: string;
+  period: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

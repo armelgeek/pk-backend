@@ -78,6 +78,9 @@ export class UtilisateurSA extends GenericSA<
   async findAll(options) {
     try {
       const { take, skip, direction, sortField, relation, search, queries } = options;
+      console.log('search ====================================');
+      console.log(search);
+      console.log('====================================');
       const data = await this.serviceSM.findAll(
         {
           relation,

@@ -3,11 +3,11 @@ export type ComplementaryInformationRequestDTO = {
    langues?: string;
    email?: string;
    phone?: string;
-   metier?: string;
+   job?: string;
    headonmob?: string;
    nb_titre?: number;
    rang_time_money?: string;
-   date_first?: string;
+   period?: string;
 }
 
 /**
@@ -16,10 +16,10 @@ export type ComplementaryInformationRequestDTO = {
  * @property {string} langues
  * @property {string} email
  * @property {string} phone
- * @property {string} metier
+ * @property {string} job
  * @property {string} headonmob
  * @property {number} nb_titre
  * @property {string} rang_time_money
- * @property {string} date_first
+ * @property {string} period
  */
 

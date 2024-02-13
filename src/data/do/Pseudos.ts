@@ -20,6 +20,9 @@ export class PseudosDO {
   @Column({nullable: true, unique: false})
   icon: string;
 
+  @Column({nullable: true, unique: false})
+  active: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;
 

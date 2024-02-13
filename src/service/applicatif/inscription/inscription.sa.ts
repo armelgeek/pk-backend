@@ -141,21 +141,25 @@ export class InscriptionSA {
           utilisateur: { ...user },
         };
       } else {
-        const { value } = await utilisateurSM.create(utilisateurDO);
+        const saved = await utilisateurSM.create(utilisateurDO);
         const profile = await this.createProfile(dto);
-        const { value: utilisateur } = await utilisateurSM.partialUpdate(value._id, {
+  
+        const { value } = await utilisateurSM.partialUpdate(saved._id, {
           profile: profile?.id,
         });
       
-        const { accessToken, refreshToken } = await generateTokens(value);
+        const { accessToken, refreshToken } = await generateTokens(saved);
 
         return {
-          id: value?._id,
+          id: saved?._id,
           create: true,
           accessToken,
           refreshToken,
           deviceToken: '',
-          utilisateur,
+          utilisateur: {
+            ...value,
+            profile: profile?.id,
+          },
         };
       }
     } catch (error) {

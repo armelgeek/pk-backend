@@ -3302,7 +3302,7 @@
 									"top": 557,
 									"width": 214.97607421875,
 									"height": 13,
-									"text": "+photo: file",
+									"text": "+photo: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -3319,7 +3319,7 @@
 									"top": 572,
 									"width": 214.97607421875,
 									"height": 13,
-									"text": "+cover: file",
+									"text": "+cover: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -6736,7 +6736,7 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "photo",
-					"type": "file"
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -6745,7 +6745,7 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "cover",
-					"type": "file"
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",

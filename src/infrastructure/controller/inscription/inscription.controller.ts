@@ -12,8 +12,6 @@ export class InscriptionController {
       console.log({ body });
       const utilisateur = await this.serviceSA.create(body);
 
-      console.log({ utilisateur });
-
       res.locals.data = utilisateur;
       res.locals.statusCode = HttpStatus.CREATED;
 

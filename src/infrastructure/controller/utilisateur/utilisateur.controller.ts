@@ -90,12 +90,14 @@ export class UtilisateurController {
   };
 
   getAll = async (req, res, next) => {
+    console.log("======================+>");
     const {
-      query: { page, rowPerPage, light, direction, sortField, relation, recherche, ...queries },
+      query: { page, rowPerPage, light, direction, sortField, relation, search, ...queries },
     } = req;
+    console.log('======>', { page, rowPerPage, light, direction, sortField, relation, search, ...queries });
     try {
       const dtos = await this.serviceSA.findAll({
-        search: recherche,
+        search,
         relation,
         sortField,
         direction,

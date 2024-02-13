@@ -28,8 +28,8 @@
   declare interface CasinoProfileResponseDTO { }
   declare interface CasinoProfileAdditionalRequestDTO { }
   declare interface CasinoProfileAdditionalResponseDTO { }
-  declare interface PseudosRequestDTO { }
-  declare interface PseudosResponseDTO { }
+  declare interface PseudoRequestDTO { }
+  declare interface PseudoResponseDTO { }
   declare interface RoleRequestDTO { }
   declare interface RoleResponseDTO { }
   declare interface PaysRequestDTO { }

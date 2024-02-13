@@ -4,6 +4,7 @@ export type PseudosResponseDTO = {
    code?: string;
    profile?: string;
    icon?: string;
+   active?: boolean;
   id: string;
 }
 
@@ -14,5 +15,6 @@ export type PseudosResponseDTO = {
  * @property {string} code
  * @property {string} profile
  * @property {string} icon
+ * @property {boolean} active
  */
 

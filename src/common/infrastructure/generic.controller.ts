@@ -27,6 +27,9 @@ export class GenericController<
    */
   create = async (req, res, next) => {
     const { body } = req;
+    console.log('body ====================================');
+    console.log(body);
+    console.log('====================================');
     try {
       const created = await this.serviceSA.create(body);
 

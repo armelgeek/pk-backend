@@ -9,10 +9,10 @@ export class RoleDO {
   name: string;
 
   @Column({nullable: true, unique: false})
-  code: string;
+  profile: string;
 
   @Column({nullable: true, unique: false})
-  profile: string;
+  active: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

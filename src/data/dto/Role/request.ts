@@ -1,13 +1,13 @@
 export type RoleRequestDTO = {
    name?: string;
-   code?: string;
    profile?: string;
+   active?: boolean;
 }
 
 /**
  * @typedef {object} RoleRequestDTO
  * @property {string} name
- * @property {string} code
  * @property {string} profile
+ * @property {boolean} active
  */
 

@@ -59,7 +59,6 @@ class App {
     });
 
   };
-
   private initRoutes = async () => {
     const { appRouter } = await import('./infrastructure/route/app.route');
     this.app.use('/api', appRouter, responseFormatter);
@@ -75,9 +74,9 @@ class App {
       res.sendFile(path.join(__dirname, '../', '/client/index.html'));
     });
 
-    this.app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../', '/bo/index.html'));
-    });
+    // this.app.get('/bo', (req, res) => {
+    //   res.sendFile(path.join(__dirname, '../', '/bo/index.html'));
+    // });
 
     // Doit être le dernier à être appelé
     this.app.use(exceptionHandler);

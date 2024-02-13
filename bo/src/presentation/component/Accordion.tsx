@@ -45,7 +45,7 @@ export const AccordionItem = (props) => {
     <div className={mergeClassNames('contain', className)}>
       <button
         className={`flex justify-between items-center accordion text-current ${active ? 'active' : ''
-        } ${isChild ? 'child' : ''}`}
+          } ${isChild ? 'child' : ''}`}
         type="button"
         onClick={onToggle}
         style={{ backgroundColor: '#0072B1' }}

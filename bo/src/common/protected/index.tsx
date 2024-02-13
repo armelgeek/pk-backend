@@ -19,7 +19,7 @@ import { Columns } from '../../presentation/component/Columns';
 export const EntityContainer = ({ currententity, transformValue = (
   res,
 ) => res, relation, getInitialValue, properties, useEntitySA, entityUrl,
-defaultSort = {} }) => {
+  defaultSort = {} }) => {
   const { getAll, remove } = useEntitySA();
   const [open, setOpen] = React.useState(false);
   const [entity, setEntity] = React.useState<any>({});
@@ -50,8 +50,10 @@ defaultSort = {} }) => {
 
   const getEntitys = async (currentFilter) => {
     try {
-      const { data: _data } = await getAll({ params: relation
-        ? ({ ...currentFilter, ...relation }) : currentFilter });
+      const { data: _data } = await getAll({
+        params: relation
+          ? ({ ...currentFilter, ...relation }) : currentFilter
+      });
       if (_data) {
         const { items, totalCount } = _data;
         setPageCount(Math.ceil(
@@ -91,13 +93,14 @@ defaultSort = {} }) => {
     setToDeleteEntity(null);
   };
   const columns = Columns({
-    properties: properties.slice(0, 8), handleCreateUpdate, handleDeleteConfirmation });
+    properties: properties.slice(0, 8), handleCreateUpdate, handleDeleteConfirmation
+  });
 
   const handleSearch = () => {
     setResetPageIndex(() => true);
     getEntitys({ ...filter, page: 1 });
   };
-  const handleSearchChange = (e) => setFilter((f) => ({ ...f, email: e.target.value }));
+  const handleSearchChange = (e) => setFilter((f) => ({ ...f, recherche: e.target.value }));
   const fetchData = (params) => {
     const newFilter = { ...filter, ...params };
     setFilter(newFilter);
@@ -149,7 +152,7 @@ defaultSort = {} }) => {
         open={open}
       >
         <CreateUpdate
-        // @ts-ignore
+          // @ts-ignore
           transformValue={transformValue}
           initial={entity}
           entity={selectedEntity}

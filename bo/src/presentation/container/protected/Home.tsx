@@ -84,10 +84,9 @@ export const Home = () => {
               // eslint-disable-next-line max-len
               ...Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {
                 const { route } = dataTDO[entity];
-
                 return (
                   <Route path={getFullPath(`/${route}`)} key={entity}>
-                    { Screen[entity]() }
+                    {Screen[entity]()}
                     {/* <Categorie /> */}
                   </Route>
                 );

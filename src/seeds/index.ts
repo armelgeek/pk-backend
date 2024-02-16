@@ -16,7 +16,7 @@ import { RoleRepository } from '../repository/Role';
 
 export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
-  async run(factory: Factory, connection: Connection): Promise<void> {
+  async run(_factory: Factory, connection: Connection): Promise<void> {
     const user = connection.getCustomRepository(UtilisateurRepository);
     const profile = connection.getCustomRepository(ProfileRepository);
     const langue = connection.getCustomRepository(LangueRepository);
@@ -94,36 +94,21 @@ export class InitSeeds implements Seeder {
             return await user.insertOne({ ...item, actif: true, profile: profileItem?.insertedId });
           }),
         );
-        user.dropCollectionIndexes();
-        user.createCollectionIndex({ nom: 'text', prenom: 'text', phone: 'text', email: 'text', adresse: 'text' });
-        langue.dropCollectionIndexes();
-        langue.createCollectionIndex({ code: 'text', nom: 'text' });
-        administrateur.dropCollectionIndexes();
-        administrateur.createCollectionIndex({ nom: 'text', prenom: 'text', email: 'text', adresseAdmin: 'text', telAdmin: 'text' });
-        casinoProfile.dropCollectionIndexes();
-        casinoProfile.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
-        complementaryInformation.dropCollectionIndexes();
-        complementaryInformation.createCollectionIndex({ nationality: 'text', langues: 'text', email: 'text', phone: 'text', job: 'text', headonmob: 'text', nb_titre: 'text', rang_time_money: 'text', period: 'text' });
-        link.dropCollectionIndexes();
-        link.createCollectionIndex({ name: 'text', link: 'text', description: 'text', profile: 'text' });
-        baseInformation.dropCollectionIndexes();
-        baseInformation.createCollectionIndex({ pays: 'text', email: 'text', phone: 'text', date_of_birth: 'text', gender: 'text', nom: 'text', prenom: 'text', city: 'text', country: 'text', situation: 'text', children: 'text', description: 'text' })
-        sponsor.dropCollectionIndexes();
-        sponsor.createCollectionIndex({ nom: 'text', description: 'text', });
-        partener.dropCollectionIndexes();
-        partener.createCollectionIndex({ name: 'text', description: 'text', });
-        pseudo.dropCollectionIndexes();
-        pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
+        !user.collectionIndexExists && user.createCollectionIndex({ nom: 'text', prenom: 'text', phone: 'text', email: 'text', adresse: 'text' });
+        !langue.collectionIndexExists && langue.createCollectionIndex({ code: 'text', nom: 'text' });
+        !administrateur.collectionIndexExists && administrateur.createCollectionIndex({ nom: 'text', prenom: 'text', email: 'text', adresseAdmin: 'text', telAdmin: 'text' });
+        !casinoProfile.collectionIndexExists &&  casinoProfile.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
+        !complementaryInformation.collectionIndexExists &&  complementaryInformation.createCollectionIndex({ nationality: 'text', langues: 'text', email: 'text', phone: 'text', job: 'text', headonmob: 'text', nb_titre: 'text', rang_time_money: 'text', period: 'text' });
+        !link.collectionIndexExists && link.createCollectionIndex({ name: 'text', link: 'text', description: 'text', profile: 'text' });
+        !baseInformation.collectionIndexExists &&  baseInformation.createCollectionIndex({ pays: 'text', email: 'text', phone: 'text', date_of_birth: 'text', gender: 'text', nom: 'text', prenom: 'text', city: 'text', country: 'text', situation: 'text', children: 'text', description: 'text' })
+        !sponsor.collectionIndexExists &&  sponsor.createCollectionIndex({ nom: 'text', description: 'text', });
+        !partener.collectionIndexExists && partener.createCollectionIndex({ name: 'text', description: 'text', });
+        !pseudo.collectionIndexExists && pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
       } catch (error) {
         console.log('error ====================================');
         console.log(error);
         console.log('====================================');
       }
     }
-
-    // ServicesRepository
-    // const services = connection.getCustomRepository(ServicesRepository);
-    // await services.index
-    // await services.createCollectionIndex({ nom: 'text', description: 'text' });
   }
 }

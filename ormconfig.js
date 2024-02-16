@@ -1,6 +1,6 @@
 module.exports = {
   "type": "mongodb",
-  "host": "localhost",
+  "host": "mongo",
   "port": 27017,
   // "password": "node1234",
   // "username": "root",

@@ -95,37 +95,6 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     return this.repository.findOne(option);
   }
 
-  // findAll(options, name): Promise<any> {
-  //   const {
-  //     take = 100,
-  //     skip = 1,
-  //     order,
-  //     where = {},
-  //     search,
-  //     relation,
-  //     match,
-  //     aggregate = [{ $match: {} }],
-  //   } = options;
-  //   const aggregate_search = search ? { $text: { $search: search } } : {};
-  //   console.log('search ====================================');
-  //   console.log(aggregate_search);
-  //   console.log('====================================');
-  //   return this.repository
-  //     .aggregate([
-  //       { $match: aggregate_search },
-  //       ...aggregate,
-  //       { $match: where },
-  //       { $sort: { nom: 1 } },
-  //       {
-  //         $facet: {
-  //           metadata: [{ $count: 'total' }, { $addFields: { page: 10 } }],
-  //           data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
-  //         },
-  //       },
-  //     ])
-  //     .toArray();
-  // }
-
   findAll(options, name): Promise<any> {
     const {
       take = 100,
@@ -134,44 +103,18 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       where = {},
       search,
       relation,
-      match: additionalMatch = {},
+      match,
       aggregate = [{ $match: {} }],
     } = options;
-
-    const aggregateFilters = [];
-
-    const searchRegex = new RegExp(search, 'i');
-
-    const searchFilters = this.repository.metadata.columns.map(column => ({ [column.propertyPath]: { $regex: searchRegex } }));
-
-    aggregateFilters.push({ $or: searchFilters });
-
-    const finalMatch = {
-      $and: [
-        where,
-        additionalMatch
-      ]
-    };
-
-    const matchStage = {
-      $match: {
-        $and: [
-          ...aggregateFilters,
-          finalMatch
-        ]
-      }
-    };
-
     const aggregate_search = search ? { $text: { $search: search } } : {};
     console.log('search ====================================');
     console.log(aggregate_search);
-    console.log((searchFilters));
     console.log('====================================');
-
     return this.repository
       .aggregate([
-        matchStage,
+        { $match: aggregate_search },
         ...aggregate,
+        { $match: where },
         { $sort: { nom: 1 } },
         {
           $facet: {

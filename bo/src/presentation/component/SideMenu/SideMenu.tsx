@@ -52,7 +52,8 @@ export const SideMenu = ({ role }) => {
     return (
       {
         id: `gestion-${entity}`,
-        title: `Gestion ${entity}`,
+        // title: `Gestion ${entity}`,
+        title: `${entity}`,
         icon: icons[iconBo] || calendar,
         children: [
           {

@@ -18,7 +18,7 @@ export const Modal = (props) => {
         style={{ minWidth: '45%', maxWidth: '55%', ...style }}
       >
         {/* Header */}
-        <div className="px-4 py-2 flex justify-center items-center  text-black rounded-t-lg font-medium">
+        <div className="px-4 py-2 flex justify-center items-center text-black rounded-t-lg font-medium">
           <p className="text-center flex-1">{title}</p>
           <Button variant="icon" onClick={onClose} className="mr-2">
             <Close className="w-4" />

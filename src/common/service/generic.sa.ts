@@ -13,7 +13,7 @@ export abstract class GenericSA<
   TResponseDto,
   TSm extends GenericSM<TDo, number | string | ObjectID, MongoRepository<TDo>>,
   TFactory extends GenericFactory<TDo, TRequestDto, TResponseDto>
-  > {
+> {
   protected serviceSM: TSm;
 
   protected factory: TFactory;
@@ -82,7 +82,7 @@ export abstract class GenericSA<
               },
             }
             let results = acc;
-            if(isArray) {
+            if (isArray) {
               results = [...results, lookup];
             } else {
               results = [...results, lookup, {
@@ -92,23 +92,23 @@ export abstract class GenericSA<
                 },
               }];
             }
-            if(Array.isArray(dataTDO[entity?.name]?.attributes)) {
+            if (Array.isArray(dataTDO[entity?.name]?.attributes)) {
               lookup2 = dataTDO[entity?.name]?.attributes.filter(({ isID, entity }) => isID && entity?.name).reduce((acc1, lp2) => {
-                if(isArray && lp2?.isArray) {
+                if (isArray && lp2?.isArray) {
                   return [
                     ...acc1,
                     {
                       $addFields: {
                         [`${name}_${lp2.name}`]: {
                           $reduce: {
-                              input: `$${name}` || [],
-                              initialValue: [],
-                              'in': {
-                                $concatArrays: [
-                                  '$$value',
-                                  `$$this.${lp2.name}`,
-                                ]
-                              }
+                            input: `$${name}` || [],
+                            initialValue: [],
+                            'in': {
+                              $concatArrays: [
+                                '$$value',
+                                `$$this.${lp2.name}`,
+                              ]
+                            }
                           }
                         }
                       }
@@ -160,13 +160,13 @@ export abstract class GenericSA<
             }
             return results;
           }, []);
-        
-        aggregate = [...aggregate, ...toAggrecate]; 
+
+        aggregate = [...aggregate, ...toAggrecate];
       }
 
       const result = await this.serviceSM.findByIdAggregate(aggregate);
-      
-      if(Array.isArray(result) && result.length > 0) {
+
+      if (Array.isArray(result) && result.length > 0) {
         return result[0]
       }
       return result;
@@ -177,7 +177,7 @@ export abstract class GenericSA<
 
   async findOne(option: FindConditions<TDo>) {
     try {
-      
+
       const result = await this.serviceSM.findOne(toObjectID(option, this.name));
 
       return this.factory.toResponseDto(result);
@@ -203,7 +203,7 @@ export abstract class GenericSA<
                 as: name
               },
             }
-            if(isArray) {
+            if (isArray) {
               return [...acc, lookup];
             } else {
               return [...acc, lookup, {
@@ -213,10 +213,10 @@ export abstract class GenericSA<
                 },
               }];
             }
-            
+
           }, [])
         aggregate = [...aggregate, ...toAggrecate];
-        
+
       }
       if (queries && Array.isArray(Object.keys(queries)) && properties) {
         newQueries = Object.keys(queries).reduce((acc, key) => {
@@ -226,7 +226,7 @@ export abstract class GenericSA<
               ...acc,
               [`${key}._id`]: new ObjectID(queries[key])
             }
-          } else if(key?.split('__')?.length === 2) {
+          } else if (key?.split('__')?.length === 2) {
             if (ObjectID.isValid(queries[key])) {
               return {
                 ...acc,
@@ -244,12 +244,12 @@ export abstract class GenericSA<
           };
         }, {})
       }
-      
+
       const result = await this.serviceSM.findOneWithRelation({
-          search,
-          match,
-          aggregate,
-          where: newQueries,
+        search,
+        match,
+        aggregate,
+        where: newQueries,
       });
 
       return this.factory.toResponseDto(result);
@@ -285,7 +285,7 @@ export abstract class GenericSA<
                 as: name
               },
             }
-            if(!isArray) {
+            if (!isArray) {
               return [...acc, lookup, {
                 "$unwind": {
                   "path": `$${name}`,
@@ -297,7 +297,7 @@ export abstract class GenericSA<
           }, [])
         aggregate = [...aggregate, ...toAggrecate];
       }
-      
+
       if (queries && Array.isArray(Object.keys(queries)) && properties) {
         newQueries = Object.keys(queries).reduce((acc, key) => {
           const isExist = properties.find((propertie) => propertie?.key === key);
@@ -306,7 +306,7 @@ export abstract class GenericSA<
               ...acc,
               [`${key}._id`]: new ObjectID(queries[key])
             }
-          } else if(key?.split('__')?.length === 2) {
+          } else if (key?.split('__')?.length === 2) {
             if (ObjectID.isValid(queries[key])) {
               return {
                 ...acc,
@@ -339,7 +339,7 @@ export abstract class GenericSA<
       );
 
       const items = this.factory.toResponseDto(data[0]?.data || []);
-      
+
       const totalCount = data[0]?.metadata[0]?.total;
 
       return {

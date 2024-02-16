@@ -155,34 +155,76 @@ export const CreateUpdate = ({
   return (
     <form id="submit-form" onSubmit={handleSubmit(submit)}>
       {
-      // eslint-disable-next-line no-underscore-dangle
-      ...keys.filter(({ form, notUpdate }) => form && !(entity?._id && notUpdate))
-        .map(({ key, type, form, required, route, name, ...propertie }) => {
-          if (type === 'boolean') {
-            return (
-              <Checkbox
-                key={key}
-                name={key}
-                label={form}
-                onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
-                inputRef={register({ required, maxLength: 100 })}
-                checked={checkbox ? checkbox[key] : null}
-              />
-            );
-          } if (type === 'number') {
-            return (
-              <Input
-                type="number"
-                key={key}
-                label={form}
-                name={key}
-                inputRef={register({ required, maxLength: 100 })}
-                errors={errors}
-                autoFocus
-                required={required}
-              />
-            );
-          } if (type === 'string') {
+        // eslint-disable-next-line no-underscore-dangle
+        ...keys.filter(({ form, notUpdate }) => form && !(entity?._id && notUpdate))
+          .map(({ key, type, form, required, route, name, ...propertie }) => {
+            if (type === 'boolean') {
+              return (
+                <Checkbox
+                  key={key}
+                  name={key}
+                  label={form}
+                  onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
+                  inputRef={register({ required, maxLength: 100 })}
+                  checked={checkbox ? checkbox[key] : null}
+                />
+              );
+            } if (type === 'number') {
+              return (
+                <Input
+                  type="number"
+                  key={key}
+                  label={form}
+                  name={key}
+                  inputRef={register({ required, maxLength: 100 })}
+                  errors={errors}
+                  autoFocus
+                  required={required}
+                />
+              );
+            } if (type === 'string') {
+              return (
+                <Input
+                  key={key}
+                  label={form}
+                  name={key}
+                  inputRef={register({ required, maxLength: 10000 })}
+                  errors={errors}
+                  autoFocus
+                  required={required}
+                />
+              );
+            } if (type === 'location') {
+              return (
+                <LieuComponent key={key} placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+              );
+            } if (type === 'file') {
+              return (
+                <MyDropzone
+                  keyName={name}
+                  name={form}
+                  key={key}
+                  setFile={setFiles}
+                  file={entity ? entity[key] : null}
+                />
+              );
+            } if (propertie?.entity?.name) {
+              return (
+                <MultiSelect
+                  key={key}
+                  name={key}
+                  control={control}
+                  options={initial ? toDataSelect(initial[key], route ?? 'name') || [] : []}
+                  isMulti={propertie?.isArray}
+                  placeholder={`Select ${form}`}
+                  // defaultValue={'1'}
+                  rules={{ required }}
+                  errors={errors}
+                  label={form}
+                  required
+                />
+              );
+            }
             return (
               <Input
                 key={key}
@@ -194,50 +236,8 @@ export const CreateUpdate = ({
                 required={required}
               />
             );
-          } if (type === 'location') {
-            return (
-              <LieuComponent key={key} placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
-            );
-          } if (type === 'file') {
-            return (
-              <MyDropzone
-                keyName={name}
-                name={form}
-                key={key}
-                setFile={setFiles}
-                file={entity ? entity[key] : null}
-              />
-            );
-          } if (propertie?.entity?.name) {
-            return (
-              <MultiSelect
-                key={key}
-                name={key}
-                control={control}
-                options={initial ? toDataSelect(initial[key], route ?? 'name') || [] : []}
-                isMulti={propertie?.isArray}
-                placeholder={`Select ${form}`}
-              // defaultValue={'1'}
-                rules={{ required }}
-                errors={errors}
-                label={form}
-                required
-              />
-            );
-          }
-          return (
-            <Input
-              key={key}
-              label={form}
-              name={key}
-              inputRef={register({ required, maxLength: 10000 })}
-              errors={errors}
-              autoFocus
-              required={required}
-            />
-          );
-        })
-        }
+          })
+      }
 
       <SaveCancel key={1} onCancelClick={onClose} loading={loading} />
     </form>
@@ -254,5 +254,5 @@ CreateUpdate.propTypes = {
 
 CreateUpdate.defaultProps = {
   entity: null,
-  onClose: () => {},
+  onClose: () => { },
 };

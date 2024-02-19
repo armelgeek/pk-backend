@@ -15,7 +15,7 @@ export class CasinoProfileDO {
   name: string;
 
   @Column({nullable: true, unique: false})
-  country: string;
+  countryCode: string;
 
   @Column({nullable: true, unique: false})
   phone: string;
@@ -30,7 +30,13 @@ export class CasinoProfileDO {
   description: string;
 
   @Column({nullable: true, unique: false})
-  user: string;
+  profileId: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
+  @Column({nullable: true, unique: false})
+  verifications: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

@@ -51,7 +51,10 @@ export class CasinoProfileAdditionalDO {
   links: string;
 
   @Column({nullable: true, unique: false})
-  user: string;
+  profileId: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

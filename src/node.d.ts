@@ -38,3 +38,7 @@
   declare interface ComplementaryInformationResponseDTO { }
   declare interface ClubRequestDTO { }
   declare interface ClubResponseDTO { }
+  declare interface PrivateEventRequestDTO { }
+  declare interface PrivateEventResponseDTO { }
+  declare interface LocationRequestDTO { }
+  declare interface LocationResponseDTO { }

@@ -16,6 +16,7 @@ import { pseudoRouter } from './Pseudo';
 import { roleRouter } from './Role';
 import { complementaryinformationRouter } from './ComplementaryInformation';
 import { clubRouter } from './Club';
+import { privateeventRouter } from './PrivateEvent';
 
 export const routes = () => {
   const router = Router();
@@ -36,6 +37,7 @@ export const routes = () => {
  router.use('/role', roleRouter);
  router.use('/complementary-information', complementaryinformationRouter);
  router.use('/club', clubRouter);
+ router.use('/private-event', privateeventRouter);
   
   return router;
 };

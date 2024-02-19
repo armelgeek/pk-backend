@@ -12,7 +12,7 @@ export type PrivateEventResponseDTO = {
    reglements?: string;
    photos?: string;
    videos?: string;
-   acess?: string;
+   private?: boolean;
    userList?: string;
    profile?: string;
   id: string;
@@ -33,7 +33,7 @@ export type PrivateEventResponseDTO = {
  * @property {string} reglements
  * @property {string} photos
  * @property {string} videos
- * @property {string} acess
+ * @property {boolean} private
  * @property {string} userList
  * @property {string} profile
  */

@@ -45,7 +45,7 @@ export class PrivateEventDO {
   videos: string;
 
   @Column({nullable: true, unique: false})
-  acess: string;
+  private: boolean;
 
   @Column({nullable: true, unique: false})
   userList: string;

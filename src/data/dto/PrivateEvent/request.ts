@@ -12,7 +12,7 @@ export type PrivateEventRequestDTO = {
    reglements?: string;
    photos?: string;
    videos?: string;
-   acess?: string;
+   private?: boolean;
    userList?: string;
    profile?: string;
 }
@@ -32,7 +32,7 @@ export type PrivateEventRequestDTO = {
  * @property {string} reglements
  * @property {string} photos
  * @property {string} videos
- * @property {string} acess
+ * @property {boolean} private
  * @property {string} userList
  * @property {string} profile
  */

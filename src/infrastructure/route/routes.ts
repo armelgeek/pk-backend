@@ -15,6 +15,7 @@ import { casinoprofileadditionalRouter } from './CasinoProfileAdditional';
 import { pseudoRouter } from './Pseudo';
 import { roleRouter } from './Role';
 import { complementaryinformationRouter } from './ComplementaryInformation';
+import { clubRouter } from './Club';
 
 export const routes = () => {
   const router = Router();
@@ -34,6 +35,7 @@ export const routes = () => {
  router.use('/pseudo', pseudoRouter);
  router.use('/role', roleRouter);
  router.use('/complementary-information', complementaryinformationRouter);
+ router.use('/club', clubRouter);
   
   return router;
 };

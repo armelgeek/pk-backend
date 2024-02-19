@@ -36,3 +36,5 @@
   declare interface PaysResponseDTO { }
   declare interface ComplementaryInformationRequestDTO { }
   declare interface ComplementaryInformationResponseDTO { }
+  declare interface ClubRequestDTO { }
+  declare interface ClubResponseDTO { }

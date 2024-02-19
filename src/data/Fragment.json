@@ -6915,7 +6915,7 @@
 									"top": 969,
 									"width": 140.53076171875,
 									"height": 13,
-									"text": "+acess: string",
+									"text": "+private: boolean",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8976,8 +8976,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
-					"name": "acess",
-					"type": "string"
+					"name": "private",
+					"type": "boolean"
 				},
 				{
 					"_type": "UMLAttribute",

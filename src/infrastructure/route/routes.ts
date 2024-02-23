@@ -17,6 +17,8 @@ import { roleRouter } from './Role';
 import { complementaryinformationRouter } from './ComplementaryInformation';
 import { clubRouter } from './Club';
 import { privateeventRouter } from './PrivateEvent';
+import { confindialityRouter } from './Confindiality';
+import { commentRouter } from './Comment';
 
 export const routes = () => {
   const router = Router();
@@ -38,6 +40,8 @@ export const routes = () => {
  router.use('/complementary-information', complementaryinformationRouter);
  router.use('/club', clubRouter);
  router.use('/private-event', privateeventRouter);
+ router.use('/confindiality', confindialityRouter);
+ router.use('/comment', commentRouter);
   
   return router;
 };

@@ -31,3 +31,14 @@ export const casinoprofileRouter = casinoprofileRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/casino-profile
+ * @tags CasinoProfile
+ * @security BearerAuth
+ * @summary Créer un CasinoProfile (addCasinoProfile)
+ * @param {CasinoProfileRequestDTO} request.body
+ * @return {CasinoProfileResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

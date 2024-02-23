@@ -42,3 +42,7 @@
   declare interface PrivateEventResponseDTO { }
   declare interface LocationRequestDTO { }
   declare interface LocationResponseDTO { }
+  declare interface ConfindialityRequestDTO { }
+  declare interface ConfindialityResponseDTO { }
+  declare interface CommentRequestDTO { }
+  declare interface CommentResponseDTO { }

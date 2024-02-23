@@ -52,3 +52,13 @@
   declare interface TournamentTypeResponseDTO { }
   declare interface PublicationRequestDTO { }
   declare interface PublicationResponseDTO { }
+  declare interface UserCredentialRequestDTO { }
+  declare interface UserCredentialResponseDTO { }
+  declare interface PaymentTypeRequestDTO { }
+  declare interface PaymentTypeResponseDTO { }
+  declare interface UserSubscriptionRequestDTO { }
+  declare interface UserSubscriptionResponseDTO { }
+  declare interface SubscriptionOfferRequestDTO { }
+  declare interface SubscriptionOfferResponseDTO { }
+  declare interface SubscriptionHistoryRequestDTO { }
+  declare interface SubscriptionHistoryResponseDTO { }

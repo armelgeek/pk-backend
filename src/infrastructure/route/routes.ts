@@ -22,6 +22,11 @@ import { commentRouter } from './Comment';
 import { gametypeRouter } from './GameType';
 import { tournamenttypeRouter } from './TournamentType';
 import { publicationRouter } from './Publication';
+import { usercredentialRouter } from './UserCredential';
+import { paymenttypeRouter } from './PaymentType';
+import { usersubscriptionRouter } from './UserSubscription';
+import { subscriptionofferRouter } from './SubscriptionOffer';
+import { subscriptionhistoryRouter } from './SubscriptionHistory';
 
 export const routes = () => {
   const router = Router();
@@ -48,6 +53,11 @@ export const routes = () => {
  router.use('/game-type', gametypeRouter);
  router.use('/tournament-type', tournamenttypeRouter);
  router.use('/publication', publicationRouter);
+ router.use('/user-credential', usercredentialRouter);
+ router.use('/payment-type', paymenttypeRouter);
+ router.use('/user-subscription', usersubscriptionRouter);
+ router.use('/subscription-offer', subscriptionofferRouter);
+ router.use('/subscription-history', subscriptionhistoryRouter);
   
   return router;
 };

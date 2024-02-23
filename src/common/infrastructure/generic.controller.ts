@@ -112,6 +112,22 @@ export class GenericController<
   };
 
   /**
+   * WS managing the recovery of an entity by its Attributes
+   */
+  findByAttributes = async (req, res, next) => {
+    const { params } = req;
+    try {
+      const found = await this.serviceSA.findOneNotFail(params);
+
+      res.locals.data = found;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  /**
    * WS returning list of all entitie
    */
   findAll = async (req, res, next) => {

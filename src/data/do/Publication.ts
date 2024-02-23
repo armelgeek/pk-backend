@@ -1,7 +1,7 @@
 import { BeforeInsert, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('comment')
-export class CommentDO {
+@Entity('publication')
+export class PublicationDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
@@ -9,19 +9,19 @@ export class CommentDO {
   content: string;
 
   @Column({nullable: true, unique: false})
-  createdAt: string;
+  imageUrls: string;
 
   @Column({nullable: true, unique: false})
-  parent: string;
+  videoUrls: string;
 
   @Column({nullable: true, unique: false})
-  reaction: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
-  publicationId: string;
+  location: string;
 
   @Column({nullable: true, unique: false})
-  prifileId: string;
+  private: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

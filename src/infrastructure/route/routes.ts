@@ -19,6 +19,9 @@ import { clubRouter } from './Club';
 import { privateeventRouter } from './PrivateEvent';
 import { confindialityRouter } from './Confindiality';
 import { commentRouter } from './Comment';
+import { gametypeRouter } from './GameType';
+import { tournamenttypeRouter } from './TournamentType';
+import { publicationRouter } from './Publication';
 
 export const routes = () => {
   const router = Router();
@@ -42,6 +45,9 @@ export const routes = () => {
  router.use('/private-event', privateeventRouter);
  router.use('/confindiality', confindialityRouter);
  router.use('/comment', commentRouter);
+ router.use('/game-type', gametypeRouter);
+ router.use('/tournament-type', tournamenttypeRouter);
+ router.use('/publication', publicationRouter);
   
   return router;
 };

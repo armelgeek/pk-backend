@@ -46,3 +46,9 @@
   declare interface ConfindialityResponseDTO { }
   declare interface CommentRequestDTO { }
   declare interface CommentResponseDTO { }
+  declare interface GameTypeRequestDTO { }
+  declare interface GameTypeResponseDTO { }
+  declare interface TournamentTypeRequestDTO { }
+  declare interface TournamentTypeResponseDTO { }
+  declare interface PublicationRequestDTO { }
+  declare interface PublicationResponseDTO { }

@@ -3,7 +3,8 @@ export type CommentResponseDTO = {
    createdAt?: string;
    parent?: string;
    reaction?: string;
-   createdBy?: string;
+   publicationId?: string;
+   prifileId?: string;
   id: string;
 }
 
@@ -13,6 +14,7 @@ export type CommentResponseDTO = {
  * @property {string} createdAt
  * @property {string} parent
  * @property {string} reaction
- * @property {string} createdBy
+ * @property {string} publicationId
+ * @property {string} prifileId
  */
 

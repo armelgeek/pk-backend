@@ -1,27 +1,15 @@
 import { BeforeInsert, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('comment')
-export class CommentDO {
+@Entity('gametype')
+export class GameTypeDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  content: string;
+  name: string;
 
   @Column({nullable: true, unique: false})
-  createdAt: string;
-
-  @Column({nullable: true, unique: false})
-  parent: string;
-
-  @Column({nullable: true, unique: false})
-  reaction: string;
-
-  @Column({nullable: true, unique: false})
-  publicationId: string;
-
-  @Column({nullable: true, unique: false})
-  prifileId: string;
+  description: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   dateCreation: Date;

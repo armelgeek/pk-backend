@@ -55,3 +55,14 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/subscription-history
+ * @tags SubscriptionHistory
+ * @security BearerAuth
+ * @summary Créer un SubscriptionHistory (addSubscriptionHistory)
+ * @param {SubscriptionHistoryRequestDTO} request.body
+ * @return {SubscriptionHistoryResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

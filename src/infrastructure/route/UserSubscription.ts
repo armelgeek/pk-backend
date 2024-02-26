@@ -55,3 +55,14 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/user-subscription
+ * @tags UserSubscription
+ * @security BearerAuth
+ * @summary Créer un UserSubscription (addUserSubscription)
+ * @param {UserSubscriptionRequestDTO} request.body
+ * @return {UserSubscriptionResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

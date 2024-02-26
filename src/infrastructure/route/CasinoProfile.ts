@@ -7,7 +7,7 @@ const casinoprofileRoutes = () => genericRoute({ controller: casinoprofileContro
 export const casinoprofileRouter = casinoprofileRoutes();
 
 /**
- * GET /api/casino-profiles
+ * GET /api/casino-profile
  * @tags CasinoProfile
  * @security BearerAuth
  * @summary Créer un CasinoProfile (getAllCasinoProfile)
@@ -47,6 +47,18 @@ export const casinoprofileRouter = casinoprofileRoutes();
  * @tags CasinoProfile
  * @security BearerAuth
  * @summary Créer un CasinoProfile (updateCasinoProfile)
+ * @param {CasinoProfileRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {CasinoProfileResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * DELETE /api/casino-profile/{id}
+ * @tags CasinoProfile
+ * @security BearerAuth
+ * @summary Créer un CasinoProfile (deleteCasinoProfile)
  * @param {CasinoProfileRequestDTO} request.body
  * @param {string} id.path.required
  * @return {CasinoProfileResponseDTO} 201

@@ -4864,13 +4864,30 @@
 									"height": 13,
 									"text": "+update()",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGN5eI7DPjSadQ=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQPY91B3m2U="
+									},
+									"model": {
+										"$ref": "AAAAAAGN5eI66PjNyfY="
+									},
+									"font": "Arial;13;0",
+									"left": 397,
+									"top": 895,
+									"width": 156.45703125,
+									"height": 13,
+									"text": "+delete()",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 392,
 							"top": 830,
 							"width": 166.45703125,
-							"height": 68
+							"height": 83
 						},
 						{
 							"_type": "UMLReceptionCompartmentView",
@@ -4910,7 +4927,7 @@
 					"left": 392,
 					"top": 632,
 					"width": 166.45703125,
-					"height": 266,
+					"height": 281,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQPY91Bxezk="
 					},
@@ -5361,13 +5378,64 @@
 									"height": 13,
 									"text": "+add()",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGN5eMyofjd0Rw=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQtPM1EOxow="
+									},
+									"model": {
+										"$ref": "AAAAAAGN5eMyfPjYu7I="
+									},
+									"font": "Arial;13;0",
+									"left": 205,
+									"top": 1027,
+									"width": 167,
+									"height": 13,
+									"text": "+update()",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGN5eNaRvjnUKE=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQtPM1EOxow="
+									},
+									"model": {
+										"$ref": "AAAAAAGN5eNaIfjidlM="
+									},
+									"font": "Arial;13;0",
+									"left": 205,
+									"top": 1042,
+									"width": 167,
+									"height": 13,
+									"text": "+delete()",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGN5ePFNPjzGVA=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQtPM1EOxow="
+									},
+									"model": {
+										"$ref": "AAAAAAGN5ePFE/juMgA="
+									},
+									"font": "Arial;13;0",
+									"left": 205,
+									"top": 1057,
+									"width": 167,
+									"height": 13,
+									"text": "+get()",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 200,
 							"top": 992,
 							"width": 177,
-							"height": 38
+							"height": 83
 						},
 						{
 							"_type": "UMLReceptionCompartmentView",
@@ -5403,7 +5471,7 @@
 					"left": 200,
 					"top": 704,
 					"width": 177,
-					"height": 326,
+					"height": 371,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQtPMlEIZ0c="
 					},
@@ -11580,7 +11648,7 @@
 			},
 			"name": "Sponsor",
 			"role": "4",
-			"route": "sponsors",
+			"route": "sponsor",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -11625,7 +11693,7 @@
 					},
 					"name": "getAll",
 					"role": "0",
-					"route": "sponsors",
+					"route": "sponsor",
 					"method": "get"
 				},
 				{
@@ -11791,7 +11859,7 @@
 			},
 			"name": "CasinoProfile",
 			"role": "4",
-			"route": "CasinoProfile",
+			"route": "casino-profile",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -11919,7 +11987,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "getAll",
-					"route": "casino-profiles",
+					"route": "casino-profile",
 					"method": "get"
 				},
 				{
@@ -11975,6 +12043,28 @@
 							"defaultValue": ""
 						}
 					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGN5eI66PjNyfY=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQPY9VBuOYg="
+					},
+					"name": "delete",
+					"route": "casino-profile/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGN5eI66PjOoA8=",
+							"_parent": {
+								"$ref": "AAAAAAGN5eI66PjNyfY="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
 				}
 			]
 		},
@@ -11986,7 +12076,7 @@
 			},
 			"name": "CasinoProfileAdditional",
 			"role": "4",
-			"route": "CasinoProfileAdditional",
+			"route": "casino-profile-additional",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -12196,7 +12286,7 @@
 					},
 					"name": "getAll",
 					"role": "4",
-					"route": "casino-profile-additionals",
+					"route": "casino-profile-additional",
 					"method": "get"
 				},
 				{
@@ -12209,6 +12299,72 @@
 					"role": "4",
 					"route": "casino-profile-additional",
 					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGN5eMyfPjYu7I=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQtPMFEFICE="
+					},
+					"name": "update",
+					"route": "casino-profile-additional/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGN5eMyfPjZ+i0=",
+							"_parent": {
+								"$ref": "AAAAAAGN5eMyfPjYu7I="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGN5eNaIfjidlM=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQtPMFEFICE="
+					},
+					"name": "delete",
+					"route": "casino-profile-additional/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGN5eNaIfjjmvk=",
+							"_parent": {
+								"$ref": "AAAAAAGN5eNaIfjidlM="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGN5ePFE/juMgA=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQtPMFEFICE="
+					},
+					"name": "get",
+					"route": "casino-profile-additional/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGN5ePFE/jvJOw=",
+							"_parent": {
+								"$ref": "AAAAAAGN5ePFE/juMgA="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
 				}
 			]
 		},

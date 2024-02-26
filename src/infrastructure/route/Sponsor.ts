@@ -7,7 +7,7 @@ const sponsorRoutes = () => genericRoute({ controller: sponsorController, schema
 export const sponsorRouter = sponsorRoutes();
 
 /**
- * GET /api/sponsors
+ * GET /api/sponsor
  * @tags Sponsor
  * @security BearerAuth
  * @summary Créer un Sponsor (getAllSponsor)

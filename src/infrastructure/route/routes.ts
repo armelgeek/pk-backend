@@ -38,11 +38,11 @@ export const routes = () => {
  router.use('/social-media', socialmediaRouter);
  router.use('/base-information', baseinformationRouter);
  router.use('/profile', profileRouter);
- router.use('/sponsors', sponsorRouter);
+ router.use('/sponsor', sponsorRouter);
  router.use('/partener', partenerRouter);
  router.use('/Links', linksRouter);
- router.use('/CasinoProfile', casinoprofileRouter);
- router.use('/CasinoProfileAdditional', casinoprofileadditionalRouter);
+ router.use('/casino-profile', casinoprofileRouter);
+ router.use('/casino-profile-additional', casinoprofileadditionalRouter);
  router.use('/pseudo', pseudoRouter);
  router.use('/role', roleRouter);
  router.use('/complementary-information', complementaryinformationRouter);

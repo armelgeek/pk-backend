@@ -11,9 +11,9 @@ export type CasinoProfileAdditionalResponseDTO = {
    restaurant?: boolean;
    hotel?: boolean;
    parking?: boolean;
-   sponsors?: string;
-   parteners?: string;
-   links?: string;
+   sponsors?: string[];
+   parteners?: string[];
+   links?: string[];
    profileId?: string;
    type?: string;
   id: string;
@@ -33,9 +33,9 @@ export type CasinoProfileAdditionalResponseDTO = {
  * @property {boolean} restaurant
  * @property {boolean} hotel
  * @property {boolean} parking
- * @property {string} sponsors
- * @property {string} parteners
- * @property {string} links
+ * @property {array<string>} sponsors
+ * @property {array<string>} parteners
+ * @property {array<string>} links
  * @property {string} profileId
  * @property {string} type
  */

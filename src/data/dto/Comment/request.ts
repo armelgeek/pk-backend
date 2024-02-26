@@ -2,7 +2,7 @@ export type CommentRequestDTO = {
    content?: string;
    createdAt?: string;
    parent?: string;
-   reaction?: string;
+   reaction?: string[];
    publicationId?: string;
    prifileId?: string;
 }
@@ -12,7 +12,7 @@ export type CommentRequestDTO = {
  * @property {string} content
  * @property {string} createdAt
  * @property {string} parent
- * @property {string} reaction
+ * @property {array<string>} reaction
  * @property {string} publicationId
  * @property {string} prifileId
  */

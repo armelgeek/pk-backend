@@ -107,9 +107,6 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       aggregate = [{ $match: {} }],
     } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
-    console.log('search ====================================');
-    console.log(aggregate_search);
-    console.log('====================================');
     return this.repository
       .aggregate([
         { $match: aggregate_search },

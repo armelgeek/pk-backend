@@ -15,11 +15,11 @@ export class RoleDO {
   active: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
-  dateCreation: Date;
+  createdDate: Date;
 
   @BeforeInsert()
   beforeInsert() {
-    this.dateCreation = new Date();
+    this.createdDate = new Date();
   }
 }
 

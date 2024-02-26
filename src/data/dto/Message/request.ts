@@ -1,6 +1,6 @@
 export type MessageRequestDTO = {
    text?: string;
-   imagesUrl?: string;
+   imagesUrl?: string[];
    sender?: string;
    reciever?: string;
 }
@@ -8,7 +8,7 @@ export type MessageRequestDTO = {
 /**
  * @typedef {object} MessageRequestDTO
  * @property {string} text
- * @property {string} imagesUrl
+ * @property {array<string>} imagesUrl
  * @property {string} sender
  * @property {string} reciever
  */

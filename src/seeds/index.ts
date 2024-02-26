@@ -8,7 +8,6 @@ import { AdministrateurRepository } from '../repository/Administrateur';
 import { CasinoProfileRepository } from '../repository/CasinoProfile';
 import { ComplementaryInformationRepository } from '../repository/ComplementaryInformation';
 import { LinksRepository } from '../repository/Links';
-import { BaseInformationRepository } from '../repository/BaseInformation';
 import { SponsorRepository } from '../repository/Sponsor';
 import { PartenerRepository } from '../repository/Partener';
 import { PseudoRepository } from '../repository/Pseudo';
@@ -24,7 +23,6 @@ export class InitSeeds implements Seeder {
     const casinoProfile = connection.getCustomRepository(CasinoProfileRepository);
     const complementaryInformation = connection.getCustomRepository(ComplementaryInformationRepository);
     const link = connection.getCustomRepository(LinksRepository);
-    const baseInformation = connection.getCustomRepository(BaseInformationRepository);
     const sponsor = connection.getCustomRepository(SponsorRepository);
     const partener = connection.getCustomRepository(PartenerRepository);
     const pseudo = connection.getCustomRepository(PseudoRepository);
@@ -74,13 +72,6 @@ export class InitSeeds implements Seeder {
         await Promise.all(
           data.map(async (item) => {
             const { email, phone = '', nom = '', prenom = '', imageUrl = '' } = item;
-            const base = await baseInformation.insertOne({
-              email,
-              phone,
-              nom,
-              prenom,
-              imageUrl,
-            });
             const info = await complementaryInformation.insertOne({
               email,
               phone,
@@ -89,9 +80,13 @@ export class InitSeeds implements Seeder {
               info: info?.insertedId,
               photo: imageUrl,
               type: 'VIP',
-              base: base?.insertedId,
+              email,
+              phone,
+              nom,
+              prenom,
+              imageUrls: [],
             });
-            return await user.insertOne({ ...item, actif: true, profile: profileItem?.insertedId });
+            return await user.insertOne({ ...item, actif: true, profileId: profileItem?.insertedId });
           }),
         );
         !user.collectionIndexExists && user.createCollectionIndex({ nom: 'text', prenom: 'text', phone: 'text', email: 'text', adresse: 'text' });
@@ -100,7 +95,6 @@ export class InitSeeds implements Seeder {
         !casinoProfile.collectionIndexExists &&  casinoProfile.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
         !complementaryInformation.collectionIndexExists &&  complementaryInformation.createCollectionIndex({ nationality: 'text', langues: 'text', email: 'text', phone: 'text', job: 'text', headonmob: 'text', nb_titre: 'text', rang_time_money: 'text', period: 'text' });
         !link.collectionIndexExists && link.createCollectionIndex({ name: 'text', link: 'text', description: 'text', profile: 'text' });
-        !baseInformation.collectionIndexExists &&  baseInformation.createCollectionIndex({ pays: 'text', email: 'text', phone: 'text', date_of_birth: 'text', gender: 'text', nom: 'text', prenom: 'text', city: 'text', country: 'text', situation: 'text', children: 'text', description: 'text' })
         !sponsor.collectionIndexExists &&  sponsor.createCollectionIndex({ nom: 'text', description: 'text', });
         !partener.collectionIndexExists && partener.createCollectionIndex({ name: 'text', description: 'text', });
         !pseudo.collectionIndexExists && pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });

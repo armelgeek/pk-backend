@@ -75,14 +75,14 @@ export class UtilisateurDO {
   username: string;
 
   @Column({nullable: true, unique: true})
-  profile: string;
+  profileId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
-  dateCreation: Date;
+  createdDate: Date;
 
   @BeforeInsert()
   beforeInsert() {
-    this.dateCreation = new Date();
+    this.createdDate = new Date();
   }
 }
 

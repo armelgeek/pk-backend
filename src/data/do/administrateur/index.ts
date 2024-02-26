@@ -21,10 +21,10 @@ export class AdministrateurDO {
   telAdmin: string;
 
   @Column({ type: 'timestamptz' })
-  dateCreation: Date;
+  createdDate: Date;
 
   @BeforeInsert()
   beforeInsert() {
-    this.dateCreation = new Date();
+    this.createdDate = new Date();
   }
 }

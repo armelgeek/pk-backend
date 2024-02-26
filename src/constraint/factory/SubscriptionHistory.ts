@@ -14,7 +14,7 @@ const schema = { ...commonSchema };
 const responseSchema = {
   ...commonSchema,
   id: '_id',
-  dateCreation: { path: 'dateCreation', fn: (value) => formatDateToLocaleWithHour(value) },
+  createdDate: { path: 'createdDate', fn: (value) => formatDateToLocaleWithHour(value) },
 };
 
 export class SubscriptionHistoryFactory extends GenericFactory<

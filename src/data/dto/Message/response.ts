@@ -1,6 +1,6 @@
 export type MessageResponseDTO = {
    text?: string;
-   imagesUrl?: string;
+   imagesUrl?: string[];
    sender?: string;
    reciever?: string;
   id: string;
@@ -9,7 +9,7 @@ export type MessageResponseDTO = {
 /**
  * @typedef {object} MessageResponseDTO
  * @property {string} text
- * @property {string} imagesUrl
+ * @property {array<string>} imagesUrl
  * @property {string} sender
  * @property {string} reciever
  */

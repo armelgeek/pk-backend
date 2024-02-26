@@ -27,27 +27,21 @@ export class InscriptionSA {
   private profileFactory = profileFactory;
 
   async createProfile(dto: InscriptionRequestDTO) {
-    const {
-      email,
-      phone = '',
-      nom = '',
-      prenom = '',
-      imageUrl = '',
-    } = dto;
-    const base = await baseinformationSA.create({
-      email,
-      phone,
-      nom,
-      prenom,
-      imageUrl,
-    });
+    const { email, phone = '', nom = '', prenom = '', imageUrl = '' } = dto;
     const info = await complementaryinformationSA.create({
       email,
       phone,
     });
-    return await profileSA.create(
-      this.profileFactory.toDo({ info: new ObjectID(info?.id), photo: imageUrl, type: 'VIP', base: new ObjectID(base?.id) }),
-    );
+    return await profileSA.create({
+      info: new ObjectID(info?.id),
+      photo: imageUrl,
+      type: 'VIP',
+      email,
+      phone,
+      nom,
+      prenom,
+      imageUrls: [],
+    });
   }
 
   async create(dto: InscriptionRequestDTO) {
@@ -69,7 +63,7 @@ export class InscriptionSA {
       const code = entierAleatoire(1111, 9999).toString();
 
       const saved = await utilisateurSM.create(utilisateurDO);
-  
+
       if (!saved) {
         return {
           create: false,
@@ -79,7 +73,7 @@ export class InscriptionSA {
       const profile = await this.createProfile(dto);
       await utilisateurSM.partialUpdate(saved._id, {
         code,
-        profile: new ObjectID(profile?.id),
+        profileId: new ObjectID(profile?.id),
         password: await bcrypt.hashSync(password, 10),
       });
 
@@ -143,11 +137,11 @@ export class InscriptionSA {
       } else {
         const saved = await utilisateurSM.create(utilisateurDO);
         const profile = await this.createProfile(dto);
-  
+
         const { value } = await utilisateurSM.partialUpdate(saved._id, {
-          profile: profile?.id,
+          profileId: profile?.id,
         });
-      
+
         const { accessToken, refreshToken } = await generateTokens(saved);
 
         return {
@@ -158,7 +152,7 @@ export class InscriptionSA {
           deviceToken: '',
           utilisateur: {
             ...value,
-            profile: profile?.id,
+            profileId: profile?.id,
           },
         };
       }

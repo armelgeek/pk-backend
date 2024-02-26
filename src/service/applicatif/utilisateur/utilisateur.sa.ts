@@ -78,9 +78,6 @@ export class UtilisateurSA extends GenericSA<
   async findAll(options) {
     try {
       const { take, skip, direction, sortField, relation, search, queries } = options;
-      console.log('search ====================================');
-      console.log(search);
-      console.log('====================================');
       const data = await this.serviceSM.findAll(
         {
           relation,
@@ -171,7 +168,7 @@ export class UtilisateurSA extends GenericSA<
     try {
       // const data = await this.serviceSM.getDateInscription(minDate, maxDate);
 
-      // return data.map(({ dateCreation }) => formatToShortFormat(dateCreation));
+      // return data.map(({ createdDate }) => formatToShortFormat(createdDate));
       return "";
     } catch (error) {
       return Promise.reject(error);

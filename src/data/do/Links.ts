@@ -18,11 +18,11 @@ export class LinksDO {
   profile: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
-  dateCreation: Date;
+  createdDate: Date;
 
   @BeforeInsert()
   beforeInsert() {
-    this.dateCreation = new Date();
+    this.createdDate = new Date();
   }
 }
 

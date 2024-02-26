@@ -90,13 +90,12 @@ export class UtilisateurController {
   };
 
   getAll = async (req, res, next) => {
-    console.log("======================+>");
     const {
       query: { page, rowPerPage, light, direction, sortField, relation, search, ...queries },
     } = req;
-    console.log('======>', { page, rowPerPage, light, direction, sortField, relation, search, ...queries });
+
     try {
-      const dtos = await this.serviceSA.findAll({
+      const data = await this.serviceSA.findAll({
         search,
         relation,
         sortField,
@@ -107,7 +106,10 @@ export class UtilisateurController {
         skip: (page - 1) * rowPerPage,
       });
 
-      res.locals.data = dtos;
+      res.locals.data = {
+        ...data,
+        items: data?.items?.map(({ password, ...item}) => item) ?? [],
+      };
 
       next();
     } catch (error) {

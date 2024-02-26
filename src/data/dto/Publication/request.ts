@@ -1,7 +1,7 @@
 export type PublicationRequestDTO = {
    content?: string;
-   imageUrls?: string;
-   videoUrls?: string;
+   imageUrls?: string[];
+   videoUrls?: string[];
    profileId?: string;
    location?: string;
    private?: boolean;
@@ -10,8 +10,8 @@ export type PublicationRequestDTO = {
 /**
  * @typedef {object} PublicationRequestDTO
  * @property {string} content
- * @property {string} imageUrls
- * @property {string} videoUrls
+ * @property {array<string>} imageUrls
+ * @property {array<string>} videoUrls
  * @property {string} profileId
  * @property {string} location
  * @property {boolean} private

@@ -9,7 +9,7 @@ export type CasinoProfileRequestDTO = {
    description?: string;
    profileId?: string;
    type?: string;
-   verifications?: string;
+   verifications?: string[];
 }
 
 /**
@@ -24,6 +24,6 @@ export type CasinoProfileRequestDTO = {
  * @property {string} description
  * @property {string} profileId
  * @property {string} type
- * @property {string} verifications
+ * @property {array<string>} verifications
  */
 

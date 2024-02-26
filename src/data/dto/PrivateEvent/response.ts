@@ -10,10 +10,10 @@ export type PrivateEventResponseDTO = {
    parking?: boolean;
    restauration?: boolean;
    reglements?: string;
-   photos?: string;
-   videos?: string;
+   photos?: string[];
+   videos?: string[];
    private?: boolean;
-   userList?: string;
+   userList?: string[];
    profile?: string;
   id: string;
 }
@@ -31,10 +31,10 @@ export type PrivateEventResponseDTO = {
  * @property {boolean} parking
  * @property {boolean} restauration
  * @property {string} reglements
- * @property {string} photos
- * @property {string} videos
+ * @property {array<string>} photos
+ * @property {array<string>} videos
  * @property {boolean} private
- * @property {string} userList
+ * @property {array<string>} userList
  * @property {string} profile
  */
 

@@ -42,3 +42,15 @@ export const profileRouter = profileRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * PUT /api/profile/{id}
+ * @tags Profile
+ * @security BearerAuth
+ * @summary Créer un Profile (updateProfile)
+ * @param {ProfileRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {ProfileResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

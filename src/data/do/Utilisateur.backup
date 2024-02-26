@@ -78,17 +78,17 @@ export class UtilisateurDO {
   username: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
-  dateCreation: Date;
+  createdDate: Date;
 
   // @BeforeInsert()
   // beforeInsert() {
-  //   this.dateCreation = new Date();
+  //   this.createdDate = new Date();
   // }
 
   @BeforeInsert()
   async beforeInsert() {
     try {
-      this.dateCreation = new Date();
+      this.createdDate = new Date();
       if (this.password && !this.password.includes('$2a$')) {
         this.password = await bcrypt.hashSync(this.password, 10);
       }

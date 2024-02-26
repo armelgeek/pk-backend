@@ -15,13 +15,13 @@ export class CasinoProfileDO {
   name: string;
 
   @Column({nullable: true, unique: false})
-  countryCode: string;
+  country: string;
 
   @Column({nullable: true, unique: false})
   phone: string;
 
   @Column({nullable: true, unique: false})
-  adress: string;
+  address: string;
 
   @Column({nullable: true, unique: false})
   email: string;

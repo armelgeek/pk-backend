@@ -55,3 +55,14 @@ export const subscriptionofferRouter = subscriptionofferRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/subscription-offer
+ * @tags SubscriptionOffer
+ * @security BearerAuth
+ * @summary Créer un SubscriptionOffer (addSubscriptionOffer)
+ * @param {SubscriptionOfferRequestDTO} request.body
+ * @return {SubscriptionOfferResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

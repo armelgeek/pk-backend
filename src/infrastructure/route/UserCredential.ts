@@ -55,3 +55,14 @@ export const usercredentialRouter = usercredentialRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/user-credential
+ * @tags UserCredential
+ * @security BearerAuth
+ * @summary Créer un UserCredential (addUserCredential)
+ * @param {UserCredentialRequestDTO} request.body
+ * @return {UserCredentialResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

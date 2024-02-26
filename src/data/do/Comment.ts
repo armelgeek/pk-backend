@@ -15,13 +15,31 @@ export class CommentDO {
   parent: string;
 
   @Column({nullable: true, unique: false})
-  reaction: string;
+  hideFor: string;
 
   @Column({nullable: true, unique: false})
-  publicationId: string;
+  target: string;
 
   @Column({nullable: true, unique: false})
   prifileId: string;
+
+  @Column({nullable: true, unique: false})
+  happy: string;
+
+  @Column({nullable: true, unique: false})
+  love: string;
+
+  @Column({nullable: true, unique: false})
+  sad: string;
+
+  @Column({nullable: true, unique: false})
+  veryhappy: string;
+
+  @Column({nullable: true, unique: false})
+  media: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdDate: Date;

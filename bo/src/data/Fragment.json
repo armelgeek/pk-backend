@@ -4658,7 +4658,7 @@
 									"top": 707,
 									"width": 156.45703125,
 									"height": 13,
-									"text": "+countryCode: string",
+									"text": "+country: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -4692,7 +4692,7 @@
 									"top": 737,
 									"width": 156.45703125,
 									"height": 13,
-									"text": "+adress: string",
+									"text": "+address: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -4847,13 +4847,30 @@
 									"height": 13,
 									"text": "+add()",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGN5Mb1CPjBkZA=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQPY91B3m2U="
+									},
+									"model": {
+										"$ref": "AAAAAAGN5Mb05vi8hH4="
+									},
+									"font": "Arial;13;0",
+									"left": 397,
+									"top": 880,
+									"width": 156.45703125,
+									"height": 13,
+									"text": "+update()",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 392,
 							"top": 830,
 							"width": 166.45703125,
-							"height": 53
+							"height": 68
 						},
 						{
 							"_type": "UMLReceptionCompartmentView",
@@ -4893,7 +4910,7 @@
 					"left": 392,
 					"top": 632,
 					"width": 166.45703125,
-					"height": 251,
+					"height": 266,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQPY91Bxezk="
 					},
@@ -11815,7 +11832,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
-					"name": "countryCode",
+					"name": "country",
 					"type": "string"
 				},
 				{
@@ -11835,7 +11852,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
-					"name": "adress",
+					"name": "address",
 					"type": "string",
 					"form": "Adress",
 					"bo": true
@@ -11936,6 +11953,28 @@
 					"name": "add",
 					"route": "casino-profile",
 					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGN5Mb05vi8hH4=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQPY9VBuOYg="
+					},
+					"name": "update",
+					"route": "casino-profile/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGN5Mb05vi9Zk4=",
+							"_parent": {
+								"$ref": "AAAAAAGN5Mb05vi8hH4="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
 				}
 			]
 		},

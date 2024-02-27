@@ -21,7 +21,10 @@ export const pseudoRouter = pseudoRoutes();
  * GET /api/pseudos
  * @tags Pseudo
  * @security BearerAuth
- * @summary List Pseudo (getAllPseudo) 
+ * @summary List Pseudo (getAllPseudo)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {PseudoResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

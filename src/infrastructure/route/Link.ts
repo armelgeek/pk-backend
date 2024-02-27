@@ -10,7 +10,10 @@ export const linkRouter = linkRoutes();
  * GET /api/link
  * @tags Link
  * @security BearerAuth
- * @summary List Link (getAllLink) 
+ * @summary List Link (getAllLink)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {LinkResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -31,7 +34,9 @@ export const linkRouter = linkRoutes();
  * DELETE /api/link/{id}
  * @tags Link
  * @security BearerAuth
- * @summary Remove Link (deleteLink) 
+ * @summary Remove Link (deleteLink)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

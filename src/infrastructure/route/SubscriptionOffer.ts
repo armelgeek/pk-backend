@@ -10,7 +10,10 @@ export const subscriptionofferRouter = subscriptionofferRoutes();
  * GET /api/subscriptions-offer
  * @tags SubscriptionOffer
  * @security BearerAuth
- * @summary List SubscriptionOffer (getAllSubscriptionOffer) 
+ * @summary List SubscriptionOffer (getAllSubscriptionOffer)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {SubscriptionOfferResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +23,9 @@ export const subscriptionofferRouter = subscriptionofferRoutes();
  * DELETE /api/subscription-offer/{id}
  * @tags SubscriptionOffer
  * @security BearerAuth
- * @summary Remove SubscriptionOffer (deleteSubscriptionOffer) 
+ * @summary Remove SubscriptionOffer (deleteSubscriptionOffer)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -42,7 +47,9 @@ export const subscriptionofferRouter = subscriptionofferRoutes();
  * GET /api/subscription-offer/{id}
  * @tags SubscriptionOffer
  * @security BearerAuth
- * @summary List SubscriptionOffer (getSubscriptionOffer) 
+ * @summary List SubscriptionOffer (getSubscriptionOffer)
+ 
+ * @param {string} id.path.required 
  * @return {SubscriptionOfferResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

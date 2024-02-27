@@ -21,7 +21,10 @@ export const clubRouter = clubRoutes();
  * GET /api/club
  * @tags Club
  * @security BearerAuth
- * @summary List Club (getAllClub) 
+ * @summary List Club (getAllClub)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {ClubResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

@@ -10,7 +10,10 @@ export const usercredentialRouter = usercredentialRoutes();
  * GET /api/users-credential
  * @tags UserCredential
  * @security BearerAuth
- * @summary List UserCredential (getAllUserCredential) 
+ * @summary List UserCredential (getAllUserCredential)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {UserCredentialResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +23,9 @@ export const usercredentialRouter = usercredentialRoutes();
  * DELETE /api/user-credential/{id}
  * @tags UserCredential
  * @security BearerAuth
- * @summary Remove UserCredential (deleteUserCredential) 
+ * @summary Remove UserCredential (deleteUserCredential)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -42,7 +47,9 @@ export const usercredentialRouter = usercredentialRoutes();
  * GET /api/user-credential/{id}
  * @tags UserCredential
  * @security BearerAuth
- * @summary List UserCredential (getUserCredential) 
+ * @summary List UserCredential (getUserCredential)
+ 
+ * @param {string} id.path.required 
  * @return {UserCredentialResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

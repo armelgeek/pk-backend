@@ -10,7 +10,10 @@ export const sponsorRouter = sponsorRoutes();
  * GET /api/sponsor
  * @tags Sponsor
  * @security BearerAuth
- * @summary List Sponsor (getAllSponsor) 
+ * @summary List Sponsor (getAllSponsor)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {SponsorResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -43,7 +46,9 @@ export const sponsorRouter = sponsorRoutes();
  * GET /api/sponsor/{id}
  * @tags Sponsor
  * @security BearerAuth
- * @summary List Sponsor (getSponsor) 
+ * @summary List Sponsor (getSponsor)
+ 
+ * @param {string} id.path.required 
  * @return {SponsorResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -53,7 +58,9 @@ export const sponsorRouter = sponsorRoutes();
  * DELETE /api/sponsor/{id}
  * @tags Sponsor
  * @security BearerAuth
- * @summary Remove Sponsor (deleteSponsor) 
+ * @summary Remove Sponsor (deleteSponsor)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

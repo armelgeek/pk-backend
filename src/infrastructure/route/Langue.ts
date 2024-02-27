@@ -10,7 +10,10 @@ export const langueRouter = langueRoutes();
  * GET /api/langues
  * @tags Langue
  * @security BearerAuth
- * @summary List Langue (getAllLangue) 
+ * @summary List Langue (getAllLangue)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -31,7 +34,8 @@ export const langueRouter = langueRoutes();
  * DELETE /api/langue
  * @tags Langue
  * @security BearerAuth
- * @summary Remove Langue (deleteLangue) 
+ * @summary Remove Langue (deleteLangue)
+  
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

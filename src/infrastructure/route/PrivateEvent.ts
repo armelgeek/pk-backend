@@ -21,7 +21,10 @@ export const privateeventRouter = privateeventRoutes();
  * GET /api/private-event
  * @tags PrivateEvent
  * @security BearerAuth
- * @summary List PrivateEvent (getAllPrivateEvent) 
+ * @summary List PrivateEvent (getAllPrivateEvent)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {PrivateEventResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

@@ -21,7 +21,10 @@ export const gametypeRouter = gametypeRoutes();
  * GET /api/game-type
  * @tags GameType
  * @security BearerAuth
- * @summary List GameType (getAllGameType) 
+ * @summary List GameType (getAllGameType)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {GameTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

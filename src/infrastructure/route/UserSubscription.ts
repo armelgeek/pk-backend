@@ -10,7 +10,10 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * GET /api/user-subscription
  * @tags UserSubscription
  * @security BearerAuth
- * @summary List UserSubscription (getAllUserSubscription) 
+ * @summary List UserSubscription (getAllUserSubscription)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {UserSubscriptionResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +23,9 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * DELETE /api/user-subscription/{id}
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Remove UserSubscription (deleteUserSubscription) 
+ * @summary Remove UserSubscription (deleteUserSubscription)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -42,7 +47,9 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * GET /api/user-subscription/{id}
  * @tags UserSubscription
  * @security BearerAuth
- * @summary List UserSubscription (getUserSubscription) 
+ * @summary List UserSubscription (getUserSubscription)
+ 
+ * @param {string} id.path.required 
  * @return {UserSubscriptionResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

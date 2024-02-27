@@ -10,7 +10,10 @@ export const baseinformationRouter = baseinformationRoutes();
  * GET /api/base-informations
  * @tags BaseInformation
  * @security BearerAuth
- * @summary List BaseInformation (getAllBaseInformation) 
+ * @summary List BaseInformation (getAllBaseInformation)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {BaseInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +23,9 @@ export const baseinformationRouter = baseinformationRoutes();
  * GET /api/base-information/{id}
  * @tags BaseInformation
  * @security BearerAuth
- * @summary List BaseInformation (getBaseInformation) 
+ * @summary List BaseInformation (getBaseInformation)
+ 
+ * @param {string} id.path.required 
  * @return {BaseInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

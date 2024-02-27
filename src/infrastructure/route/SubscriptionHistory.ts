@@ -10,7 +10,10 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * GET /api/subscriptions-history
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary List SubscriptionHistory (getAllSubscriptionHistory) 
+ * @summary List SubscriptionHistory (getAllSubscriptionHistory)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +23,9 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * DELETE /api/subscription-history/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Remove SubscriptionHistory (deleteSubscriptionHistory) 
+ * @summary Remove SubscriptionHistory (deleteSubscriptionHistory)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -42,7 +47,9 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * GET /api/subscription-history/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary List SubscriptionHistory (getSubscriptionHistory) 
+ * @summary List SubscriptionHistory (getSubscriptionHistory)
+ 
+ * @param {string} id.path.required 
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

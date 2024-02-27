@@ -21,7 +21,10 @@ export const tournamenttypeRouter = tournamenttypeRoutes();
  * GET /api/tournament-type
  * @tags TournamentType
  * @security BearerAuth
- * @summary List TournamentType (getAllTournamentType) 
+ * @summary List TournamentType (getAllTournamentType)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {TournamentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

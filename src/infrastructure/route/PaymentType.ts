@@ -10,7 +10,10 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * GET /api/payments-type
  * @tags PaymentType
  * @security BearerAuth
- * @summary List PaymentType (getAllPaymentType) 
+ * @summary List PaymentType (getAllPaymentType)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {PaymentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -32,7 +35,9 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * GET /api/payment-type/{id}
  * @tags PaymentType
  * @security BearerAuth
- * @summary List PaymentType (getPaymentType) 
+ * @summary List PaymentType (getPaymentType)
+ 
+ * @param {string} id.path.required 
  * @return {PaymentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -42,7 +47,9 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * DELETE /api/payment-type/{id}
  * @tags PaymentType
  * @security BearerAuth
- * @summary Remove PaymentType (deletePaymentType) 
+ * @summary Remove PaymentType (deletePaymentType)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

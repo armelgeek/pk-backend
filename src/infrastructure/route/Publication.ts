@@ -21,7 +21,10 @@ export const publicationRouter = publicationRoutes();
  * GET /api/publication
  * @tags Publication
  * @security BearerAuth
- * @summary List Publication (getAllPublication) 
+ * @summary List Publication (getAllPublication)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {PublicationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

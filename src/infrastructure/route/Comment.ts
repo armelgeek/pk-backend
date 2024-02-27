@@ -21,7 +21,10 @@ export const commentRouter = commentRoutes();
  * GET /api/comment
  * @tags Comment
  * @security BearerAuth
- * @summary List Comment (getAllComment) 
+ * @summary List Comment (getAllComment)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {CommentResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -31,7 +34,9 @@ export const commentRouter = commentRoutes();
  * DELETE /api/comment/{id}
  * @tags Comment
  * @security BearerAuth
- * @summary Remove Comment (deleteComment) 
+ * @summary Remove Comment (deleteComment)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -53,7 +58,9 @@ export const commentRouter = commentRoutes();
  * GET /api/comment/{id}
  * @tags Comment
  * @security BearerAuth
- * @summary List Comment (getComment) 
+ * @summary List Comment (getComment)
+ 
+ * @param {string} id.path.required 
  * @return {CommentResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

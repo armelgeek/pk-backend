@@ -10,7 +10,10 @@ export const partenerRouter = partenerRoutes();
  * GET /api/partener
  * @tags Partener
  * @security BearerAuth
- * @summary List Partener (getAllPartener) 
+ * @summary List Partener (getAllPartener)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -43,7 +46,9 @@ export const partenerRouter = partenerRoutes();
  * GET /api/partener/{id}
  * @tags Partener
  * @security BearerAuth
- * @summary List Partener (getPartener) 
+ * @summary List Partener (getPartener)
+ 
+ * @param {string} id.path.required 
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -53,7 +58,9 @@ export const partenerRouter = partenerRoutes();
  * DELETE /api/partener/{id}
  * @tags Partener
  * @security BearerAuth
- * @summary Remove Partener (deletePartener) 
+ * @summary Remove Partener (deletePartener)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

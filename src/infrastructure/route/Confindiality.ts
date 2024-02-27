@@ -21,7 +21,9 @@ export const confindialityRouter = confindialityRoutes();
  * GET /api/confindiality/{profileId}
  * @tags Confindiality
  * @security BearerAuth
- * @summary List Confindiality (getConfindiality) 
+ * @summary List Confindiality (getConfindiality)
+ 
+ * @param {string} profileId.path.required 
  * @return {ConfindialityResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

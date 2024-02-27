@@ -21,7 +21,10 @@ export const roleRouter = roleRoutes();
  * GET /api/role
  * @tags Role
  * @security BearerAuth
- * @summary List Role (getAllRole) 
+ * @summary List Role (getAllRole)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {RoleResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

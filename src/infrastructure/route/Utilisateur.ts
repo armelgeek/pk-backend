@@ -10,7 +10,12 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur
  * @tags Utilisateur
  * @security BearerAuth
- * @summary List Utilisateur (getAllUtilisateur) 
+ * @summary List Utilisateur (getAllUtilisateur)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query
+ * @param {string} data.query
+ * @param {string} TemplateParameter1.path.required 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -20,7 +25,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * DELETE /api/utilisateur/
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Remove Utilisateur (deleteUtilisateur) 
+ * @summary Remove Utilisateur (deleteUtilisateur)
+  
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -41,7 +47,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur/
  * @tags Utilisateur
  * @security BearerAuth
- * @summary List Utilisateur (getUtilisateur) 
+ * @summary List Utilisateur (getUtilisateur)
+  
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -51,7 +58,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur/count
  * @tags Utilisateur
  * @security BearerAuth
- * @summary List Utilisateur (countUtilisateur) 
+ * @summary List Utilisateur (countUtilisateur)
+  
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

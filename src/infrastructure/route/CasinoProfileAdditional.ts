@@ -10,7 +10,10 @@ export const casinoprofileadditionalRouter = casinoprofileadditionalRoutes();
  * GET /api/casino-profile-additional
  * @tags CasinoProfileAdditional
  * @security BearerAuth
- * @summary List CasinoProfileAdditional (getAllCasinoProfileAdditional) 
+ * @summary List CasinoProfileAdditional (getAllCasinoProfileAdditional)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {CasinoProfileAdditionalResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -43,7 +46,9 @@ export const casinoprofileadditionalRouter = casinoprofileadditionalRoutes();
  * DELETE /api/casino-profile-additional/{id}
  * @tags CasinoProfileAdditional
  * @security BearerAuth
- * @summary Remove CasinoProfileAdditional (deleteCasinoProfileAdditional) 
+ * @summary Remove CasinoProfileAdditional (deleteCasinoProfileAdditional)
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -53,7 +58,9 @@ export const casinoprofileadditionalRouter = casinoprofileadditionalRoutes();
  * GET /api/casino-profile-additional/{id}
  * @tags CasinoProfileAdditional
  * @security BearerAuth
- * @summary List CasinoProfileAdditional (getCasinoProfileAdditional) 
+ * @summary List CasinoProfileAdditional (getCasinoProfileAdditional)
+ 
+ * @param {string} id.path.required 
  * @return {CasinoProfileAdditionalResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

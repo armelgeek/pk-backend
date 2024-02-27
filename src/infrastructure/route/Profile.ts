@@ -21,7 +21,10 @@ export const profileRouter = profileRoutes();
  * GET /api/profile
  * @tags Profile
  * @security BearerAuth
- * @summary List Profile (getAllProfile) 
+ * @summary List Profile (getAllProfile)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
  * @return {ProfileResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -31,7 +34,9 @@ export const profileRouter = profileRoutes();
  * GET /api/profile/{id}
  * @tags Profile
  * @security BearerAuth
- * @summary List Profile (getProfile) 
+ * @summary List Profile (getProfile)
+ 
+ * @param {string} id.path.required 
  * @return {ProfileResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

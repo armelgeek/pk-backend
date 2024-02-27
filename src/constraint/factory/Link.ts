@@ -1,14 +1,14 @@
 import { GenericFactory } from '../../common/constraint/factory/generic.factory';
 import { formatDateToLocaleWithHour } from '../../common/service/date.service';
 import { dataTDO } from '../../data';
-import { LinksDO } from '../../data/do/Links';
+import { LinkDO } from '../../data/do/Link';
 // @ts-ignore
-import { LinksRequestDTO } from '../../data/dto/Links/request';
+import { LinkRequestDTO } from '../../data/dto/Link/request';
 // @ts-ignore
-import { LinksResponseDTO } from '../../data/dto/Links/response';
+import { LinkResponseDTO } from '../../data/dto/Link/response';
 
 const commonSchema = {
-  ...dataTDO.Links.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
+  ...dataTDO.Link.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
 };
 const schema = { ...commonSchema };
 const responseSchema = {
@@ -17,11 +17,11 @@ const responseSchema = {
   createdDate: { path: 'createdDate', fn: (value) => formatDateToLocaleWithHour(value) },
 };
 
-export class LinksFactory extends GenericFactory<
-  LinksDO,
-  LinksRequestDTO,
-  LinksResponseDTO
+export class LinkFactory extends GenericFactory<
+  LinkDO,
+  LinkRequestDTO,
+  LinkResponseDTO
 > {}
 
-export const linksFactory = new LinksFactory(schema, schema, responseSchema);
+export const linkFactory = new LinkFactory(schema, schema, responseSchema);
 

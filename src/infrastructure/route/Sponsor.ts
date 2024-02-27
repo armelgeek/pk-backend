@@ -30,3 +30,39 @@ export const sponsorRouter = sponsorRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * PUT /api/sponsor/{id}
+ * @tags Sponsor
+ * @security BearerAuth
+ * @summary Créer un Sponsor (updateSponsor)
+ * @param {SponsorRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {SponsorResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/sponsor/{id}
+ * @tags Sponsor
+ * @security BearerAuth
+ * @summary Créer un Sponsor (getSponsor)
+ * @param {SponsorRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {SponsorResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * DELETE /api/sponsor/{id}
+ * @tags Sponsor
+ * @security BearerAuth
+ * @summary Créer un Sponsor (deleteSponsor)
+ * @param {SponsorRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {SponsorResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

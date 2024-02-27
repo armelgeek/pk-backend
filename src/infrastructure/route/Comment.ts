@@ -18,7 +18,7 @@ export const commentRouter = commentRoutes();
  */
 
 /**
- * GET /api/comments
+ * GET /api/comment
  * @tags Comment
  * @security BearerAuth
  * @summary Créer un Comment (getAllComment)

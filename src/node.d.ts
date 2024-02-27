@@ -22,8 +22,8 @@
   declare interface SponsorResponseDTO { }
   declare interface PartenerRequestDTO { }
   declare interface PartenerResponseDTO { }
-  declare interface LinksRequestDTO { }
-  declare interface LinksResponseDTO { }
+  declare interface LinkRequestDTO { }
+  declare interface LinkResponseDTO { }
   declare interface CasinoProfileRequestDTO { }
   declare interface CasinoProfileResponseDTO { }
   declare interface CasinoProfileAdditionalRequestDTO { }

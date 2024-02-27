@@ -1,13 +1,12 @@
-export type LinksResponseDTO = {
+export type LinkRequestDTO = {
    name?: string;
    link?: string;
    description?: string;
    profile?: string;
-  id: string;
 }
 
 /**
- * @typedef {object} LinksResponseDTO
+ * @typedef {object} LinkRequestDTO
  * @property {string} name
  * @property {string} link
  * @property {string} description

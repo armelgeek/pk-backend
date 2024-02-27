@@ -1,7 +1,7 @@
 import { BeforeInsert, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('links')
-export class LinksDO {
+@Entity('link')
+export class LinkDO {
   @ObjectIdColumn()
   _id: ObjectID;
 

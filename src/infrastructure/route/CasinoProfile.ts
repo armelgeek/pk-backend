@@ -43,7 +43,7 @@ export const casinoprofileRouter = casinoprofileRoutes();
  */
 
 /**
- * PUT /api/casino-profile/{id}
+ * PUT /api/casino-profile/partialUpdate/{id}
  * @tags CasinoProfile
  * @security BearerAuth
  * @summary Créer un CasinoProfile (updateCasinoProfile)

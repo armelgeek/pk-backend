@@ -43,7 +43,7 @@ export const commentRouter = commentRoutes();
  */
 
 /**
- * PUT /api/comment/{id}
+ * PUT /api/comment/partialUpdate/{id}
  * @tags Comment
  * @security BearerAuth
  * @summary Créer un Comment (updateComment)

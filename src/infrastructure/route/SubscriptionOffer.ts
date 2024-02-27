@@ -32,7 +32,7 @@ export const subscriptionofferRouter = subscriptionofferRoutes();
  */
 
 /**
- * PUT /api/subscription-offer/{id}
+ * PUT /api/subscription-offer/partialUpdate/{id}
  * @tags SubscriptionOffer
  * @security BearerAuth
  * @summary Créer un SubscriptionOffer (updateSubscriptionOffer)

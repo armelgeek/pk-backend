@@ -20,7 +20,7 @@ export const paymenttypeRouter = paymenttypeRoutes();
  */
 
 /**
- * PUT /api/payment-type/{id}
+ * PUT /api/payment-type/partialUpdate/{id}
  * @tags PaymentType
  * @security BearerAuth
  * @summary Créer un PaymentType (updatePaymentType)

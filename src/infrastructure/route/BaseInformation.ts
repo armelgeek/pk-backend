@@ -43,7 +43,7 @@ export const baseinformationRouter = baseinformationRoutes();
  */
 
 /**
- * PUT /api/base-information/{id}
+ * PUT /api/base-information/partialUpdate/{id}
  * @tags BaseInformation
  * @security BearerAuth
  * @summary Créer un BaseInformation (updateBaseInformation)

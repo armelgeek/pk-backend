@@ -32,7 +32,7 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  */
 
 /**
- * PUT /api/subscription-history/{id}
+ * PUT /api/subscription-history/partialUpdate/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
  * @summary Créer un SubscriptionHistory (updateSubscriptionHistory)

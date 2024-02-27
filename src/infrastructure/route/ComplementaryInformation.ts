@@ -42,7 +42,7 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  */
 
 /**
- * PUT /api/complementary-information/{id}
+ * PUT /api/complementary-information/partialUpdate/{id}
  * @tags ComplementaryInformation
  * @security BearerAuth
  * @summary Créer un ComplementaryInformation (updateComplementaryInformation)

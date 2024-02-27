@@ -32,7 +32,7 @@ export const usercredentialRouter = usercredentialRoutes();
  */
 
 /**
- * PUT /api/user-credential/{id}
+ * PUT /api/user-credential/partialUpdate/{id}
  * @tags UserCredential
  * @security BearerAuth
  * @summary Créer un UserCredential (updateUserCredential)

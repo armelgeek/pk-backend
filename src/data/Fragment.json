@@ -133,25 +133,6 @@
 		},
 		{
 			"_type": "UMLClass",
-			"_id": "AAAAAAF7c34wjAwFZqQ=",
-			"_parent": {
-				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
-			},
-			"name": "Parrainage",
-			"attributes": [
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAF7c35AIgwvvmc=",
-					"_parent": {
-						"$ref": "AAAAAAF7c34wjAwFZqQ="
-					},
-					"name": "Attribute1",
-					"type": ""
-				}
-			]
-		},
-		{
-			"_type": "UMLClass",
 			"_id": "AAAAAAF7dq9wlCA0k1A=",
 			"_parent": {
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
@@ -11528,7 +11509,7 @@
 						"$ref": "AAAAAAGNhIY45043+/g="
 					},
 					"name": "update",
-					"route": "base-information/{id}",
+					"route": "base-information/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -11774,7 +11755,7 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "update",
-					"route": "profile/{id}",
+					"route": "profile/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -11864,7 +11845,7 @@
 						"$ref": "AAAAAAGNhPaxUE9SbA0="
 					},
 					"name": "update",
-					"route": "sponsor/{id}",
+					"route": "sponsor/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -11997,7 +11978,7 @@
 						"$ref": "AAAAAAGNhP4zzE+p850="
 					},
 					"name": "update",
-					"route": "partener/{id}",
+					"route": "partener/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -12161,7 +12142,7 @@
 						"$ref": "AAAAAAGNhQE1FVAM29w="
 					},
 					"name": "update",
-					"route": "link/{id}",
+					"route": "link/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -12356,7 +12337,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "update",
-					"route": "casino-profile/{id}",
+					"route": "casino-profile/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -12634,7 +12615,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "update",
-					"route": "casino-profile-additional/{id}",
+					"route": "casino-profile-additional/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -13067,7 +13048,7 @@
 						"$ref": "AAAAAAGNmLfx/XDZAhE="
 					},
 					"name": "update",
-					"route": "complementary-information/{id}",
+					"route": "complementary-information/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -13727,7 +13708,7 @@
 						"$ref": "AAAAAAGN1KwsVK6MJCE="
 					},
 					"name": "update",
-					"route": "comment/{id}",
+					"route": "comment/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -14080,7 +14061,7 @@
 						"$ref": "AAAAAAGN1kVq1LB2z5w="
 					},
 					"name": "update",
-					"route": "user-credential/{id}",
+					"route": "user-credential/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -14177,7 +14158,7 @@
 						"$ref": "AAAAAAGN1kiE5LDOOAw="
 					},
 					"name": "update",
-					"route": "payment-type/{id}",
+					"route": "payment-type/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -14365,7 +14346,7 @@
 						"$ref": "AAAAAAGN1ksgdbEYE2s="
 					},
 					"name": "update",
-					"route": "user-subscription/{id}",
+					"route": "user-subscription/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -14531,7 +14512,7 @@
 						"$ref": "AAAAAAGN1k2YTrF7OPY="
 					},
 					"name": "update",
-					"route": "subscription-offer/{id}",
+					"route": "subscription-offer/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -14677,7 +14658,7 @@
 						"$ref": "AAAAAAGN1lCSLrHAk8I="
 					},
 					"name": "update",
-					"route": "subscription-history/{id}",
+					"route": "subscription-history/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{

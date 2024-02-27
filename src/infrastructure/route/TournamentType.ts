@@ -10,8 +10,8 @@ export const tournamenttypeRouter = tournamenttypeRoutes();
  * POST /api/tournament-type
  * @tags TournamentType
  * @security BearerAuth
- * @summary Créer un TournamentType (addTournamentType)
- * @param {TournamentTypeRequestDTO} request.body
+ * @summary Create TournamentType (addTournamentType)
+ * @param {TournamentTypeRequestDTO} request.body 
  * @return {TournamentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -21,10 +21,7 @@ export const tournamenttypeRouter = tournamenttypeRoutes();
  * GET /api/tournament-type
  * @tags TournamentType
  * @security BearerAuth
- * @summary Créer un TournamentType (getAllTournamentType)
- * @param {TournamentTypeRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List TournamentType (getAllTournamentType) 
  * @return {TournamentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

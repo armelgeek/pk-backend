@@ -10,10 +10,7 @@ export const partenerRouter = partenerRoutes();
  * GET /api/partener
  * @tags Partener
  * @security BearerAuth
- * @summary Créer un Partener (getAllPartener)
- * @param {PartenerRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Partener (getAllPartener) 
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,8 +20,8 @@ export const partenerRouter = partenerRoutes();
  * POST /api/partener
  * @tags Partener
  * @security BearerAuth
- * @summary Créer un Partener (addPartener)
- * @param {PartenerRequestDTO} request.body
+ * @summary Create Partener (addPartener)
+ * @param {PartenerRequestDTO} request.body 
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,10 +31,10 @@ export const partenerRouter = partenerRoutes();
  * PUT /api/partener/partialUpdate/{id}
  * @tags Partener
  * @security BearerAuth
- * @summary Créer un Partener (updatePartener)
+ * @summary Update Partener (updatePartener)
  * @param {PartenerRequestDTO} request.body
- * @param {string} id.path.required
- * @return {PartenerResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -46,9 +43,7 @@ export const partenerRouter = partenerRoutes();
  * GET /api/partener/{id}
  * @tags Partener
  * @security BearerAuth
- * @summary Créer un Partener (getPartener)
- * @param {PartenerRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List Partener (getPartener) 
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -58,10 +53,8 @@ export const partenerRouter = partenerRoutes();
  * DELETE /api/partener/{id}
  * @tags Partener
  * @security BearerAuth
- * @summary Créer un Partener (deletePartener)
- * @param {PartenerRequestDTO} request.body
- * @param {string} id.path.required
- * @return {PartenerResponseDTO} 201
+ * @summary Remove Partener (deletePartener) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

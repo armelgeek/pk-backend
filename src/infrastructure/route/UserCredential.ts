@@ -10,10 +10,7 @@ export const usercredentialRouter = usercredentialRoutes();
  * GET /api/users-credential
  * @tags UserCredential
  * @security BearerAuth
- * @summary Créer un UserCredential (getAllUserCredential)
- * @param {UserCredentialRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List UserCredential (getAllUserCredential) 
  * @return {UserCredentialResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,10 +20,8 @@ export const usercredentialRouter = usercredentialRoutes();
  * DELETE /api/user-credential/{id}
  * @tags UserCredential
  * @security BearerAuth
- * @summary Créer un UserCredential (deleteUserCredential)
- * @param {UserCredentialRequestDTO} request.body
- * @param {string} id.path.required
- * @return {UserCredentialResponseDTO} 201
+ * @summary Remove UserCredential (deleteUserCredential) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -35,10 +30,10 @@ export const usercredentialRouter = usercredentialRoutes();
  * PUT /api/user-credential/partialUpdate/{id}
  * @tags UserCredential
  * @security BearerAuth
- * @summary Créer un UserCredential (updateUserCredential)
+ * @summary Update UserCredential (updateUserCredential)
  * @param {UserCredentialRequestDTO} request.body
- * @param {string} id.path.required
- * @return {UserCredentialResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -47,9 +42,7 @@ export const usercredentialRouter = usercredentialRoutes();
  * GET /api/user-credential/{id}
  * @tags UserCredential
  * @security BearerAuth
- * @summary Créer un UserCredential (getUserCredential)
- * @param {UserCredentialRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List UserCredential (getUserCredential) 
  * @return {UserCredentialResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -59,8 +52,8 @@ export const usercredentialRouter = usercredentialRoutes();
  * POST /api/user-credential
  * @tags UserCredential
  * @security BearerAuth
- * @summary Créer un UserCredential (addUserCredential)
- * @param {UserCredentialRequestDTO} request.body
+ * @summary Create UserCredential (addUserCredential)
+ * @param {UserCredentialRequestDTO} request.body 
  * @return {UserCredentialResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

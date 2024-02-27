@@ -10,10 +10,7 @@ export const linkRouter = linkRoutes();
  * GET /api/link
  * @tags Link
  * @security BearerAuth
- * @summary Créer un Link (getAllLink)
- * @param {LinkRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Link (getAllLink) 
  * @return {LinkResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,8 +20,8 @@ export const linkRouter = linkRoutes();
  * POST /api/link
  * @tags Link
  * @security BearerAuth
- * @summary Créer un Link (addLink)
- * @param {LinkRequestDTO} request.body
+ * @summary Create Link (addLink)
+ * @param {LinkRequestDTO} request.body 
  * @return {LinkResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,10 +31,8 @@ export const linkRouter = linkRoutes();
  * DELETE /api/link/{id}
  * @tags Link
  * @security BearerAuth
- * @summary Créer un Link (deleteLink)
- * @param {LinkRequestDTO} request.body
- * @param {string} id.path.required
- * @return {LinkResponseDTO} 201
+ * @summary Remove Link (deleteLink) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -46,10 +41,10 @@ export const linkRouter = linkRoutes();
  * PUT /api/link/partialUpdate/{id}
  * @tags Link
  * @security BearerAuth
- * @summary Créer un Link (updateLink)
+ * @summary Update Link (updateLink)
  * @param {LinkRequestDTO} request.body
- * @param {string} id.path.required
- * @return {LinkResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

@@ -10,10 +10,7 @@ export const sponsorRouter = sponsorRoutes();
  * GET /api/sponsor
  * @tags Sponsor
  * @security BearerAuth
- * @summary Créer un Sponsor (getAllSponsor)
- * @param {SponsorRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Sponsor (getAllSponsor) 
  * @return {SponsorResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,8 +20,8 @@ export const sponsorRouter = sponsorRoutes();
  * POST /api/sponsor
  * @tags Sponsor
  * @security BearerAuth
- * @summary Créer un Sponsor (addSponsor)
- * @param {SponsorRequestDTO} request.body
+ * @summary Create Sponsor (addSponsor)
+ * @param {SponsorRequestDTO} request.body 
  * @return {SponsorResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,10 +31,10 @@ export const sponsorRouter = sponsorRoutes();
  * PUT /api/sponsor/partialUpdate/{id}
  * @tags Sponsor
  * @security BearerAuth
- * @summary Créer un Sponsor (updateSponsor)
+ * @summary Update Sponsor (updateSponsor)
  * @param {SponsorRequestDTO} request.body
- * @param {string} id.path.required
- * @return {SponsorResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -46,9 +43,7 @@ export const sponsorRouter = sponsorRoutes();
  * GET /api/sponsor/{id}
  * @tags Sponsor
  * @security BearerAuth
- * @summary Créer un Sponsor (getSponsor)
- * @param {SponsorRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List Sponsor (getSponsor) 
  * @return {SponsorResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -58,10 +53,8 @@ export const sponsorRouter = sponsorRoutes();
  * DELETE /api/sponsor/{id}
  * @tags Sponsor
  * @security BearerAuth
- * @summary Créer un Sponsor (deleteSponsor)
- * @param {SponsorRequestDTO} request.body
- * @param {string} id.path.required
- * @return {SponsorResponseDTO} 201
+ * @summary Remove Sponsor (deleteSponsor) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

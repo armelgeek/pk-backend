@@ -10,10 +10,7 @@ export const messageRouter = messageRoutes();
  * GET /api/message
  * @tags Message
  * @security BearerAuth
- * @summary Créer un Message (getAllMessage)
- * @param {MessageRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Message (getAllMessage) 
  * @return {MessageResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

@@ -10,12 +10,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (getAllUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
- * @param {string} data.query
- * @param {string} TemplateParameter1.path.required
+ * @summary List Utilisateur (getAllUtilisateur) 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -25,9 +20,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * DELETE /api/utilisateur/
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (deleteUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
- * @return {UtilisateurResponseDTO} 201
+ * @summary Remove Utilisateur (deleteUtilisateur) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -36,9 +30,9 @@ export const utilisateurRouter = utilisateurRoutes();
  * PUT /api/utilisateur/partialUpdate/
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (updateUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
- * @return {UtilisateurResponseDTO} 201
+ * @summary Update Utilisateur (updateUtilisateur)
+ * @param {UtilisateurRequestDTO} request.body 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -47,8 +41,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur/
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (getUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
+ * @summary List Utilisateur (getUtilisateur) 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -58,8 +51,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * GET /api/utilisateur/count
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (countUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
+ * @summary List Utilisateur (countUtilisateur) 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -69,8 +61,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * POST /api/inscription
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (inscriptionUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
+ * @summary Create Utilisateur (inscriptionUtilisateur)
+ * @param {UtilisateurRequestDTO} request.body 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -80,8 +72,8 @@ export const utilisateurRouter = utilisateurRoutes();
  * POST /api/authentification
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (signinUtilisateur)
- * @param {SignInRequestDTO} request.body
+ * @summary Create Utilisateur (signinUtilisateur)
+ * @param {SignInRequestDTO} request.body 
  * @return {UtilisateurResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -91,9 +83,9 @@ export const utilisateurRouter = utilisateurRoutes();
  * PUT /api/users/to-active
  * @tags Utilisateur
  * @security BearerAuth
- * @summary Créer un Utilisateur (toActiveUtilisateur)
- * @param {UtilisateurRequestDTO} request.body
- * @return {UtilisateurResponseDTO} 201
+ * @summary Update Utilisateur (toActiveUtilisateur)
+ * @param {UtilisateurRequestDTO} request.body 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

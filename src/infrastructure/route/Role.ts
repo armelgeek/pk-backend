@@ -10,8 +10,8 @@ export const roleRouter = roleRoutes();
  * POST /api/role
  * @tags Role
  * @security BearerAuth
- * @summary Créer un Role (addRole)
- * @param {RoleRequestDTO} request.body
+ * @summary Create Role (addRole)
+ * @param {RoleRequestDTO} request.body 
  * @return {RoleResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -21,10 +21,7 @@ export const roleRouter = roleRoutes();
  * GET /api/role
  * @tags Role
  * @security BearerAuth
- * @summary Créer un Role (getAllRole)
- * @param {RoleRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Role (getAllRole) 
  * @return {RoleResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

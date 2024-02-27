@@ -10,10 +10,7 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * GET /api/user-subscription
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Créer un UserSubscription (getAllUserSubscription)
- * @param {UserSubscriptionRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List UserSubscription (getAllUserSubscription) 
  * @return {UserSubscriptionResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,10 +20,8 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * DELETE /api/user-subscription/{id}
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Créer un UserSubscription (deleteUserSubscription)
- * @param {UserSubscriptionRequestDTO} request.body
- * @param {string} id.path.required
- * @return {UserSubscriptionResponseDTO} 201
+ * @summary Remove UserSubscription (deleteUserSubscription) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -35,10 +30,10 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * PUT /api/user-subscription/partialUpdate/{id}
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Créer un UserSubscription (updateUserSubscription)
+ * @summary Update UserSubscription (updateUserSubscription)
  * @param {UserSubscriptionRequestDTO} request.body
- * @param {string} id.path.required
- * @return {UserSubscriptionResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -47,9 +42,7 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * GET /api/user-subscription/{id}
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Créer un UserSubscription (getUserSubscription)
- * @param {UserSubscriptionRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List UserSubscription (getUserSubscription) 
  * @return {UserSubscriptionResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -59,8 +52,8 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  * POST /api/user-subscription
  * @tags UserSubscription
  * @security BearerAuth
- * @summary Créer un UserSubscription (addUserSubscription)
- * @param {UserSubscriptionRequestDTO} request.body
+ * @summary Create UserSubscription (addUserSubscription)
+ * @param {UserSubscriptionRequestDTO} request.body 
  * @return {UserSubscriptionResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

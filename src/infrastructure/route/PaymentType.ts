@@ -10,10 +10,7 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * GET /api/payments-type
  * @tags PaymentType
  * @security BearerAuth
- * @summary Créer un PaymentType (getAllPaymentType)
- * @param {PaymentTypeRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List PaymentType (getAllPaymentType) 
  * @return {PaymentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,10 +20,10 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * PUT /api/payment-type/partialUpdate/{id}
  * @tags PaymentType
  * @security BearerAuth
- * @summary Créer un PaymentType (updatePaymentType)
+ * @summary Update PaymentType (updatePaymentType)
  * @param {PaymentTypeRequestDTO} request.body
- * @param {string} id.path.required
- * @return {PaymentTypeResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -35,9 +32,7 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * GET /api/payment-type/{id}
  * @tags PaymentType
  * @security BearerAuth
- * @summary Créer un PaymentType (getPaymentType)
- * @param {PaymentTypeRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List PaymentType (getPaymentType) 
  * @return {PaymentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -47,10 +42,8 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * DELETE /api/payment-type/{id}
  * @tags PaymentType
  * @security BearerAuth
- * @summary Créer un PaymentType (deletePaymentType)
- * @param {PaymentTypeRequestDTO} request.body
- * @param {string} id.path.required
- * @return {PaymentTypeResponseDTO} 201
+ * @summary Remove PaymentType (deletePaymentType) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -59,8 +52,8 @@ export const paymenttypeRouter = paymenttypeRoutes();
  * POST /api/payments-type
  * @tags PaymentType
  * @security BearerAuth
- * @summary Créer un PaymentType (addPaymentType)
- * @param {PaymentTypeRequestDTO} request.body
+ * @summary Create PaymentType (addPaymentType)
+ * @param {PaymentTypeRequestDTO} request.body 
  * @return {PaymentTypeResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

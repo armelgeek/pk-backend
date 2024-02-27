@@ -10,8 +10,8 @@ export const commentRouter = commentRoutes();
  * POST /api/comment
  * @tags Comment
  * @security BearerAuth
- * @summary Créer un Comment (addComment)
- * @param {CommentRequestDTO} request.body
+ * @summary Create Comment (addComment)
+ * @param {CommentRequestDTO} request.body 
  * @return {CommentResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -21,10 +21,7 @@ export const commentRouter = commentRoutes();
  * GET /api/comment
  * @tags Comment
  * @security BearerAuth
- * @summary Créer un Comment (getAllComment)
- * @param {CommentRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Comment (getAllComment) 
  * @return {CommentResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,10 +31,8 @@ export const commentRouter = commentRoutes();
  * DELETE /api/comment/{id}
  * @tags Comment
  * @security BearerAuth
- * @summary Créer un Comment (deleteComment)
- * @param {CommentRequestDTO} request.body
- * @param {string} id.path.required
- * @return {CommentResponseDTO} 201
+ * @summary Remove Comment (deleteComment) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -46,10 +41,10 @@ export const commentRouter = commentRoutes();
  * PUT /api/comment/partialUpdate/{id}
  * @tags Comment
  * @security BearerAuth
- * @summary Créer un Comment (updateComment)
+ * @summary Update Comment (updateComment)
  * @param {CommentRequestDTO} request.body
- * @param {string} id.path.required
- * @return {CommentResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -58,9 +53,7 @@ export const commentRouter = commentRoutes();
  * GET /api/comment/{id}
  * @tags Comment
  * @security BearerAuth
- * @summary Créer un Comment (getComment)
- * @param {CommentRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List Comment (getComment) 
  * @return {CommentResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

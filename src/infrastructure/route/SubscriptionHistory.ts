@@ -10,10 +10,7 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * GET /api/subscriptions-history
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Créer un SubscriptionHistory (getAllSubscriptionHistory)
- * @param {SubscriptionHistoryRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List SubscriptionHistory (getAllSubscriptionHistory) 
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,10 +20,8 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * DELETE /api/subscription-history/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Créer un SubscriptionHistory (deleteSubscriptionHistory)
- * @param {SubscriptionHistoryRequestDTO} request.body
- * @param {string} id.path.required
- * @return {SubscriptionHistoryResponseDTO} 201
+ * @summary Remove SubscriptionHistory (deleteSubscriptionHistory) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -35,10 +30,10 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * PUT /api/subscription-history/partialUpdate/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Créer un SubscriptionHistory (updateSubscriptionHistory)
+ * @summary Update SubscriptionHistory (updateSubscriptionHistory)
  * @param {SubscriptionHistoryRequestDTO} request.body
- * @param {string} id.path.required
- * @return {SubscriptionHistoryResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -47,9 +42,7 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * GET /api/subscription-history/{id}
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Créer un SubscriptionHistory (getSubscriptionHistory)
- * @param {SubscriptionHistoryRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List SubscriptionHistory (getSubscriptionHistory) 
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -59,8 +52,8 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * POST /api/subscription-history
  * @tags SubscriptionHistory
  * @security BearerAuth
- * @summary Créer un SubscriptionHistory (addSubscriptionHistory)
- * @param {SubscriptionHistoryRequestDTO} request.body
+ * @summary Create SubscriptionHistory (addSubscriptionHistory)
+ * @param {SubscriptionHistoryRequestDTO} request.body 
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

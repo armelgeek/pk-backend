@@ -10,10 +10,7 @@ export const langueRouter = langueRoutes();
  * GET /api/langues
  * @tags Langue
  * @security BearerAuth
- * @summary Créer un Langue (getAllLangue)
- * @param {LangueRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Langue (getAllLangue) 
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,8 +20,8 @@ export const langueRouter = langueRoutes();
  * POST /api/langue
  * @tags Langue
  * @security BearerAuth
- * @summary Créer un Langue (addLangue)
- * @param {LangueRequestDTO} request.body
+ * @summary Create Langue (addLangue)
+ * @param {LangueRequestDTO} request.body 
  * @return {LangueResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,9 +31,8 @@ export const langueRouter = langueRoutes();
  * DELETE /api/langue
  * @tags Langue
  * @security BearerAuth
- * @summary Créer un Langue (deleteLangue)
- * @param {LangueRequestDTO} request.body
- * @return {LangueResponseDTO} 201
+ * @summary Remove Langue (deleteLangue) 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -45,9 +41,9 @@ export const langueRouter = langueRoutes();
  * PUT /api/langue
  * @tags Langue
  * @security BearerAuth
- * @summary Créer un Langue (updateLangue)
- * @param {LangueRequestDTO} request.body
- * @return {LangueResponseDTO} 201
+ * @summary Update Langue (updateLangue)
+ * @param {LangueRequestDTO} request.body 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

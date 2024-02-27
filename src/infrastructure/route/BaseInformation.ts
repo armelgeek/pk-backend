@@ -10,10 +10,7 @@ export const baseinformationRouter = baseinformationRoutes();
  * GET /api/base-informations
  * @tags BaseInformation
  * @security BearerAuth
- * @summary Créer un BaseInformation (getAllBaseInformation)
- * @param {BaseInformationRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List BaseInformation (getAllBaseInformation) 
  * @return {BaseInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -23,9 +20,7 @@ export const baseinformationRouter = baseinformationRoutes();
  * GET /api/base-information/{id}
  * @tags BaseInformation
  * @security BearerAuth
- * @summary Créer un BaseInformation (getBaseInformation)
- * @param {BaseInformationRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List BaseInformation (getBaseInformation) 
  * @return {BaseInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -35,8 +30,8 @@ export const baseinformationRouter = baseinformationRoutes();
  * POST /api/base-information
  * @tags BaseInformation
  * @security BearerAuth
- * @summary Créer un BaseInformation (addBaseInformation)
- * @param {BaseInformationRequestDTO} request.body
+ * @summary Create BaseInformation (addBaseInformation)
+ * @param {BaseInformationRequestDTO} request.body 
  * @return {BaseInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -46,10 +41,10 @@ export const baseinformationRouter = baseinformationRoutes();
  * PUT /api/base-information/partialUpdate/{id}
  * @tags BaseInformation
  * @security BearerAuth
- * @summary Créer un BaseInformation (updateBaseInformation)
+ * @summary Update BaseInformation (updateBaseInformation)
  * @param {BaseInformationRequestDTO} request.body
- * @param {string} id.path.required
- * @return {BaseInformationResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

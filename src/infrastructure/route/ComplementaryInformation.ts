@@ -10,9 +10,7 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * GET /api/complementary-information/{id}
  * @tags ComplementaryInformation
  * @security BearerAuth
- * @summary Créer un ComplementaryInformation (getComplementaryInformation)
- * @param {ComplementaryInformationRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List ComplementaryInformation (getComplementaryInformation) 
  * @return {ComplementaryInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -22,9 +20,7 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * GET /api/complementary-information/{id}
  * @tags ComplementaryInformation
  * @security BearerAuth
- * @summary Créer un ComplementaryInformation (getComplementaryInformation)
- * @param {ComplementaryInformationRequestDTO} request.body
- * @param {string} id.path.required
+ * @summary List ComplementaryInformation (getComplementaryInformation) 
  * @return {ComplementaryInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -34,8 +30,8 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * POST /api/complementary-information
  * @tags ComplementaryInformation
  * @security BearerAuth
- * @summary Créer un ComplementaryInformation (addComplementaryInformation)
- * @param {ComplementaryInformationRequestDTO} request.body
+ * @summary Create ComplementaryInformation (addComplementaryInformation)
+ * @param {ComplementaryInformationRequestDTO} request.body 
  * @return {ComplementaryInformationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -45,10 +41,10 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * PUT /api/complementary-information/partialUpdate/{id}
  * @tags ComplementaryInformation
  * @security BearerAuth
- * @summary Créer un ComplementaryInformation (updateComplementaryInformation)
+ * @summary Update ComplementaryInformation (updateComplementaryInformation)
  * @param {ComplementaryInformationRequestDTO} request.body
- * @param {string} id.path.required
- * @return {ComplementaryInformationResponseDTO} 201
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

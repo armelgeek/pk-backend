@@ -10,8 +10,8 @@ export const confindialityRouter = confindialityRoutes();
  * POST /api/confindiality
  * @tags Confindiality
  * @security BearerAuth
- * @summary Créer un Confindiality (addConfindiality)
- * @param {ConfindialityRequestDTO} request.body
+ * @summary Create Confindiality (addConfindiality)
+ * @param {ConfindialityRequestDTO} request.body 
  * @return {ConfindialityResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -21,9 +21,7 @@ export const confindialityRouter = confindialityRoutes();
  * GET /api/confindiality/{profileId}
  * @tags Confindiality
  * @security BearerAuth
- * @summary Créer un Confindiality (getConfindiality)
- * @param {ConfindialityRequestDTO} request.body
- * @param {string} profileId.path.required
+ * @summary List Confindiality (getConfindiality) 
  * @return {ConfindialityResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

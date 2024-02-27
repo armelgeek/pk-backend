@@ -10,8 +10,8 @@ export const publicationRouter = publicationRoutes();
  * POST /api/publication
  * @tags Publication
  * @security BearerAuth
- * @summary Créer un Publication (addPublication)
- * @param {PublicationRequestDTO} request.body
+ * @summary Create Publication (addPublication)
+ * @param {PublicationRequestDTO} request.body 
  * @return {PublicationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -21,10 +21,7 @@ export const publicationRouter = publicationRoutes();
  * GET /api/publication
  * @tags Publication
  * @security BearerAuth
- * @summary Créer un Publication (getAllPublication)
- * @param {PublicationRequestDTO} request.body
- * @param {number} page.query
- * @param {number} rowPerPage.query
+ * @summary List Publication (getAllPublication) 
  * @return {PublicationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

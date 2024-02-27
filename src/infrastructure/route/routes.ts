@@ -9,7 +9,7 @@ import { baseinformationRouter } from './BaseInformation';
 import { profileRouter } from './Profile';
 import { sponsorRouter } from './Sponsor';
 import { partenerRouter } from './Partener';
-import { linksRouter } from './Links';
+import { linkRouter } from './Link';
 import { casinoprofileRouter } from './CasinoProfile';
 import { casinoprofileadditionalRouter } from './CasinoProfileAdditional';
 import { pseudoRouter } from './Pseudo';
@@ -40,7 +40,7 @@ export const routes = () => {
  router.use('/profile', profileRouter);
  router.use('/sponsor', sponsorRouter);
  router.use('/partener', partenerRouter);
- router.use('/Links', linksRouter);
+ router.use('/link', linkRouter);
  router.use('/casino-profile', casinoprofileRouter);
  router.use('/casino-profile-additional', casinoprofileadditionalRouter);
  router.use('/pseudo', pseudoRouter);

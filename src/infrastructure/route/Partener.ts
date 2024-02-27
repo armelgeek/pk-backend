@@ -7,7 +7,7 @@ const partenerRoutes = () => genericRoute({ controller: partenerController, sche
 export const partenerRouter = partenerRoutes();
 
 /**
- * GET /api/parteners
+ * GET /api/partener
  * @tags Partener
  * @security BearerAuth
  * @summary Créer un Partener (getAllPartener)
@@ -25,6 +25,42 @@ export const partenerRouter = partenerRoutes();
  * @security BearerAuth
  * @summary Créer un Partener (addPartener)
  * @param {PartenerRequestDTO} request.body
+ * @return {PartenerResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/partener/{id}
+ * @tags Partener
+ * @security BearerAuth
+ * @summary Créer un Partener (updatePartener)
+ * @param {PartenerRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {PartenerResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/partener/{id}
+ * @tags Partener
+ * @security BearerAuth
+ * @summary Créer un Partener (getPartener)
+ * @param {PartenerRequestDTO} request.body
+ * @param {string} id.path.required
+ * @return {PartenerResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * DELETE /api/partener/{id}
+ * @tags Partener
+ * @security BearerAuth
+ * @summary Créer un Partener (deletePartener)
+ * @param {PartenerRequestDTO} request.body
+ * @param {string} id.path.required
  * @return {PartenerResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

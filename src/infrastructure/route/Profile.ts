@@ -43,7 +43,7 @@ export const profileRouter = profileRoutes();
  */
 
 /**
- * PUT /api/profile/{id}
+ * PUT /api/profile/partialUpdate/{id}
  * @tags Profile
  * @security BearerAuth
  * @summary Créer un Profile (updateProfile)

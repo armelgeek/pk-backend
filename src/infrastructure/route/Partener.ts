@@ -31,7 +31,7 @@ export const partenerRouter = partenerRoutes();
  */
 
 /**
- * PUT /api/partener/{id}
+ * PUT /api/partener/partialUpdate/{id}
  * @tags Partener
  * @security BearerAuth
  * @summary Créer un Partener (updatePartener)

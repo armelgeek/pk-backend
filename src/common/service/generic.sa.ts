@@ -53,8 +53,7 @@ export abstract class GenericSA<
     try {
 
       const result = await this.serviceSM.partialUpdate(new ObjectID(id), toObjectID(partialEntity, this.name));
-
-      return this.factory.toResponseDto(result);
+      return { id, update: result?.ok };
     } catch (error) {
       return Promise.reject(error);
     }

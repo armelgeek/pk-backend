@@ -31,7 +31,7 @@ export const sponsorRouter = sponsorRoutes();
  */
 
 /**
- * PUT /api/sponsor/{id}
+ * PUT /api/sponsor/partialUpdate/{id}
  * @tags Sponsor
  * @security BearerAuth
  * @summary Créer un Sponsor (updateSponsor)

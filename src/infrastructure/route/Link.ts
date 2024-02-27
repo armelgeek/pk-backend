@@ -43,7 +43,7 @@ export const linkRouter = linkRoutes();
  */
 
 /**
- * PUT /api/link/{id}
+ * PUT /api/link/partialUpdate/{id}
  * @tags Link
  * @security BearerAuth
  * @summary Créer un Link (updateLink)

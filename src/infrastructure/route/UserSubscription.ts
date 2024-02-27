@@ -32,7 +32,7 @@ export const usersubscriptionRouter = usersubscriptionRoutes();
  */
 
 /**
- * PUT /api/user-subscription/{id}
+ * PUT /api/user-subscription/partialUpdate/{id}
  * @tags UserSubscription
  * @security BearerAuth
  * @summary Créer un UserSubscription (updateUserSubscription)

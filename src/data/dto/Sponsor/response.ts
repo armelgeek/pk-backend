@@ -2,6 +2,8 @@ export type SponsorResponseDTO = {
    name?: string;
    logo?: string;
    description?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -10,5 +12,8 @@ export type SponsorResponseDTO = {
  * @property {string} name
  * @property {string} logo
  * @property {string} description
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -9,11 +9,11 @@ export class ParrainageDO {
   Attribute1: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
-  createdDate: Date;
+  createdAt: Date;
 
   @BeforeInsert()
   beforeInsert() {
-    this.createdDate = new Date();
+    this.createdAt = new Date();
   }
 }
 

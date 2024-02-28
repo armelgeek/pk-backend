@@ -180,4 +180,21 @@ export class GenericController<
       next(error);
     }
   };
+
+  /**
+   * WS managing the count elements of an entity
+   */
+  count = async (req, res, next) => {
+    const { query } = req;
+    try {
+      const params = await this.serviceSA.count(query);
+
+      res.locals.data = params;
+      res.locals.statusCode = HttpStatus.OK;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
 }

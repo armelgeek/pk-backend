@@ -36,7 +36,8 @@ export const genericRoute = (option: RouteOption) => {
       controller.update,
       responseFormatter,
     );
-
+  
+  router.get('/count/elements', conditionnalJwtPassport(isSecured, name), controller.count, responseFormatter);
   router.get('/find/one', conditionnalJwtPassport(isSecured, name), controller.findOne, responseFormatter);
 
   router.put(

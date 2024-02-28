@@ -1,6 +1,8 @@
 export type PaymentTypeResponseDTO = {
    name: string;
    logo?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -8,5 +10,8 @@ export type PaymentTypeResponseDTO = {
  * @typedef {object} PaymentTypeResponseDTO
  * @property {string} name
  * @property {string} logo
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

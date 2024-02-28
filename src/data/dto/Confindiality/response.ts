@@ -10,6 +10,8 @@ export type ConfindialityResponseDTO = {
    sponsors?: string;
    partner?: string;
    profileId?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -26,5 +28,8 @@ export type ConfindialityResponseDTO = {
  * @property {string} sponsors
  * @property {string} partner
  * @property {string} profileId
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

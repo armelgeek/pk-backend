@@ -1,6 +1,8 @@
 export type LangueResponseDTO = {
    code?: string;
    nom?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -8,5 +10,8 @@ export type LangueResponseDTO = {
  * @typedef {object} LangueResponseDTO
  * @property {string} code
  * @property {string} nom
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

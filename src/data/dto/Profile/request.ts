@@ -3,7 +3,6 @@ export type ProfileRequestDTO = {
    photo?: string;
    cover?: string;
    type?: string;
-   pays?: string;
    email?: string;
    phone?: string;
    date_of_birth?: string;
@@ -23,7 +22,6 @@ export type ProfileRequestDTO = {
  * @property {string} photo
  * @property {string} cover
  * @property {string} type
- * @property {string} pays
  * @property {string} email
  * @property {string} phone
  * @property {string} date_of_birth

@@ -16,6 +16,8 @@ export type CasinoProfileAdditionalResponseDTO = {
    links?: string[];
    profileId?: string;
    type?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -38,5 +40,8 @@ export type CasinoProfileAdditionalResponseDTO = {
  * @property {array<string>} links
  * @property {string} profileId
  * @property {string} type
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

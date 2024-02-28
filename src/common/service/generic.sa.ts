@@ -1,4 +1,4 @@
-import { FindConditions, MongoRepository } from 'typeorm';
+import { FindConditions, MongoRepository, ObjectLiteral } from 'typeorm';
 import { ObjectID } from 'mongodb';
 
 import { GenericFactory } from '../constraint/factory/generic.factory';
@@ -348,6 +348,16 @@ export abstract class GenericSA<
           ? { hasNext: take * (skip / take + 1) < totalCount }
           : {}),
       };
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async count(query: ObjectLiteral): Promise<number> {
+    try {
+      const result = await this.serviceSM.count(toObjectID(query, this.name));
+
+      return result;
     } catch (error) {
       return Promise.reject(error);
     }

@@ -1,6 +1,5 @@
 export type CommentResponseDTO = {
    content?: string;
-   createdAt?: string;
    parent?: string;
    hideFor?: string[];
    target?: string;
@@ -11,13 +10,14 @@ export type CommentResponseDTO = {
    veryhappy?: string[];
    media?: string;
    type?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
 /**
  * @typedef {object} CommentResponseDTO
  * @property {string} content
- * @property {string} createdAt
  * @property {string} parent
  * @property {array<string>} hideFor
  * @property {string} target
@@ -28,5 +28,8 @@ export type CommentResponseDTO = {
  * @property {array<string>} veryhappy
  * @property {string} media
  * @property {string} type
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

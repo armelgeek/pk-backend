@@ -19,3 +19,12 @@ export type UpdateResponseDTO = {
  * @property {boolean} update
  * @property {string} id
  */
+
+export type CountResponseDTO = {
+   count: string;
+}
+
+/**
+ * @typedef {object} CountResponseDTO
+ * @property {number} count
+ */

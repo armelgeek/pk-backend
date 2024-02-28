@@ -3,6 +3,8 @@ export type NotificationResponseDTO = {
    message?: string;
    tous?: boolean;
    usersIds?: string[];
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -12,5 +14,8 @@ export type NotificationResponseDTO = {
  * @property {string} message
  * @property {boolean} tous
  * @property {array<string>} usersIds
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

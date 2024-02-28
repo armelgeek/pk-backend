@@ -1,6 +1,8 @@
 export type SocialMediaResponseDTO = {
    name?: string;
    base_url?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -8,5 +10,8 @@ export type SocialMediaResponseDTO = {
  * @typedef {object} SocialMediaResponseDTO
  * @property {string} name
  * @property {string} base_url
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

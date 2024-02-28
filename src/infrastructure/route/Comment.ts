@@ -66,3 +66,15 @@ export const commentRouter = commentRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * GET /api/comment/count/elements
+ * @tags Comment
+ * @security BearerAuth
+ * @summary List Comment (countComment)
+ 
+ * @param {string} target.query 
+ * @return {CountResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

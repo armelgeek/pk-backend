@@ -3,6 +3,8 @@ export type LocationResponseDTO = {
    longitude?: number;
    latitude?: number;
    altitude?: number;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -12,5 +14,8 @@ export type LocationResponseDTO = {
  * @property {number} longitude
  * @property {number} latitude
  * @property {number} altitude
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -10,6 +10,8 @@ export type CasinoProfileResponseDTO = {
    profileId?: string;
    type?: string;
    verifications?: string[];
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -26,5 +28,8 @@ export type CasinoProfileResponseDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {array<string>} verifications
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -168,7 +168,7 @@ export class UtilisateurSA extends GenericSA<
     try {
       // const data = await this.serviceSM.getDateInscription(minDate, maxDate);
 
-      // return data.map(({ createdDate }) => formatToShortFormat(createdDate));
+      // return data.map(({ createdAt }) => formatToShortFormat(createdAt));
       return "";
     } catch (error) {
       return Promise.reject(error);

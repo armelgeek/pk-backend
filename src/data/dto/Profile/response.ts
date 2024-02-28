@@ -3,7 +3,6 @@ export type ProfileResponseDTO = {
    photo?: string;
    cover?: string;
    type?: string;
-   pays?: string;
    email?: string;
    phone?: string;
    date_of_birth?: string;
@@ -15,6 +14,8 @@ export type ProfileResponseDTO = {
    children?: string;
    description?: string;
    nom?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -24,7 +25,6 @@ export type ProfileResponseDTO = {
  * @property {string} photo
  * @property {string} cover
  * @property {string} type
- * @property {string} pays
  * @property {string} email
  * @property {string} phone
  * @property {string} date_of_birth
@@ -36,5 +36,8 @@ export type ProfileResponseDTO = {
  * @property {string} children
  * @property {string} description
  * @property {string} nom
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

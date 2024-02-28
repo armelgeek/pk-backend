@@ -5,6 +5,10 @@ export type PublicationResponseDTO = {
    profileId?: string;
    location?: string;
    private?: boolean;
+   like?: string[];
+   share?: string[];
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -16,5 +20,10 @@ export type PublicationResponseDTO = {
  * @property {string} profileId
  * @property {string} location
  * @property {boolean} private
+ * @property {array<string>} like
+ * @property {array<string>} share
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

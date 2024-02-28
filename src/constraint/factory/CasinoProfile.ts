@@ -14,7 +14,8 @@ const schema = { ...commonSchema };
 const responseSchema = {
   ...commonSchema,
   id: '_id',
-  createdDate: { path: 'createdDate', fn: (value) => formatDateToLocaleWithHour(value) },
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
 };
 
 export class CasinoProfileFactory extends GenericFactory<

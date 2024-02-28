@@ -3,6 +3,8 @@ export type SubscriptionHistoryResponseDTO = {
    end: string;
    userId: string;
    subscriptionOfferId: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -12,5 +14,8 @@ export type SubscriptionHistoryResponseDTO = {
  * @property {string} end
  * @property {string} userId
  * @property {string} subscriptionOfferId
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -8,6 +8,8 @@ export type ComplementaryInformationResponseDTO = {
    nb_titre?: number;
    rang_time_money?: string;
    period?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -22,5 +24,8 @@ export type ComplementaryInformationResponseDTO = {
  * @property {number} nb_titre
  * @property {string} rang_time_money
  * @property {string} period
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -15,6 +15,8 @@ export type PrivateEventResponseDTO = {
    private?: boolean;
    userList?: string[];
    profile?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -36,5 +38,8 @@ export type PrivateEventResponseDTO = {
  * @property {boolean} private
  * @property {array<string>} userList
  * @property {string} profile
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

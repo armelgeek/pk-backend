@@ -2,8 +2,8 @@ import {
   DeepPartial,
   FindConditions,
   FindManyOptions,
-  getMongoRepository,
   MongoRepository,
+  ObjectLiteral,
 } from 'typeorm';
 import { ObjectID } from 'mongodb';
 import { HttpStatus } from '../../data/constants/http-status';
@@ -17,7 +17,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async create(entity: DeepPartial<TDo>): Promise<any> {
-    return await this.repository.save(entity);
+    return await this.repository.save({...entity, createdAt: new Date()});
   }
 
   async partialUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
@@ -75,17 +75,14 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   findOneWithRelation(options): Promise<any> {
-    // return this.repository.findOneOrFail(option);
-    // return this.repository.findOne(option);
     const { where = {}, search, aggregate = [{ $match: {} }] } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
-    console.log(where);
-
+    const { userId, utilisateurId, profileId, ...match } = where;
     return this.repository
       .aggregate([
         { $match: aggregate_search },
         ...aggregate,
-        { $match: where },
+        { $match: match },
         // relations,
       ])
       .toArray();
@@ -107,11 +104,12 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       aggregate = [{ $match: {} }],
     } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
+    const { userId, utilisateurId, profileId, ...whereOut } = where;
     return this.repository
       .aggregate([
         { $match: aggregate_search },
         ...aggregate,
-        { $match: where },
+        { $match: whereOut },
         { $sort: { nom: 1 } },
         {
           $facet: {
@@ -121,5 +119,9 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         },
       ])
       .toArray();
+  }
+
+  async count(query: ObjectLiteral): Promise<any> {
+    return await this.repository.count(query);
   }
 }

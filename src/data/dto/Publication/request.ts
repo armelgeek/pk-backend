@@ -5,6 +5,8 @@ export type PublicationRequestDTO = {
    profileId?: string;
    location?: string;
    private?: boolean;
+   like?: string[];
+   share?: string[];
 }
 
 /**
@@ -15,5 +17,7 @@ export type PublicationRequestDTO = {
  * @property {string} profileId
  * @property {string} location
  * @property {boolean} private
+ * @property {array<string>} like
+ * @property {array<string>} share
  */
 

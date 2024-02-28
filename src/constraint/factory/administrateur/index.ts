@@ -17,7 +17,7 @@ const schema = { ...commonSchema };
 const responseSchema = {
   ...commonSchema,
   id: '_id',
-  createdDate: { path: 'createdDate', fn: (value) => formatDateToLocaleWithHour(value) },
+  
 };
 
 export class AdministrateurFactory extends GenericFactory<

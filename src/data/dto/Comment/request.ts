@@ -1,6 +1,5 @@
 export type CommentRequestDTO = {
    content?: string;
-   createdAt?: string;
    parent?: string;
    hideFor?: string[];
    target?: string;
@@ -16,7 +15,6 @@ export type CommentRequestDTO = {
 /**
  * @typedef {object} CommentRequestDTO
  * @property {string} content
- * @property {string} createdAt
  * @property {string} parent
  * @property {array<string>} hideFor
  * @property {string} target

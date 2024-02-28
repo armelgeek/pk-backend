@@ -60,7 +60,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * @security BearerAuth
  * @summary List Utilisateur (countUtilisateur)
   
- * @return {UtilisateurResponseDTO} 201
+ * @return {CountResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

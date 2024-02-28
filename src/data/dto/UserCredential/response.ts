@@ -4,6 +4,8 @@ export type UserCredentialResponseDTO = {
    exp: string;
    userId: string;
    paymentTypeId: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -14,5 +16,8 @@ export type UserCredentialResponseDTO = {
  * @property {string} exp
  * @property {string} userId
  * @property {string} paymentTypeId
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

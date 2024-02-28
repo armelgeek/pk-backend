@@ -6,6 +6,8 @@ export type SubscriptionOfferResponseDTO = {
    isActive: boolean;
    duration?: number;
    type?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -18,5 +20,8 @@ export type SubscriptionOfferResponseDTO = {
  * @property {boolean} isActive
  * @property {number} duration
  * @property {string} type
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

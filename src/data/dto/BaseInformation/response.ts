@@ -12,6 +12,8 @@ export type BaseInformationResponseDTO = {
    situation?: string;
    children?: string;
    description?: string;
+  createdAt: Date;
+  updatedAt: Date;
   id: string;
 }
 
@@ -30,5 +32,8 @@ export type BaseInformationResponseDTO = {
  * @property {string} situation
  * @property {string} children
  * @property {string} description
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -72,22 +72,22 @@ export class EventDO {
   latReg: string;
 
   @Column({nullable: true, unique: false})
-  dealer: string;
+  dealer: boolean;
 
   @Column({nullable: true, unique: false})
-  timeClock: string;
+  timeClock: boolean;
 
   @Column({nullable: true, unique: false})
-  reEntry: string;
+  reEntry: boolean;
 
   @Column({nullable: true, unique: false})
-  memberCard: string;
+  memberCard: boolean;
 
   @Column({nullable: true, unique: false})
   prizePool: string;
 
   @Column({nullable: true, unique: false})
-  bounty: string;
+  bounty: boolean;
 
   @Column({nullable: true, unique: false})
   bountyText: string;
@@ -102,7 +102,7 @@ export class EventDO {
   gameType: string;
 
   @Column({nullable: true, unique: false})
-  jackpot: string;
+  jackpot: boolean;
 
   @Column({nullable: true, unique: false})
   jackpotText: string;
@@ -111,13 +111,13 @@ export class EventDO {
   buyin: string;
 
   @Column({nullable: true, unique: false})
-  bonus: string;
+  bonus: boolean;
 
   @Column({nullable: true, unique: false})
   bonusText: string;
 
   @Column({nullable: true, unique: false})
-  addon: string;
+  addon: boolean;
 
   @Column({nullable: true, unique: false})
   addonPrice: string;
@@ -132,7 +132,7 @@ export class EventDO {
   hotel: boolean;
 
   @Column({nullable: true, unique: false})
-  qualification: string;
+  qualification: boolean;
 
   @Column({nullable: true, unique: false})
   titleDay: string;

@@ -39,7 +39,7 @@ export type EventResponseDTO = {
    addon?: boolean;
    addonPrice?: string;
    nbParticipantMax?: string;
-   massage?: string;
+   massage?: boolean;
    hotel?: boolean;
    qualification?: boolean;
    titleDay?: string;
@@ -52,6 +52,7 @@ export type EventResponseDTO = {
    duration?: string;
    type?: string;
    limitRegBuy?: string;
+   status?: boolean;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -99,7 +100,7 @@ export type EventResponseDTO = {
  * @property {boolean} addon
  * @property {string} addonPrice
  * @property {string} nbParticipantMax
- * @property {string} massage
+ * @property {boolean} massage
  * @property {boolean} hotel
  * @property {boolean} qualification
  * @property {string} titleDay
@@ -112,6 +113,7 @@ export type EventResponseDTO = {
  * @property {string} duration
  * @property {string} type
  * @property {string} limitRegBuy
+ * @property {boolean} status
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -39,7 +39,7 @@ export type EventRequestDTO = {
    addon?: boolean;
    addonPrice?: string;
    nbParticipantMax?: string;
-   massage?: string;
+   massage?: boolean;
    hotel?: boolean;
    qualification?: boolean;
    titleDay?: string;
@@ -52,6 +52,7 @@ export type EventRequestDTO = {
    duration?: string;
    type?: string;
    limitRegBuy?: string;
+   status?: boolean;
 }
 
 /**
@@ -96,7 +97,7 @@ export type EventRequestDTO = {
  * @property {boolean} addon
  * @property {string} addonPrice
  * @property {string} nbParticipantMax
- * @property {string} massage
+ * @property {boolean} massage
  * @property {boolean} hotel
  * @property {boolean} qualification
  * @property {string} titleDay
@@ -109,5 +110,6 @@ export type EventRequestDTO = {
  * @property {string} duration
  * @property {string} type
  * @property {string} limitRegBuy
+ * @property {boolean} status
  */
 

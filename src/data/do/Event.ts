@@ -126,7 +126,7 @@ export class EventDO {
   nbParticipantMax: string;
 
   @Column({nullable: true, unique: false})
-  massage: string;
+  massage: boolean;
 
   @Column({nullable: true, unique: false})
   hotel: boolean;
@@ -163,6 +163,9 @@ export class EventDO {
 
   @Column({nullable: true, unique: false})
   limitRegBuy: string;
+
+  @Column({nullable: true, unique: false})
+  status: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

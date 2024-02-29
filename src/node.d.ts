@@ -36,8 +36,8 @@
   declare interface ComplementaryInformationResponseDTO { }
   declare interface ClubRequestDTO { }
   declare interface ClubResponseDTO { }
-  declare interface PrivateEventRequestDTO { }
-  declare interface PrivateEventResponseDTO { }
+  declare interface EventRequestDTO { }
+  declare interface EventResponseDTO { }
   declare interface LocationRequestDTO { }
   declare interface LocationResponseDTO { }
   declare interface ConfindialityRequestDTO { }
@@ -60,3 +60,5 @@
   declare interface SubscriptionOfferResponseDTO { }
   declare interface SubscriptionHistoryRequestDTO { }
   declare interface SubscriptionHistoryResponseDTO { }
+  declare interface LevelRequestDTO { }
+  declare interface LevelResponseDTO { }

@@ -12,7 +12,72 @@ import { SponsorRepository } from '../repository/Sponsor';
 import { PartenerRepository } from '../repository/Partener';
 import { PseudoRepository } from '../repository/Pseudo';
 import { RoleRepository } from '../repository/Role';
+import { TournamentTypeRepository } from '../repository/TournamentType';
+import { GameTypeRepository } from '../repository/GameType';
+import { LevelRepository } from '../repository/Level';
 
+const gameTypes = [
+  {
+    "name": "Plo4",
+    "description": "Plo4",
+  },
+  {
+    "name": "Plo4",
+    "description": "Plo4",
+  },
+  {
+    "name": "Texas holdem limit",
+    "description": "Texas holdem limit",
+  },
+  {
+    "name": "5 stud cards",
+    "description": "5 stud cards",
+  },
+  {
+    "name": "7 stud cards",
+    "description": "7 stud cards",
+  },
+  {
+    "name": "Badugi",
+    "description": "Badugi",
+  },
+  {
+    "name": "Badugi",
+    "description": "Badugi",
+  }
+];
+
+const tournamentTypes = [
+  {
+    "name": "FreeRoll",
+    "description": "Déscription du freeroll",
+  },
+  {
+    "name": "Texas holdem limit",
+    "description": "Texas holdem limit",
+  }
+];
+
+const levels = [
+  {
+    "smallBlind": "smallBlind1",
+    "bigBlind": "bigBlind1",
+    "anteBb": "anteBb1",
+    "duration": "12",
+  },
+  {
+    "smallBlind": "smallBlind12",
+    "bigBlind": "bigBlind12",
+    "anteBb": "anteBb12",
+    "duration": "20",
+  },
+  {
+    "smallBlind": "smallBlind121",
+    "bigBlind": "bigBlind121",
+    "anteBb": "anteBb121",
+    "duration": "201",
+  }
+];
 export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
   async run(_factory: Factory, connection: Connection): Promise<void> {
@@ -26,8 +91,23 @@ export class InitSeeds implements Seeder {
     const sponsor = connection.getCustomRepository(SponsorRepository);
     const partener = connection.getCustomRepository(PartenerRepository);
     const pseudo = connection.getCustomRepository(PseudoRepository);
-    const role = connection.getCustomRepository(RoleRepository);
+    const level = connection.getCustomRepository(LevelRepository);
+    const game = connection.getCustomRepository(GameTypeRepository);
+    const tournament = connection.getCustomRepository(TournamentTypeRepository);
     const users = await user.count();
+
+    const levelCount = await level.count();
+    if (levelCount < 2) {
+      await level.save(levels);
+    }
+    const gameCount = await game.count();
+    if (gameCount < 2) {
+      await game.save(gameTypes);
+    }
+    const tournamentCount = await tournament.count();
+    if (tournamentCount < 2) {
+      await tournament.save(tournamentTypes);
+    }
 
     if (users < 3) {
       try {

@@ -2,7 +2,7 @@ export type LinkRequestDTO = {
    name?: string;
    link?: string;
    description?: string;
-   profile?: string;
+   profileId?: string;
 }
 
 /**
@@ -10,6 +10,6 @@ export type LinkRequestDTO = {
  * @property {string} name
  * @property {string} link
  * @property {string} description
- * @property {string} profile
+ * @property {string} profileId
  */
 

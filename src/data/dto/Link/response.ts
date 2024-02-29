@@ -2,7 +2,7 @@ export type LinkResponseDTO = {
    name?: string;
    link?: string;
    description?: string;
-   profile?: string;
+   profileId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -13,7 +13,7 @@ export type LinkResponseDTO = {
  * @property {string} name
  * @property {string} link
  * @property {string} description
- * @property {string} profile
+ * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

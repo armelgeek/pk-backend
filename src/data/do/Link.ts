@@ -15,7 +15,7 @@ export class LinkDO {
   description: string;
 
   @Column({nullable: true, unique: false})
-  profile: string;
+  profileId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

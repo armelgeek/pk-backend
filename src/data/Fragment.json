@@ -7836,7 +7836,7 @@
 									"top": 1006,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+massage: string",
+									"text": "+massage: boolean",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8042,13 +8042,30 @@
 									"height": 13,
 									"text": "+limitRegBuy: string",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN9Oow0vucvu0=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN9OowtfuZMaw="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1201,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+status: boolean",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 856,
 							"top": 401,
 							"width": 238.0078125,
-							"height": 803
+							"height": 818
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -8071,7 +8088,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1209,
+									"top": 1224,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+add()",
@@ -8088,7 +8105,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1224,
+									"top": 1239,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+getAll()",
@@ -8105,7 +8122,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1239,
+									"top": 1254,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+delete()",
@@ -8122,7 +8139,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1254,
+									"top": 1269,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+update()",
@@ -8139,7 +8156,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1269,
+									"top": 1284,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+get()",
@@ -8148,7 +8165,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 856,
-							"top": 1204,
+							"top": 1219,
 							"width": 238.0078125,
 							"height": 83
 						},
@@ -8190,7 +8207,7 @@
 					"left": 856,
 					"top": 376,
 					"width": 238.0078125,
-					"height": 911,
+					"height": 926,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNwG41lKyktu0="
 					},
@@ -14543,7 +14560,7 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "massage",
-					"type": "string"
+					"type": "boolean"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -14656,6 +14673,15 @@
 					},
 					"name": "limitRegBuy",
 					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN9OowtfuZMaw=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "status",
+					"type": "boolean"
 				}
 			],
 			"operations": [

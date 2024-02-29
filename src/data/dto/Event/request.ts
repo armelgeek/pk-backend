@@ -21,27 +21,27 @@ export type EventRequestDTO = {
    nbRebu?: number;
    devise?: string;
    latReg?: string;
-   dealer?: string;
-   timeClock?: string;
-   reEntry?: string;
-   memberCard?: string;
+   dealer?: boolean;
+   timeClock?: boolean;
+   reEntry?: boolean;
+   memberCard?: boolean;
    prizePool?: string;
-   bounty?: string;
+   bounty?: boolean;
    bountyText?: string;
    othersReward?: string;
    tournamentType?: string;
    gameType?: string;
-   jackpot?: string;
+   jackpot?: boolean;
    jackpotText?: string;
    buyin?: string;
-   bonus?: string;
+   bonus?: boolean;
    bonusText?: string;
-   addon?: string;
+   addon?: boolean;
    addonPrice?: string;
    nbParticipantMax?: string;
    massage?: string;
    hotel?: boolean;
-   qualification?: string;
+   qualification?: boolean;
    titleDay?: string;
    startDateDay?: string;
    startTimeDay?: string;
@@ -78,27 +78,27 @@ export type EventRequestDTO = {
  * @property {number} nbRebu
  * @property {string} devise
  * @property {string} latReg
- * @property {string} dealer
- * @property {string} timeClock
- * @property {string} reEntry
- * @property {string} memberCard
+ * @property {boolean} dealer
+ * @property {boolean} timeClock
+ * @property {boolean} reEntry
+ * @property {boolean} memberCard
  * @property {string} prizePool
- * @property {string} bounty
+ * @property {boolean} bounty
  * @property {string} bountyText
  * @property {string} othersReward
  * @property {string} tournamentType
  * @property {string} gameType
- * @property {string} jackpot
+ * @property {boolean} jackpot
  * @property {string} jackpotText
  * @property {string} buyin
- * @property {string} bonus
+ * @property {boolean} bonus
  * @property {string} bonusText
- * @property {string} addon
+ * @property {boolean} addon
  * @property {string} addonPrice
  * @property {string} nbParticipantMax
  * @property {string} massage
  * @property {boolean} hotel
- * @property {string} qualification
+ * @property {boolean} qualification
  * @property {string} titleDay
  * @property {string} startDateDay
  * @property {string} startTimeDay

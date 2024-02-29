@@ -16,7 +16,7 @@ import { pseudoRouter } from './Pseudo';
 import { roleRouter } from './Role';
 import { complementaryinformationRouter } from './ComplementaryInformation';
 import { clubRouter } from './Club';
-import { privateeventRouter } from './PrivateEvent';
+import { eventRouter } from './Event';
 import { confindialityRouter } from './Confindiality';
 import { commentRouter } from './Comment';
 import { gametypeRouter } from './GameType';
@@ -27,6 +27,7 @@ import { paymenttypeRouter } from './PaymentType';
 import { usersubscriptionRouter } from './UserSubscription';
 import { subscriptionofferRouter } from './SubscriptionOffer';
 import { subscriptionhistoryRouter } from './SubscriptionHistory';
+import { levelRouter } from './Level';
 
 export const routes = () => {
   const router = Router();
@@ -47,7 +48,7 @@ export const routes = () => {
  router.use('/role', roleRouter);
  router.use('/complementary-information', complementaryinformationRouter);
  router.use('/club', clubRouter);
- router.use('/private-event', privateeventRouter);
+ router.use('/event', eventRouter);
  router.use('/confindiality', confindialityRouter);
  router.use('/comment', commentRouter);
  router.use('/game-type', gametypeRouter);
@@ -58,6 +59,7 @@ export const routes = () => {
  router.use('/user-subscription', usersubscriptionRouter);
  router.use('/subscription-offer', subscriptionofferRouter);
  router.use('/subscription-history', subscriptionhistoryRouter);
+ router.use('/level', levelRouter);
   
   return router;
 };

@@ -1,7 +1,7 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('privateevent')
-export class PrivateEventDO {
+@Entity('event')
+export class EventDO {
   @ObjectIdColumn()
   _id: ObjectID;
 

@@ -1,4 +1,4 @@
-export type PrivateEventResponseDTO = {
+export type EventRequestDTO = {
    name?: string;
    participants?: number;
    shortDescription?: string;
@@ -15,13 +15,10 @@ export type PrivateEventResponseDTO = {
    private?: boolean;
    userList?: string[];
    profile?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  id: string;
 }
 
 /**
- * @typedef {object} PrivateEventResponseDTO
+ * @typedef {object} EventRequestDTO
  * @property {string} name
  * @property {number} participants
  * @property {string} shortDescription
@@ -38,8 +35,5 @@ export type PrivateEventResponseDTO = {
  * @property {boolean} private
  * @property {array<string>} userList
  * @property {string} profile
- * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
  */
 

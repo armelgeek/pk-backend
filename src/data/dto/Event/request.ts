@@ -54,6 +54,13 @@ export type EventRequestDTO = {
    limitRegBuy?: string;
    status?: boolean;
    pageId?: string;
+   eventId?: string;
+   mainTournament?: number;
+   nbParticipantPerTable?: number;
+   cashBigBlind?: string;
+   cashSmallBlind?: string;
+   cashEntryMax?: number;
+   cashEntryMin?: number;
 }
 
 /**
@@ -113,5 +120,12 @@ export type EventRequestDTO = {
  * @property {string} limitRegBuy
  * @property {boolean} status
  * @property {string} pageId
+ * @property {string} eventId
+ * @property {number} mainTournament
+ * @property {number} nbParticipantPerTable
+ * @property {string} cashBigBlind
+ * @property {string} cashSmallBlind
+ * @property {number} cashEntryMax
+ * @property {number} cashEntryMin
  */
 

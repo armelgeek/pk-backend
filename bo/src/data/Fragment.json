@@ -8076,13 +8076,132 @@
 									"height": 13,
 									"text": "+pageId: Page {id}",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+eY9AalfkSU=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+eY82alcjQU="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1231,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+eventId: string",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+eZJcKlmrRk=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+eZJPqlj0m0="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1246,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+mainTournament: number",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+eZZ6qltj4I=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+eZZtalqoNA="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1261,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+nbParticipantPerTable: number",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+eZojKl0ZNE=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+eZoZalxvfY="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1276,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+cashBigBlind: string",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+hf3C6mDs/k=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+hf25amAwJg="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1291,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+cashSmallBlind: string",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+hhRvamLjXw=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+hhRm6mIrSg="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1306,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+cashEntryMax: number",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+hi0o6mTooI=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+hi0hamQ6AE="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1321,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+cashEntryMin: number",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 856,
 							"top": 401,
 							"width": 238.0078125,
-							"height": 833
+							"height": 938
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -8105,7 +8224,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1239,
+									"top": 1344,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+add()",
@@ -8122,7 +8241,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1254,
+									"top": 1359,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+getAll()",
@@ -8139,7 +8258,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1269,
+									"top": 1374,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+delete()",
@@ -8156,7 +8275,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1284,
+									"top": 1389,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+update()",
@@ -8173,7 +8292,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1299,
+									"top": 1404,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+get()",
@@ -8182,7 +8301,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 856,
-							"top": 1234,
+							"top": 1339,
 							"width": 238.0078125,
 							"height": 83
 						},
@@ -8224,7 +8343,7 @@
 					"left": 856,
 					"top": 376,
 					"width": 238.0078125,
-					"height": 941,
+					"height": 1046,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNwG41lKyktu0="
 					},
@@ -14721,6 +14840,69 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+eY82alcjQU=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "eventId",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+eZJPqlj0m0=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "mainTournament",
+					"type": "number"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+eZZtalqoNA=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "nbParticipantPerTable",
+					"type": "number"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+eZoZalxvfY=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "cashBigBlind",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+hf25amAwJg=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "cashSmallBlind",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+hhRm6mIrSg=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "cashEntryMax",
+					"type": "number"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+hi0hamQ6AE=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "cashEntryMin",
+					"type": "number"
 				}
 			],
 			"operations": [

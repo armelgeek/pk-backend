@@ -1,6 +1,7 @@
 module.exports = {
   "type": "mongodb",
-  "host": "mongo",
+  // "host": "mongo",
+  "host": "localhost",
   "port": 27017,
   // "password": "node1234",
   // "username": "root",
@@ -9,11 +10,11 @@ module.exports = {
   "useNewUrlParser": true,
   "synchronize": false,
   "entities": [
-    "dist/data/do/**/*.js",
-    // "src/data/do/**/*.ts"
+    // "dist/data/do/**/*.js",
+    "src/data/do/**/*.ts"
   ],
   "seeds": [
-    "dist/seeds/*.js",
-    // "src/seeds/*.ts"
+    // "dist/seeds/*.js",
+    "src/seeds/*.ts"
   ],
 }

@@ -5,7 +5,7 @@ import { UtilisateurRepository } from '../repository/Utilisateur';
 import { ProfileRepository } from '../repository/Profile';
 import { LangueRepository } from '../repository/Langue';
 import { AdministrateurRepository } from '../repository/Administrateur';
-import { CasinoProfileRepository } from '../repository/CasinoProfile';
+import { PageRepository } from '../repository/Page';
 import { ComplementaryInformationRepository } from '../repository/ComplementaryInformation';
 import { LinkRepository } from '../repository/Link';
 import { SponsorRepository } from '../repository/Sponsor';
@@ -85,7 +85,7 @@ export class InitSeeds implements Seeder {
     const profile = connection.getCustomRepository(ProfileRepository);
     const langue = connection.getCustomRepository(LangueRepository);
     const administrateur = connection.getCustomRepository(AdministrateurRepository);
-    const casinoProfile = connection.getCustomRepository(CasinoProfileRepository);
+    const page = connection.getCustomRepository(PageRepository);
     const complementaryInformation = connection.getCustomRepository(ComplementaryInformationRepository);
     const link = connection.getCustomRepository(LinkRepository);
     const sponsor = connection.getCustomRepository(SponsorRepository);
@@ -178,7 +178,7 @@ export class InitSeeds implements Seeder {
     !user.collectionIndexExists && user.createCollectionIndex({ nom: 'text', prenom: 'text', phone: 'text', email: 'text', adresse: 'text' });
     !langue.collectionIndexExists && langue.createCollectionIndex({ code: 'text', nom: 'text' });
     !administrateur.collectionIndexExists && administrateur.createCollectionIndex({ nom: 'text', prenom: 'text', email: 'text', adresseAdmin: 'text', telAdmin: 'text' });
-    !casinoProfile.collectionIndexExists &&  casinoProfile.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
+    !page.collectionIndexExists &&  page.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
     !complementaryInformation.collectionIndexExists &&  complementaryInformation.createCollectionIndex({ nationality: 'text', langues: 'text', email: 'text', phone: 'text', job: 'text', headonmob: 'text', nb_titre: 'text', rang_time_money: 'text', period: 'text' });
     link.createCollectionIndex({ name: 'text', link: 'text', description: 'text', profile: 'text' });
     !sponsor.collectionIndexExists &&  sponsor.createCollectionIndex({ nom: 'text', description: 'text', });

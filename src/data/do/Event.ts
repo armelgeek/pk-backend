@@ -51,7 +51,7 @@ export class EventDO {
   userList: string;
 
   @Column({nullable: true, unique: false})
-  profile: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
   nbDay: number;
@@ -166,6 +166,9 @@ export class EventDO {
 
   @Column({nullable: true, unique: false})
   status: boolean;
+
+  @Column({nullable: true, unique: false})
+  pageId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

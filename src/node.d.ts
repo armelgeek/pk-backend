@@ -22,10 +22,10 @@
   declare interface PartenerResponseDTO { }
   declare interface LinkRequestDTO { }
   declare interface LinkResponseDTO { }
-  declare interface CasinoProfileRequestDTO { }
-  declare interface CasinoProfileResponseDTO { }
-  declare interface CasinoProfileAdditionalRequestDTO { }
-  declare interface CasinoProfileAdditionalResponseDTO { }
+  declare interface PageRequestDTO { }
+  declare interface PageResponseDTO { }
+  declare interface PageAdditionalRequestDTO { }
+  declare interface PageAdditionalResponseDTO { }
   declare interface PseudoRequestDTO { }
   declare interface PseudoResponseDTO { }
   declare interface RoleRequestDTO { }

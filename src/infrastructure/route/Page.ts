@@ -1,53 +1,53 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { casinoprofileController } from '../controller/CasinoProfile';
+import { pageController } from '../controller/Page';
 
-const casinoprofileRoutes = () => genericRoute({ controller: casinoprofileController, schema: Joi.CasinoProfile, name: 'CasinoProfile' });
+const pageRoutes = () => genericRoute({ controller: pageController, schema: Joi.Page, name: 'Page' });
 
-export const casinoprofileRouter = casinoprofileRoutes();
+export const pageRouter = pageRoutes();
 
 /**
- * GET /api/casino-profile
- * @tags CasinoProfile
+ * GET /api/page
+ * @tags Page
  * @security BearerAuth
- * @summary List CasinoProfile (getAllCasinoProfile)
+ * @summary List Page (getAllPage)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {CasinoProfileResponseDTO} 201
+ * @return {PageResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * GET /api/casino-profile/{id}
- * @tags CasinoProfile
+ * GET /api/page/{id}
+ * @tags Page
  * @security BearerAuth
- * @summary List CasinoProfile (getCasinoProfile)
+ * @summary List Page (getPage)
  
  * @param {string} id.path.required 
- * @return {CasinoProfileResponseDTO} 201
+ * @return {PageResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * POST /api/casino-profile
- * @tags CasinoProfile
+ * POST /api/page
+ * @tags Page
  * @security BearerAuth
- * @summary Create CasinoProfile (addCasinoProfile)
- * @param {CasinoProfileRequestDTO} request.body 
- * @return {CasinoProfileResponseDTO} 201
+ * @summary Create Page (addPage)
+ * @param {PageRequestDTO} request.body 
+ * @return {PageResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * PUT /api/casino-profile/partialUpdate/{id}
- * @tags CasinoProfile
+ * PUT /api/page/partialUpdate/{id}
+ * @tags Page
  * @security BearerAuth
- * @summary Update CasinoProfile (updateCasinoProfile)
- * @param {CasinoProfileRequestDTO} request.body
+ * @summary Update Page (updatePage)
+ * @param {PageRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -55,10 +55,10 @@ export const casinoprofileRouter = casinoprofileRoutes();
  */
 
 /**
- * DELETE /api/casino-profile/{id}
- * @tags CasinoProfile
+ * DELETE /api/page/{id}
+ * @tags Page
  * @security BearerAuth
- * @summary Remove CasinoProfile (deleteCasinoProfile)
+ * @summary Remove Page (deletePage)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200

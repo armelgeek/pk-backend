@@ -14,7 +14,7 @@ export type EventResponseDTO = {
    videos?: string[];
    private?: boolean;
    userList?: string[];
-   profile?: string;
+   profileId?: string;
    nbDay?: number;
    nbGames?: number;
    startStack?: string;
@@ -53,6 +53,7 @@ export type EventResponseDTO = {
    type?: string;
    limitRegBuy?: string;
    status?: boolean;
+   pageId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -75,7 +76,7 @@ export type EventResponseDTO = {
  * @property {array<string>} videos
  * @property {boolean} private
  * @property {array<string>} userList
- * @property {string} profile
+ * @property {string} profileId
  * @property {number} nbDay
  * @property {number} nbGames
  * @property {string} startStack
@@ -114,6 +115,7 @@ export type EventResponseDTO = {
  * @property {string} type
  * @property {string} limitRegBuy
  * @property {boolean} status
+ * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

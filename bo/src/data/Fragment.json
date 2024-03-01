@@ -4625,7 +4625,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 48,
+									"left": 32,
 									"top": 64,
 									"height": 13
 								},
@@ -4636,11 +4636,11 @@
 										"$ref": "AAAAAAGNhQPY91Bxezk="
 									},
 									"font": "Arial;13;1",
-									"left": 397,
+									"left": 389,
 									"top": 639,
 									"width": 156.45703125,
 									"height": 13,
-									"text": "CasinoProfile"
+									"text": "Page"
 								},
 								{
 									"_type": "LabelView",
@@ -4650,7 +4650,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 48,
+									"left": 32,
 									"top": 64,
 									"width": 73.67724609375,
 									"height": 13,
@@ -4664,14 +4664,14 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 48,
+									"left": 32,
 									"top": 64,
 									"height": 13,
 									"horizontalAlignment": 1
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 392,
+							"left": 384,
 							"top": 632,
 							"width": 166.45703125,
 							"height": 25,
@@ -4708,7 +4708,7 @@
 										"$ref": "AAAAAAGNhQRPulCaGqo="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 662,
 									"width": 156.45703125,
 									"height": 13,
@@ -4725,7 +4725,7 @@
 										"$ref": "AAAAAAGNhQRcJ1CgEIQ="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 677,
 									"width": 156.45703125,
 									"height": 13,
@@ -4742,7 +4742,7 @@
 										"$ref": "AAAAAAGNhQRqhFCmx7o="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 692,
 									"width": 156.45703125,
 									"height": 13,
@@ -4759,7 +4759,7 @@
 										"$ref": "AAAAAAGNhQR9iFCsT2w="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 707,
 									"width": 156.45703125,
 									"height": 13,
@@ -4776,7 +4776,7 @@
 										"$ref": "AAAAAAGNhQcE3lDHZgw="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 722,
 									"width": 156.45703125,
 									"height": 13,
@@ -4793,7 +4793,7 @@
 										"$ref": "AAAAAAGNhQe2k1DRSoc="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 737,
 									"width": 156.45703125,
 									"height": 13,
@@ -4810,7 +4810,7 @@
 										"$ref": "AAAAAAGNhQgialDbfMI="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 752,
 									"width": 156.45703125,
 									"height": 13,
@@ -4827,7 +4827,7 @@
 										"$ref": "AAAAAAGNhQhZRVDj0IA="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 767,
 									"width": 156.45703125,
 									"height": 13,
@@ -4844,7 +4844,7 @@
 										"$ref": "AAAAAAGNhSMAkVH6Uk0="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 782,
 									"width": 156.45703125,
 									"height": 13,
@@ -4861,7 +4861,7 @@
 										"$ref": "AAAAAAGNwYOxAa3RHp4="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 797,
 									"width": 156.45703125,
 									"height": 13,
@@ -4878,7 +4878,7 @@
 										"$ref": "AAAAAAGNwZd5h63he+k="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 812,
 									"width": 156.45703125,
 									"height": 13,
@@ -4887,7 +4887,7 @@
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 392,
+							"left": 384,
 							"top": 657,
 							"width": 166.45703125,
 							"height": 173
@@ -4912,7 +4912,7 @@
 										"$ref": "AAAAAAGNhQjw+lDu4Lk="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 835,
 									"width": 156.45703125,
 									"height": 13,
@@ -4929,7 +4929,7 @@
 										"$ref": "AAAAAAGNhQoHkFD35rQ="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 850,
 									"width": 156.45703125,
 									"height": 13,
@@ -4946,7 +4946,7 @@
 										"$ref": "AAAAAAGN1KqoxK6FCWo="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 865,
 									"width": 156.45703125,
 									"height": 13,
@@ -4963,7 +4963,7 @@
 										"$ref": "AAAAAAGN5Mb05vi8hH4="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 880,
 									"width": 156.45703125,
 									"height": 13,
@@ -4980,7 +4980,7 @@
 										"$ref": "AAAAAAGN5eI66PjNyfY="
 									},
 									"font": "Arial;13;0",
-									"left": 397,
+									"left": 389,
 									"top": 895,
 									"width": 156.45703125,
 									"height": 13,
@@ -4989,7 +4989,7 @@
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 392,
+							"left": 384,
 							"top": 830,
 							"width": 166.45703125,
 							"height": 83
@@ -5005,7 +5005,7 @@
 							},
 							"visible": false,
 							"font": "Arial;13;0",
-							"left": 24,
+							"left": 16,
 							"top": 32,
 							"width": 10,
 							"height": 10
@@ -5021,7 +5021,7 @@
 							},
 							"visible": false,
 							"font": "Arial;13;0",
-							"left": 24,
+							"left": 16,
 							"top": 32,
 							"width": 10,
 							"height": 10
@@ -5029,7 +5029,7 @@
 					],
 					"font": "Arial;13;0",
 					"containerChangeable": true,
-					"left": 392,
+					"left": 384,
 					"top": 632,
 					"width": 166.45703125,
 					"height": 281,
@@ -5090,7 +5090,7 @@
 									"top": 711,
 									"width": 167,
 									"height": 13,
-									"text": "CasinoProfileAdditional"
+									"text": "PageAdditional"
 								},
 								{
 									"_type": "LabelView",
@@ -7411,7 +7411,7 @@
 									"top": 631,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+profile: Profile {id}",
+									"text": "+profileId: Profile {id}",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8059,13 +8059,30 @@
 									"height": 13,
 									"text": "+status: boolean",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGN+M4z1qlEnJw=",
+									"_parent": {
+										"$ref": "AAAAAAGNwG41laypFi4="
+									},
+									"model": {
+										"$ref": "AAAAAAGN+M4zn6lBRHM="
+									},
+									"font": "Arial;13;0",
+									"left": 861,
+									"top": 1216,
+									"width": 228.0078125,
+									"height": 13,
+									"text": "+pageId: Page {id}",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 856,
 							"top": 401,
 							"width": 238.0078125,
-							"height": 818
+							"height": 833
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -8088,7 +8105,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1224,
+									"top": 1239,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+add()",
@@ -8105,7 +8122,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1239,
+									"top": 1254,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+getAll()",
@@ -8122,7 +8139,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1254,
+									"top": 1269,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+delete()",
@@ -8139,7 +8156,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1269,
+									"top": 1284,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+update()",
@@ -8156,7 +8173,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 861,
-									"top": 1284,
+									"top": 1299,
 									"width": 228.0078125,
 									"height": 13,
 									"text": "+get()",
@@ -8165,7 +8182,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 856,
-							"top": 1219,
+							"top": 1234,
 							"width": 238.0078125,
 							"height": 83
 						},
@@ -8207,7 +8224,7 @@
 					"left": 856,
 					"top": 376,
 					"width": 238.0078125,
-					"height": 926,
+					"height": 941,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNwG41lKyktu0="
 					},
@@ -11564,6 +11581,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": -144,
+									"top": -176,
 									"height": 13
 								},
 								{
@@ -11573,8 +11592,8 @@
 										"$ref": "AAAAAAGN1lCSMrHDE0g="
 									},
 									"font": "Arial;13;1",
-									"left": 653,
-									"top": 1223,
+									"left": 581,
+									"top": 1135,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "SubscriptionHistory"
@@ -11587,6 +11606,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": -144,
+									"top": -176,
 									"width": 73.67724609375,
 									"height": 13,
 									"text": "(from Model)"
@@ -11599,13 +11620,15 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": -144,
+									"top": -176,
 									"height": 13,
 									"horizontalAlignment": 1
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 648,
-							"top": 1216,
+							"left": 576,
+							"top": 1128,
 							"width": 256.29541015625,
 							"height": 25,
 							"stereotypeLabel": {
@@ -11641,8 +11664,8 @@
 										"$ref": "AAAAAAGN1lGOrbHzyXc="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1246,
+									"left": 581,
+									"top": 1158,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+start: string",
@@ -11658,8 +11681,8 @@
 										"$ref": "AAAAAAGN1lG1HLH664Y="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1261,
+									"left": 581,
+									"top": 1173,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+end: string",
@@ -11675,8 +11698,8 @@
 										"$ref": "AAAAAAGN1lHRW7IB9aE="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1276,
+									"left": 581,
+									"top": 1188,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+userId: Utilisateur {id}",
@@ -11692,8 +11715,8 @@
 										"$ref": "AAAAAAGN1lH3s7IH8TU="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1291,
+									"left": 581,
+									"top": 1203,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+subscriptionOfferId: SubscriptionOffer {id}",
@@ -11701,8 +11724,8 @@
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 648,
-							"top": 1241,
+							"left": 576,
+							"top": 1153,
 							"width": 256.29541015625,
 							"height": 68
 						},
@@ -11726,8 +11749,8 @@
 										"$ref": "AAAAAAGN1lYAE7JmjzI="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1314,
+									"left": 581,
+									"top": 1226,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+getAll()",
@@ -11743,8 +11766,8 @@
 										"$ref": "AAAAAAGN1lfOhLKINH0="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1329,
+									"left": 581,
+									"top": 1241,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+delete()",
@@ -11760,8 +11783,8 @@
 										"$ref": "AAAAAAGN1lmzSbK4bks="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1344,
+									"left": 581,
+									"top": 1256,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+update()",
@@ -11777,8 +11800,8 @@
 										"$ref": "AAAAAAGN1lrVEbLq4tk="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1359,
+									"left": 581,
+									"top": 1271,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+get()",
@@ -11794,8 +11817,8 @@
 										"$ref": "AAAAAAGN5LqjXfiwuAo="
 									},
 									"font": "Arial;13;0",
-									"left": 653,
-									"top": 1374,
+									"left": 581,
+									"top": 1286,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+add()",
@@ -11803,8 +11826,8 @@
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 648,
-							"top": 1309,
+							"left": 576,
+							"top": 1221,
 							"width": 256.29541015625,
 							"height": 83
 						},
@@ -11819,6 +11842,8 @@
 							},
 							"visible": false,
 							"font": "Arial;13;0",
+							"left": -72,
+							"top": -88,
 							"width": 10,
 							"height": 10
 						},
@@ -11833,14 +11858,16 @@
 							},
 							"visible": false,
 							"font": "Arial;13;0",
+							"left": -72,
+							"top": -88,
 							"width": 10,
 							"height": 10
 						}
 					],
 					"font": "Arial;13;0",
 					"containerChangeable": true,
-					"left": 648,
-					"top": 1216,
+					"left": 576,
+					"top": 1128,
 					"width": 256.29541015625,
 					"height": 176,
 					"nameCompartment": {
@@ -13201,9 +13228,9 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 			},
-			"name": "CasinoProfile",
+			"name": "Page",
 			"role": "4",
-			"route": "casino-profile",
+			"route": "page",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -13331,7 +13358,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "getAll",
-					"route": "casino-profile",
+					"route": "page",
 					"method": "get"
 				},
 				{
@@ -13341,7 +13368,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "get",
-					"route": "casino-profile/{id}",
+					"route": "page/{id}",
 					"method": "get",
 					"templateParameters": [
 						{
@@ -13363,7 +13390,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "add",
-					"route": "casino-profile",
+					"route": "page",
 					"method": "post"
 				},
 				{
@@ -13373,7 +13400,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "update",
-					"route": "casino-profile/partialUpdate/{id}",
+					"route": "page/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -13395,7 +13422,7 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "delete",
-					"route": "casino-profile/{id}",
+					"route": "page/{id}",
 					"method": "remove",
 					"templateParameters": [
 						{
@@ -13418,9 +13445,9 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 			},
-			"name": "CasinoProfileAdditional",
+			"name": "PageAdditional",
 			"role": "4",
-			"route": "casino-profile-additional",
+			"route": "page-additional",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -13630,7 +13657,7 @@
 					},
 					"name": "getAll",
 					"role": "4",
-					"route": "casino-profile-additional",
+					"route": "page-additional",
 					"method": "get"
 				},
 				{
@@ -13641,7 +13668,7 @@
 					},
 					"name": "add",
 					"role": "4",
-					"route": "casino-profile-additional",
+					"route": "page-additional",
 					"method": "post"
 				},
 				{
@@ -13651,7 +13678,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "update",
-					"route": "casino-profile-additional/partialUpdate/{id}",
+					"route": "page-additional/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -13673,7 +13700,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "delete",
-					"route": "casino-profile-additional/{id}",
+					"route": "page-additional/{id}",
 					"method": "remove",
 					"templateParameters": [
 						{
@@ -13695,7 +13722,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "get",
-					"route": "casino-profile-additional/{id}",
+					"route": "page-additional/{id}",
 					"method": "get",
 					"templateParameters": [
 						{
@@ -14325,7 +14352,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
-					"name": "profile",
+					"name": "profileId",
 					"type": {
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
@@ -14682,6 +14709,18 @@
 					},
 					"name": "status",
 					"type": "boolean"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGN+M4zn6lBRHM=",
+					"_parent": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"name": "pageId",
+					"type": {
+						"$ref": "AAAAAAGNhQPY9VBuOYg="
+					},
+					"isID": true
 				}
 			],
 			"operations": [

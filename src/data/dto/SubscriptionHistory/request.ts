@@ -3,6 +3,7 @@ export type SubscriptionHistoryRequestDTO = {
    end: string;
    userId: string;
    subscriptionOfferId: string;
+   pageId: string;
 }
 
 /**
@@ -11,5 +12,6 @@ export type SubscriptionHistoryRequestDTO = {
  * @property {string} end
  * @property {string} userId
  * @property {string} subscriptionOfferId
+ * @property {string} pageId
  */
 

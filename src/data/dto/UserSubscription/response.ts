@@ -5,6 +5,7 @@ export type UserSubscriptionResponseDTO = {
    paymentStatus: string;
    userId: string;
    subscriptionOfferId: string;
+   pageId: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -18,6 +19,7 @@ export type UserSubscriptionResponseDTO = {
  * @property {string} paymentStatus
  * @property {string} userId
  * @property {string} subscriptionOfferId
+ * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

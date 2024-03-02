@@ -2,7 +2,7 @@ export type EventRequestDTO = {
    name?: string;
    participants?: number;
    shortDescription?: string;
-   location?: string;
+   location?: LocationRequestDTO;
    startDate?: string;
    startTime?: string;
    contact?: string;
@@ -68,7 +68,7 @@ export type EventRequestDTO = {
  * @property {string} name
  * @property {number} participants
  * @property {string} shortDescription
- * @property {string} location
+ * @property {LocationRequestDTO} location
  * @property {string} startDate
  * @property {string} startTime
  * @property {string} contact

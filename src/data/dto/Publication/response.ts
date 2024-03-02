@@ -3,7 +3,7 @@ export type PublicationResponseDTO = {
    imageUrls?: string[];
    videoUrls?: string[];
    profileId?: string;
-   location?: string;
+   location?: LocationRequestDTO;
    private?: boolean;
    like?: string[];
    share?: string[];
@@ -18,7 +18,7 @@ export type PublicationResponseDTO = {
  * @property {array<string>} imageUrls
  * @property {array<string>} videoUrls
  * @property {string} profileId
- * @property {string} location
+ * @property {LocationRequestDTO} location
  * @property {boolean} private
  * @property {array<string>} like
  * @property {array<string>} share

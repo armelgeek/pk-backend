@@ -14,8 +14,8 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   shortDescription: string;
 
-  @Column({nullable: true, unique: false})
-  location: string;
+  @Column("simple-json")
+  Location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
 
   @Column({nullable: true, unique: false})
   startDate: string;
@@ -38,11 +38,11 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   reglements: string;
 
-  @Column({nullable: true, unique: false})
-  photos: string;
+  @Column("simple-array")
+  photos: string[];
 
-  @Column({nullable: true, unique: false})
-  videos: string;
+  @Column("simple-array")
+  videos: string[];
 
   @Column({nullable: true, unique: false})
   private: boolean;

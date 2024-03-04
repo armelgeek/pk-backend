@@ -43,3 +43,5 @@ export const todataTDO = (ownedElements: any[]) => ownedElements.filter((i) => i
   }), {});
 
 export const dataTDO = todataTDO(ownedElements);
+
+export const elements = ownedElements;

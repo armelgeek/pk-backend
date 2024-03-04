@@ -51,7 +51,7 @@ export class EventDO {
   userList: string;
 
   @Column({nullable: true, unique: false})
-  profile: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
   nbDay: number;
@@ -166,6 +166,30 @@ export class EventDO {
 
   @Column({nullable: true, unique: false})
   status: boolean;
+
+  @Column({nullable: true, unique: false})
+  pageId: string;
+
+  @Column({nullable: true, unique: false})
+  eventId: string;
+
+  @Column({nullable: true, unique: false})
+  mainTournament: number;
+
+  @Column({nullable: true, unique: false})
+  nbParticipantPerTable: number;
+
+  @Column({nullable: true, unique: false})
+  cashBigBlind: string;
+
+  @Column({nullable: true, unique: false})
+  cashSmallBlind: string;
+
+  @Column({nullable: true, unique: false})
+  cashEntryMax: number;
+
+  @Column({nullable: true, unique: false})
+  cashEntryMin: number;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

@@ -1,4 +1,4 @@
-export type CasinoProfileRequestDTO = {
+export type PageResponseDTO = {
    photoCover?: string;
    photo?: string;
    name?: string;
@@ -10,10 +10,13 @@ export type CasinoProfileRequestDTO = {
    profileId?: string;
    type?: string;
    verifications?: string[];
+  createdAt: Date;
+  updatedAt: Date;
+  id: string;
 }
 
 /**
- * @typedef {object} CasinoProfileRequestDTO
+ * @typedef {object} PageResponseDTO
  * @property {string} photoCover
  * @property {string} photo
  * @property {string} name
@@ -25,5 +28,8 @@ export type CasinoProfileRequestDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {array<string>} verifications
+ * @property {string} id
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

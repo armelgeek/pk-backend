@@ -1,4 +1,4 @@
-export type CasinoProfileAdditionalResponseDTO = {
+export type PageAdditionalResponseDTO = {
    monday?: string;
    tuesday?: string;
    wednesday?: string;
@@ -22,7 +22,7 @@ export type CasinoProfileAdditionalResponseDTO = {
 }
 
 /**
- * @typedef {object} CasinoProfileAdditionalResponseDTO
+ * @typedef {object} PageAdditionalResponseDTO
  * @property {string} monday
  * @property {string} tuesday
  * @property {string} wednesday

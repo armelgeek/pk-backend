@@ -2,7 +2,7 @@ export type EventRequestDTO = {
    name?: string;
    participants?: number;
    shortDescription?: string;
-   location?: string;
+   location?: LocationRequestDTO;
    startDate?: string;
    startTime?: string;
    contact?: string;
@@ -14,7 +14,7 @@ export type EventRequestDTO = {
    videos?: string[];
    private?: boolean;
    userList?: string[];
-   profile?: string;
+   profileId?: string;
    nbDay?: number;
    nbGames?: number;
    startStack?: string;
@@ -53,6 +53,14 @@ export type EventRequestDTO = {
    type?: string;
    limitRegBuy?: string;
    status?: boolean;
+   pageId?: string;
+   eventId?: string;
+   mainTournament?: number;
+   nbParticipantPerTable?: number;
+   cashBigBlind?: string;
+   cashSmallBlind?: string;
+   cashEntryMax?: number;
+   cashEntryMin?: number;
 }
 
 /**
@@ -60,7 +68,7 @@ export type EventRequestDTO = {
  * @property {string} name
  * @property {number} participants
  * @property {string} shortDescription
- * @property {string} location
+ * @property {LocationRequestDTO} location
  * @property {string} startDate
  * @property {string} startTime
  * @property {string} contact
@@ -72,7 +80,7 @@ export type EventRequestDTO = {
  * @property {array<string>} videos
  * @property {boolean} private
  * @property {array<string>} userList
- * @property {string} profile
+ * @property {string} profileId
  * @property {number} nbDay
  * @property {number} nbGames
  * @property {string} startStack
@@ -111,5 +119,13 @@ export type EventRequestDTO = {
  * @property {string} type
  * @property {string} limitRegBuy
  * @property {boolean} status
+ * @property {string} pageId
+ * @property {string} eventId
+ * @property {number} mainTournament
+ * @property {number} nbParticipantPerTable
+ * @property {string} cashBigBlind
+ * @property {string} cashSmallBlind
+ * @property {number} cashEntryMax
+ * @property {number} cashEntryMin
  */
 

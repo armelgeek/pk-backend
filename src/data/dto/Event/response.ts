@@ -2,7 +2,7 @@ export type EventResponseDTO = {
    name?: string;
    participants?: number;
    shortDescription?: string;
-   location?: string;
+   location?: LocationRequestDTO;
    startDate?: string;
    startTime?: string;
    contact?: string;
@@ -14,7 +14,7 @@ export type EventResponseDTO = {
    videos?: string[];
    private?: boolean;
    userList?: string[];
-   profile?: string;
+   profileId?: string;
    nbDay?: number;
    nbGames?: number;
    startStack?: string;
@@ -53,6 +53,14 @@ export type EventResponseDTO = {
    type?: string;
    limitRegBuy?: string;
    status?: boolean;
+   pageId?: string;
+   eventId?: string;
+   mainTournament?: number;
+   nbParticipantPerTable?: number;
+   cashBigBlind?: string;
+   cashSmallBlind?: string;
+   cashEntryMax?: number;
+   cashEntryMin?: number;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -63,7 +71,7 @@ export type EventResponseDTO = {
  * @property {string} name
  * @property {number} participants
  * @property {string} shortDescription
- * @property {string} location
+ * @property {LocationRequestDTO} location
  * @property {string} startDate
  * @property {string} startTime
  * @property {string} contact
@@ -75,7 +83,7 @@ export type EventResponseDTO = {
  * @property {array<string>} videos
  * @property {boolean} private
  * @property {array<string>} userList
- * @property {string} profile
+ * @property {string} profileId
  * @property {number} nbDay
  * @property {number} nbGames
  * @property {string} startStack
@@ -114,6 +122,14 @@ export type EventResponseDTO = {
  * @property {string} type
  * @property {string} limitRegBuy
  * @property {boolean} status
+ * @property {string} pageId
+ * @property {string} eventId
+ * @property {number} mainTournament
+ * @property {number} nbParticipantPerTable
+ * @property {string} cashBigBlind
+ * @property {string} cashSmallBlind
+ * @property {number} cashEntryMax
+ * @property {number} cashEntryMin
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

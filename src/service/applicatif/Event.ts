@@ -5,9 +5,9 @@ import {
 } from '../../constraint/factory/Event';
 import { EventDO } from '../../data/do/Event';
 // @ts-ignore
-import { EventRequestDTO } from '../../data/dto/Event/request';
+import { EventRequestDTO } from '../../data/dto/Event1/request';
 // @ts-ignore
-import { EventResponseDTO } from '../../data/dto/Event/response';
+import { EventResponseDTO } from '../../data/dto/Event1/response';
 import { eventSM, EventSM } from '../metier/Event';
 
 export class EventSA extends GenericSA<

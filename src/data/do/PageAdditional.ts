@@ -1,42 +1,60 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('casinoprofile')
-export class CasinoProfileDO {
+@Entity('pageadditional')
+export class PageAdditionalDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  photoCover: string;
+  monday: string;
 
   @Column({nullable: true, unique: false})
-  photo: string;
+  tuesday: string;
 
   @Column({nullable: true, unique: false})
-  name: string;
+  wednesday: string;
 
   @Column({nullable: true, unique: false})
-  country: string;
+  thursday: string;
 
   @Column({nullable: true, unique: false})
-  phone: string;
+  friday: string;
 
   @Column({nullable: true, unique: false})
-  address: string;
+  saturday: string;
 
   @Column({nullable: true, unique: false})
-  email: string;
+  sunday: string;
 
   @Column({nullable: true, unique: false})
-  description: string;
+  members: number;
+
+  @Column({nullable: true, unique: false})
+  cardMember: boolean;
+
+  @Column({nullable: true, unique: false})
+  restaurant: boolean;
+
+  @Column({nullable: true, unique: false})
+  hotel: boolean;
+
+  @Column({nullable: true, unique: false})
+  parking: boolean;
+
+  @Column({nullable: true, unique: false})
+  sponsors: string;
+
+  @Column({nullable: true, unique: false})
+  parteners: string;
+
+  @Column({nullable: true, unique: false})
+  links: string;
 
   @Column({nullable: true, unique: false})
   profileId: string;
 
   @Column({nullable: true, unique: false})
   type: string;
-
-  @Column({nullable: true, unique: false})
-  verifications: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

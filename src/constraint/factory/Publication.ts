@@ -6,10 +6,15 @@ import { PublicationDO } from '../../data/do/Publication';
 import { PublicationRequestDTO } from '../../data/dto/Publication/request';
 // @ts-ignore
 import { PublicationResponseDTO } from '../../data/dto/Publication/response';
+import { removeId } from '../../utils';
 
 const commonSchema = {
-  ...dataTDO.Publication.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
+  ...dataTDO.Publication.attributes.reduce((acc, { key }) => {
+    // const attribute = removeId(key);
+    return { ...acc, [key]: key }
+  }, {}),
 };
+
 const schema = { ...commonSchema };
 const responseSchema = {
   ...commonSchema,

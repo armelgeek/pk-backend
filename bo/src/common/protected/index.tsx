@@ -166,7 +166,7 @@ export const EntityContainer = ({ currententity, transformValue = (
         title={ConfirmationTitle.delete}
         onClose={handleDeleteConfirmationClose}
       >
-        {`${MessageConfirmation.delete} '${toDeleteEntity?.name}' ?`}
+        {`${MessageConfirmation.delete} '${toDeleteEntity?.name ?? toDeleteEntity?.prenom}' ?`}
       </ConfirmModal>
     </div>
   );

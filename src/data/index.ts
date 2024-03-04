@@ -41,6 +41,8 @@ export const todataTDO = (ownedElements) => ownedElements.filter(i => i._type ==
 
 export const dataTDO = todataTDO(ownedElements);
 
+export const elements = ownedElements
+
 export const dataAggregates = {
 
 }

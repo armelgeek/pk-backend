@@ -3,9 +3,9 @@ import { formatDateToLocaleWithHour } from '../../common/service/date.service';
 import { dataTDO } from '../../data';
 import { EventDO } from '../../data/do/Event';
 // @ts-ignore
-import { EventRequestDTO } from '../../data/dto/Event1/request';
+import { EventRequestDTO } from '../../data/dto/Event/request';
 // @ts-ignore
-import { EventResponseDTO } from '../../data/dto/Event1/response';
+import { EventResponseDTO } from '../../data/dto/Event/response';
 
 const commonSchema = {
   ...dataTDO.Event.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),

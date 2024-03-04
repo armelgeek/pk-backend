@@ -18,7 +18,7 @@ export class CommentDO {
   target: string;
 
   @Column({nullable: true, unique: false})
-  prifileId: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
   happy: string;

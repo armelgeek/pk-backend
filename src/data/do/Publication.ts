@@ -8,26 +8,26 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   content: string;
 
-  @Column({nullable: true, unique: false})
-  imageUrls: string;
+  @Column("simple-array")
+  imageUrls: string[];
 
-  @Column({nullable: true, unique: false})
-  videoUrls: string;
+  @Column("simple-array")
+  videoUrls: string[];
 
   @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column({nullable: true, unique: false})
-  location: string;
+  @Column("simple-json")
+  Location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
 
   @Column({nullable: true, unique: false})
   private: boolean;
 
-  @Column({nullable: true, unique: false})
-  like: string;
+  @Column("simple-array")
+  like: string[];
 
-  @Column({nullable: true, unique: false})
-  share: string;
+  @Column("simple-array")
+  share: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

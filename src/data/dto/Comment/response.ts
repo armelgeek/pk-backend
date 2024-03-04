@@ -3,7 +3,7 @@ export type CommentResponseDTO = {
    parent?: string;
    hideFor?: string[];
    target?: string;
-   prifileId?: string;
+   profile?: string;
    happy?: string[];
    love?: string[];
    sad?: string[];
@@ -21,7 +21,7 @@ export type CommentResponseDTO = {
  * @property {string} parent
  * @property {array<string>} hideFor
  * @property {string} target
- * @property {string} prifileId
+ * @property {string} profileId
  * @property {array<string>} happy
  * @property {array<string>} love
  * @property {array<string>} sad

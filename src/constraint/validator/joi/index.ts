@@ -1,9 +1,18 @@
 import * as Joi from 'joi';
-import { dataTDO } from '../../../data';
+import { dataTDO, elements } from '../../../data';
 
 export const toJoi = (attributes) => attributes?.reduce(
-  (acc, { key, type, isArray, required }) => (
-    { ...acc, [key]: isArray ? Joi.array().default([]) : type === 'boolean' ? Joi.boolean().default(false) : type === 'number' ? Joi.number() : type === 'location' ? Joi.object() : required ? Joi.string().required() : Joi.string().allow('') }), {}) || {}
+  (acc, { key, type, isArray, required }) => {
+    if (type && type.$ref) {
+      const name = elements.find(({ _id }) => type.$ref === _id)?.name
+      if (name === 'Location') {
+        return { ...acc, [key]: Joi.object().default({})}
+      }
+      
+    }
+    return (
+      { ...acc, [key]: isArray ? Joi.array().default([]) : type === 'boolean' ? Joi.boolean().default(false) : type === 'number' ? Joi.number() : type === 'location' ? Joi.object() : required ? Joi.string().required() : Joi.string().allow('') })
+  }, {}) || {}
 
 export default Object.keys(dataTDO).reduce((acc: any, entity) => {
   return {

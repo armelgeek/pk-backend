@@ -8,8 +8,8 @@ export class MessageDO {
   @Column({nullable: true, unique: false})
   text: string;
 
-  @Column({nullable: true, unique: false})
-  imagesUrl: string;
+  @Column("simple-array")
+  imagesUrl: string[];
 
   @Column({nullable: true, unique: false})
   sender: string;

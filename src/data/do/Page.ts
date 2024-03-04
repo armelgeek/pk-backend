@@ -35,8 +35,8 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   type: string;
 
-  @Column({nullable: true, unique: false})
-  verifications: string;
+  @Column("simple-array")
+  verifications: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

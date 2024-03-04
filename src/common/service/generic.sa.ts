@@ -6,6 +6,7 @@ import { GenericSM } from './generic.sm';
 import { toObjectID } from './transformer';
 
 import { dataTDO } from '../../data';
+import { removeId } from '../../utils';
 
 export abstract class GenericSA<
   TDo,
@@ -281,13 +282,14 @@ export abstract class GenericSA<
                 from: entity?.name?.toLowerCase(),
                 localField: name,
                 foreignField: '_id',
-                as: name
+                as: removeId(name)
               },
             }
+
             if (!isArray) {
               return [...acc, lookup, {
                 "$unwind": {
-                  "path": `$${name}`,
+                  "path": `$${removeId(name)}`,
                   "preserveNullAndEmptyArrays": true
                 },
               }]

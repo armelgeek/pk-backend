@@ -15,6 +15,7 @@ import { MyDropzone } from '../../presentation/component/MyDropzone';
 import { MultiSelect } from '../../presentation/component/MultiSelect';
 import { LieuComponent } from '../../presentation/component/lieux';
 import { Checkbox } from '../../presentation/component/Checkbox';
+import { elements } from '../../data';
 
 export const toDataSelect = (data: any, sortField) => data?.map(
   ({ id, ...all }) => ({ value: id, label: all[sortField] }),
@@ -158,6 +159,9 @@ export const CreateUpdate = ({
         // eslint-disable-next-line no-underscore-dangle
         ...keys.filter(({ form, notUpdate }) => form && !(entity?._id && notUpdate))
           .map(({ key, type, form, required, route, name, ...propertie }) => {
+            if (name === 'password') {
+              return <></>
+            }
             if (type === 'boolean') {
               return (
                 <Checkbox
@@ -169,7 +173,7 @@ export const CreateUpdate = ({
                   checked={checkbox ? checkbox[key] : null}
                 />
               );
-            } if (type === 'number') {
+            }if (type === 'number') {
               return (
                 <Input
                   type="number"
@@ -194,11 +198,13 @@ export const CreateUpdate = ({
                   required={required}
                 />
               );
-            } if (type === 'location') {
-              return (
-                <LieuComponent key={key} placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
-              );
-            } if (type === 'file') {
+            }  if (type && type.$ref) {
+              const name = elements.find(({ _id }) => type.$ref === _id)?.name
+              if (name === 'Location') {
+                return <LieuComponent key={key} placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+              }
+            }
+             if (type === 'file') {
               return (
                 <MyDropzone
                   keyName={name}

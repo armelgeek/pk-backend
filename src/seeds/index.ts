@@ -18,65 +18,65 @@ import { LevelRepository } from '../repository/Level';
 
 const gameTypes = [
   {
-    "name": "Plo4",
-    "description": "Plo4",
+    name: 'Plo4',
+    description: 'Plo4',
   },
   {
-    "name": "Plo4",
-    "description": "Plo4",
+    name: 'Plo4',
+    description: 'Plo4',
   },
   {
-    "name": "Texas holdem limit",
-    "description": "Texas holdem limit",
+    name: 'Texas holdem limit',
+    description: 'Texas holdem limit',
   },
   {
-    "name": "5 stud cards",
-    "description": "5 stud cards",
+    name: '5 stud cards',
+    description: '5 stud cards',
   },
   {
-    "name": "7 stud cards",
-    "description": "7 stud cards",
+    name: '7 stud cards',
+    description: '7 stud cards',
   },
   {
-    "name": "Badugi",
-    "description": "Badugi",
+    name: 'Badugi',
+    description: 'Badugi',
   },
   {
-    "name": "Badugi",
-    "description": "Badugi",
-  }
+    name: 'Badugi',
+    description: 'Badugi',
+  },
 ];
 
 const tournamentTypes = [
   {
-    "name": "FreeRoll",
-    "description": "Déscription du freeroll",
+    name: 'FreeRoll',
+    description: 'Déscription du freeroll',
   },
   {
-    "name": "Texas holdem limit",
-    "description": "Texas holdem limit",
-  }
+    name: 'Texas holdem limit',
+    description: 'Texas holdem limit',
+  },
 ];
 
 const levels = [
   {
-    "smallBlind": "smallBlind1",
-    "bigBlind": "bigBlind1",
-    "anteBb": "anteBb1",
-    "duration": "12",
+    smallBlind: 'smallBlind1',
+    bigBlind: 'bigBlind1',
+    anteBb: 'anteBb1',
+    duration: '12',
   },
   {
-    "smallBlind": "smallBlind12",
-    "bigBlind": "bigBlind12",
-    "anteBb": "anteBb12",
-    "duration": "20",
+    smallBlind: 'smallBlind12',
+    bigBlind: 'bigBlind12',
+    anteBb: 'anteBb12',
+    duration: '20',
   },
   {
-    "smallBlind": "smallBlind121",
-    "bigBlind": "bigBlind121",
-    "anteBb": "anteBb121",
-    "duration": "201",
-  }
+    smallBlind: 'smallBlind121',
+    bigBlind: 'bigBlind121',
+    anteBb: 'anteBb121',
+    duration: '201',
+  },
 ];
 export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
@@ -86,7 +86,9 @@ export class InitSeeds implements Seeder {
     const langue = connection.getCustomRepository(LangueRepository);
     const administrateur = connection.getCustomRepository(AdministrateurRepository);
     const page = connection.getCustomRepository(PageRepository);
-    const complementaryInformation = connection.getCustomRepository(ComplementaryInformationRepository);
+    const complementaryInformation = connection.getCustomRepository(
+      ComplementaryInformationRepository,
+    );
     const link = connection.getCustomRepository(LinkRepository);
     const sponsor = connection.getCustomRepository(SponsorRepository);
     const partener = connection.getCustomRepository(PartenerRepository);
@@ -97,6 +99,23 @@ export class InitSeeds implements Seeder {
     const users = await user.count();
 
     const levelCount = await level.count();
+
+    // compte thanhly26@gmail.com / thanhly26
+    const client = await user.findOne({ email: 'thanhly26@gmail.com' });
+    if (!client) {
+      await user.insert({
+        password: await bcrypt.hashSync('thanhly26', 10),
+        nom: 'Thanhly',
+        prenom: 'Test',
+        phone: '',
+        email: 'thanhly26@gmail.com',
+        ville: '',
+        adresse: '',
+        imageUrl: '',
+        role: 1,
+        actif: true,
+      });
+    }
     if (levelCount < 2) {
       await level.save(levels);
     }
@@ -166,7 +185,11 @@ export class InitSeeds implements Seeder {
               prenom,
               imageUrls: [],
             });
-            return await user.insertOne({ ...item, actif: true, profileId: profileItem?.insertedId });
+            return await user.insertOne({
+              ...item,
+              actif: true,
+              profileId: profileItem?.insertedId,
+            });
           }),
         );
       } catch (error) {
@@ -175,14 +198,55 @@ export class InitSeeds implements Seeder {
         console.log('====================================');
       }
     }
-    !user.collectionIndexExists && user.createCollectionIndex({ nom: 'text', prenom: 'text', phone: 'text', email: 'text', adresse: 'text' });
+    !user.collectionIndexExists &&
+      user.createCollectionIndex({
+        nom: 'text',
+        prenom: 'text',
+        phone: 'text',
+        email: 'text',
+        adresse: 'text',
+      });
     !langue.collectionIndexExists && langue.createCollectionIndex({ code: 'text', nom: 'text' });
-    !administrateur.collectionIndexExists && administrateur.createCollectionIndex({ nom: 'text', prenom: 'text', email: 'text', adresseAdmin: 'text', telAdmin: 'text' });
-    !page.collectionIndexExists &&  page.createCollectionIndex({ name: 'text', country: 'text', phone: 'text', adress: 'text', email: 'text', description: 'text' });
-    !complementaryInformation.collectionIndexExists &&  complementaryInformation.createCollectionIndex({ nationality: 'text', langues: 'text', email: 'text', phone: 'text', job: 'text', headonmob: 'text', nb_titre: 'text', rang_time_money: 'text', period: 'text' });
-    link.createCollectionIndex({ name: 'text', link: 'text', description: 'text', profile: 'text' });
-    !sponsor.collectionIndexExists &&  sponsor.createCollectionIndex({ nom: 'text', description: 'text', });
-    !partener.collectionIndexExists && partener.createCollectionIndex({ name: 'text', description: 'text', });
-    !pseudo.collectionIndexExists && pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
+    !administrateur.collectionIndexExists &&
+      administrateur.createCollectionIndex({
+        nom: 'text',
+        prenom: 'text',
+        email: 'text',
+        adresseAdmin: 'text',
+        telAdmin: 'text',
+      });
+    !page.collectionIndexExists &&
+      page.createCollectionIndex({
+        name: 'text',
+        country: 'text',
+        phone: 'text',
+        adress: 'text',
+        email: 'text',
+        description: 'text',
+      });
+    !complementaryInformation.collectionIndexExists &&
+      complementaryInformation.createCollectionIndex({
+        nationality: 'text',
+        langues: 'text',
+        email: 'text',
+        phone: 'text',
+        job: 'text',
+        headonmob: 'text',
+        nb_titre: 'text',
+        rang_time_money: 'text',
+        period: 'text',
+      });
+    link.createCollectionIndex({
+      name: 'text',
+      link: 'text',
+      description: 'text',
+      profile: 'text',
+    });
+    !sponsor.collectionIndexExists &&
+      sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
+    !partener.collectionIndexExists &&
+      partener.createCollectionIndex({ name: 'text', description: 'text' });
+    !pseudo.collectionIndexExists &&
+      pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
   }
 }

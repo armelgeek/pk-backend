@@ -340,7 +340,8 @@ export abstract class GenericSA<
         this.name,
       );
 
-      const items = this.factory.toResponseDto(data[0]?.data || []);
+      // const items = this.factory.toResponseDto(data[0]?.data || []);
+      const items = (data[0]?.data || []).map(({_id, ...item}) => ({id: _id, ...item}));
 
       const totalCount = data[0]?.metadata[0]?.total;
 

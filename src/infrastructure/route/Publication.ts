@@ -30,3 +30,39 @@ export const publicationRouter = publicationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * DELETE /api/publication/{id}
+ * @tags Publication
+ * @security BearerAuth
+ * @summary Remove Publication (deletePublication)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/publication/partialUpdate/{id}
+ * @tags Publication
+ * @security BearerAuth
+ * @summary Update Publication (updatePublication)
+ * @param {PublicationRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/publication/{id}
+ * @tags Publication
+ * @security BearerAuth
+ * @summary List Publication (getPublication)
+ 
+ * @param {string} id.path.required 
+ * @return {PublicationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

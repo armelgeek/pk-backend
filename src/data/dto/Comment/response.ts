@@ -3,7 +3,7 @@ export type CommentResponseDTO = {
    parent?: string;
    hideFor?: string[];
    target?: string;
-   profile?: string;
+   profileId?: string;
    happy?: string[];
    love?: string[];
    sad?: string[];

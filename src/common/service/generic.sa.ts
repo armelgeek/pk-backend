@@ -167,9 +167,10 @@ export abstract class GenericSA<
       const result = await this.serviceSM.findByIdAggregate(aggregate);
 
       if (Array.isArray(result) && result.length > 0) {
-        return result[0]
+        return this.factory.toResponseDto(result[0]);
       }
-      return result;
+      return this.factory.toResponseDto(result);
+
     } catch (error) {
       return Promise.reject(error);
     }

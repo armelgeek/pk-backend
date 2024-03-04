@@ -19,18 +19,6 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  */
 
 /**
- * GET /api/complementary-information/{id}
- * @tags ComplementaryInformation
- * @security BearerAuth
- * @summary List ComplementaryInformation (getComplementaryInformation)
- 
- * @param {string} id.path.required 
- * @return {ComplementaryInformationResponseDTO} 201
- * @return {object} 400 - Données non conformes
- * @return {object} 500 - Erreur interne du serveur
- */
-
-/**
  * POST /api/complementary-information
  * @tags ComplementaryInformation
  * @security BearerAuth
@@ -49,6 +37,31 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * @param {ComplementaryInformationRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/complementary-information
+ * @tags ComplementaryInformation
+ * @security BearerAuth
+ * @summary List ComplementaryInformation (getAllComplementaryInformation)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
+ * @return {ComplementaryInformationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * DELETE /api/complementary-information/{id}
+ * @tags ComplementaryInformation
+ * @security BearerAuth
+ * @summary Remove ComplementaryInformation (deleteComplementaryInformation)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

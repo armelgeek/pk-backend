@@ -30,3 +30,39 @@ export const tournamenttypeRouter = tournamenttypeRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * DELETE /api/tournament-type/{id}
+ * @tags TournamentType
+ * @security BearerAuth
+ * @summary Remove TournamentType (deleteTournamentType)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/tournament-type/partialUpdate/{id}
+ * @tags TournamentType
+ * @security BearerAuth
+ * @summary Update TournamentType (updateTournamentType)
+ * @param {TournamentTypeRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/tournament-type/{id}
+ * @tags TournamentType
+ * @security BearerAuth
+ * @summary List TournamentType (getTournamentType)
+ 
+ * @param {string} id.path.required 
+ * @return {TournamentTypeResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

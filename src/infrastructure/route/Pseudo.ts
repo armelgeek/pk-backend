@@ -18,13 +18,49 @@ export const pseudoRouter = pseudoRoutes();
  */
 
 /**
- * GET /api/pseudos
+ * GET /api/pseudo
  * @tags Pseudo
  * @security BearerAuth
  * @summary List Pseudo (getAllPseudo)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
+ * @return {PseudoResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * DELETE /api/pseudo/{id}
+ * @tags Pseudo
+ * @security BearerAuth
+ * @summary Remove Pseudo (deletePseudo)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/pseudo/partialUpdate/{id}
+ * @tags Pseudo
+ * @security BearerAuth
+ * @summary Update Pseudo (updatePseudo)
+ * @param {PseudoRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/pseudo/{id}
+ * @tags Pseudo
+ * @security BearerAuth
+ * @summary List Pseudo (getPseudo)
+ 
+ * @param {string} id.path.required 
  * @return {PseudoResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

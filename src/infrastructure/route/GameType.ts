@@ -30,3 +30,39 @@ export const gametypeRouter = gametypeRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * DELETE /api/game-type/{id}
+ * @tags GameType
+ * @security BearerAuth
+ * @summary Remove GameType (deleteGameType)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/game-type/partialUpdate/{id}
+ * @tags GameType
+ * @security BearerAuth
+ * @summary Update GameType (updateGameType)
+ * @param {GameTypeRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/game-type/{id}
+ * @tags GameType
+ * @security BearerAuth
+ * @summary List GameType (getGameType)
+ 
+ * @param {string} id.path.required 
+ * @return {GameTypeResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

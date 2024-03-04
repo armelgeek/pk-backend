@@ -30,3 +30,39 @@ export const clubRouter = clubRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * DELETE /api/club/{id}
+ * @tags Club
+ * @security BearerAuth
+ * @summary Remove Club (deleteClub)
+ 
+ * @param {string} id.path.required 
+ * @return {DeleteResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/club/partialUpdate/{id}
+ * @tags Club
+ * @security BearerAuth
+ * @summary Update Club (updateClub)
+ * @param {ClubRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/club/{id}
+ * @tags Club
+ * @security BearerAuth
+ * @summary List Club (getClub)
+ 
+ * @param {string} id.path.required 
+ * @return {ClubResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

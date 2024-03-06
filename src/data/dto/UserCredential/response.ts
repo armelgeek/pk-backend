@@ -1,9 +1,5 @@
 export type UserCredentialResponseDTO = {
-   carteNumber: string;
-   cvv: string;
-   exp: string;
    userId: string;
-   paymentTypeId: string;
    customerId?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -12,11 +8,7 @@ export type UserCredentialResponseDTO = {
 
 /**
  * @typedef {object} UserCredentialResponseDTO
- * @property {string} carteNumber
- * @property {string} cvv
- * @property {string} exp
  * @property {string} userId
- * @property {string} paymentTypeId
  * @property {string} customerId
  * @property {string} id
  * @property {Date} updatedAt

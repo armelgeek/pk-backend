@@ -11,7 +11,17 @@ class UserCredentialController extends GenericController<
   UserCredentialRequestDTO,
   UserCredentialResponseDTO,
   UserCredentialSA
-> {}
+> {
+  async getUserCredsByUserId(req, res, next) {
+    try {
+      const data = await usercredentialSA.findOneNotFail({ userId: req.params.userId });
+      res.locals.data = data;
+      next();
+    } catch (e) {
+      next(e);
+    }
+  }
+}
 
 export const usercredentialController = new UserCredentialController(usercredentialSA);
 

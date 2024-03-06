@@ -366,4 +366,14 @@ export abstract class GenericSA<
       return Promise.reject(error);
     }
   }
+
+  async find(): Promise<any> {
+    try {
+      const data = await this.serviceSM.find();
+      const items = this.factory.toResponseDto(data || []);
+      return items;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

@@ -10,6 +10,8 @@ import { exceptionHandler } from './service/middleware/exception-handler';
 import swaggerMiddleware from './service/middleware/swagger';
 import { responseFormatter } from './service/middleware/response-formatter';
 import cloudinary from './utils/cloudinary';
+import { SubscriptionOfferDO } from './data/do/SubscriptionOffer';
+import { UserSubscriptionDO } from './data/do/UserSubscription';
 
 const fileupload = require('express-fileupload');
 
@@ -85,7 +87,52 @@ class App {
   /**
    * Initialiser les CRONs
    */
-  private initCron() {}
+  private async initCron() {
+    const cronSchedule = '0 12 * * *';
+    cron.schedule(cronSchedule, async () => {
+      const { usersubscriptionSA } = await import('./service/applicatif/UserSubscription');
+      const { subscriptionofferSA } = await import('./service/applicatif/SubscriptionOffer');
+      try {
+        const subscriptions = await usersubscriptionSA.find();
+  
+        const renewSubscription = async (subscription: UserSubscriptionDO) => {
+          const endDate = new Date(subscription.end);
+          const offer: SubscriptionOfferDO = await subscriptionofferSA.findById(subscription.subscriptionOfferId);
+          const newEndDate = endDate
+          if (offer.type === 'year') {
+            newEndDate.setFullYear(endDate.getFullYear() + offer.duration)
+          } else {
+            newEndDate.setMonth(endDate.getMonth() + offer.duration);
+          }
+          await usersubscriptionSA.update((subscription as any).id, {...subscription, start: endDate.toISOString(), end: newEndDate.toISOString()})
+        };
+  
+        const cancelSubscription = async (subscription: UserSubscriptionDO) => {
+          await usersubscriptionSA.delete((subscription as any).id);
+        };
+  
+        const currentDate = new Date();
+  
+        subscriptions.forEach((subscription: UserSubscriptionDO) => {
+          const endDate = new Date(subscription.end);
+  
+          if (
+            currentDate.getMonth() >= endDate.getMonth() &&
+            currentDate.getDate() >= endDate.getDate() &&
+            currentDate.getFullYear() >= endDate.getFullYear()
+          ) {
+            if (subscription.isAutoRenewed) {
+              renewSubscription(subscription);
+            } else {
+              cancelSubscription(subscription);
+            }
+          }
+        });
+      } catch (e) {
+        throw e;
+      }
+    })
+  }
 }
 
 export default new App();

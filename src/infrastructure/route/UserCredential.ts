@@ -2,7 +2,18 @@ import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
 import { usercredentialController } from '../controller/UserCredential';
 
-const usercredentialRoutes = () => genericRoute({ controller: usercredentialController, schema: Joi.UserCredential, name: 'UserCredential' });
+const usercredentialRoutes = () => {
+  const router = genericRoute({
+    controller: usercredentialController,
+    schema: Joi.UserCredential,
+    name: 'UserCredential',
+  });
+
+  router.get('/user/:userId', usercredentialController.getUserCredsByUserId);
+
+  return router;
+};
+
 
 export const usercredentialRouter = usercredentialRoutes();
 

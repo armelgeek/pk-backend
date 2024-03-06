@@ -11558,7 +11558,24 @@
 									"height": 13,
 									"text": "+codeParrainId: CodeParrain",
 									"horizontalAlignment": 0
-								}
+								},
+								{
+                  "_type": "UMLAttributeView",
+                  "_id": "AAAAAAGOEzIbILW7gpk=",
+                  "_parent": {
+                    "$ref": "AAAAAAGN1k2YULGDqew="
+                  },
+                  "model": {
+                    "$ref": "AAAAAAGOEzIa1LW42T0="
+                  },
+                  "font": "Arial;13;0",
+                  "left": 477,
+                  "top": 1388,
+                  "width": 168.73974609375,
+                  "height": 13,
+                  "text": "+subscriptionStripeId: string",
+                  "horizontalAlignment": 0
+                }
 							],
 							"font": "Arial;13;0",
 							"left": 536,
@@ -12367,7 +12384,24 @@
 									"height": 13,
 									"text": "+codeParrainId: CodeParrain",
 									"horizontalAlignment": 0
-								}
+								},
+								{
+                  "_type": "UMLAttributeView",
+                  "_id": "AAAAAAGOEzIbILW7gpk=",
+                  "_parent": {
+                    "$ref": "AAAAAAGN1k2YULGDqew="
+                  },
+                  "model": {
+                    "$ref": "AAAAAAGOEzIa1LW42T0="
+                  },
+                  "font": "Arial;13;0",
+                  "left": 477,
+                  "top": 1388,
+                  "width": 168.73974609375,
+                  "height": 13,
+                  "text": "+subscriptionStripeId: string",
+                  "horizontalAlignment": 0
+                }
 							],
 							"font": "Arial;13;0",
 							"left": 576,
@@ -18170,7 +18204,18 @@
 					},
 					"form": "code Parrain",
 					"bo": true
-				}
+				},
+				{
+          "_type": "UMLAttribute",
+          "_id": "AAAAAAGOEzIa1LW42T0=",
+          "_parent": {
+            "$ref": "AAAAAAGN1k2YTrF7OPY="
+          },
+          "name": "subscriptionStripeId",
+          "type": "string",
+          "form": "subscription Stripe Id",
+          "bo": true
+        }
 			],
 			"operations": [
 				{
@@ -18578,7 +18623,18 @@
 					},
 					"form": "code Parrain",
 					"bo": true
-				}
+				},
+				{
+          "_type": "UMLAttribute",
+          "_id": "AAAAAAGOEzIa1LW42T0=",
+          "_parent": {
+            "$ref": "AAAAAAGN1k2YTrF7OPY="
+          },
+          "name": "subscriptionStripeId",
+          "type": "string",
+          "form": "subscription Stripe Id",
+          "bo": true
+        }
 			],
 			"operations": [
 				{

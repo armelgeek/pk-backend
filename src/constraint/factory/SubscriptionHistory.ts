@@ -16,6 +16,7 @@ const responseSchema = {
   id: '_id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  subscriptionStripeId: 'subscriptionStripeId'
 };
 
 export class SubscriptionHistoryFactory extends GenericFactory<

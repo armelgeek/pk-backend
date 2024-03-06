@@ -23,6 +23,10 @@ export class SubscriptionHistoryDO {
   @Column({nullable: true, unique: false})
   codeParrainId: string;
 
+  @Column({nullable: true, unique: false})
+  subscriptionStripeId: string;
+
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

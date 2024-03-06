@@ -9,7 +9,6 @@ export type SubscriptionOfferResponseDTO = {
    stripeProductId?: string;
    pageType?: string;
    remiseDescription: string;
-   subscriptionStripeId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -27,7 +26,6 @@ export type SubscriptionOfferResponseDTO = {
  * @property {string} stripeProductId
  * @property {string} pageType
  * @property {string} remiseDescription
- * @property {string} subscriptionStripeId
  * @property {string} id
  * @property {Date} updatedAt
  * @property {Date} createdAt

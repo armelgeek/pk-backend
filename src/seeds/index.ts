@@ -188,8 +188,6 @@ export class InitSeeds implements Seeder {
 
     const levelCount = await level.count();
 
-    await initStripeProduct();
-
     // compte thanhly26@gmail.com / thanhly26
     const client = await user.findOne({ email: 'thanhly26@gmail.com' });
     if (!client) {
@@ -340,6 +338,7 @@ export class InitSeeds implements Seeder {
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
 
     if (userSubscriptionCount === 0) {
+      await initStripeProduct();
       for (let offer of offers) {
         await userSubscription.insertOne(offer);
       }

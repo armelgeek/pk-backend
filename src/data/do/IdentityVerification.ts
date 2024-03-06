@@ -1,33 +1,24 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('publication')
-export class PublicationDO {
+@Entity('identityverification')
+export class IdentityVerificationDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  content: string;
-
-  @Column("simple-array")
-  imageUrls: string[];
-
-  @Column("simple-array")
-  videoUrls: string[];
-
-  @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column("simple-json")
-  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  @Column({nullable: true, unique: false})
+  verifications: string;
 
   @Column({nullable: true, unique: false})
-  private: boolean;
+  validate: boolean;
 
-  @Column("simple-array")
-  like: string[];
+  @Column({nullable: true, unique: false})
+  description: string;
 
-  @Column("simple-array")
-  share: string[];
+  @Column({nullable: true, unique: false})
+  pageId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

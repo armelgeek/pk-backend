@@ -6,6 +6,11 @@ export type SubscriptionOfferResponseDTO = {
    isActive: boolean;
    duration?: number;
    type?: string;
+   stripeProductId?: string;
+   pageType?: string;
+   remiseDescription: string;
+   subscriptionStripeId?: string;
+   codeParrainId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -20,6 +25,11 @@ export type SubscriptionOfferResponseDTO = {
  * @property {boolean} isActive
  * @property {number} duration
  * @property {string} type
+ * @property {string} stripeProductId
+ * @property {string} pageType
+ * @property {string} remiseDescription
+ * @property {string} subscriptionStripeId
+ * @property {string} codeParrainId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

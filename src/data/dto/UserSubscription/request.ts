@@ -6,6 +6,8 @@ export type UserSubscriptionRequestDTO = {
    userId: string;
    subscriptionOfferId: string;
    pageId: string;
+   codeParrainId?: string;
+   pageId: string;
 }
 
 /**
@@ -16,6 +18,8 @@ export type UserSubscriptionRequestDTO = {
  * @property {string} paymentStatus
  * @property {string} userId
  * @property {string} subscriptionOfferId
+ * @property {string} pageId
+ * @property {string} codeParrainId
  * @property {string} pageId
  */
 

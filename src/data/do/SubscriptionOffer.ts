@@ -26,6 +26,21 @@ export class SubscriptionOfferDO {
   @Column({nullable: true, unique: false})
   type: string;
 
+  @Column({nullable: true, unique: false})
+  stripeProductId: string;
+
+  @Column({nullable: true, unique: false})
+  pageType: string;
+
+  @Column({nullable: false, unique: false})
+  remiseDescription: string;
+
+  @Column({nullable: true, unique: false})
+  subscriptionStripeId: string;
+
+  @Column({nullable: true, unique: false})
+  codeParrainId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -26,6 +26,12 @@ export class UserSubscriptionDO {
   @Column({nullable: false, unique: false})
   pageId: string;
 
+  @Column({nullable: true, unique: false})
+  codeParrainId: string;
+
+  @Column({nullable: false, unique: false})
+  pageId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

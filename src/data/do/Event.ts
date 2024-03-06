@@ -15,7 +15,7 @@ export class EventDO {
   shortDescription: string;
 
   @Column("simple-json")
-  Location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
 
   @Column({nullable: true, unique: false})
   startDate: string;
@@ -190,6 +190,9 @@ export class EventDO {
 
   @Column({nullable: true, unique: false})
   cashEntryMin: number;
+
+  @Column({nullable: true, unique: false})
+  days: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

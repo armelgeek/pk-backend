@@ -62,3 +62,7 @@
   declare interface SubscriptionHistoryResponseDTO { }
   declare interface LevelRequestDTO { }
   declare interface LevelResponseDTO { }
+  declare interface IdentityVerificationRequestDTO { }
+  declare interface IdentityVerificationResponseDTO { }
+  declare interface CodeParrainRequestDTO { }
+  declare interface CodeParrainResponseDTO { }

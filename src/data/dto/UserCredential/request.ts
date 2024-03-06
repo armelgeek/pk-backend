@@ -4,6 +4,7 @@ export type UserCredentialRequestDTO = {
    exp: string;
    userId: string;
    paymentTypeId: string;
+   customerId?: string;
 }
 
 /**
@@ -13,5 +14,6 @@ export type UserCredentialRequestDTO = {
  * @property {string} exp
  * @property {string} userId
  * @property {string} paymentTypeId
+ * @property {string} customerId
  */
 

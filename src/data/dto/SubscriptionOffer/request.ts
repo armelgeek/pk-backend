@@ -6,6 +6,11 @@ export type SubscriptionOfferRequestDTO = {
    isActive: boolean;
    duration?: number;
    type?: string;
+   stripeProductId?: string;
+   pageType?: string;
+   remiseDescription: string;
+   subscriptionStripeId?: string;
+   codeParrainId?: string;
 }
 
 /**
@@ -17,5 +22,10 @@ export type SubscriptionOfferRequestDTO = {
  * @property {boolean} isActive
  * @property {number} duration
  * @property {string} type
+ * @property {string} stripeProductId
+ * @property {string} pageType
+ * @property {string} remiseDescription
+ * @property {string} subscriptionStripeId
+ * @property {string} codeParrainId
  */
 

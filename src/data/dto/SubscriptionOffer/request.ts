@@ -10,7 +10,6 @@ export type SubscriptionOfferRequestDTO = {
    pageType?: string;
    remiseDescription: string;
    subscriptionStripeId?: string;
-   codeParrainId?: string;
 }
 
 /**
@@ -26,6 +25,5 @@ export type SubscriptionOfferRequestDTO = {
  * @property {string} pageType
  * @property {string} remiseDescription
  * @property {string} subscriptionStripeId
- * @property {string} codeParrainId
  */
 

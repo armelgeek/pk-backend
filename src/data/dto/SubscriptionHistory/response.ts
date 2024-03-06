@@ -4,6 +4,7 @@ export type SubscriptionHistoryResponseDTO = {
    userId: string;
    subscriptionOfferId: string;
    pageId: string;
+   codeParrainId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -16,6 +17,7 @@ export type SubscriptionHistoryResponseDTO = {
  * @property {string} userId
  * @property {string} subscriptionOfferId
  * @property {string} pageId
+ * @property {string} codeParrainId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

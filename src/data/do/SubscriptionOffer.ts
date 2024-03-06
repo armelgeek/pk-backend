@@ -38,9 +38,6 @@ export class SubscriptionOfferDO {
   @Column({nullable: true, unique: false})
   subscriptionStripeId: string;
 
-  @Column({nullable: true, unique: false})
-  codeParrainId: string;
-
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

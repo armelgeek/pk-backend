@@ -10,7 +10,6 @@ export type SubscriptionOfferResponseDTO = {
    pageType?: string;
    remiseDescription: string;
    subscriptionStripeId?: string;
-   codeParrainId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -29,7 +28,6 @@ export type SubscriptionOfferResponseDTO = {
  * @property {string} pageType
  * @property {string} remiseDescription
  * @property {string} subscriptionStripeId
- * @property {string} codeParrainId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

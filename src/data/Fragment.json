@@ -11558,30 +11558,13 @@
 									"height": 13,
 									"text": "+codeParrainId: CodeParrain",
 									"horizontalAlignment": 0
-								},
-								{
-									"_type": "UMLAttributeView",
-									"_id": "AAAAAAGOEzYcGLXgcAo=",
-									"_parent": {
-										"$ref": "AAAAAAGN1ksgeLEgX7M="
-									},
-									"model": {
-										"$ref": "AAAAAAGOEzYb4rXd30M="
-									},
-									"font": "Arial;13;0",
-									"left": 613,
-									"top": 1030,
-									"width": 246.29541015625,
-									"height": 13,
-									"text": "+pageId: Page {id}",
-									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 608,
 							"top": 905,
 							"width": 256.29541015625,
-							"height": 143
+							"height": 128
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -11604,7 +11587,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 613,
-									"top": 1053,
+									"top": 1038,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+getAll()",
@@ -11621,7 +11604,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 613,
-									"top": 1068,
+									"top": 1053,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+delete()",
@@ -11638,7 +11621,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 613,
-									"top": 1083,
+									"top": 1068,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+update()",
@@ -11655,7 +11638,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 613,
-									"top": 1098,
+									"top": 1083,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+get()",
@@ -11672,7 +11655,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 613,
-									"top": 1113,
+									"top": 1098,
 									"width": 246.29541015625,
 									"height": 13,
 									"text": "+add()",
@@ -11681,7 +11664,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 608,
-							"top": 1048,
+							"top": 1033,
 							"width": 256.29541015625,
 							"height": 83
 						},
@@ -17702,21 +17685,6 @@
 					},
 					"form": "code Parrain",
 					"bo": true
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGOEzYb4rXd30M=",
-					"_parent": {
-						"$ref": "AAAAAAGN1ksgdbEYE2s="
-					},
-					"name": "pageId",
-					"type": {
-						"$ref": "AAAAAAGNhQPY9VBuOYg="
-					},
-					"required": true,
-					"form": "Page",
-					"bo": true,
-					"isID": true
 				}
 			],
 			"operations": [

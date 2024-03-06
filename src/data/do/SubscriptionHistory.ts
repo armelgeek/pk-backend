@@ -20,6 +20,9 @@ export class SubscriptionHistoryDO {
   @Column({nullable: false, unique: false})
   pageId: string;
 
+  @Column({nullable: true, unique: false})
+  codeParrainId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

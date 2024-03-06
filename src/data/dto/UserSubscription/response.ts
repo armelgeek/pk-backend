@@ -7,7 +7,6 @@ export type UserSubscriptionResponseDTO = {
    subscriptionOfferId: string;
    pageId: string;
    codeParrainId?: string;
-   pageId: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -23,7 +22,6 @@ export type UserSubscriptionResponseDTO = {
  * @property {string} subscriptionOfferId
  * @property {string} pageId
  * @property {string} codeParrainId
- * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

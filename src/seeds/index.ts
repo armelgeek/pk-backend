@@ -19,6 +19,7 @@ import { SubscriptionOfferRequestDTO } from '../data/dto/SubscriptionOffer/reque
 import Stripe from 'stripe';
 import { configs } from '../data/constants/configs';
 import { UserSubscriptionRepository } from '../repository/UserSubscription';
+import { SubscriptionOfferRepository } from '../repository/SubscriptionOffer';
 const stripe = new Stripe(configs.stripeSK);
 
 const gameTypes = [
@@ -182,9 +183,9 @@ export class InitSeeds implements Seeder {
     const level = connection.getCustomRepository(LevelRepository);
     const game = connection.getCustomRepository(GameTypeRepository);
     const tournament = connection.getCustomRepository(TournamentTypeRepository);
-    const userSubscription = connection.getCustomRepository(UserSubscriptionRepository);
+    const subsriptionOffer = connection.getCustomRepository(SubscriptionOfferRepository);
     const users = await user.count();
-    const userSubscriptionCount = await userSubscription.count();
+    const subsriptionOfferCount = await subsriptionOffer.count();
 
     const levelCount = await level.count();
 
@@ -337,10 +338,10 @@ export class InitSeeds implements Seeder {
     !pseudo.collectionIndexExists &&
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
 
-    if (userSubscriptionCount === 0) {
+    if (subsriptionOfferCount === 0) {
       await initStripeProduct();
       for (let offer of offers) {
-        await userSubscription.insertOne(offer);
+        await subsriptionOffer.insertOne(offer);
       }
     }
   }

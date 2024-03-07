@@ -81,6 +81,7 @@ export class UserSubscriptionSA extends GenericSA<
         publishableKey: configs.stripePK,
       };
     } catch (error) {
+      console.log({ error });
       return Promise.reject(error);
     }
   }

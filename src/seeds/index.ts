@@ -151,17 +151,23 @@ const offers: SubscriptionOfferRequestDTO[] = [
 const initStripeProduct = async () => {
   for (let i in offers) {
     const offer = offers[i];
+
     const product = await stripe.products.create({
       name: offer.name + '-' + offer.pageType,
       type: 'good',
       description: 'Product description',
     });
-    await stripe.prices.create({
+    const price = await stripe.prices.create({
       product: product.id,
       unit_amount: offer.price * 100,
       currency: 'eur',
+      recurring: {
+        interval: offer.type === 'month' ? 'month' : 'year',
+        interval_count: offer.duration,
+      },
     });
-    offers[i] = { ...offer, stripeProductId: product.id };
+
+    offers[i] = { ...offer, stripeProductId: price.id };
   }
 };
 
@@ -339,7 +345,6 @@ export class InitSeeds implements Seeder {
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
 
     if (subsriptionOfferCount === 0) {
-      console.log('atoo');
       await initStripeProduct();
       for (let offer of offers) {
         await subsriptionOffer.insertOne(offer);

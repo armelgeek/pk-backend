@@ -2,7 +2,17 @@ import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
 import { subscriptionhistoryController } from '../controller/SubscriptionHistory';
 
-const subscriptionhistoryRoutes = () => genericRoute({ controller: subscriptionhistoryController, schema: Joi.SubscriptionHistory, name: 'SubscriptionHistory' });
+const subscriptionhistoryRoutes = () => {
+  const router = genericRoute({
+    controller: subscriptionhistoryController,
+    schema: Joi.SubscriptionHistory,
+    name: 'SubscriptionHistory',
+  });
+
+  router.get('/history/user', subscriptionhistoryController.getSubscriptionHistoryByUser);
+
+  return router;
+};
 
 export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
 
@@ -37,7 +47,7 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * @security BearerAuth
  * @summary Update SubscriptionHistory (updateSubscriptionHistory)
  * @param {SubscriptionHistoryRequestDTO} request.body
- * @param {string} id.path.required 
+ * @param {string} id.path.required
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,9 +70,8 @@ export const subscriptionhistoryRouter = subscriptionhistoryRoutes();
  * @tags SubscriptionHistory
  * @security BearerAuth
  * @summary Create SubscriptionHistory (addSubscriptionHistory)
- * @param {SubscriptionHistoryRequestDTO} request.body 
+ * @param {SubscriptionHistoryRequestDTO} request.body
  * @return {SubscriptionHistoryResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
-

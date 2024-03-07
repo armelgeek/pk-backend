@@ -86,7 +86,7 @@ const levels = [
 ];
 
 const offers: SubscriptionOfferRequestDTO[] = [
-  { 
+  {
     name: 'Abonnement mensuel',
     description: '',
     price: 199,
@@ -95,10 +95,10 @@ const offers: SubscriptionOfferRequestDTO[] = [
     duration: 1,
     type: 'month',
     isPopular: false,
-    pageType: 'CASINO',
+    pageType: 'casino',
     stripeProductId: '',
   },
-  { 
+  {
     name: 'Abonnement mensuel',
     description: '',
     price: 99.95,
@@ -107,10 +107,10 @@ const offers: SubscriptionOfferRequestDTO[] = [
     duration: 1,
     type: 'month',
     isPopular: false,
-    pageType: 'CLUB',
+    pageType: 'club',
     stripeProductId: '',
   },
-  { 
+  {
     name: 'Abonnement annuel',
     description: '',
     price: 1999.95,
@@ -119,10 +119,10 @@ const offers: SubscriptionOfferRequestDTO[] = [
     duration: 1,
     type: 'year',
     isPopular: false,
-    pageType: 'CASINO',
+    pageType: 'casino',
     stripeProductId: '',
   },
-  { 
+  {
     name: 'Abonnement annuel',
     description: '',
     price: 999.95,
@@ -131,11 +131,11 @@ const offers: SubscriptionOfferRequestDTO[] = [
     duration: 1,
     type: 'year',
     isPopular: false,
-    pageType: 'CLUB',
+    pageType: 'club',
     stripeProductId: '',
   },
-  { 
-    name: 'Abonnement annuel',
+  {
+    name: 'Abonnement 3 ans',
     description: '',
     price: 5999.95,
     remiseDescription: '50% de rabais plus partenariat obligatoire',
@@ -143,14 +143,14 @@ const offers: SubscriptionOfferRequestDTO[] = [
     duration: 3,
     type: 'year',
     isPopular: false,
-    pageType: 'ALL',
+    pageType: 'all',
     stripeProductId: '',
   },
-]
+];
 
 const initStripeProduct = async () => {
   for (let i in offers) {
-    const offer = offers[i]
+    const offer = offers[i];
     const product = await stripe.products.create({
       name: offer.name + '-' + offer.pageType,
       type: 'good',
@@ -161,9 +161,9 @@ const initStripeProduct = async () => {
       unit_amount: offer.price * 100,
       currency: 'eur',
     });
-    offers[i] = {...offer, stripeProductId: product.id}
+    offers[i] = { ...offer, stripeProductId: product.id };
   }
-}
+};
 
 export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
@@ -339,6 +339,7 @@ export class InitSeeds implements Seeder {
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
 
     if (subsriptionOfferCount === 0) {
+      console.log('atoo');
       await initStripeProduct();
       for (let offer of offers) {
         await subsriptionOffer.insertOne(offer);

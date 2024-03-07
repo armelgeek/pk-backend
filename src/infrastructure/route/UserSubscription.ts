@@ -9,7 +9,7 @@ const usersubscriptionRoutes = () => {
     name: 'UserSubscription',
   });
 
-  router.get('/user/:id', usersubscriptionController.getSubscriptionByUser);
+  router.get('/current/user', usersubscriptionController.getSubscriptionByUser);
   router.get('/payment/config', usersubscriptionController.paymentConfig);
   router.post('/payment/createCustomer', usersubscriptionController.createCustomer);
   // For no auto renewed subscription

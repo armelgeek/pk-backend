@@ -1,6 +1,6 @@
 import { GenericSA } from '../../common/service/generic.sa';
 import {
-    subscriptionhistoryFactory,
+  subscriptionhistoryFactory,
   SubscriptionHistoryFactory,
 } from '../../constraint/factory/SubscriptionHistory';
 import { SubscriptionHistoryDO } from '../../data/do/SubscriptionHistory';
@@ -17,7 +17,21 @@ export class SubscriptionHistorySA extends GenericSA<
   SubscriptionHistorySM,
   SubscriptionHistoryFactory
 > {
+  async getSubscriptionHistoryByUserSA(id: string, pageId: string) {
+    try {
+      let data = await subscriptionhistorySA.findOneWithRelation({
+        queries: { userId: id, pageId },
+      });
+
+      return data;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }
 
-export const subscriptionhistorySA = new SubscriptionHistorySA(subscriptionhistorySM, subscriptionhistoryFactory, 'SubscriptionHistory');
-
+export const subscriptionhistorySA = new SubscriptionHistorySA(
+  subscriptionhistorySM,
+  subscriptionhistoryFactory,
+  'SubscriptionHistory',
+);

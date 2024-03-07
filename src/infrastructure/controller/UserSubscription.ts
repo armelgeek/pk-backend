@@ -6,8 +6,7 @@ import { UserSubscriptionRequestDTO } from '../../data/dto/UserSubscription/requ
 // @ts-ignore
 import { UserSubscriptionResponseDTO } from '../../data/dto/UserSubscription/response';
 import { usersubscriptionSA, UserSubscriptionSA } from '../../service/applicatif/UserSubscription';
-import { subscriptionofferSA } from '../../service/applicatif/SubscriptionOffer';
-import { SubscriptionOfferDO } from '../../data/do/SubscriptionOffer';
+
 import { usercredentialSA } from '../../service/applicatif/UserCredential';
 
 class UserSubscriptionController extends GenericController<
@@ -18,7 +17,9 @@ class UserSubscriptionController extends GenericController<
 > {
   async getSubscriptionByUser(req, res, next) {
     try {
-      const data = await usersubscriptionSA.getSubscriptionByUserSA(req.params.id);
+      const { userId, pageId } = req.query;
+
+      const data = await usersubscriptionSA.getSubscriptionByUserSA(userId, pageId);
       res.locals.data = data;
       next();
     } catch (error) {

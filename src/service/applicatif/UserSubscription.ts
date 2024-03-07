@@ -11,7 +11,6 @@ import { UserSubscriptionRequestDTO } from '../../data/dto/UserSubscription/requ
 import { UserSubscriptionResponseDTO } from '../../data/dto/UserSubscription/response';
 import { formatAmountForStripe } from '../../utils/amountFormater';
 import { usersubscriptionSM, UserSubscriptionSM } from '../metier/UserSubscription';
-import { subscriptionofferSA } from './SubscriptionOffer';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(configs.stripeSK);
@@ -23,13 +22,9 @@ export class UserSubscriptionSA extends GenericSA<
   UserSubscriptionSM,
   UserSubscriptionFactory
 > {
-  async getSubscriptionByUserSA(id: string) {
+  async getSubscriptionByUserSA(id: string, pageId: string) {
     try {
-      let data = await usersubscriptionSA.findOne({ userId: id });
-      // if (data) {
-      //   const subscription = await subscriptionofferSA.findById(data.subscriptionOfferId);
-      //   data = { ...data, subscription };
-      // }
+      let data = await usersubscriptionSA.findOneWithRelation({ queries: { userId: id, pageId } });
       return data;
     } catch (error) {
       return Promise.reject(error);

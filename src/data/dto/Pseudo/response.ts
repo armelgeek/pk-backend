@@ -19,7 +19,7 @@ export type PseudoResponseDTO = {
  * @property {string} icon
  * @property {boolean} active
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

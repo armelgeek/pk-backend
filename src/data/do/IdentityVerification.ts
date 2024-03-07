@@ -8,8 +8,8 @@ export class IdentityVerificationDO {
   @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column({nullable: true, unique: false})
-  verifications: string;
+  @Column("simple-array")
+  verifications: string[];
 
   @Column({nullable: true, unique: false})
   validate: boolean;

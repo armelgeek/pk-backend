@@ -35,8 +35,8 @@ export class DayDO {
   @Column({nullable: true, unique: false})
   duration: string;
 
-  @Column({nullable: true, unique: false})
-  levels: string;
+  @Column("simple-array")
+  levels: string[];
 
   @Column("simple-array")
   photos: string[];

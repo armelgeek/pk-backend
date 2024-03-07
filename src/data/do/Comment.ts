@@ -11,8 +11,8 @@ export class CommentDO {
   @Column({nullable: true, unique: false})
   parent: string;
 
-  @Column({nullable: true, unique: false})
-  hideFor: string;
+  @Column("simple-array")
+  hideFor: string[];
 
   @Column({nullable: true, unique: false})
   target: string;
@@ -20,17 +20,17 @@ export class CommentDO {
   @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column({nullable: true, unique: false})
-  happy: string;
+  @Column("simple-array")
+  happy: string[];
 
-  @Column({nullable: true, unique: false})
-  love: string;
+  @Column("simple-array")
+  love: string[];
 
-  @Column({nullable: true, unique: false})
-  sad: string;
+  @Column("simple-array")
+  sad: string[];
 
-  @Column({nullable: true, unique: false})
-  veryhappy: string;
+  @Column("simple-array")
+  veryhappy: string[];
 
   @Column({nullable: true, unique: false})
   media: string;

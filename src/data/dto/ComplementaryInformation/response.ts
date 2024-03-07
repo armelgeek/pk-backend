@@ -25,7 +25,7 @@ export type ComplementaryInformationResponseDTO = {
  * @property {string} rang_time_money
  * @property {string} period
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

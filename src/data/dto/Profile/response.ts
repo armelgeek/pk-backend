@@ -37,7 +37,7 @@ export type ProfileResponseDTO = {
  * @property {string} description
  * @property {string} nom
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

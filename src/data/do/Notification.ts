@@ -14,8 +14,8 @@ export class NotificationDO {
   @Column({nullable: true, unique: false})
   tous: boolean;
 
-  @Column({nullable: true, unique: false})
-  usersIds: string;
+  @Column("simple-array")
+  usersIds: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

@@ -13,7 +13,7 @@ export type RoleResponseDTO = {
  * @property {string} profile
  * @property {boolean} active
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

@@ -17,7 +17,7 @@ export type IdentityVerificationResponseDTO = {
  * @property {string} description
  * @property {string} pageId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

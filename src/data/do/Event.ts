@@ -17,8 +17,8 @@ export class EventDO {
   @Column("simple-json")
   location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
 
-  @Column({nullable: true, unique: false})
-  startDate: string;
+  @Column({ type: 'timestamptz', default: new Date() })
+  startDate: Date;
 
   @Column({nullable: true, unique: false})
   startTime: string;
@@ -47,8 +47,8 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   private: boolean;
 
-  @Column({nullable: true, unique: false})
-  userList: string;
+  @Column("simple-array")
+  userList: string[];
 
   @Column({nullable: true, unique: false})
   profileId: string;
@@ -140,8 +140,8 @@ export class EventDO {
   @Column({ type: 'timestamptz', default: new Date() })
   startDateDay: Date;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  startTimeDay: Date;
+  @Column({nullable: true, unique: false})
+  startTimeDay: string;
 
   @Column({nullable: true, unique: false})
   lateReg: string;
@@ -152,8 +152,8 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   durationDay: number;
 
-  @Column({nullable: true, unique: false})
-  levels: string;
+  @Column("simple-array")
+  levels: string[];
 
   @Column({nullable: true, unique: false})
   duration: string;
@@ -191,8 +191,8 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   cashEntryMin: number;
 
-  @Column({nullable: true, unique: false})
-  days: string;
+  @Column("simple-array")
+  days: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

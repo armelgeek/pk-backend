@@ -41,14 +41,14 @@ export class PageAdditionalDO {
   @Column({nullable: true, unique: false})
   parking: boolean;
 
-  @Column({nullable: true, unique: false})
-  sponsors: string;
+  @Column("simple-array")
+  sponsors: string[];
 
-  @Column({nullable: true, unique: false})
-  parteners: string;
+  @Column("simple-array")
+  parteners: string[];
 
-  @Column({nullable: true, unique: false})
-  links: string;
+  @Column("simple-array")
+  links: string[];
 
   @Column({nullable: true, unique: false})
   profileId: string;

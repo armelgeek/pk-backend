@@ -29,7 +29,7 @@ export type ConfindialityResponseDTO = {
  * @property {string} partner
  * @property {string} profileId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

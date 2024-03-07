@@ -29,7 +29,7 @@ export type PageResponseDTO = {
  * @property {string} type
  * @property {array<string>} verifications
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

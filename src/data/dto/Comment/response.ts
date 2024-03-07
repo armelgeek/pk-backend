@@ -29,7 +29,7 @@ export type CommentResponseDTO = {
  * @property {string} media
  * @property {string} type
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

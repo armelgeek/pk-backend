@@ -30,7 +30,9 @@ class SubscriptionHistoryController extends GenericController<
             (code) => code.id.toString() === element.codeParrainId,
           );
           finalResult.push({ ...element, codeParrainId: usedCodeParrain });
-        } else [finalResult.push(element)];
+        } else {
+          finalResult.push(element);
+        }
       }
       res.locals.data = finalResult;
       next();

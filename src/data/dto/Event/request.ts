@@ -61,7 +61,7 @@ export type EventRequestDTO = {
    cashSmallBlind?: string;
    cashEntryMax?: number;
    cashEntryMin?: number;
-   days?: string;
+   days?: string[];
 }
 
 /**
@@ -128,6 +128,6 @@ export type EventRequestDTO = {
  * @property {string} cashSmallBlind
  * @property {number} cashEntryMax
  * @property {number} cashEntryMin
- * @property {string} days
+ * @property {array<string>} days
  */
 

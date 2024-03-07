@@ -56,7 +56,7 @@ export const dayRouter = dayRoutes();
  */
 
 /**
- * POST /api/identity-verification
+ * POST /api/day
  * @tags Day
  * @security BearerAuth
  * @summary Create Day (addDay)

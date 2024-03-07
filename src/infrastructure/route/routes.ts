@@ -30,6 +30,7 @@ import { subscriptionhistoryRouter } from './SubscriptionHistory';
 import { levelRouter } from './Level';
 import { identityverificationRouter } from './IdentityVerification';
 import { codeparrainRouter } from './CodeParrain';
+import { dayRouter } from './Day';
 
 export const routes = () => {
   const router = Router();
@@ -64,6 +65,7 @@ export const routes = () => {
  router.use('/level', levelRouter);
  router.use('/identity-verification', identityverificationRouter);
  router.use('/code-parrain', codeparrainRouter);
+ router.use('/day', dayRouter);
   
   return router;
 };

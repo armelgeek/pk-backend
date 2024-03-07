@@ -32,8 +32,8 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   prenom: string;
 
-  @Column({nullable: true, unique: false})
-  imageUrls: string;
+  @Column("simple-array")
+  imageUrls: string[];
 
   @Column({nullable: true, unique: false})
   country: string;

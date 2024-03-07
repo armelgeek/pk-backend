@@ -15,7 +15,7 @@ export type LocationResponseDTO = {
  * @property {number} latitude
  * @property {number} altitude
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

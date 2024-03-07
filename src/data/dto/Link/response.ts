@@ -15,7 +15,7 @@ export type LinkResponseDTO = {
  * @property {string} description
  * @property {string} profileId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

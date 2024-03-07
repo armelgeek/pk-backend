@@ -3,7 +3,7 @@ export type EventResponseDTO = {
    participants?: number;
    shortDescription?: string;
    location?: LocationRequestDTO;
-   startDate?: string;
+   startDate?: Date;
    startTime?: string;
    contact?: string;
    description?: string;
@@ -43,7 +43,7 @@ export type EventResponseDTO = {
    hotel?: boolean;
    qualification?: boolean;
    titleDay?: string;
-   startDateDay?: string;
+   startDateDay?: Date;
    startTimeDay?: string;
    lateReg?: string;
    limitRegEntry?: string;
@@ -73,7 +73,7 @@ export type EventResponseDTO = {
  * @property {number} participants
  * @property {string} shortDescription
  * @property {LocationRequestDTO} location
- * @property {string} startDate
+ * @property {Date} startDate
  * @property {string} startTime
  * @property {string} contact
  * @property {string} description
@@ -113,7 +113,7 @@ export type EventResponseDTO = {
  * @property {boolean} hotel
  * @property {boolean} qualification
  * @property {string} titleDay
- * @property {string} startDateDay
+ * @property {Date} startDateDay
  * @property {string} startTimeDay
  * @property {string} lateReg
  * @property {string} limitRegEntry
@@ -133,7 +133,7 @@ export type EventResponseDTO = {
  * @property {number} cashEntryMin
  * @property {array<string>} days
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

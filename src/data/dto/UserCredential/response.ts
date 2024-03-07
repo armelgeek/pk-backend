@@ -19,7 +19,7 @@ export type UserCredentialResponseDTO = {
  * @property {string} paymentTypeId
  * @property {string} customerId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

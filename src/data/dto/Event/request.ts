@@ -3,7 +3,7 @@ export type EventRequestDTO = {
    participants?: number;
    shortDescription?: string;
    location?: LocationRequestDTO;
-   startDate?: string;
+   startDate?: Date;
    startTime?: string;
    contact?: string;
    description?: string;
@@ -43,7 +43,7 @@ export type EventRequestDTO = {
    hotel?: boolean;
    qualification?: boolean;
    titleDay?: string;
-   startDateDay?: string;
+   startDateDay?: Date;
    startTimeDay?: string;
    lateReg?: string;
    limitRegEntry?: string;
@@ -70,7 +70,7 @@ export type EventRequestDTO = {
  * @property {number} participants
  * @property {string} shortDescription
  * @property {LocationRequestDTO} location
- * @property {string} startDate
+ * @property {Date} startDate
  * @property {string} startTime
  * @property {string} contact
  * @property {string} description
@@ -110,7 +110,7 @@ export type EventRequestDTO = {
  * @property {boolean} hotel
  * @property {boolean} qualification
  * @property {string} titleDay
- * @property {string} startDateDay
+ * @property {Date} startDateDay
  * @property {string} startTimeDay
  * @property {string} lateReg
  * @property {string} limitRegEntry

@@ -11,7 +11,7 @@ export type SocialMediaResponseDTO = {
  * @property {string} name
  * @property {string} base_url
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

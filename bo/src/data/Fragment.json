@@ -7394,7 +7394,7 @@
 									"top": 466,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+startDate: string",
+									"text": "+startDate: date",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8091,7 +8091,7 @@
 									"top": 1081,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+startTimeDay: date",
+									"text": "+startTimeDay: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -16217,7 +16217,7 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startDate",
-					"type": "string"
+					"type": "date"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -16601,7 +16601,7 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startTimeDay",
-					"type": "date"
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",

@@ -29,7 +29,7 @@ export type SubscriptionOfferResponseDTO = {
  * @property {string} remiseDescription
  * @property {string} subscriptionStripeId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

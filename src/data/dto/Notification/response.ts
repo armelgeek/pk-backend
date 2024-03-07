@@ -15,7 +15,7 @@ export type NotificationResponseDTO = {
  * @property {boolean} tous
  * @property {array<string>} usersIds
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

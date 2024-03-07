@@ -11,7 +11,7 @@ export type LangueResponseDTO = {
  * @property {string} code
  * @property {string} nom
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

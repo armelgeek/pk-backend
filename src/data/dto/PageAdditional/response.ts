@@ -41,7 +41,7 @@ export type PageAdditionalResponseDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

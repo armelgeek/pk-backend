@@ -10,8 +10,8 @@ export type UtilisateurResponseDTO = {
    ville?: string;
    dateInscription?: string;
    dateNaissance?: string;
-   dateDerniereConnexion?: string;
-   dateModification?: string;
+   dateDerniereConnexion?: Date;
+   dateModification?: Date;
    actif?: boolean;
    socketId?: string;
    nomPrenom?: string;
@@ -41,8 +41,8 @@ export type UtilisateurResponseDTO = {
  * @property {string} ville
  * @property {string} dateInscription
  * @property {string} dateNaissance
- * @property {string} dateDerniereConnexion
- * @property {string} dateModification
+ * @property {Date} dateDerniereConnexion
+ * @property {Date} dateModification
  * @property {boolean} actif
  * @property {string} socketId
  * @property {string} nomPrenom
@@ -55,7 +55,7 @@ export type UtilisateurResponseDTO = {
  * @property {string} username
  * @property {string} profileId
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

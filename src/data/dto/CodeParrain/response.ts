@@ -11,7 +11,7 @@ export type CodeParrainResponseDTO = {
  * @property {string} code
  * @property {number} percentage
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

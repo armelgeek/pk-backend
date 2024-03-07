@@ -15,7 +15,7 @@ export type LevelResponseDTO = {
  * @property {string} anteBb
  * @property {string} duration
  * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
 

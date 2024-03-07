@@ -66,3 +66,5 @@
   declare interface IdentityVerificationResponseDTO { }
   declare interface CodeParrainRequestDTO { }
   declare interface CodeParrainResponseDTO { }
+  declare interface DayRequestDTO { }
+  declare interface DayResponseDTO { }

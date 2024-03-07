@@ -4,6 +4,7 @@ import { SubscriptionHistoryDO } from '../../data/do/SubscriptionHistory';
 import { SubscriptionHistoryRequestDTO } from '../../data/dto/SubscriptionHistory/request';
 // @ts-ignore
 import { SubscriptionHistoryResponseDTO } from '../../data/dto/SubscriptionHistory/response';
+import { codeparrainSA } from '../../service/applicatif/CodeParrain';
 import {
   subscriptionhistorySA,
   SubscriptionHistorySA,
@@ -19,7 +20,19 @@ class SubscriptionHistoryController extends GenericController<
     try {
       const { userId, pageId } = req.query;
       const data = await subscriptionhistorySA.getSubscriptionHistoryByUserSA(userId, pageId);
-      res.locals.data = data;
+      const codeParrain = await codeparrainSA.find();
+      const finalResult = [];
+
+      for (let index = 0; index < (data as any).length; index++) {
+        const element = data[index];
+        if (element.codeParrainId) {
+          const usedCodeParrain = codeParrain.find(
+            (code) => code.id.toString() === element.codeParrainId,
+          );
+          finalResult.push({ ...element, codeParrainId: usedCodeParrain });
+        } else [finalResult.push(element)];
+      }
+      res.locals.data = finalResult;
       next();
     } catch (error) {
       next(error);

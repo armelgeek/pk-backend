@@ -6,19 +6,7 @@ export class UserCredentialDO {
   _id: ObjectID;
 
   @Column({nullable: false, unique: false})
-  carteNumber: string;
-
-  @Column({nullable: false, unique: false})
-  cvv: string;
-
-  @Column({nullable: false, unique: false})
-  exp: string;
-
-  @Column({nullable: false, unique: false})
   userId: string;
-
-  @Column({nullable: false, unique: false})
-  paymentTypeId: string;
 
   @Column({nullable: true, unique: false})
   customerId: string;

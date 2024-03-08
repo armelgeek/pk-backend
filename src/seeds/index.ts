@@ -15,6 +15,12 @@ import { RoleRepository } from '../repository/Role';
 import { TournamentTypeRepository } from '../repository/TournamentType';
 import { GameTypeRepository } from '../repository/GameType';
 import { LevelRepository } from '../repository/Level';
+import { SubscriptionOfferRequestDTO } from '../data/dto/SubscriptionOffer/request';
+import Stripe from 'stripe';
+import { configs } from '../data/constants/configs';
+import { UserSubscriptionRepository } from '../repository/UserSubscription';
+import { SubscriptionOfferRepository } from '../repository/SubscriptionOffer';
+const stripe = new Stripe(configs.stripeSK);
 
 const gameTypes = [
   {
@@ -78,6 +84,105 @@ const levels = [
     duration: '201',
   },
 ];
+
+const offers: SubscriptionOfferRequestDTO[] = [
+  {
+    name: 'Abonnement mensuel',
+    description: '',
+    price: 199,
+    remiseDescription: '',
+    isActive: true,
+    duration: 1,
+    type: 'month',
+    isPopular: false,
+    pageType: 'casino',
+    stripeProductId: '',
+  },
+  {
+    name: 'Abonnement mensuel',
+    description: '',
+    price: 99.95,
+    remiseDescription: '',
+    isActive: true,
+    duration: 1,
+    type: 'month',
+    isPopular: false,
+    pageType: 'club',
+    stripeProductId: '',
+  },
+  {
+    name: 'Abonnement annuel',
+    description: '',
+    price: 1999.95,
+    remiseDescription: '1 mois offert (donc remise de 23%)',
+    isActive: true,
+    duration: 1,
+    type: 'year',
+    isPopular: true,
+    pageType: 'casino',
+    stripeProductId: '',
+  },
+  {
+    name: 'Abonnement annuel',
+    description: '',
+    price: 999.95,
+    remiseDescription: '1 mois offert (donc remise de 23%).',
+    isActive: true,
+    duration: 1,
+    type: 'year',
+    isPopular: true,
+    pageType: 'club',
+    stripeProductId: '',
+  },
+  {
+    name: 'Abonnement 3 ans',
+    description: '50% de rabais plus partenariat obligatoire',
+    price: 5999.95,
+    remiseDescription: '',
+    isActive: true,
+    duration: 3,
+    type: 'year',
+    isPopular: false,
+    pageType: 'casino',
+    stripeProductId: '',
+  },
+  {
+    name: 'Abonnement 3 ans',
+    description: '50% de rabais plus partenariat obligatoire',
+    price: 2999.85,
+    remiseDescription: '',
+    isActive: true,
+    duration: 3,
+    type: 'year',
+    isPopular: false,
+    pageType: 'club',
+    stripeProductId: '',
+  },
+];
+
+const initStripeProduct = async () => {
+  for (let i in offers) {
+    const offer = offers[i];
+
+    const product = await stripe.products.create({
+      name: offer.name + '-' + offer.pageType,
+      type: 'good',
+      description: 'Product description',
+    });
+    const price = await stripe.prices.create({
+      product: product.id,
+      unit_amount: offer.price * 100,
+      currency: 'eur',
+      recurring: {
+        interval: offer.type === 'month' ? 'month' : 'year',
+        interval_count: offer.duration,
+      },
+    });
+
+    offers[i] = { ...offer, stripeProductId: price.id };
+  }
+};
+
 export class InitSeeds implements Seeder {
   // eslint-disable-next-line class-methods-use-this
   async run(_factory: Factory, connection: Connection): Promise<void> {
@@ -96,7 +201,9 @@ export class InitSeeds implements Seeder {
     const level = connection.getCustomRepository(LevelRepository);
     const game = connection.getCustomRepository(GameTypeRepository);
     const tournament = connection.getCustomRepository(TournamentTypeRepository);
+    const subsriptionOffer = connection.getCustomRepository(SubscriptionOfferRepository);
     const users = await user.count();
+    const subsriptionOfferCount = await subsriptionOffer.count();
 
     const levelCount = await level.count();
 
@@ -248,5 +355,12 @@ export class InitSeeds implements Seeder {
       partener.createCollectionIndex({ name: 'text', description: 'text' });
     !pseudo.collectionIndexExists &&
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
+
+    if (subsriptionOfferCount === 0) {
+      await initStripeProduct();
+      for (let offer of offers) {
+        await subsriptionOffer.insertOne(offer);
+      }
+    }
   }
 }

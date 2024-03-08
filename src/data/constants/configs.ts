@@ -15,6 +15,8 @@ const {
   TYPEORM_PASSWORD: andoomPassword,
   EMAIL_USER: emailUser,
   EMAIL_PASSWORD: emailPassword,
+  STRIPE_SK: stripeSK,
+  STRIPE_PK: stripePK,
 } = process.env;
 
 export const configs = {
@@ -32,4 +34,6 @@ export const configs = {
   passwordResetExpiration,
   passwordResetSecret,
   database,
+  stripeSK,
+  stripePK,
 };

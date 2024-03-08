@@ -1,14 +1,15 @@
 export type SubscriptionHistoryResponseDTO = {
-   start: string;
-   end: string;
-   userId: string;
-   subscriptionOfferId: string;
-   pageId: string;
-   codeParrainId?: string;
+  start: string;
+  end: string;
+  userId: string;
+  subscriptionOfferId: string;
+  pageId: string;
+  codeParrainId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
-}
+  subscriptionStripeId: string;
+};
 
 /**
  * @typedef {object} SubscriptionHistoryResponseDTO
@@ -19,7 +20,7 @@ export type SubscriptionHistoryResponseDTO = {
  * @property {string} pageId
  * @property {string} codeParrainId
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
+ * @property {string} subscriptionStripeId
  */
-

@@ -15,9 +15,6 @@ export class SubscriptionHistoryDO {
   userId: string;
 
   @Column({nullable: false, unique: false})
-  subscriptionOfferId: string;
-
-  @Column({nullable: false, unique: false})
   pageId: string;
 
   @Column({nullable: true, unique: false})
@@ -26,6 +23,8 @@ export class SubscriptionHistoryDO {
   @Column({nullable: true, unique: false})
   subscriptionStripeId: string;
 
+  @Column({nullable: true, unique: false})
+  subscriptionOfferId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

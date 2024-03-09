@@ -1,17 +1,17 @@
 export type UserSubscriptionResponseDTO = {
-  isAutoRenewed: boolean;
-  start: string;
-  end: string;
-  paymentStatus: string;
-  userId: string;
-  subscriptionOfferId: string;
-  pageId: string;
-  codeParrainId?: string;
-  subscriptionStripeId?: string;
+   isAutoRenewed: boolean;
+   start: string;
+   end: string;
+   paymentStatus: string;
+   userId: string;
+   subscriptionOfferId: string;
+   pageId: string;
+   codeParrainId?: string;
+   subscriptionStripeId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
-};
+}
 
 /**
  * @typedef {object} UserSubscriptionResponseDTO
@@ -23,8 +23,9 @@ export type UserSubscriptionResponseDTO = {
  * @property {string} subscriptionOfferId
  * @property {string} pageId
  * @property {string} codeParrainId
- * @property {string} id
- * @property {string} updatedAt
- * @property {string} createdAt
  * @property {string} subscriptionStripeId
+ * @property {string} id
+ * @property {Date} updatedAt
+ * @property {Date} createdAt
  */
+

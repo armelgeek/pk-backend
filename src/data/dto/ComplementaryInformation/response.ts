@@ -1,6 +1,6 @@
 export type ComplementaryInformationResponseDTO = {
    nationality?: string;
-   langues?: string;
+   langue?: string;
    email?: string;
    phone?: string;
    job?: string;
@@ -16,7 +16,7 @@ export type ComplementaryInformationResponseDTO = {
 /**
  * @typedef {object} ComplementaryInformationResponseDTO
  * @property {string} nationality
- * @property {string} langues
+ * @property {string} langue
  * @property {string} email
  * @property {string} phone
  * @property {string} job

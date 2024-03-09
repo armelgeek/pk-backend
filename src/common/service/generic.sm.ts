@@ -122,6 +122,9 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async count(query: ObjectLiteral): Promise<any> {
+    console.log('query====================================');
+    console.log(query);
+    console.log('====================================');
     return await this.repository.count(query);
   }
 

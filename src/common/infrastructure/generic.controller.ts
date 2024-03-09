@@ -187,6 +187,9 @@ export class GenericController<
   count = async (req, res, next) => {
     const { query } = req;
     try {
+      console.log('====================================');
+      console.log(query);
+      console.log('====================================');
       const params = await this.serviceSA.count(query);
 
       res.locals.data = params;

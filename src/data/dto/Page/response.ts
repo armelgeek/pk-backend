@@ -10,6 +10,7 @@ export type PageResponseDTO = {
    profileId?: string;
    type?: string;
    verifications?: string[];
+   pageId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -28,6 +29,7 @@ export type PageResponseDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {array<string>} verifications
+ * @property {string} pageId
  * @property {string} id
  * @property {Date} updatedAt
  * @property {Date} createdAt

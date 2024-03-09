@@ -9,7 +9,7 @@ export class ComplementaryInformationDO {
   nationality: string;
 
   @Column({nullable: true, unique: false})
-  langues: string;
+  langue: string;
 
   @Column({nullable: true, unique: false})
   email: string;

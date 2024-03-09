@@ -11,12 +11,13 @@ export const toObjectID = (data, name) => {
           ...newAcc,
           [key]: Array.isArray(acc[key]) ? acc[key].map((ID) => new ObjectID(ID)) : new ObjectID(acc[key]),
         }
-      } else if(type === 'date') {
-        newAcc = {
-          ...newAcc,
-          [key]: new Date(acc[key]),
-        }
-      } 
+      }
+      // else if(type === 'date') {
+      //   newAcc = {
+      //     ...newAcc,
+      //     [key]: new Date(acc[key]),
+      //   }
+      // } 
       // else if(type === 'file' || type === 'image') {
       //   newAcc = {
       //     ...newAcc,

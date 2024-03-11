@@ -134,7 +134,6 @@ export class GenericController<
     const {
       query: { page = 1, rowPerPage = 10, light, direction, sortField, match, recherche, ...queries },
     } = req;
-
     try {
       const dtos = await this.serviceSA.findAll({
         search: recherche,
@@ -187,9 +186,6 @@ export class GenericController<
   count = async (req, res, next) => {
     const { query } = req;
     try {
-      console.log('====================================');
-      console.log(query);
-      console.log('====================================');
       const params = await this.serviceSA.count(query);
 
       res.locals.data = params;

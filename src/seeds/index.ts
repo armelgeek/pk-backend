@@ -249,6 +249,7 @@ export class InitSeeds implements Seeder {
             imageUrl: '',
             role: 1,
             actif: true,
+            createdAt: new Date(),
           },
           {
             password: await bcrypt.hashSync('test123456', 10),
@@ -261,6 +262,7 @@ export class InitSeeds implements Seeder {
             imageUrl: '',
             role: 1,
             actif: true,
+            createdAt: new Date(),
           },
           {
             password: await bcrypt.hashSync('azerty123', 10),
@@ -273,6 +275,7 @@ export class InitSeeds implements Seeder {
             imageUrl: '',
             role: 1,
             actif: true,
+            createdAt: new Date(),
           },
         ];
         await Promise.all(

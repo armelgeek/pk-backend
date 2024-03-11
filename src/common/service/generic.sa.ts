@@ -331,7 +331,19 @@ export abstract class GenericSA<
               ...acc,
               [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },
             };
+          } else if (key?.split('_lte')?.length === 2) {
+            return {
+              ...acc,
+              [key?.split('_lte')[0]]: { $lte: new Date(queries[key]) },
+            };
+          } else if (key?.split('_gte')?.length === 2) {
+            const keySplit = key?.split('_gte');
+            return {
+              ...acc,
+              [keySplit[0]]: { $gte: new Date(queries[key]) },
+            };
           }
+          
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },

@@ -11,7 +11,17 @@ class CodeParrainController extends GenericController<
   CodeParrainRequestDTO,
   CodeParrainResponseDTO,
   CodeParrainSA
-> {}
+> {
+  async getCodeparrainByCode(req, res, next) {
+    try {
+      const { code } = req.params;
+      const data = await codeparrainSA.getCodeparrainByCodeSA(code);
+      res.locals.data = data;
+      next();
+    } catch (error) {
+      next(error);
+    }
+  }
+}
 
 export const codeparrainController = new CodeParrainController(codeparrainSA);
-

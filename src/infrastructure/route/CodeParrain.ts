@@ -2,7 +2,16 @@ import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
 import { codeparrainController } from '../controller/CodeParrain';
 
-const codeparrainRoutes = () => genericRoute({ controller: codeparrainController, schema: Joi.CodeParrain, name: 'CodeParrain' });
+const codeparrainRoutes = () => {
+  const router = genericRoute({
+    controller: codeparrainController,
+    schema: Joi.CodeParrain,
+    name: 'CodeParrain',
+  });
+
+  router.get('/code/:code', codeparrainController.getCodeparrainByCode);
+  return router;
+};
 
 export const codeparrainRouter = codeparrainRoutes();
 
@@ -37,7 +46,7 @@ export const codeparrainRouter = codeparrainRoutes();
  * @security BearerAuth
  * @summary Update CodeParrain (updateCodeParrain)
  * @param {CodeParrainRequestDTO} request.body
- * @param {string} id.path.required 
+ * @param {string} id.path.required
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,9 +69,8 @@ export const codeparrainRouter = codeparrainRoutes();
  * @tags CodeParrain
  * @security BearerAuth
  * @summary Create CodeParrain (addCodeParrain)
- * @param {CodeParrainRequestDTO} request.body 
+ * @param {CodeParrainRequestDTO} request.body
  * @return {CodeParrainResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
-

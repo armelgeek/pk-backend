@@ -12,6 +12,7 @@ import { responseFormatter } from './service/middleware/response-formatter';
 import cloudinary from './utils/cloudinary';
 import { SubscriptionOfferDO } from './data/do/SubscriptionOffer';
 import { UserSubscriptionDO } from './data/do/UserSubscription';
+import { initFirebaseSdk, sendNotification } from './service/middleware/firebase-cloud-messaging';
 
 const fileupload = require('express-fileupload');
 
@@ -23,6 +24,7 @@ class App {
 
   public init = async () => {
     try {
+      await initFirebaseSdk();
       await createConnection();
       await this.initMiddlewares();
       await this.initRoutes();
@@ -37,7 +39,7 @@ class App {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(cors());
-    this.app.use(fileupload({ useTempFiles: true }))
+    this.app.use(fileupload({ useTempFiles: true }));
     // this.app.use(helmet());
     swaggerMiddleware.init(this.app);
 
@@ -59,7 +61,6 @@ class App {
         res.status(500).json({ err: 'Something went wrong' });
       }
     });
-
   };
   private initRoutes = async () => {
     const { appRouter } = await import('./infrastructure/route/app.route');
@@ -94,28 +95,34 @@ class App {
       const { subscriptionofferSA } = await import('./service/applicatif/SubscriptionOffer');
       try {
         const subscriptions = await usersubscriptionSA.find();
-  
+
         const renewSubscription = async (subscription: UserSubscriptionDO) => {
           const endDate = new Date(subscription.end);
-          const offer: SubscriptionOfferDO = await subscriptionofferSA.findById(subscription.subscriptionOfferId);
-          const newEndDate = endDate
+          const offer: SubscriptionOfferDO = await subscriptionofferSA.findById(
+            subscription.subscriptionOfferId,
+          );
+          const newEndDate = endDate;
           if (offer.type === 'year') {
-            newEndDate.setFullYear(endDate.getFullYear() + offer.duration)
+            newEndDate.setFullYear(endDate.getFullYear() + offer.duration);
           } else {
             newEndDate.setMonth(endDate.getMonth() + offer.duration);
           }
-          await usersubscriptionSA.update((subscription as any).id, {...subscription, start: endDate.toISOString(), end: newEndDate.toISOString()})
+          await usersubscriptionSA.update((subscription as any).id, {
+            ...subscription,
+            start: endDate.toISOString(),
+            end: newEndDate.toISOString(),
+          });
         };
-  
+
         const cancelSubscription = async (subscription: UserSubscriptionDO) => {
           await usersubscriptionSA.delete((subscription as any).id);
         };
-  
+
         const currentDate = new Date();
-  
+
         subscriptions.forEach((subscription: UserSubscriptionDO) => {
           const endDate = new Date(subscription.end);
-  
+
           if (
             currentDate.getMonth() >= endDate.getMonth() &&
             currentDate.getDate() >= endDate.getDate() &&
@@ -131,7 +138,7 @@ class App {
       } catch (e) {
         throw e;
       }
-    })
+    });
   }
 }
 

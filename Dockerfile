@@ -1,4 +1,4 @@
-FROM node:20.11.0
+FROM node:20.11.0 as build-bo
 
 # Create the workdir 
 RUN mkdir -p /var/www/bo
@@ -22,7 +22,7 @@ COPY ./bo/. .
 
 RUN npm run build:prod
 
-# FROM node:20.11.0
+FROM node:20.11.0
 
 # Create the workdir 
 RUN mkdir -p /var/www/backend

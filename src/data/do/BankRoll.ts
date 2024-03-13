@@ -1,39 +1,24 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('complementaryinformation')
-export class ComplementaryInformationDO {
+@Entity('bankroll')
+export class BankRollDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  nationality: string;
+  name: string;
 
   @Column({nullable: true, unique: false})
-  langue: string;
+  capital: number;
 
   @Column({nullable: true, unique: false})
-  email: string;
-
-  @Column("simple-json")
-  phone: { paysCode: string, phoneNumber: string, callingCode: string };
+  devise: string;
 
   @Column({nullable: true, unique: false})
-  job: string;
+  description: string;
 
-  @Column({nullable: true, unique: false})
-  headonmob: number;
-
-  @Column({nullable: true, unique: false})
-  nbTitle: number;
-
-  @Column({nullable: true, unique: false})
-  rangTmeMoney: string;
-
-  @Column({nullable: true, unique: false})
-  period: string;
-
-  @Column({nullable: true, unique: false})
-  nbBracelet: number;
+  @Column("simple-array")
+  sessions: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

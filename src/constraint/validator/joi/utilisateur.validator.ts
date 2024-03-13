@@ -29,7 +29,12 @@ export const utilisateurEditBORequestDTOSchema = Joi.object({
 });
 
 export const utilisateurPasswordResetRequestDTOSchema = Joi.object({
-  email: Joi.string().email().required(),
+  email: Joi.string().email(),
+  phone: Joi.object().keys({
+    paysCode: Joi.string().required(),
+    phoneNumber: Joi.string().required(),
+    callingCode: Joi.string().required(),
+  }),
 });
 
 export const utilisateurValidateResetRequestDTOSchema = Joi.object({

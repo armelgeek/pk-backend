@@ -20,8 +20,8 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   email: string;
 
-  @Column({nullable: true, unique: false})
-  phone: string;
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
 
   @Column({nullable: true, unique: false})
   date_of_birth: string;

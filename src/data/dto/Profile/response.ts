@@ -4,7 +4,7 @@ export type ProfileResponseDTO = {
    cover?: string;
    type?: string;
    email?: string;
-   phone?: string;
+   phone?: PhoneRequestDTO;
    date_of_birth?: string;
    gender?: string;
    prenom?: string;
@@ -26,7 +26,7 @@ export type ProfileResponseDTO = {
  * @property {string} cover
  * @property {string} type
  * @property {string} email
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} date_of_birth
  * @property {string} gender
  * @property {string} prenom

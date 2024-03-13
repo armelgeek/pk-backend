@@ -5,7 +5,7 @@ export const toJoi = (attributes) => attributes?.reduce(
   (acc, { key, type, isArray, required }) => {
     if (type && type.$ref) {
       const name = elements.find(({ _id }) => type.$ref === _id)?.name
-      if (name === 'Location') {
+      if (name === 'Location' || name === 'Phone') {
         return { ...acc, [key]: Joi.object().default({})}
       }
       

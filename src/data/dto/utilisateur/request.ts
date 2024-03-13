@@ -4,7 +4,7 @@ export type UtilisateurRequestDTO = {
    email: string;
    role?: number;
    password?: string;
-   phone?: string;
+   phone?: PhoneRequestDTO;
    imageUrl?: string;
    adresse?: string;
    ville?: string;
@@ -32,7 +32,7 @@ export type UtilisateurRequestDTO = {
  * @property {string} email
  * @property {number} role
  * @property {string} password
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} imageUrl
  * @property {string} adresse
  * @property {string} ville

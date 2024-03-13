@@ -9,6 +9,8 @@ import { sendMail } from '../../middleware/nodemailer';
 import { generateResetToken } from '../../middleware/passport/passport-local';
 import { utilisateurSA } from '../utilisateur/utilisateur.sa';
 import { entierAleatoire } from '../inscription/inscription.sa';
+import { sendSMS } from '../../middleware/sms';
+import { PhoneRequestDTO } from '../../../data/dto/Phone/request';
 
 export class AuthentificationSA {
   findByEmail(email: string): Promise<any> {
@@ -64,35 +66,46 @@ export class AuthentificationSA {
     }
   }
 
-  async passwordResetRequest(email: string, boHost: string) {
+  async passwordResetRequest({ email, phone }: { email?: string; phone?: PhoneRequestDTO }, boHost: string) {
     try {
-      const found = await utilisateurSA.findOneNotFail({ email });
+      let found;
+      if (email) {
+        found = await utilisateurSA.findOneNotFail({ email });
+      } else {
+        found = await utilisateurSA.findOneNotFail({ phone });
+      }
 
       if (!found) {
         throw new Exception(HttpStatus.BAD_REQUEST, 'Email non trouvé dans la base de données');
       }
 
       const code = entierAleatoire(1111, 9999).toString();
-      const saved = await utilisateurSM.partialUpdate(found.id, { code });
+      await utilisateurSM.partialUpdate(found.id, { code });
 
-      console.log({ saved });
-      await sendMail({
-        to: email,
-        subject: '[Pocker Apps] - Rénitialisation mot de passe',
-        body: `
-      Bonjour ${found.username},
-      <br /> <br />
-      <span>
-        <p>Voici votre code de rénitialisation: ${code}</p>
-      <br />
-      <br /> 
-      Si vous n'êtes pas à l'origine de ce changement de mot de passe, veuillez ignorer ce mail.
-      <br /> <br /> <br />
-      Cordialement,
-      <br /> <br />
-      L'équipe Pocker Apps.
-      `,
-      });
+      if (email) {
+        await sendMail({
+          to: email,
+          subject: '[Pockerapply] - Rénitialisation mot de passe',
+          body: `
+        Bonjour ${found.username},
+        <br /> <br />
+        <span>
+          <p>Voici votre code de rénitialisation: ${code}</p>
+        <br />
+        <br /> 
+        Si vous n'êtes pas à l'origine de ce changement de mot de passe, veuillez ignorer ce mail.
+        <br /> <br /> <br />
+        Cordialement,
+        <br /> <br />
+        L'équipe Pockerapply.
+        `,
+        });
+      } else if (found && found.phone?.callingCode && found.phone?.phoneNumber) {
+        await sendSMS(
+          `Bonjour ${found.username}, Voici votre code de rénitialisation: ${code}. L'équipe Pockerapply`,
+          `${found.phone?.callingCode}${found.phone?.phoneNumber}`,
+        );
+      }
 
       return true;
     } catch (error) {

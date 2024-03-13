@@ -68,3 +68,11 @@
   declare interface CodeParrainResponseDTO { }
   declare interface DayRequestDTO { }
   declare interface DayResponseDTO { }
+  declare interface ParticipateRequestDTO { }
+  declare interface ParticipateResponseDTO { }
+  declare interface PhoneRequestDTO { }
+  declare interface PhoneResponseDTO { }
+  declare interface SessionRequestDTO { }
+  declare interface SessionResponseDTO { }
+  declare interface BankRollRequestDTO { }
+  declare interface BankRollResponseDTO { }

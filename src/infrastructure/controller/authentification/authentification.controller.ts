@@ -79,10 +79,10 @@ export class AuthentificationController {
   passwordResetRequest = async (req, res, next) => {
     try {
       const {
-        body: { email },
+        body: { email, phone },
       } = req;
 
-      const success = await this.serviceSA.passwordResetRequest(email, `http://${req.headers.host}`);
+      const success = await this.serviceSA.passwordResetRequest({email, phone}, `http://${req.headers.host}`);
 
       res.locals.data = success;
 

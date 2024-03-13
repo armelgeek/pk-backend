@@ -53,6 +53,9 @@ COPY ./. .
 RUN npm run build
 
 COPY ./src/data/Fragment.json ./dist/data/
+
+RUN mkdir -p ./dist/bo
+
 COPY --from=build-bo /var/www/bo/dist/. ./dist/bo/
 
 CMD npm run prod --bind 0.0.0.0:4000

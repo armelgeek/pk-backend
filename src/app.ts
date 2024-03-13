@@ -29,6 +29,7 @@ class App {
       await this.initMiddlewares();
       await this.initRoutes();
       this.initCron();
+      
       return this.app.listen(configs.port, () => logger.info(`Listening on ${configs.port}`));
     } catch (error) {
       return Promise.reject(error);
@@ -70,11 +71,11 @@ class App {
     // });
     this.app.use(express.static(path.resolve(__dirname, '../public/')));
     this.app.use(express.static(path.resolve(__dirname, '../bo/dist')));
-    this.app.use(express.static(path.resolve(__dirname, '../client/')));
+    this.app.use(express.static(path.resolve(__dirname, '../bo/')));
     this.app.use('/public', express.static(path.resolve(__dirname, '../public')));
 
     this.app.get('/admin', (req, res) => {
-      res.sendFile(path.join(__dirname, '../', '/client/index.html'));
+      res.sendFile(path.join(__dirname, '/dist/bo/index.html'));
     });
 
     // this.app.get('/bo', (req, res) => {

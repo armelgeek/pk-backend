@@ -1,48 +1,48 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('baseinformation')
-export class BaseInformationDO {
+@Entity('session')
+export class SessionDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({nullable: true, unique: false})
-  pays: string;
-
-  @Column({nullable: true, unique: false})
-  email: string;
-
   @Column("simple-json")
-  phone: { paysCode: string, phoneNumber: string, callingCode: string };
+  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
 
   @Column({nullable: true, unique: false})
-  date_of_birth: string;
+  type: string;
 
   @Column({nullable: true, unique: false})
-  gender: string;
+  mode: string;
 
   @Column({nullable: true, unique: false})
-  nom: string;
+  gameType: string;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  startDate: Date;
 
   @Column({nullable: true, unique: false})
-  prenom: string;
+  hourDate: string;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  dateFin: Date;
 
   @Column({nullable: true, unique: false})
-  imageUrl: string;
+  hourFin: string;
 
   @Column({nullable: true, unique: false})
-  country: string;
+  buyIn: number;
 
   @Column({nullable: true, unique: false})
-  city: string;
+  cashOut: number;
 
   @Column({nullable: true, unique: false})
-  situation: string;
+  smallBlind: string;
 
   @Column({nullable: true, unique: false})
-  children: string;
+  bigBlind: string;
 
   @Column({nullable: true, unique: false})
-  description: string;
+  note: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

@@ -214,7 +214,6 @@ export class InitSeeds implements Seeder {
         password: await bcrypt.hashSync('thanhly26', 10),
         nom: 'Thanhly',
         prenom: 'Test',
-        phone: '',
         email: 'thanhly26@gmail.com',
         ville: '',
         adresse: '',
@@ -242,7 +241,6 @@ export class InitSeeds implements Seeder {
             password: await bcrypt.hashSync('PockerApp#123', 10),
             nom: 'PockerApp',
             prenom: 'Test',
-            phone: '',
             email: 'pockerapps@gmail.com',
             ville: '',
             adresse: '',
@@ -255,7 +253,6 @@ export class InitSeeds implements Seeder {
             password: await bcrypt.hashSync('test123456', 10),
             nom: 'Andry',
             prenom: 'Fetraniaina',
-            phone: '',
             email: 'andri.fetraniaina@gmail.com',
             ville: '',
             adresse: '',
@@ -268,7 +265,6 @@ export class InitSeeds implements Seeder {
             password: await bcrypt.hashSync('azerty123', 10),
             nom: 'Rakotoirintsoa',
             prenom: 'Tsanta',
-            phone: '',
             email: 'tsantarakotoirintsoa@gmail.com',
             ville: '',
             adresse: '',
@@ -280,17 +276,15 @@ export class InitSeeds implements Seeder {
         ];
         await Promise.all(
           data.map(async (item) => {
-            const { email, phone = '', nom = '', prenom = '', imageUrl = '' } = item;
+            const { email, nom = '', prenom = '', imageUrl = '' } = item;
             const info = await complementaryInformation.insertOne({
               email,
-              phone,
             });
             const profileItem = await profile.insertOne({
               info: info?.insertedId,
               photo: imageUrl,
               type: 'VIP',
               email,
-              phone,
               nom,
               prenom,
               imageUrls: [],
@@ -312,7 +306,6 @@ export class InitSeeds implements Seeder {
       user.createCollectionIndex({
         nom: 'text',
         prenom: 'text',
-        phone: 'text',
         email: 'text',
         adresse: 'text',
       });
@@ -329,7 +322,6 @@ export class InitSeeds implements Seeder {
       page.createCollectionIndex({
         name: 'text',
         country: 'text',
-        phone: 'text',
         adress: 'text',
         email: 'text',
         description: 'text',
@@ -339,7 +331,6 @@ export class InitSeeds implements Seeder {
         nationality: 'text',
         langues: 'text',
         email: 'text',
-        phone: 'text',
         job: 'text',
         headonmob: 'text',
         nb_titre: 'text',

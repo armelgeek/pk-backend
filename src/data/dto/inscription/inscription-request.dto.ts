@@ -1,3 +1,4 @@
+import {PhoneRequestDTO} from '../Phone/request';
 export interface InscriptionRequestDTO {
   googleId: string;
   facebookId: string;
@@ -5,7 +6,7 @@ export interface InscriptionRequestDTO {
   nom: string;
   prenom: string;
   imageUrl: string;
-  phone: string;
+  phone: PhoneRequestDTO;
   email: string;
   username: string;
   ville: string;
@@ -17,7 +18,7 @@ export interface InscriptionRequestDTO {
  * @typedef {object} InscriptionRequestDTO
  * @property {string} nom
  * @property {string} prenom
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} email
  * @property {string} password
  * @property {string} username

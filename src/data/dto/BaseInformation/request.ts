@@ -1,7 +1,7 @@
 export type BaseInformationRequestDTO = {
    pays?: string;
    email?: string;
-   phone?: string;
+   phone?: PhoneRequestDTO;
    date_of_birth?: string;
    gender?: string;
    nom?: string;
@@ -18,7 +18,7 @@ export type BaseInformationRequestDTO = {
  * @typedef {object} BaseInformationRequestDTO
  * @property {string} pays
  * @property {string} email
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} date_of_birth
  * @property {string} gender
  * @property {string} nom

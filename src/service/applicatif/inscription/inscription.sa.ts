@@ -49,15 +49,19 @@ export class InscriptionSA {
       const utilisateurDO = this.factory.toDo(dto);
       const { email, password, phone } = dto;
 
-      const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
-      const utilisateurByPhone = await utilisateurSM.findOneNotFail({ phone });
+      const utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
+      if (phone?.phoneNumber) {
+        const utilisateurByPhone = await utilisateurSM.findOneNotFail({
+          phone: phone
+        });
 
-      if (utilisateurByEmail) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
+        if (utilisateurByPhone) {
+          throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
+        }
       }
 
-      if (utilisateurByPhone) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
+      if (utilisateurByEmailOrPhone) {
+        throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
       }
 
       const code = entierAleatoire(1111, 9999).toString();
@@ -79,7 +83,7 @@ export class InscriptionSA {
 
       await sendMail({
         to: email,
-        subject: '[Pocker Apps] - Validation compte',
+        subject: '[Pockerapply] - Validation compte',
         body: `
       Bonjour ${utilisateurDO.username || utilisateurDO.nom},
       <br /> <br />
@@ -91,7 +95,7 @@ export class InscriptionSA {
       <br /> <br /> <br />
       Cordialement,
       <br /> <br />
-      L'équipe Pocker Apps.
+      L'équipe Pockerapply.
       `,
       });
 
@@ -107,21 +111,21 @@ export class InscriptionSA {
     try {
       const utilisateurDO = this.factory.toDo(dto);
       const { email, googleId, facebookId, appleId } = dto;
-      const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
+      const utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
       let user = null;
-      if (utilisateurByEmail) {
+      if (utilisateurByEmailOrPhone) {
         if (googleId) {
-          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, {
             googleId,
           });
           user = value;
         } else if (facebookId) {
-          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, {
             facebookId,
           });
           user = value;
         } else if (appleId) {
-          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail._id, {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, {
             appleId,
           });
           user = value;
@@ -164,27 +168,35 @@ export class InscriptionSA {
 
   async reSendCode(dto: ResendCodeRequestDTO) {
     try {
-      // const id = uuidV4();
-      const { email } = dto;
+      const { email, phone } = dto;
+      console.log('====================================');
+      console.log(email);
+      console.log('====================================');
+      let utilisateurByEmailOrPhone;
+      if (utilisateurByEmailOrPhone) {
+        utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({
+          phone: phone
+        });
+      } else if (email) {
+        utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
+      }
 
-      const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
-
-      if (!utilisateurByEmail) {
+      if (!utilisateurByEmailOrPhone) {
         throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
       }
 
-      if (utilisateurByEmail?.actif) {
+      if (utilisateurByEmailOrPhone?.actif) {
         throw new Exception(HttpStatus.BAD_REQUEST, 'Utilisateur déjà actif');
       }
 
       const code = entierAleatoire(1111, 9999).toString();
-      const saved = await utilisateurSM.partialUpdate(utilisateurByEmail._id, { code });
+      const saved = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, { code });
 
       await sendMail({
         to: email,
-        subject: '[Pocker Apps] - Validation compte',
+        subject: '[Pokerapply] - Validation compte',
         body: `
-      Bonjour ${utilisateurByEmail.username || utilisateurByEmail.nom},
+      Bonjour ${utilisateurByEmailOrPhone.username || utilisateurByEmailOrPhone.nom},
       <br /> <br />
       <span>
         <p>Voici votre code de validation: ${code}</p>
@@ -194,7 +206,7 @@ export class InscriptionSA {
       <br /> <br /> <br />
       Cordialement,
       <br /> <br />
-      L'équipe Pocker Apps.
+      L'équipe Pockerapply.
       `,
       });
 
@@ -206,10 +218,16 @@ export class InscriptionSA {
 
   async validationCode(dto: ValidationCodeRequestDTO) {
     try {
-      const { email, code } = dto;
-      const utilisateurByEmail = await utilisateurSM.findOneNotFail({ email });
-      if (utilisateurByEmail?.code === code) {
-        const { value } = await utilisateurSM.partialUpdate(utilisateurByEmail?._id, {
+      const { email, code, phone } = dto;
+      let utilisateurByEmailOrPhone;
+      if (phone) {
+        utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ phone });
+      } else if(email) {
+        utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
+      }
+      
+      if (utilisateurByEmailOrPhone?.code === code) {
+        const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone?._id, {
           code: '',
           actif: true,
         });

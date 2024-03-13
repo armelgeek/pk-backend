@@ -20,8 +20,8 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   password: string;
 
-  @Column({nullable: true, unique: false})
-  phone: string;
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
 
   @Column({nullable: true, unique: false})
   imageUrl: string;

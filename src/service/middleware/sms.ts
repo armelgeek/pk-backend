@@ -8,7 +8,6 @@ export const sendSMS = async (messages: string, receiver: string) => {
         messages,
         sender: 'RELIA',
         receiver,
-        // '+261348127558',
       },
       {
         headers: {

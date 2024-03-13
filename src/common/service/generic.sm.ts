@@ -94,8 +94,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   findAll(options, name): Promise<any> {
     const {
-      take = 100,
-      skip = 1,
+      take = 10,
+      skip = 0,
       order,
       where = {},
       search,
@@ -114,7 +114,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         {
           $facet: {
             metadata: [{ $count: 'total' }, { $addFields: { page: 10 } }],
-            data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
+            data: [{ $skip: Number(skip) * Number(take) }, { $limit: Number(take) }],
           },
         },
       ])
@@ -122,9 +122,6 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async count(query: ObjectLiteral): Promise<any> {
-    console.log('query====================================');
-    console.log(query);
-    console.log('====================================');
     return await this.repository.count(query);
   }
 

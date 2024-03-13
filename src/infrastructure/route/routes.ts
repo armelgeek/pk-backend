@@ -31,6 +31,9 @@ import { levelRouter } from './Level';
 import { identityverificationRouter } from './IdentityVerification';
 import { codeparrainRouter } from './CodeParrain';
 import { dayRouter } from './Day';
+import { participateRouter } from './Participate';
+import { sessionRouter } from './Session';
+import { bankrollRouter } from './BankRoll';
 
 export const routes = () => {
   const router = Router();
@@ -66,6 +69,9 @@ export const routes = () => {
  router.use('/identity-verification', identityverificationRouter);
  router.use('/code-parrain', codeparrainRouter);
  router.use('/day', dayRouter);
+ router.use('/participate', participateRouter);
+ router.use('/session', sessionRouter);
+ router.use('/bank-roll', bankrollRouter);
   
   return router;
 };

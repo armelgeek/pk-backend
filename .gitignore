@@ -64,7 +64,6 @@ buck-out/
 # CocoaPods
 /ios/Pods/
 *.log
-firebase-admin-sdk.json
 # *.env
 /bo/dist
 # ormconfig.*

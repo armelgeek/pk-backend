@@ -32,7 +32,7 @@ RUN mkdir -p /var/www/backend
 # Set the workdir to /var/www/backend
 WORKDIR /var/www/backend
 
-# COPY --from=build-bo /var/www/bo/dist ./bo
+COPY --from=build-bo /var/www/bo/dist ./bo
 
 # # Install pg-god globally
 # RUN npm i -g pg-god

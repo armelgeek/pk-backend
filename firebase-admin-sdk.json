@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "pockerapps",
+  "private_key_id": "fafedc12384c104ab634fc7578e46d3e1a2024fd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCMv/EklweSpeLu\nrPOi1C3RpvRBs5Kq/LLEe29/85i3iK981pSi9SjfMn+xYqsGR18OZOoSAHT857Mt\nc97kJSo2bXXZ7Uj2IrU+612Zr6J72yjpU4s/tWABqlrUgmoqtbA1BDQLFSb60s8E\ntd6HqZRYa1kVpgLyJepo+ZLf+Cx2eQF/sTvk1C/KMno8AKaM2VGt5ui0Jbt4+jqv\nuzzW2L+/BrsleyhKadYfCotXp5lc72uPmvjsx7pNuQ58eGwIS+846v7D8K8yfZHQ\n2KbUUhlRrh3I+cgHnOQ23umBVURn/Wn245FWu7wINdYLN5oUWy4o5klGMmrK7CAL\nD+NGEKK5AgMBAAECggEADmlm8SavxVHMC0FVTxJnwKRWNVYEShLG4Tx8Xb8dH4nU\n4jT8kjUFItmCXrDqLyHmt0wY9Y/raqv02k4XgAfYKyuJGi/kPSOvqEokUuS7f/Ag\nX8fIpdTWCEWfuEvEQCxLZxpPk+TuEVe9j89pgj2YbXdMb12Ixq+gMXCAnANG1jiF\n0bD9JdxCX11T6yA+1o9j95+FxOIi1ugL2njUxG+Ei/6qK+jwVsgeTMr5iEcJZmMb\n7rpfTulfcAFBKGx+QdLPcwjabkm+RQ9sY4MCV9ZSgk2T9uyeEkS9HdKVTa9zOcX/\nL8hgz4+hgOmKIuMTsfgMuXXFyyFGCCEFFFAHHSxngQKBgQC+h61aiQiJlYbFw7YW\nM3yu8ZmPRJa8o42nxnTVU+qnc91UpsuilklBk/H7NETsrWVqf7QjSQe480QrVowy\n3mIeZOBCbzklNoYodrduMR/giKMrzACtQk3PKCSBWjiVWNt73L2NcnGm4l6ZnuEt\nTaZErrqMt4rYI6tyrOFV3WSemQKBgQC9HUGN+GHfLUMbtAuyBevAUdjnM6E9xzfI\n2nw0YaJP7wX92U4Fx/KH9R7/cqgjLg951Fu44ie4NPydpxIswM9Pi/KRygm/jZzU\nCeftPdPYvXEswcMuTrXcSgrgsaQd5JtXYhhpVSzM98sGxOlt+eS+YyrBCyH8xNq8\nFK7yOr1ZIQKBgHBu/Fua1hDqzhdSQNelFoTeSbID1bgIBAXn1PY2iRi8BPZ5X13Y\nte4e8gM9exb31AsexRy1cfswgx/X+O/jz58EBFrv65cML+sc823xS1BjEXc88YFM\nyUHf/Hrg1Nc9EnhrcOhRisPifdTFrzfexKlvOuLjROn7UqdfYbIb7c6xAoGBAJ2p\n/HNONtqHs8Eu8+kxgoDOO9VVeAI3SszLSm2pUFbv4cDnIGM1dX/f3j396yuZRRG+\n99FFyvOKSWluVnq1LKEW/d6J4GKwv6UPtSpXN30lQ2ubBwxeVsQXfsYhk7/QTaom\ngE+g0T74/2zfUfV8NzZ7GrPigi1oOSxA2jHcwuvBAoGAIw1I0XlgSw2V7I6JXvKy\nxEyd+p0n8iEzbEvg4cRQny7y4erfNmPze/UG3iHcJ6MQAwPkWvUVqzlz+00A9dq/\ngGKlDyXpd9a+wAumOCbyoUxyL4IxjqqObNi83mnPyPF1Qa1FsPfXfAyYz/SeWKqF\njjhNxs/L7iBLFoDsiiIa+0s=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-msehn@pockerapps.iam.gserviceaccount.com",
+  "client_id": "112680773642453041999",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-msehn%40pockerapps.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

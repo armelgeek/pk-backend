@@ -32,8 +32,6 @@ RUN mkdir -p /var/www/backend
 # Set the workdir to /var/www/backend
 WORKDIR /var/www/backend
 
-COPY --from=build-bo /var/www/bo/dist ./bo
-
 # # Install pg-god globally
 # RUN npm i -g pg-god
 
@@ -55,5 +53,6 @@ COPY ./. .
 RUN npm run build
 
 COPY ./src/data/Fragment.json ./dist/data/
+COPY --from=build-bo /var/www/bo/dist/. ./dist/bo/
 
 CMD npm run prod --bind 0.0.0.0:4000

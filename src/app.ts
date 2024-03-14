@@ -29,7 +29,16 @@ class App {
       await this.initMiddlewares();
       await this.initRoutes();
       this.initCron();
-      
+      // const res = await sendNotification({
+      //   tokens: [
+      //     'cn4D4hSASuqi0alLYOU8-v:APA91bFLhY9LrAoQw5mQlIZiIOJ_cZR0RzaVzdC_TLTJqkBnL_h_W6YEHYUFdj54RQMF4cfTNcrHHZ-a8TGFnUIX73TmvCL5HskLK34xogGDKhqF8cZzGnXHHD7kcrwKX7QwkuM8Bg3O',
+      //   ],
+      //   title: 'title',
+      //   body: 'Push Notification for POC REACT NATIVE WEB',
+      // });
+      // console.log('====================================');
+      // console.log(res);
+      // console.log('====================================');
       return this.app.listen(configs.port, () => logger.info(`Listening on ${configs.port}`));
     } catch (error) {
       return Promise.reject(error);
@@ -75,7 +84,7 @@ class App {
     this.app.use('/public', express.static(path.resolve(__dirname, '../public')));
 
     this.app.get('/admin', (req, res) => {
-      res.sendFile(path.join(__dirname, '/dist/bo/index.html'));
+      res.sendFile(path.join(__dirname, '/bo/index.html'));
     });
 
     // this.app.get('/bo', (req, res) => {

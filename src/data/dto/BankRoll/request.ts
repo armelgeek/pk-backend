@@ -4,6 +4,7 @@ export type BankRollRequestDTO = {
    devise?: string;
    description?: string;
    sessions?: string[];
+   profileId?: string;
 }
 
 /**
@@ -13,5 +14,6 @@ export type BankRollRequestDTO = {
  * @property {string} devise
  * @property {string} description
  * @property {array<string>} sessions
+ * @property {string} profileId
  */
 

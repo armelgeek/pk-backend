@@ -11,7 +11,7 @@ export type UserCredentialResponseDTO = {
  * @property {string} userId
  * @property {string} customerId
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

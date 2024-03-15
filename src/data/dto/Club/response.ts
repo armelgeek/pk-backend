@@ -13,7 +13,7 @@ export type ClubResponseDTO = {
  * @property {boolean} active
  * @property {string} profile
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

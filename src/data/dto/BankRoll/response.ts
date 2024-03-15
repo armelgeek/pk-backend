@@ -4,6 +4,7 @@ export type BankRollResponseDTO = {
    devise?: string;
    description?: string;
    sessions?: string[];
+   profileId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -16,8 +17,9 @@ export type BankRollResponseDTO = {
  * @property {string} devise
  * @property {string} description
  * @property {array<string>} sessions
+ * @property {string} profileId
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

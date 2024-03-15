@@ -33,7 +33,7 @@ export type DayResponseDTO = {
  * @property {array<string>} photos
  * @property {array<string>} videos
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

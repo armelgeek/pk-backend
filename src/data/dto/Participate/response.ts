@@ -13,7 +13,7 @@ export type ParticipateResponseDTO = {
  * @property {string} eventId
  * @property {string} pageId
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

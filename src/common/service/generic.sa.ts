@@ -318,7 +318,7 @@ export abstract class GenericSA<
           if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
             return {
               ...acc,
-              [`${key}._id`]: new ObjectID(queries[key]),
+              [`${key}`]: new ObjectID(queries[key]),
             };
           } else if (key?.split('__')?.length === 2) {
             if (ObjectID.isValid(queries[key])) {

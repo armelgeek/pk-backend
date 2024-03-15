@@ -5,8 +5,8 @@ export class SessionDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column("simple-json")
-  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  @Column({nullable: true, unique: false})
+  address: string;
 
   @Column({nullable: true, unique: false})
   type: string;

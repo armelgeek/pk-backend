@@ -13,7 +13,7 @@ export type SponsorResponseDTO = {
  * @property {string} logo
  * @property {string} description
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

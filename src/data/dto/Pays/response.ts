@@ -13,7 +13,7 @@ export type PaysResponseDTO = {
  * @property {string} code
  * @property {string} emoji
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

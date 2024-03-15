@@ -11,7 +11,7 @@ export type CountryResponseDTO = {
  * @property {string} name
  * @property {string} iso
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

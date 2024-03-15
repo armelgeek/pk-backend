@@ -76,3 +76,5 @@
   declare interface SessionResponseDTO { }
   declare interface BankRollRequestDTO { }
   declare interface BankRollResponseDTO { }
+  declare interface DeviceRequestDTO { }
+  declare interface DeviceResponseDTO { }

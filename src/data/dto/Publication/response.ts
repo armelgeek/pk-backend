@@ -23,7 +23,7 @@ export type PublicationResponseDTO = {
  * @property {array<string>} like
  * @property {array<string>} share
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

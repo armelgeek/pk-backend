@@ -34,6 +34,7 @@ import { dayRouter } from './Day';
 import { participateRouter } from './Participate';
 import { sessionRouter } from './Session';
 import { bankrollRouter } from './BankRoll';
+import { deviceRouter } from './Device';
 
 export const routes = () => {
   const router = Router();
@@ -72,6 +73,7 @@ export const routes = () => {
  router.use('/participate', participateRouter);
  router.use('/session', sessionRouter);
  router.use('/bank-roll', bankrollRouter);
+ router.use('/device', deviceRouter);
   
   return router;
 };

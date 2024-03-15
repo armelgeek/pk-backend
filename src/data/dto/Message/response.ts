@@ -15,7 +15,7 @@ export type MessageResponseDTO = {
  * @property {string} sender
  * @property {string} reciever
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

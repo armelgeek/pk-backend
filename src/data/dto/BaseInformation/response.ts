@@ -33,7 +33,7 @@ export type BaseInformationResponseDTO = {
  * @property {string} children
  * @property {string} description
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

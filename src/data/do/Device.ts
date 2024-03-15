@@ -1,27 +1,21 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('bankroll')
-export class BankRollDO {
+@Entity('device')
+export class DeviceDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  name: string;
+  uuid: string;
 
   @Column({nullable: true, unique: false})
-  capital: number;
+  deviseInfo: string;
 
   @Column({nullable: true, unique: false})
-  devise: string;
+  token: string;
 
   @Column({nullable: true, unique: false})
-  description: string;
-
-  @Column("simple-array")
-  sessions: string[];
-
-  @Column({nullable: true, unique: false})
-  profileId: string;
+  user: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

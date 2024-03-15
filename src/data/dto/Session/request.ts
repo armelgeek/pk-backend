@@ -1,5 +1,5 @@
 export type SessionRequestDTO = {
-   location?: LocationRequestDTO;
+   address?: string;
    type?: string;
    mode?: string;
    gameType?: string;
@@ -16,7 +16,7 @@ export type SessionRequestDTO = {
 
 /**
  * @typedef {object} SessionRequestDTO
- * @property {LocationRequestDTO} location
+ * @property {string} address
  * @property {string} type
  * @property {string} mode
  * @property {string} gameType

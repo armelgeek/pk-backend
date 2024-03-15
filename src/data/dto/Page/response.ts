@@ -31,7 +31,7 @@ export type PageResponseDTO = {
  * @property {array<string>} verifications
  * @property {string} pageId
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

@@ -27,7 +27,7 @@ export type SubscriptionOfferResponseDTO = {
  * @property {string} pageType
  * @property {string} remiseDescription
  * @property {string} id
- * @property {Date} updatedAt
- * @property {Date} createdAt
+ * @property {string} updatedAt
+ * @property {string} createdAt
  */
 

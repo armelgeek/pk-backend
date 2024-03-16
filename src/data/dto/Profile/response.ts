@@ -14,6 +14,7 @@ export type ProfileResponseDTO = {
    children?: string;
    description?: string;
    nom?: string;
+   verification?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -36,6 +37,7 @@ export type ProfileResponseDTO = {
  * @property {string} children
  * @property {string} description
  * @property {string} nom
+ * @property {string} verification
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

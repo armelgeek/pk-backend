@@ -9,7 +9,7 @@ export type PageRequestDTO = {
    description?: string;
    profileId?: string;
    type?: string;
-   verifications?: string[];
+   verification?: string;
    pageId?: string;
 }
 
@@ -25,7 +25,7 @@ export type PageRequestDTO = {
  * @property {string} description
  * @property {string} profileId
  * @property {string} type
- * @property {array<string>} verifications
+ * @property {string} verification
  * @property {string} pageId
  */
 

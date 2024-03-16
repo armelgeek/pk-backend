@@ -35,8 +35,8 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   type: string;
 
-  @Column("simple-array")
-  verifications: string[];
+  @Column({nullable: true, unique: false})
+  verification: string;
 
   @Column({nullable: true, unique: false})
   pageId: string;

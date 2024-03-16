@@ -4,6 +4,7 @@ export type IdentityVerificationResponseDTO = {
    validate?: boolean;
    description?: string;
    pageId?: string;
+   badge?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -16,6 +17,7 @@ export type IdentityVerificationResponseDTO = {
  * @property {boolean} validate
  * @property {string} description
  * @property {string} pageId
+ * @property {string} badge
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -50,6 +50,9 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   nom: string;
 
+  @Column({nullable: true, unique: false})
+  verification: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

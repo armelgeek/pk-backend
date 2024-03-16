@@ -9,7 +9,7 @@ export type PageResponseDTO = {
    description?: string;
    profileId?: string;
    type?: string;
-   verifications?: string[];
+   verification?: string;
    pageId?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -28,7 +28,7 @@ export type PageResponseDTO = {
  * @property {string} description
  * @property {string} profileId
  * @property {string} type
- * @property {array<string>} verifications
+ * @property {string} verification
  * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt

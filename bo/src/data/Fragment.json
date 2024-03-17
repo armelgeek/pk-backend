@@ -4804,7 +4804,7 @@
 									"top": 722,
 									"width": 204.87060546875,
 									"height": 13,
-									"text": "+phone: string",
+									"text": "+phone: Phone",
 									"horizontalAlignment": 0
 								},
 								{
@@ -5073,7 +5073,7 @@
 					"left": 384,
 					"top": 632,
 					"width": 214.87060546875,
-					"height": 296,
+					"height": 311,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQPY91Bxezk="
 					},
@@ -17154,7 +17154,9 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"name": "phone",
-					"type": "string",
+					"type": {
+						"$ref": "AAAAAAGOLb5hPrzoBkU="
+					},
 					"form": "Telephone",
 					"bo": true
 				},

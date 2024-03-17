@@ -3,7 +3,7 @@ export type PageResponseDTO = {
    photo?: string;
    name?: string;
    country?: string;
-   phone?: string;
+   phone?: PhoneRequestDTO;
    address?: string;
    email?: string;
    description?: string;
@@ -22,7 +22,7 @@ export type PageResponseDTO = {
  * @property {string} photo
  * @property {string} name
  * @property {string} country
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} address
  * @property {string} email
  * @property {string} description

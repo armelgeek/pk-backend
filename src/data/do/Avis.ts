@@ -1,27 +1,21 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('pseudo')
-export class PseudoDO {
+@Entity('avis')
+export class AvisDO {
   @ObjectIdColumn()
   _id: ObjectID;
-
-  @Column({nullable: true, unique: false})
-  name: string;
-
-  @Column({nullable: true, unique: false})
-  link: string;
-
-  @Column({nullable: true, unique: false})
-  code: string;
 
   @Column({nullable: true, unique: false})
   profileId: string;
 
   @Column({nullable: true, unique: false})
-  icon: string;
+  content: string;
+
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
 
   @Column({nullable: true, unique: false})
-  active: boolean;
+  object: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

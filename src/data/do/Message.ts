@@ -6,16 +6,10 @@ export class MessageDO {
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  text: string;
-
-  @Column("simple-array")
-  imagesUrl: string[];
+  content: string;
 
   @Column({nullable: true, unique: false})
-  sender: string;
-
-  @Column({nullable: true, unique: false})
-  reciever: string;
+  profileId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

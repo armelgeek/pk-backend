@@ -1,29 +1,29 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { messageController } from '../controller/Message';
+import { avisController } from '../controller/Avis';
 
-const messageRoutes = () => genericRoute({ controller: messageController, schema: Joi.Message, name: 'Message' });
+const avisRoutes = () => genericRoute({ controller: avisController, schema: Joi.Avis, name: 'Avis' });
 
-export const messageRouter = messageRoutes();
+export const avisRouter = avisRoutes();
 
 /**
- * GET /api/message
- * @tags Message
+ * GET /api/avis
+ * @tags Avis
  * @security BearerAuth
- * @summary List Message (getAllMessage)
+ * @summary List Avis (getAllAvis)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {MessageResponseDTO} 201
+ * @return {AvisResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * DELETE /api/message/{id}
- * @tags Message
+ * DELETE /api/avis/{id}
+ * @tags Avis
  * @security BearerAuth
- * @summary Remove Message (deleteMessage)
+ * @summary Remove Avis (deleteAvis)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
@@ -32,11 +32,11 @@ export const messageRouter = messageRoutes();
  */
 
 /**
- * PUT /api/message/partialUpdate/{id}
- * @tags Message
+ * PUT /api/avis/partialUpdate/{id}
+ * @tags Avis
  * @security BearerAuth
- * @summary Update Message (updateMessage)
- * @param {MessageRequestDTO} request.body
+ * @summary Update Avis (updateAvis)
+ * @param {AvisRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -44,24 +44,24 @@ export const messageRouter = messageRoutes();
  */
 
 /**
- * GET /api/message/{id}
- * @tags Message
+ * GET /api/avis/{id}
+ * @tags Avis
  * @security BearerAuth
- * @summary List Message (getMessage)
+ * @summary List Avis (getAvis)
  
  * @param {string} id.path.required 
- * @return {MessageResponseDTO} 201
+ * @return {AvisResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * POST /api/message
- * @tags Message
+ * POST /api/avis
+ * @tags Avis
  * @security BearerAuth
- * @summary Create Message (addMessage)
- * @param {MessageRequestDTO} request.body 
- * @return {MessageResponseDTO} 201
+ * @summary Create Avis (addAvis)
+ * @param {AvisRequestDTO} request.body 
+ * @return {AvisResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

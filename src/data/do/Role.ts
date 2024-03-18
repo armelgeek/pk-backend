@@ -9,7 +9,7 @@ export class RoleDO {
   name: string;
 
   @Column({nullable: true, unique: false})
-  profile: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
   active: boolean;

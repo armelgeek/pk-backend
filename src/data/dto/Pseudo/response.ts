@@ -2,7 +2,7 @@ export type PseudoResponseDTO = {
    name?: string;
    link?: string;
    code?: string;
-   profile?: string;
+   profileId?: string;
    icon?: string;
    active?: boolean;
   createdAt: Date;
@@ -15,7 +15,7 @@ export type PseudoResponseDTO = {
  * @property {string} name
  * @property {string} link
  * @property {string} code
- * @property {string} profile
+ * @property {string} profileId
  * @property {string} icon
  * @property {boolean} active
  * @property {string} id

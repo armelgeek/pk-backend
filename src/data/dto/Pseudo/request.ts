@@ -2,7 +2,7 @@ export type PseudoRequestDTO = {
    name?: string;
    link?: string;
    code?: string;
-   profile?: string;
+   profileId?: string;
    icon?: string;
    active?: boolean;
 }
@@ -12,7 +12,7 @@ export type PseudoRequestDTO = {
  * @property {string} name
  * @property {string} link
  * @property {string} code
- * @property {string} profile
+ * @property {string} profileId
  * @property {string} icon
  * @property {boolean} active
  */

@@ -1,15 +1,11 @@
 export type MessageRequestDTO = {
-   text?: string;
-   imagesUrl?: string[];
-   sender?: string;
-   reciever?: string;
+   content?: string;
+   profileId?: string;
 }
 
 /**
  * @typedef {object} MessageRequestDTO
- * @property {string} text
- * @property {array<string>} imagesUrl
- * @property {string} sender
- * @property {string} reciever
+ * @property {string} content
+ * @property {string} profileId
  */
 

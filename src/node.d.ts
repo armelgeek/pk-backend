@@ -1,5 +1,3 @@
-  declare interface MessageRequestDTO { }
-  declare interface MessageResponseDTO { }
   declare interface NotificationRequestDTO { }
   declare interface NotificationResponseDTO { }
   declare interface UtilisateurRequestDTO { }

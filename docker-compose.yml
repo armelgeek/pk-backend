@@ -24,10 +24,6 @@ services:
     build: "."
     ports:
       - "4000:4000"
-      # - "4000:3003"
-    # command: bash -c "while ! curl -s postgres:5432 > /dev/null; do echo waiting for mongodb to be ready ...; sleep 1; pg-god db-create -o postgres -w ${TYPEORM_PASSWORD} -n fullstack || true"
-    # entrypoint: bash -c "npm run ${SEED} && npm run ${ENTRYPOINT}"
-    # entrypoint: bash -c "npm run start"
     depends_on:
       # - minio
       - mongo

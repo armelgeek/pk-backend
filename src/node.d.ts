@@ -80,3 +80,7 @@
   declare interface DeviceResponseDTO { }
   declare interface sharingNoteRequestDTO { }
   declare interface sharingNoteResponseDTO { }
+  declare interface AvisRequestDTO { }
+  declare interface AvisResponseDTO { }
+  declare interface MessageRequestDTO { }
+  declare interface MessageResponseDTO { }

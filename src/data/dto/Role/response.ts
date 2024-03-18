@@ -1,6 +1,6 @@
 export type RoleResponseDTO = {
    name?: string;
-   profile?: string;
+   profileId?: string;
    active?: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -10,7 +10,7 @@ export type RoleResponseDTO = {
 /**
  * @typedef {object} RoleResponseDTO
  * @property {string} name
- * @property {string} profile
+ * @property {string} profileId
  * @property {boolean} active
  * @property {string} id
  * @property {string} updatedAt

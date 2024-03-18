@@ -41,6 +41,9 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
+  @Column({nullable: true, unique: false})
+  additionalInfo: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

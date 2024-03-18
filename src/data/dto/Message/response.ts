@@ -1,8 +1,6 @@
 export type MessageResponseDTO = {
-   text?: string;
-   imagesUrl?: string[];
-   sender?: string;
-   reciever?: string;
+   content?: string;
+   profileId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -10,10 +8,8 @@ export type MessageResponseDTO = {
 
 /**
  * @typedef {object} MessageResponseDTO
- * @property {string} text
- * @property {array<string>} imagesUrl
- * @property {string} sender
- * @property {string} reciever
+ * @property {string} content
+ * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

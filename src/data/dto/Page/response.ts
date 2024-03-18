@@ -3,13 +3,13 @@ export type PageResponseDTO = {
    photo?: string;
    name?: string;
    country?: string;
-   phone?: string;
+   phone?: PhoneRequestDTO;
    address?: string;
    email?: string;
    description?: string;
    profileId?: string;
    type?: string;
-   verifications?: string[];
+   verification?: string;
    pageId?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -22,13 +22,13 @@ export type PageResponseDTO = {
  * @property {string} photo
  * @property {string} name
  * @property {string} country
- * @property {string} phone
+ * @property {PhoneRequestDTO} phone
  * @property {string} address
  * @property {string} email
  * @property {string} description
  * @property {string} profileId
  * @property {string} type
- * @property {array<string>} verifications
+ * @property {string} verification
  * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt

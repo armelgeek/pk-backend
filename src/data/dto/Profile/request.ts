@@ -14,6 +14,7 @@ export type ProfileRequestDTO = {
    children?: string;
    description?: string;
    nom?: string;
+   verification?: string;
 }
 
 /**
@@ -33,5 +34,6 @@ export type ProfileRequestDTO = {
  * @property {string} children
  * @property {string} description
  * @property {string} nom
+ * @property {string} verification
  */
 

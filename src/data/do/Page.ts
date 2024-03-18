@@ -17,8 +17,8 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   country: string;
 
-  @Column({nullable: true, unique: false})
-  phone: string;
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
 
   @Column({nullable: true, unique: false})
   address: string;
@@ -35,8 +35,8 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   type: string;
 
-  @Column("simple-array")
-  verifications: string[];
+  @Column({nullable: true, unique: false})
+  verification: string;
 
   @Column({nullable: true, unique: false})
   pageId: string;

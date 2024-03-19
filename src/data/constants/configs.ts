@@ -17,6 +17,7 @@ const {
   EMAIL_PASSWORD: emailPassword,
   STRIPE_SK: stripeSK,
   STRIPE_PK: stripePK,
+  STRIPE_CURRENCY: stripeCURRENCY,
 } = process.env;
 
 export const configs = {
@@ -36,4 +37,5 @@ export const configs = {
   database,
   stripeSK,
   stripePK,
+  stripeCURRENCY,
 };

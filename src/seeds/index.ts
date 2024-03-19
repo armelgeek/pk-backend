@@ -172,7 +172,7 @@ const initStripeProduct = async () => {
     const price = await stripe.prices.create({
       product: product.id,
       unit_amount: offer.price * 100,
-      currency: 'eur',
+      currency: configs.stripeCURRENCY,
       recurring: {
         interval: offer.type === 'month' ? 'month' : 'year',
         interval_count: offer.duration,

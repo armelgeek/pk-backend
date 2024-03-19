@@ -65,13 +65,12 @@ export class UserSubscriptionSA extends GenericSA<
   async createPaymentIntentSA(body) {
     const { amount, paymentType } = body;
 
-    const currency = 'eur';
-    const formateAmount = formatAmountForStripe(amount, currency);
+    const formateAmount = formatAmountForStripe(amount, configs.stripeCURRENCY);
 
     try {
       const paymentIntent = await stripe.paymentIntents.create({
         amount: formateAmount,
-        currency: 'eur',
+        currency: configs.stripeCURRENCY,
         payment_method_types: [paymentType],
       });
 
@@ -81,7 +80,7 @@ export class UserSubscriptionSA extends GenericSA<
         publishableKey: configs.stripePK,
       };
     } catch (error) {
-      console.log({ error });
+      console.log('createPaymentIntentSA ==', { error });
       return Promise.reject(error);
     }
   }
@@ -141,7 +140,7 @@ export class UserSubscriptionSA extends GenericSA<
         ],
         payment_behavior: 'default_incomplete',
         expand: ['latest_invoice.payment_intent'],
-        currency: 'eur',
+        currency: configs.stripeCURRENCY,
         payment_settings: { payment_method_types: [paymentType] },
       });
 

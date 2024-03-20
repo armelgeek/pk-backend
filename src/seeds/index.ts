@@ -88,8 +88,8 @@ const levels = [
 const offers: SubscriptionOfferRequestDTO[] = [
   {
     name: 'Abonnement mensuel',
-    description: '',
-    price: 199,
+    description: '199.95 fr. par mois',
+    price: 199.95,
     remiseDescription: '',
     isActive: true,
     duration: 1,
@@ -100,7 +100,7 @@ const offers: SubscriptionOfferRequestDTO[] = [
   },
   {
     name: 'Abonnement mensuel',
-    description: '',
+    description: '99.95 fr. par mois',
     price: 99.95,
     remiseDescription: '',
     isActive: true,
@@ -112,9 +112,9 @@ const offers: SubscriptionOfferRequestDTO[] = [
   },
   {
     name: 'Abonnement annuel',
-    description: '',
+    description: '1999,95 fr. par année avec 1 mois offert',
     price: 1999.95,
-    remiseDescription: '1 mois offert (donc remise de 23%)',
+    remiseDescription: 'Remise de 23% (équivaut à 153.84 fr. / mois)',
     isActive: true,
     duration: 1,
     type: 'year',
@@ -124,9 +124,9 @@ const offers: SubscriptionOfferRequestDTO[] = [
   },
   {
     name: 'Abonnement annuel',
-    description: '',
+    description: '995.95 fr. par année avec 1 mois offert',
     price: 999.95,
-    remiseDescription: '1 mois offert (donc remise de 23%).',
+    remiseDescription: 'Remise de 23% (équivaut à 76.91 fr. / mois)',
     isActive: true,
     duration: 1,
     type: 'year',
@@ -172,7 +172,7 @@ const initStripeProduct = async () => {
     const price = await stripe.prices.create({
       product: product.id,
       unit_amount: offer.price * 100,
-      currency: 'eur',
+      currency: configs.stripeCURRENCY,
       recurring: {
         interval: offer.type === 'month' ? 'month' : 'year',
         interval_count: offer.duration,

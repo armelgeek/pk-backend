@@ -34,7 +34,7 @@ import { participateRouter } from './Participate';
 import { sessionRouter } from './Session';
 import { bankrollRouter } from './BankRoll';
 import { deviceRouter } from './Device';
-import { sharingnoteRouter } from './sharingNote';
+import { noteRouter } from './Note';
 import { avisRouter } from './Avis';
 import { messageRouter } from './Message';
 
@@ -75,7 +75,7 @@ export const routes = () => {
  router.use('/session', sessionRouter);
  router.use('/bank-roll', bankrollRouter);
  router.use('/device', deviceRouter);
- router.use('/sharing-note', sharingnoteRouter);
+ router.use('/sharing-note', noteRouter);
  router.use('/avis', avisRouter);
  router.use('/message', messageRouter);
   

@@ -76,8 +76,8 @@
   declare interface BankRollResponseDTO { }
   declare interface DeviceRequestDTO { }
   declare interface DeviceResponseDTO { }
-  declare interface sharingNoteRequestDTO { }
-  declare interface sharingNoteResponseDTO { }
+  declare interface NoteRequestDTO { }
+  declare interface NoteResponseDTO { }
   declare interface AvisRequestDTO { }
   declare interface AvisResponseDTO { }
   declare interface MessageRequestDTO { }

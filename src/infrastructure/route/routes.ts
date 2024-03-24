@@ -37,6 +37,7 @@ import { deviceRouter } from './Device';
 import { noteRouter } from './Note';
 import { avisRouter } from './Avis';
 import { messageRouter } from './Message';
+import { followersRouter } from './Followers';
 
 export const routes = () => {
   const router = Router();
@@ -78,6 +79,7 @@ export const routes = () => {
  router.use('/sharing-note', noteRouter);
  router.use('/avis', avisRouter);
  router.use('/message', messageRouter);
+ router.use('/followers', followersRouter);
   
   return router;
 };

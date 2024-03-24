@@ -82,3 +82,5 @@
   declare interface AvisResponseDTO { }
   declare interface MessageRequestDTO { }
   declare interface MessageResponseDTO { }
+  declare interface FollowersRequestDTO { }
+  declare interface FollowersResponseDTO { }

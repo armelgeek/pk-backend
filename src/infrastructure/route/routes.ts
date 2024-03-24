@@ -38,6 +38,10 @@ import { noteRouter } from './Note';
 import { avisRouter } from './Avis';
 import { messageRouter } from './Message';
 import { followersRouter } from './Followers';
+import { gaugeRouter } from './Gauge';
+import { strategyRouter } from './Strategy';
+import { notevalueRouter } from './NoteValue';
+import { noticedRouter } from './Noticed';
 
 export const routes = () => {
   const router = Router();
@@ -80,6 +84,10 @@ export const routes = () => {
  router.use('/avis', avisRouter);
  router.use('/message', messageRouter);
  router.use('/followers', followersRouter);
+ router.use('/gauge', gaugeRouter);
+ router.use('/strategy', strategyRouter);
+ router.use('/note-value', notevalueRouter);
+ router.use('/noticed', noticedRouter);
   
   return router;
 };

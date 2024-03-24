@@ -84,3 +84,11 @@
   declare interface MessageResponseDTO { }
   declare interface FollowersRequestDTO { }
   declare interface FollowersResponseDTO { }
+  declare interface GaugeRequestDTO { }
+  declare interface GaugeResponseDTO { }
+  declare interface StrategyRequestDTO { }
+  declare interface StrategyResponseDTO { }
+  declare interface NoteValueRequestDTO { }
+  declare interface NoteValueResponseDTO { }
+  declare interface NoticedRequestDTO { }
+  declare interface NoticedResponseDTO { }

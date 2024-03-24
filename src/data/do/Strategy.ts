@@ -1,21 +1,15 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('followers')
-export class FollowersDO {
+@Entity('strategy')
+export class StrategyDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  follow: string;
+  label: string;
 
   @Column({nullable: true, unique: false})
-  follower: string;
-
-  @Column({nullable: true, unique: false})
-  friends: boolean;
-
-  @Column({nullable: true, unique: false})
-  confirmed: boolean;
+  isChecked: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

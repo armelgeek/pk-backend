@@ -1,29 +1,29 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { codeparrainController } from '../controller/CodeParrain';
+import { noticedController } from '../controller/Noticed';
 
-const codeparrainRoutes = () => genericRoute({ controller: codeparrainController, schema: Joi.CodeParrain, name: 'CodeParrain' });
+const noticedRoutes = () => genericRoute({ controller: noticedController, schema: Joi.Noticed, name: 'Noticed' });
 
-export const codeparrainRouter = codeparrainRoutes();
+export const noticedRouter = noticedRoutes();
 
 /**
- * GET /api/code-parrain
- * @tags CodeParrain
+ * GET /api/noticed
+ * @tags Noticed
  * @security BearerAuth
- * @summary List CodeParrain (getAllCodeParrain)
+ * @summary List Noticed (getAllNoticed)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {CodeParrainResponseDTO} 201
+ * @return {NoticedResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * DELETE /api/code-parrain/{id}
- * @tags CodeParrain
+ * DELETE /api/noticed/{id}
+ * @tags Noticed
  * @security BearerAuth
- * @summary Remove CodeParrain (deleteCodeParrain)
+ * @summary Remove Noticed (deleteNoticed)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
@@ -32,11 +32,11 @@ export const codeparrainRouter = codeparrainRoutes();
  */
 
 /**
- * PUT /api/code-parrain/partialUpdate/{id}
- * @tags CodeParrain
+ * PUT /api/noticed/partialUpdate/{id}
+ * @tags Noticed
  * @security BearerAuth
- * @summary Update CodeParrain (updateCodeParrain)
- * @param {CodeParrainRequestDTO} request.body
+ * @summary Update Noticed (updateNoticed)
+ * @param {NoticedRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -44,24 +44,24 @@ export const codeparrainRouter = codeparrainRoutes();
  */
 
 /**
- * GET /api/code-parrain/{id}
- * @tags CodeParrain
+ * GET /api/noticed/{id}
+ * @tags Noticed
  * @security BearerAuth
- * @summary List CodeParrain (getCodeParrain)
+ * @summary List Noticed (getNoticed)
  
  * @param {string} id.path.required 
- * @return {CodeParrainResponseDTO} 201
+ * @return {NoticedResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * POST /api/identity-verification
- * @tags CodeParrain
+ * POST /api/noticed
+ * @tags Noticed
  * @security BearerAuth
- * @summary Create CodeParrain (addCodeParrain)
- * @param {CodeParrainRequestDTO} request.body 
- * @return {CodeParrainResponseDTO} 201
+ * @summary Create Noticed (addNoticed)
+ * @param {NoticedRequestDTO} request.body 
+ * @return {NoticedResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

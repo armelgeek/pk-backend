@@ -1,29 +1,29 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { codeparrainController } from '../controller/CodeParrain';
+import { followersController } from '../controller/Followers';
 
-const codeparrainRoutes = () => genericRoute({ controller: codeparrainController, schema: Joi.CodeParrain, name: 'CodeParrain' });
+const followersRoutes = () => genericRoute({ controller: followersController, schema: Joi.Followers, name: 'Followers' });
 
-export const codeparrainRouter = codeparrainRoutes();
+export const followersRouter = followersRoutes();
 
 /**
- * GET /api/code-parrain
- * @tags CodeParrain
+ * GET /api/followers
+ * @tags Followers
  * @security BearerAuth
- * @summary List CodeParrain (getAllCodeParrain)
+ * @summary List Followers (getAllFollowers)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {CodeParrainResponseDTO} 201
+ * @return {FollowersResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * DELETE /api/code-parrain/{id}
- * @tags CodeParrain
+ * DELETE /api/followers/{id}
+ * @tags Followers
  * @security BearerAuth
- * @summary Remove CodeParrain (deleteCodeParrain)
+ * @summary Remove Followers (deleteFollowers)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
@@ -32,11 +32,11 @@ export const codeparrainRouter = codeparrainRoutes();
  */
 
 /**
- * PUT /api/code-parrain/partialUpdate/{id}
- * @tags CodeParrain
+ * PUT /api/followers/partialUpdate/{id}
+ * @tags Followers
  * @security BearerAuth
- * @summary Update CodeParrain (updateCodeParrain)
- * @param {CodeParrainRequestDTO} request.body
+ * @summary Update Followers (updateFollowers)
+ * @param {FollowersRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -44,24 +44,24 @@ export const codeparrainRouter = codeparrainRoutes();
  */
 
 /**
- * GET /api/code-parrain/{id}
- * @tags CodeParrain
+ * GET /api/followers/{id}
+ * @tags Followers
  * @security BearerAuth
- * @summary List CodeParrain (getCodeParrain)
+ * @summary List Followers (getFollowers)
  
  * @param {string} id.path.required 
- * @return {CodeParrainResponseDTO} 201
+ * @return {FollowersResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
- * POST /api/identity-verification
- * @tags CodeParrain
+ * POST /api/followers
+ * @tags Followers
  * @security BearerAuth
- * @summary Create CodeParrain (addCodeParrain)
- * @param {CodeParrainRequestDTO} request.body 
- * @return {CodeParrainResponseDTO} 201
+ * @summary Create Followers (addFollowers)
+ * @param {FollowersRequestDTO} request.body 
+ * @return {FollowersResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

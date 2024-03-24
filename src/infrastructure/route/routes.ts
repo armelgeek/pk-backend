@@ -34,9 +34,14 @@ import { participateRouter } from './Participate';
 import { sessionRouter } from './Session';
 import { bankrollRouter } from './BankRoll';
 import { deviceRouter } from './Device';
-import { sharingnoteRouter } from './sharingNote';
+import { noteRouter } from './Note';
 import { avisRouter } from './Avis';
 import { messageRouter } from './Message';
+import { followersRouter } from './Followers';
+import { gaugeRouter } from './Gauge';
+import { strategyRouter } from './Strategy';
+import { notevalueRouter } from './NoteValue';
+import { noticedRouter } from './Noticed';
 
 export const routes = () => {
   const router = Router();
@@ -75,9 +80,14 @@ export const routes = () => {
  router.use('/session', sessionRouter);
  router.use('/bank-roll', bankrollRouter);
  router.use('/device', deviceRouter);
- router.use('/sharing-note', sharingnoteRouter);
+ router.use('/sharing-note', noteRouter);
  router.use('/avis', avisRouter);
  router.use('/message', messageRouter);
+ router.use('/followers', followersRouter);
+ router.use('/gauge', gaugeRouter);
+ router.use('/strategy', strategyRouter);
+ router.use('/note-value', notevalueRouter);
+ router.use('/noticed', noticedRouter);
   
   return router;
 };

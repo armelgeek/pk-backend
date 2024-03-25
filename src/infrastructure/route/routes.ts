@@ -80,7 +80,7 @@ export const routes = () => {
  router.use('/session', sessionRouter);
  router.use('/bank-roll', bankrollRouter);
  router.use('/device', deviceRouter);
- router.use('/sharing-note', noteRouter);
+ router.use('/note', noteRouter);
  router.use('/avis', avisRouter);
  router.use('/message', messageRouter);
  router.use('/followers', followersRouter);

@@ -24221,7 +24221,7 @@
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 			},
 			"name": "Note",
-			"route": "sharing-note",
+			"route": "note",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",

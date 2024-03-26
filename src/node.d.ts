@@ -8,8 +8,8 @@
   declare interface CountryResponseDTO { }
   declare interface SignInRequestDTO { }
   declare interface SignInResponseDTO { }
-  declare interface SocialMediaRequestDTO { }
-  declare interface SocialMediaResponseDTO { }
+  declare interface SocialNetworkRequestDTO { }
+  declare interface SocialNetworkResponseDTO { }
   declare interface BaseInformationRequestDTO { }
   declare interface BaseInformationResponseDTO { }
   declare interface ProfileRequestDTO { }
@@ -92,3 +92,5 @@
   declare interface NoteValueResponseDTO { }
   declare interface NoticedRequestDTO { }
   declare interface NoticedResponseDTO { }
+  declare interface PartenariatRequestDTO { }
+  declare interface PartenariatResponseDTO { }

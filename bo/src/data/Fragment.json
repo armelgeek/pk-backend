@@ -18937,7 +18937,7 @@
 						"$ref": "AAAAAAGNhIJgDk35Lf0="
 					},
 					"name": "getAll",
-					"route": "social-networks",
+					"route": "social-network",
 					"method": "get"
 				},
 				{

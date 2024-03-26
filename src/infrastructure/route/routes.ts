@@ -3,7 +3,7 @@ import { conditionnalJwtPassport } from '../../service/middleware/passport/condi
 import { notificationRouter } from './Notification';
 import { utilisateurRouter } from './Utilisateur';
 import { langueRouter } from './Langue';
-import { socialmediaRouter } from './SocialMedia';
+import { socialnetworkRouter } from './SocialNetwork';
 import { baseinformationRouter } from './BaseInformation';
 import { profileRouter } from './Profile';
 import { sponsorRouter } from './Sponsor';
@@ -42,6 +42,7 @@ import { gaugeRouter } from './Gauge';
 import { strategyRouter } from './Strategy';
 import { notevalueRouter } from './NoteValue';
 import { noticedRouter } from './Noticed';
+import { partenariatRouter } from './Partenariat';
 
 export const routes = () => {
   const router = Router();
@@ -49,7 +50,7 @@ export const routes = () => {
  router.use('/notification', notificationRouter);
  router.use('/utilisateur', utilisateurRouter);
  router.use('/langue', langueRouter);
- router.use('/social-media', socialmediaRouter);
+ router.use('/social-network', socialnetworkRouter);
  router.use('/base-information', baseinformationRouter);
  router.use('/profile', profileRouter);
  router.use('/sponsor', sponsorRouter);
@@ -88,6 +89,7 @@ export const routes = () => {
  router.use('/strategy', strategyRouter);
  router.use('/note-value', notevalueRouter);
  router.use('/noticed', noticedRouter);
+ router.use('/partenariat', partenariatRouter);
   
   return router;
 };

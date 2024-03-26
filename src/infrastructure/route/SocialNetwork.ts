@@ -7,7 +7,7 @@ const socialnetworkRoutes = () => genericRoute({ controller: socialnetworkContro
 export const socialnetworkRouter = socialnetworkRoutes();
 
 /**
- * GET /api/social-networks
+ * GET /api/social-network
  * @tags SocialNetwork
  * @security BearerAuth
  * @summary List SocialNetwork (getAllSocialNetwork)

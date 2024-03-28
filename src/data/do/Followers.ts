@@ -17,6 +17,9 @@ export class FollowersDO {
   @Column({nullable: true, unique: false})
   confirmed: boolean;
 
+  @Column({nullable: true, unique: false})
+  cancel: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -107,9 +107,9 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const { userId, utilisateurId, profileId, ...whereOut } = where;
     return this.repository
       .aggregate([
+        { $match: whereOut },
         { $match: aggregate_search },
         ...aggregate,
-        { $match: whereOut },
         { $sort: { nom: 1 } },
         {
           $facet: {

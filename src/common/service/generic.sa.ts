@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb';
 
 import { GenericFactory } from '../constraint/factory/generic.factory';
 import { GenericSM } from './generic.sm';
-import { toObjectID } from './transformer';
+import { factoryObject, toQueryOr } from './transformer';
 
 import { dataTDO } from '../../data';
 import { removeId } from '../../utils';
@@ -30,7 +30,7 @@ export abstract class GenericSA<
   async create(dto: TRequestDto | TRequestDto[]): Promise<TResponseDto> {
     try {
       const entity = this.factory.toDo(dto);
-      const result = await this.serviceSM.create(toObjectID(entity, this.name));
+      const result = await this.serviceSM.create(factoryObject(entity, this.name));
 
       return this.factory.toResponseDto(result);
     } catch (error) {
@@ -42,7 +42,7 @@ export abstract class GenericSA<
     try {
       const entity = this.factory.toDo(dto);
 
-      const result = await this.serviceSM.update(id, toObjectID(entity, this.name));
+      const result = await this.serviceSM.update(id, factoryObject(entity, this.name));
 
       return this.factory.toResponseDto(result);
     } catch (error) {
@@ -54,7 +54,7 @@ export abstract class GenericSA<
     try {
       const result = await this.serviceSM.partialUpdate(
         new ObjectID(id),
-        toObjectID(partialEntity, this.name),
+        factoryObject(partialEntity, this.name),
       );
       return { id, update: result?.ok };
     } catch (error) {
@@ -183,7 +183,7 @@ export abstract class GenericSA<
 
   async findOne(option: FindConditions<TDo>) {
     try {
-      const result = await this.serviceSM.findOne(toObjectID(option, this.name));
+      const result = await this.serviceSM.findOne(factoryObject(option, this.name));
 
       return this.factory.toResponseDto(result);
     } catch (error) {
@@ -283,7 +283,7 @@ export abstract class GenericSA<
       const properties = dataTDO[this.name]?.attributes;
       let aggregate = [{ $match: {} }];
       if (!bo && properties) {
-        const toAggrecate = properties
+        const toAggregate = properties
           .filter(({ isID, entity }) => isID && entity?.name)
           .reduce((acc, { name, entity, isArray }) => {
             const lookup = {
@@ -309,13 +309,18 @@ export abstract class GenericSA<
             }
             return [...acc, lookup];
           }, []);
-        aggregate = [...aggregate, ...toAggrecate];
+        aggregate = [...aggregate, ...toAggregate];
       }
 
       if (queries && Array.isArray(Object.keys(queries)) && properties) {
         newQueries = Object.keys(queries).reduce((acc, key) => {
           const isExist = properties.find((propertie) => propertie?.key === key);
-          if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
+          if (key === '$or') {
+            return {
+              ...acc,
+              [`${key}`]: toQueryOr(queries[key], this.name),
+            };
+          } else if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
             return {
               ...acc,
               [`${key}`]: new ObjectID(queries[key]),
@@ -342,8 +347,13 @@ export abstract class GenericSA<
               ...acc,
               [keySplit[0]]: { $gte: new Date(queries[key]) },
             };
+          } else if (isExist && isExist.type === 'boolean') {
+            return {
+              ...acc,
+              [`${key}`]: queries[key] === 'true' ? true : false,
+            };
           }
-          
+
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },
@@ -383,7 +393,11 @@ export abstract class GenericSA<
 
   async count(query: ObjectLiteral): Promise<number> {
     try {
-      const result = await this.serviceSM.count(toObjectID(query, this.name));
+      let queryOr = {};
+      if (query['$or']) {
+        queryOr = toQueryOr(query, this.name);
+      }
+      const result = await this.serviceSM.count({ ...factoryObject(query, this.name), ...queryOr });
 
       return result;
     } catch (error) {

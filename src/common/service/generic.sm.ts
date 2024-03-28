@@ -101,14 +101,13 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       search,
       relation,
       match,
-      aggregate = [{ $match: {} }],
+      aggregate = [],
     } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
-    const { userId, utilisateurId, profileId, ...whereOut } = where;
+    const { userId, utilisateurId, ...whereOut } = where;
     return this.repository
       .aggregate([
-        { $match: whereOut },
-        { $match: aggregate_search },
+        { $match: { ...whereOut, ...aggregate_search }},
         ...aggregate,
         { $sort: { nom: 1 } },
         {

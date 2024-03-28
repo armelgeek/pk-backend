@@ -7,7 +7,7 @@ const subscriptionofferRoutes = () => genericRoute({ controller: subscriptionoff
 export const subscriptionofferRouter = subscriptionofferRoutes();
 
 /**
- * GET /api/subscriptions-offer
+ * GET /api/subscription-offer
  * @tags SubscriptionOffer
  * @security BearerAuth
  * @summary List SubscriptionOffer (getAllSubscriptionOffer)

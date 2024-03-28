@@ -3,6 +3,7 @@ export type FollowersRequestDTO = {
    follower?: string;
    friends?: boolean;
    confirmed?: boolean;
+   cancel?: boolean;
 }
 
 /**
@@ -11,5 +12,6 @@ export type FollowersRequestDTO = {
  * @property {string} follower
  * @property {boolean} friends
  * @property {boolean} confirmed
+ * @property {boolean} cancel
  */
 

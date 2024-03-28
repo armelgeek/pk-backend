@@ -3,6 +3,7 @@ export type FollowersResponseDTO = {
    follower?: string;
    friends?: boolean;
    confirmed?: boolean;
+   cancel?: boolean;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -14,6 +15,7 @@ export type FollowersResponseDTO = {
  * @property {string} follower
  * @property {boolean} friends
  * @property {boolean} confirmed
+ * @property {boolean} cancel
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -23,6 +23,9 @@ export class IdentityVerificationDO {
   @Column({nullable: true, unique: false})
   badge: string;
 
+  @Column({nullable: true, unique: false})
+  partenariatId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

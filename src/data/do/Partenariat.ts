@@ -44,6 +44,15 @@ export class PartenariatDO {
   @Column({nullable: true, unique: false})
   message: string;
 
+  @Column({nullable: true, unique: false})
+  profileId: string;
+
+  @Column({nullable: true, unique: false})
+  entityVerif: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

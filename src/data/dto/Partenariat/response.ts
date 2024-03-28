@@ -12,6 +12,9 @@ export type PartenariatResponseDTO = {
    description?: string;
    numberPhone?: PhoneRequestDTO;
    message?: string;
+   profileId?: string;
+   entityVerif?: string;
+   type?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -32,6 +35,9 @@ export type PartenariatResponseDTO = {
  * @property {string} description
  * @property {PhoneRequestDTO} numberPhone
  * @property {string} message
+ * @property {string} profileId
+ * @property {string} entityVerif
+ * @property {string} type
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

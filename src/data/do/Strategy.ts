@@ -9,7 +9,7 @@ export class StrategyDO {
   label: string;
 
   @Column({nullable: true, unique: false})
-  isChecked: boolean;
+  description: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

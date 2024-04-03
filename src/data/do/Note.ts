@@ -60,7 +60,7 @@ export class NoteDO {
   noteValueId: string[];
 
   @Column("simple-array")
-  noticed: string[];
+  noticedId: string[];
 
   @Column({nullable: true, unique: false})
   isPin: boolean;

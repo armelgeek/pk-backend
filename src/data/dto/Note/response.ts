@@ -17,7 +17,7 @@ export type NoteResponseDTO = {
    gaugesId?: string[];
    strategyId?: string[];
    noteValueId?: string[];
-   noticed?: string[];
+   noticedId?: string[];
    isPin?: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -44,7 +44,7 @@ export type NoteResponseDTO = {
  * @property {array<string>} gaugesId
  * @property {array<string>} strategyId
  * @property {array<string>} noteValueId
- * @property {array<string>} noticed
+ * @property {array<string>} noticedId
  * @property {boolean} isPin
  * @property {string} id
  * @property {string} updatedAt

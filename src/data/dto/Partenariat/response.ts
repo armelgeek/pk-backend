@@ -7,13 +7,11 @@ export type PartenariatResponseDTO = {
    bracelet?: number;
    job?: string;
    socialNetwork?: string[];
-   verifUser?: string;
-   verifPartenariat?: string;
+   verification?: string;
    description?: string;
    numberPhone?: PhoneRequestDTO;
    message?: string;
    profileId?: string;
-   entityVerif?: string;
    type?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -30,13 +28,11 @@ export type PartenariatResponseDTO = {
  * @property {number} bracelet
  * @property {string} job
  * @property {array<string>} socialNetwork
- * @property {string} verifUser
- * @property {string} verifPartenariat
+ * @property {string} verification
  * @property {string} description
  * @property {PhoneRequestDTO} numberPhone
  * @property {string} message
  * @property {string} profileId
- * @property {string} entityVerif
  * @property {string} type
  * @property {string} id
  * @property {string} updatedAt

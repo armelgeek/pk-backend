@@ -1,11 +1,11 @@
 export type StrategyRequestDTO = {
    label?: string;
-   isChecked?: boolean;
+   description?: string;
 }
 
 /**
  * @typedef {object} StrategyRequestDTO
  * @property {string} label
- * @property {boolean} isChecked
+ * @property {string} description
  */
 

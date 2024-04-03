@@ -52,6 +52,9 @@ export abstract class GenericSA<
 
   async partialUpdate(id: ObjectID, partialEntity): Promise<any> {
     try {
+      console.log('====================================', partialEntity);
+      console.log(factoryObject(partialEntity, this.name));
+      console.log('====================================');
       const result = await this.serviceSM.partialUpdate(
         new ObjectID(id),
         factoryObject(partialEntity, this.name),

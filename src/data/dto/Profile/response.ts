@@ -15,6 +15,7 @@ export type ProfileResponseDTO = {
    description?: string;
    nom?: string;
    verification?: string;
+   currency?: CurrencyRequestDTO;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -38,6 +39,7 @@ export type ProfileResponseDTO = {
  * @property {string} description
  * @property {string} nom
  * @property {string} verification
+ * @property {CurrencyRequestDTO} currency
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

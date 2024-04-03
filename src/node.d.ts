@@ -94,3 +94,5 @@
   declare interface NoticedResponseDTO { }
   declare interface PartenariatRequestDTO { }
   declare interface PartenariatResponseDTO { }
+  declare interface CurrencyRequestDTO { }
+  declare interface CurrencyResponseDTO { }

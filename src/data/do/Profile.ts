@@ -53,6 +53,9 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   verification: string;
 
+  @Column("simple-json")
+  currency: { name?: string, code: string, codeFormat: string, symbol?: string };
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

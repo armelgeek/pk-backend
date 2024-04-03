@@ -27,7 +27,7 @@ export class ComplementaryInformationDO {
   nbTitle: number;
 
   @Column({nullable: true, unique: false})
-  rangTmeMoney: string;
+  rangTimeMoney: string;
 
   @Column({nullable: true, unique: false})
   period: string;

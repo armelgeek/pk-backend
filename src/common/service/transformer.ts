@@ -24,7 +24,7 @@ export const factoryObject = (data, name) => {
         } else if (type === 'boolean') {
           newAcc = {
             ...newAcc,
-            [key]: acc[key] === 'true' ? true : false,
+            [key]: typeof acc[key] === "boolean" ? acc[key] : acc[key] === 'true' ? true : false,
           };
         }
         return newAcc;

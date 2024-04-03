@@ -1,7 +1,7 @@
 export type ClubResponseDTO = {
    name?: string;
    active?: boolean;
-   profile?: string;
+   profileId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -11,7 +11,7 @@ export type ClubResponseDTO = {
  * @typedef {object} ClubResponseDTO
  * @property {string} name
  * @property {boolean} active
- * @property {string} profile
+ * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

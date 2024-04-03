@@ -1,13 +1,13 @@
 export type ClubRequestDTO = {
    name?: string;
    active?: boolean;
-   profile?: string;
+   profileId?: string;
 }
 
 /**
  * @typedef {object} ClubRequestDTO
  * @property {string} name
  * @property {boolean} active
- * @property {string} profile
+ * @property {string} profileId
  */
 

@@ -6,7 +6,7 @@ export type ComplementaryInformationResponseDTO = {
    job?: string;
    headonmob?: number;
    nbTitle?: number;
-   rangTmeMoney?: string;
+   rangTimeMoney?: string;
    period?: string;
    nbBracelet?: number;
   createdAt: Date;
@@ -23,7 +23,7 @@ export type ComplementaryInformationResponseDTO = {
  * @property {string} job
  * @property {number} headonmob
  * @property {number} nbTitle
- * @property {string} rangTmeMoney
+ * @property {string} rangTimeMoney
  * @property {string} period
  * @property {number} nbBracelet
  * @property {string} id

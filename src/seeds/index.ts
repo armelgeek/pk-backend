@@ -23,6 +23,29 @@ import { SubscriptionOfferRepository } from '../repository/SubscriptionOffer';
 import { StrategyRepository } from '../repository/Strategy';
 const stripe = new Stripe(configs.stripeSK);
 
+const sponsorsData = [
+  {
+    name: 'Poker Stars',
+    logo: `http://213.136.89.152:4000/public/resource/images/picture.png`,
+  },
+  {
+    name: 'PMU',
+    logo: `http://213.136.89.152:4000/public/resource/images/pmu.png`,
+  },
+  {
+    name: 'BNP Paribas',
+    logo: `http://213.136.89.152:4000/public/resource/images/bnp.png`,
+  },
+  {
+    name: 'Groupe PSA',
+    logo: `http://213.136.89.152:4000/public/resource/images/psa.png`,
+  },
+  {
+    name: 'Heineken',
+    logo: `http://213.136.89.152:4000/public/resource/images/heineken.png`,
+  },
+];
+
 const strategy = [
   {
     name: "GTO",
@@ -243,12 +266,15 @@ export class InitSeeds implements Seeder {
     const subsriptionOfferCount = await subsriptionOffer.count();
 
     const levelCount = await level.count();
+    const sponsorCount = await sponsor.count();
     const strategyCount = await strategyRepository.count();
+  
+    if (sponsorCount < 2) {
+      await sponsor.save(sponsorsData);
+    }
     if (strategyCount < 2) {
       await strategyRepository.save(strategy);
     }
-
-    // compte thanhly26@gmail.com / thanhly26
     const client = await user.findOne({ email: 'thanhly26@gmail.com' });
     if (!client) {
       await user.insert({

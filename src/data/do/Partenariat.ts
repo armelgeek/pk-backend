@@ -30,10 +30,7 @@ export class PartenariatDO {
   socialNetwork: string[];
 
   @Column({nullable: true, unique: false})
-  verifUser: string;
-
-  @Column({nullable: true, unique: false})
-  verifPartenariat: string;
+  verification: string;
 
   @Column({nullable: true, unique: false})
   description: string;
@@ -46,9 +43,6 @@ export class PartenariatDO {
 
   @Column({nullable: true, unique: false})
   profileId: string;
-
-  @Column({nullable: true, unique: false})
-  entityVerif: string;
 
   @Column({nullable: true, unique: false})
   type: string;

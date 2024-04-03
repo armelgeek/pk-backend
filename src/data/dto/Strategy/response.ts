@@ -1,6 +1,6 @@
 export type StrategyResponseDTO = {
    label?: string;
-   isChecked?: boolean;
+   description?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -9,7 +9,7 @@ export type StrategyResponseDTO = {
 /**
  * @typedef {object} StrategyResponseDTO
  * @property {string} label
- * @property {boolean} isChecked
+ * @property {string} description
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

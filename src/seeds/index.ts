@@ -20,7 +20,43 @@ import Stripe from 'stripe';
 import { configs } from '../data/constants/configs';
 import { UserSubscriptionRepository } from '../repository/UserSubscription';
 import { SubscriptionOfferRepository } from '../repository/SubscriptionOffer';
+import { StrategyRepository } from '../repository/Strategy';
 const stripe = new Stripe(configs.stripeSK);
+
+const strategy = [
+  {
+    name: "GTO",
+    description: "GTO",
+  },
+  {
+    name: "Exploit",
+    description: "Exploit",
+  },
+  {
+    name: "Creatif",
+    description: "Creatif",
+  },
+  {
+    name: "Straigh for war",
+    description: "Straigh for war",
+  },
+  {
+    name: "Value oriented",
+    description: "Value oriented",
+  },
+  {
+    name: "ABC",
+    description: "ABC",
+  },
+  {
+    name: "Scared money",
+    description: "Scared money",
+  },
+  {
+    name: "Small ball",
+    description: "Small ball",
+  },
+];
 
 const gameTypes = [
   {
@@ -194,6 +230,7 @@ export class InitSeeds implements Seeder {
     const complementaryInformation = connection.getCustomRepository(
       ComplementaryInformationRepository,
     );
+    const strategyRepository = connection.getCustomRepository(StrategyRepository);
     const link = connection.getCustomRepository(LinkRepository);
     const sponsor = connection.getCustomRepository(SponsorRepository);
     const partener = connection.getCustomRepository(PartenerRepository);
@@ -206,6 +243,10 @@ export class InitSeeds implements Seeder {
     const subsriptionOfferCount = await subsriptionOffer.count();
 
     const levelCount = await level.count();
+    const strategyCount = await strategyRepository.count();
+    if (strategyCount < 2) {
+      await strategyRepository.save(strategy);
+    }
 
     // compte thanhly26@gmail.com / thanhly26
     const client = await user.findOne({ email: 'thanhly26@gmail.com' });

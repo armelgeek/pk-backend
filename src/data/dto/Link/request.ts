@@ -3,6 +3,7 @@ export type LinkRequestDTO = {
    link?: string;
    description?: string;
    profileId?: string;
+   pageId?: string;
 }
 
 /**
@@ -11,5 +12,6 @@ export type LinkRequestDTO = {
  * @property {string} link
  * @property {string} description
  * @property {string} profileId
+ * @property {string} pageId
  */
 

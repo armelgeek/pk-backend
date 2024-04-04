@@ -3,6 +3,7 @@ export type LinkResponseDTO = {
    link?: string;
    description?: string;
    profileId?: string;
+   pageId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -14,6 +15,7 @@ export type LinkResponseDTO = {
  * @property {string} link
  * @property {string} description
  * @property {string} profileId
+ * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

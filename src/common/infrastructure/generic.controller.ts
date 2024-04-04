@@ -132,11 +132,11 @@ export class GenericController<
    */
   findAll = async (req, res, next) => {
     const {
-      query: { page = 1, rowPerPage = 10, light, direction, sortField, match, recherche, ...queries },
+      query: { page = 1, rowPerPage = 10, light, direction, sortField, match, search, ...queries },
     } = req;
     try {
       const dtos = await this.serviceSA.findAll({
-        search: recherche,
+        search,
         match,
         sortField,
         direction,

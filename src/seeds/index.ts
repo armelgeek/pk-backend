@@ -21,6 +21,8 @@ import { configs } from '../data/constants/configs';
 import { UserSubscriptionRepository } from '../repository/UserSubscription';
 import { SubscriptionOfferRepository } from '../repository/SubscriptionOffer';
 import { StrategyRepository } from '../repository/Strategy';
+import { EventRepository } from '../repository/Event';
+
 const stripe = new Stripe(configs.stripeSK);
 
 const sponsorsData = [
@@ -286,6 +288,8 @@ export class InitSeeds implements Seeder {
     const game = connection.getCustomRepository(GameTypeRepository);
     const tournament = connection.getCustomRepository(TournamentTypeRepository);
     const subsriptionOffer = connection.getCustomRepository(SubscriptionOfferRepository);
+    const event = connection.getCustomRepository(EventRepository);
+
     const users = await user.count();
     const subsriptionOfferCount = await subsriptionOffer.count();
 
@@ -444,6 +448,9 @@ export class InitSeeds implements Seeder {
       partener.createCollectionIndex({ name: 'text', description: 'text' });
     !pseudo.collectionIndexExists &&
       pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
+    
+    !event &&
+    sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
 
     if (subsriptionOfferCount === 0) {
       await initStripeProduct();

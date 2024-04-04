@@ -14,6 +14,48 @@ export class ParticipateDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
+  @Column({nullable: true, unique: false})
+  isMemberClub: boolean;
+
+  @Column({nullable: true, unique: false})
+  payement: boolean;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  hourRegistry: Date;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  hourEliminate: Date;
+
+  @Column({nullable: true, unique: false})
+  numberTable: number;
+
+  @Column({nullable: true, unique: false})
+  numberPlace: number;
+
+  @Column({nullable: true, unique: false})
+  numberBuyIn: number;
+
+  @Column({nullable: true, unique: false})
+  numberRebuy: number;
+
+  @Column({nullable: true, unique: false})
+  payout: number;
+
+  @Column({nullable: true, unique: false})
+  nombreBounty: number;
+
+  @Column({nullable: true, unique: false})
+  chip: string;
+
+  @Column({nullable: true, unique: false})
+  gain: string;
+
+  @Column({nullable: true, unique: false})
+  eliminate: boolean;
+
+  @Column({nullable: true, unique: false})
+  flag: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

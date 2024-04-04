@@ -17,6 +17,9 @@ export class LinkDO {
   @Column({nullable: true, unique: false})
   profileId: string;
 
+  @Column({nullable: true, unique: false})
+  pageId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

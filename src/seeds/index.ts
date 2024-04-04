@@ -46,6 +46,30 @@ const sponsorsData = [
   },
 ];
 
+const partnerData = [
+  {
+    name: 'Partner Stars',
+    logo: `http://213.136.89.152:4000/public/resource/images/picture.png`,
+  },
+  {
+    name: 'Partner PMU',
+    logo: `http://213.136.89.152:4000/public/resource/images/pmu.png`,
+  },
+  {
+    name: 'Partner BNP Paribas',
+    logo: `http://213.136.89.152:4000/public/resource/images/bnp.png`,
+  },
+  {
+    name: 'Partner Groupe PSA',
+    logo: `http://213.136.89.152:4000/public/resource/images/psa.png`,
+  },
+  {
+    name: 'Partner Heineken',
+    logo: `http://213.136.89.152:4000/public/resource/images/heineken.png`,
+  },
+];
+
+
 const strategy = [
   {
     name: "GTO",
@@ -268,6 +292,10 @@ export class InitSeeds implements Seeder {
     const levelCount = await level.count();
     const sponsorCount = await sponsor.count();
     const strategyCount = await strategyRepository.count();
+    const partenerCount = await partener.count();
+    if (partenerCount < 2) {
+      await partener.save(partnerData);
+    }
   
     if (sponsorCount < 2) {
       await sponsor.save(sponsorsData);

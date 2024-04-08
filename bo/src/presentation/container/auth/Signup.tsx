@@ -27,9 +27,9 @@ export const Signup = () => {
 
         <div className="flex items-center mb-4">
           <Button variant="icon" className="my-0" onClick={() => setLoginStatus(true)}>
-            <ArrowLeft className="w-8" />
+            <ArrowLeft className="w-6 blue-text" />
           </Button>
-          <p className="text-xl font-bold text-center dark:text-gray-200">S'inscrire</p>
+          <p className="text-md text-center blue-text ml-2">S'inscrire</p>
         </div>
 
         <form onSubmit={handleSubmit(submit)} className="flex flex-col register-form">

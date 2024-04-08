@@ -35,7 +35,7 @@ export const Signin = () => {
   return (
     <div className="flex items-center justify-center w-full dark:bg-gray-950">
       <div className="dark:bg-gray-900 shadow-md rounded-lg p-8  w-full form-auth-container">
-        <h1 className=" mb-4  text-xl font-bold text-center dark:text-gray-200">Se connecter</h1>
+        <h1 className=" mb-4  text-md  text-center blue-text">Se connecter</h1>
         <form onSubmit={handleSubmit(submit)} className="flex flex-col form-auth">
           <div className="mb-4">
             <Input

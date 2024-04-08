@@ -83,9 +83,9 @@ export const Input = (props) => {
     </div>
   ) : (
     <div className="flex flex-col inLayout">
-      <span className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+      <span className="block text-sm font-medium text-white  mb-2">
         {label}
-        {required ? <span className="text-xs text-pink-500">*</span> : ''}
+        {required ? <span className="text-xs text-pink-500 ml-2">*</span> : ''}
       </span>
       <div className="relative w-full">
         <input
@@ -94,6 +94,7 @@ export const Input = (props) => {
           ref={inputRef}
           // eslint-disable-next-line jsx-a11y/no-autofocus
           autoFocus={autoFocus}
+          autoComplete="off"
           onKeyPress={handleKeyPress}
           disabled={disabled}
           readOnly={readOnly ? 'readOnly' : ''}

@@ -10,6 +10,7 @@ module.exports = {
       './src/presentation/component/**/*.tsx',
       './src/presentation/container/*.tsx',
       './src/presentation/container/**/*.tsx',
+      './src/presentation/container/auth/*.tsx',
     ],
   },
   darkMode: false, // or 'media' or 'class'
@@ -26,12 +27,25 @@ module.exports = {
     },
     extend: {
       colors: {
-        green: { 400: '#58A618', 500: '#27AE60', 900: '#1D5C42' },
-        blue: { 900: '#0F579E' },
-        red: { 600: '#EB5757' },
-        pink: { 500: '#DD5791' },
+        green: {
+          400: '#58A618',
+          500: '#27AE60',
+          900: '#1D5C42'
+        },
+        blue: {
+          900: '#0F579E'
+        },
+        red: {
+          600: '#EB5757'
+        },
+        pink: {
+          500: '#DD5791'
+        },
       },
-      transitionProperty: { height: 'height', position: 'position' },
+      transitionProperty: {
+        height: 'height',
+        position: 'position'
+      },
       display: ['hover', 'focus'],
     },
   },

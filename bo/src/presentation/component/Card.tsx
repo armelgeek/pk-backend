@@ -4,7 +4,7 @@ import * as PropTypes from 'prop-types';
 export const Card = (props) => {
   const { className, children } = props;
 
-  return <div className={`${className} p-3 py-10 flex rounded auth-content`}>{children}</div>;
+  return <div className={`${className}  flex rounded auth-content`}>{children}</div>;
 };
 
 Card.propTypes = {

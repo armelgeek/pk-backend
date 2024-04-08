@@ -33,33 +33,40 @@ export const Signin = () => {
   }, []);
 
   return (
-    <div className="form-container">
-      <h2 className="text-black mb-8">Se connecter</h2>
+    <div className="flex items-center justify-center w-full dark:bg-gray-950">
+      <div className="dark:bg-gray-900 shadow-md rounded-lg p-8  w-full form-auth-container">
+        <h1 className=" mb-4  text-xl font-bold text-center dark:text-gray-200">Se connecter</h1>
+        <form onSubmit={handleSubmit(submit)} className="flex flex-col form-auth">
+          <div className="mb-4">
+            <Input
+              value='andoom@gmail.com'
+              name="email"
+              label="Identifiant"
+              placeholder="Votre adresse mail"
+              errors={errors}
+              inputRef={register({ required })}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <Input
+              value='123@andoom'
+              name="password"
+              label="Mot de passe"
+              type="password"
+              errors={errors}
+              inputRef={register({ required })}
+              required
+            />
+          </div>
+          <div className="flex items-center justify-center ">
+            <Button type="submit" className="w-full primary-button" loading={loading}>
+              Se connecter
+            </Button>
+          </div>
 
-      <form onSubmit={handleSubmit(submit)} className="flex flex-col form-auth">
-        <Input
-          // value='andoom@gmail.com'
-          name="email"
-          label="Identifiant"
-          placeholder="Votre adresse mail"
-          errors={errors}
-          inputRef={register({ required })}
-          required
-        />
-        <Input
-          // value='123@andoom'
-          name="password"
-          label="Mot de passe"
-          type="password"
-          errors={errors}
-          inputRef={register({ required })}
-          required
-        />
-
-        <Button type="submit" className="w-full" loading={loading}>
-          Se connecter
-        </Button>
-      </form>
-    </div>
+        </form>
+      </div>
+    </div >
   );
 };

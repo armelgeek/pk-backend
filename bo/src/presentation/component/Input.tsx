@@ -83,7 +83,7 @@ export const Input = (props) => {
     </div>
   ) : (
     <div className="flex flex-col inLayout">
-      <span className="flex text-sm mb-2">
+      <span className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
         {label}
         {required ? <span className="text-xs text-pink-500">*</span> : ''}
       </span>

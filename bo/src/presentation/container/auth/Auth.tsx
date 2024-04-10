@@ -7,7 +7,6 @@ import { Signup } from './Signup';
 import logo from '../../../assets/img/logo.png';
 import { Card } from '../../component/Card';
 import { RootState } from '../../../redux/ducks';
-// import '../../../bovoyage.css';
 
 export const Auth = () => {
   const {
@@ -23,13 +22,16 @@ export const Auth = () => {
   });
 
   return (
-    <div className=" h-full p-10 items-center justify-between body-background">
-      <div className="custom-container">
-        <div className="flex flex-col items-left">
-          <img className="w-32" alt="Logo FDD" src={logo} />
-          <p className="font-bold text-2xl">Back Office</p>
+    <div className="h-full">
+      <div className="custom-container w-full flex items-center justify-center">
+        <div className="w-full">
+          <div className="flex flex-col items-center">
+            <img className="w-32" alt="PokerApply logo" src={logo} />
+          </div>
+          <Card className="w-full">
+            {isLogin ? <Signin /> : <Signup />}
+          </Card>
         </div>
-        <Card className="w-full">{isLogin ? <Signin /> : <Signup />}</Card>
       </div>
     </div>
   );

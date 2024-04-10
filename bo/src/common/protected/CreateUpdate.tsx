@@ -4,7 +4,7 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useCustomSnackbar } from '../hooks/Snackbar';
 import { Input } from '../../presentation/component/Input';
 import { SaveCancel } from '../../presentation/component/SaveCancel';
@@ -25,7 +25,7 @@ export const CreateUpdate = ({
   // eslint-disable-next-line react/prop-types
   initial, entity, onClose, properties, useEntitySA,
 }) => {
-  const { register, errors, handleSubmit, setValue, control } = useForm({ mode: 'onBlur' });
+  const { register, handleSubmit, setValue, control } = useForm({ mode: 'onBlur' });
   const [openSnackbar] = useCustomSnackbar();
   // const { required } = regexPatterns;
   const [loading, setLoading] = React.useState(false);
@@ -164,82 +164,135 @@ export const CreateUpdate = ({
             }
             if (type === 'boolean') {
               return (
-                <Checkbox
-                  key={key}
+                <Controller
+                  control={control}
+                  render={({
+                    field: { onChange, onBlur, value },
+                    formState: { errors },
+                  }) => (
+                    <Checkbox
+                      key={key}
+                      name={key}
+                      label={form}
+                      onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
+                      // inputRef={register({ required, maxLength: 100 })}
+                      checked={checkbox ? checkbox[key] : null}
+                    />
+                  )}
                   name={key}
-                  label={form}
-                  onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
-                  inputRef={register({ required, maxLength: 100 })}
-                  checked={checkbox ? checkbox[key] : null}
-                />
-              );
-            }if (type === 'number') {
-              return (
-                <Input
-                  type="number"
-                  key={key}
-                  label={form}
-                  name={key}
-                  inputRef={register({ required, maxLength: 100 })}
-                  errors={errors}
-                  autoFocus
-                  required={required}
-                />
-              );
+                />);
+            } if (type === 'number') {
+              return <Controller
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => (
+                  <Input
+                    type="number"
+                    key={key}
+                    label={form}
+                    name={key}
+                    // inputRef={register({ required, maxLength: 100 })}
+                    errors={errors}
+                    autoFocus
+                    required={required}
+                  />
+                )}
+                name={key}
+              />;
             } if (type === 'string') {
-              return (
-                <Input
-                  key={key}
-                  label={form}
-                  name={key}
-                  inputRef={register({ required, maxLength: 10000 })}
-                  errors={errors}
-                  autoFocus
-                  required={required}
-                />
-              );
-            }  if (type && type.$ref) {
+              return <Controller
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => (
+                  <Input
+                    key={key}
+                    label={form}
+                    name={key}
+                    // inputRef={register({ required, maxLength: 10000 })}
+                    errors={errors}
+                    autoFocus
+                    required={required}
+                  />
+                )}
+                name={key}
+              />;
+            } if (type && type.$ref) {
               const name = elements.find(({ _id }) => type.$ref === _id)?.name
               if (name === 'Location') {
-                return <LieuComponent key={key} placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+                return <Controller
+                  control={control}
+                  render={({
+                    field: { onChange, onBlur, value },
+                    formState: { errors },
+                  }) => (<LieuComponent placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+                  )}
+                  name={key}
+                />;
               }
             }
-             if (type === 'file') {
-              return (
-                <MyDropzone
-                  keyName={name}
-                  name={form}
-                  key={key}
-                  setFile={setFiles}
-                  file={entity ? entity[key] : null}
-                />
-              );
+            if (type === 'file') {
+              return <Controller
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => (
+                  <MyDropzone
+                    keyName={name}
+                    name={form}
+                    key={key}
+                    setFile={setFiles}
+                    file={entity ? entity[key] : null}
+                  />
+                )}
+                name={key}
+              />;
             } if (propertie?.entity?.name) {
               return (
-                <MultiSelect
-                  key={key}
-                  name={key}
+                <Controller
                   control={control}
-                  options={initial ? toDataSelect(initial[key], route ?? 'name') || [] : []}
-                  isMulti={propertie?.isArray}
-                  placeholder={`Select ${form}`}
-                  // defaultValue={'1'}
-                  rules={{ required }}
-                  errors={errors}
-                  label={form}
-                  required
+                  render={({
+                    field: { onChange, onBlur, value },
+                    formState: { errors },
+                  }) => (<MultiSelect
+                    key={key}
+                    name={key}
+                    control={control}
+                    options={initial ? toDataSelect(initial[key], route ?? 'name') || [] : []}
+                    isMulti={propertie?.isArray}
+                    placeholder={`Select ${form}`}
+                    // defaultValue={'1'}
+                    rules={{ required }}
+                    errors={errors}
+                    label={form}
+                    required
+                  />
+                  )}
+                  name={key}
                 />
-              );
+              )
             }
             return (
-              <Input
-                key={key}
-                label={form}
+              <Controller
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => (<Input
+                  key={key}
+                  label={form}
+                  name={key}
+                  // inputRef={register({ required, maxLength: 10000 })}
+                  errors={errors}
+                  autoFocus
+                  required={required}
+                />
+                )}
                 name={key}
-                inputRef={register({ required, maxLength: 10000 })}
-                errors={errors}
-                autoFocus
-                required={required}
               />
             );
           })

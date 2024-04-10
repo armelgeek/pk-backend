@@ -34,7 +34,7 @@ export const EntityContainer = ({ currententity, transformValue = (
     page: 1,
     rowPerPage: 10,
     direction: 'ASC',
-    recherche: '',
+    search: '',
     light: false,
     // ...customFiltre,
   });
@@ -125,9 +125,9 @@ export const EntityContainer = ({ currententity, transformValue = (
       <div className="flex flex-col-left justify-between items-center mb-6">
         <div className="flex searchInput">
           <Input
-            name="recherche"
+            name="search"
             placeholder="recherche par email ..."
-            value={filter.recherche}
+            value={filter.search}
             onChange={handleSearchChange}
             onEnterPress={handleSearch}
           />

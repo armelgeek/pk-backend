@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useCustomSnackbar } from '../../../common/hooks/Snackbar';
 
 import { regexPatterns } from '../../../constraint/validator/RegexPattern';
@@ -8,7 +8,7 @@ import { Button } from '../../component/Button';
 import { Input } from '../../component/Input';
 
 export const Signin = () => {
-  const { handleSubmit, errors, register, setValue } = useForm({ mode: 'onBlur' });
+  const { handleSubmit, register, setValue, control } = useForm({ mode: 'onBlur' });
   const { signin } = useAuth();
   const [openSnackbar] = useCustomSnackbar();
   const [loading, setLoading] = React.useState(false);
@@ -38,25 +38,39 @@ export const Signin = () => {
         <h1 className=" mb-4  text-md  text-center blue-text">Se connecter</h1>
         <form onSubmit={handleSubmit(submit)} className="flex flex-col form-auth">
           <div className="mb-4">
-            <Input
+          <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              formState: { errors },
+            }) => <Input
               value='andoom@gmail.com'
               name="email"
               label="Identifiant"
               placeholder="Votre adresse mail"
               errors={errors}
-              inputRef={register({ required })}
+              // inputRef={register({ required })}
               required
-            />
+            /> }
+            name="email"
+          />
           </div>
           <div className="mb-4">
-            <Input
+          <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              formState: { errors },
+            }) =><Input
               value='123@andoom'
               name="password"
               label="Mot de passe"
               type="password"
-              errors={errors}
-              inputRef={register({ required })}
+              // errors={errors}
+              // inputRef={register({ required })}
               required
+              /> }
+              name="password"
             />
           </div>
           <div className="flex items-center justify-center ">

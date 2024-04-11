@@ -9,7 +9,7 @@ export const MultiSelect = (props) => {
     name,
     control,
     options,
-    isMulti,
+    isMulti = false,
     placeholder,
     defaultValue,
     rules,
@@ -28,7 +28,7 @@ export const MultiSelect = (props) => {
       ) : (
         ''
       )}
-      <Controller
+      {/* <Controller
         name={name}
         as={Select}
         options={options}
@@ -70,6 +70,55 @@ export const MultiSelect = (props) => {
             boxShadow: '0',
           }),
         }}
+      /> */}
+      <Controller
+        control={control}
+        rules={rules}
+        defaultValue={defaultValue}
+        render={({ field: { onChange, value, ref }}) => (
+          <Select
+            inputRef={ref}
+            value={options.filter(c => value.includes(c.value))}
+            onChange={val => onChange(val.map(c => c.value))}
+            options={options}
+            isMulti={Boolean(isMulti)}
+            placeholder={placeholder}
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: '50px',
+              colors: {
+                ...theme.colors,
+                primary: 'rgb(209, 213, 219)',
+              },
+            })}
+            styles={{
+              menu: (provided) => ({
+                ...provided,
+                borderRadius: '5px',
+              }),
+              multiValue: (provided) => ({
+                ...provided,
+                backgroundColor: '#F0F4F8',
+                borderRadius: '30px',
+              }),
+              control: (provided, state) => ({
+                ...provided,
+                // eslint-disable-next-line no-nested-ternary
+                boxShadow: state.isFocused
+                  ? errors?.[name]
+                    ? '0 0 0 2px #F00'
+                    : '0 0 0 2px #1D5C42'
+                  : 'none',
+              }),
+              input: (provided) => ({
+                ...provided,
+                border: 'Opx',
+                boxShadow: '0',
+              }),
+            }}
+          />
+        )}
+        name={name}
       />
       {errors?.[name] ? <p className="text-xs text-red-600">{errors?.[name]?.message}</p> : ''}
     </div>

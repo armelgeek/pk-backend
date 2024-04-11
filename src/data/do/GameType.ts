@@ -11,6 +11,9 @@ export class GameTypeDO {
   @Column({nullable: true, unique: false})
   description: string;
 
+  @Column({nullable: true, unique: false})
+  game: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

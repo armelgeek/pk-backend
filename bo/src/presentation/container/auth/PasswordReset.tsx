@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { useLocation } from 'react-router-dom';
 
 import { regexPatterns } from '../../../constraint/validator/RegexPattern';
@@ -14,7 +14,7 @@ import { useCustomSnackbar } from '../../../common/hooks/Snackbar';
 
 export const PasswordReset = () => {
   const { search } = useLocation();
-  const { register, handleSubmit, errors, getValues, reset } = useForm({ mode: 'onBlur' });
+  const { register, handleSubmit, control, getValues, reset } = useForm({ mode: 'onBlur' });
   const [isPasswordSeen, setIsPasswordSeen] = React.useState(false);
   const [user, setUser] = React.useState(null);
   const [openSnackbar] = useCustomSnackbar();
@@ -63,36 +63,50 @@ export const PasswordReset = () => {
             onSubmit={handleSubmit(submit)}
             className="pass-form max-w-sm flex flex-col self-center"
           >
-            <Input
+            <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              formState: { errors },
+            }) => <Input
               label="Nouveau mot de passe"
               type={isPasswordSeen ? 'text' : 'password'}
               name="password"
-              inputRef={register({
-                required,
-                minLength: {
-                  value: 6,
-                  message: 'Le mot de passe doit être constitué au moins de 6 caractères',
-                },
-              })}
+              // inputRef={register({
+              //   required,
+              //   minLength: {
+              //     value: 6,
+              //     message: 'Le mot de passe doit être constitué au moins de 6 caractères',
+              //   },
+              // })}
               errors={errors}
               rightIcon={isPasswordSeen ? HideIcon : ShowIcon}
               onRightIconClick={() => setIsPasswordSeen((value) => !value)}
               required
+              /> }
+              name="password"
             />
-            <Input
+            <Controller
+            control={control}
+            render={({
+              field: { onChange, onBlur, value },
+              formState: { errors },
+            }) => <Input
               label="Confirmation du nouveau mot de passe"
               name="passwordConfirm"
               type="password"
               errors={errors}
-              inputRef={register({
-                required,
-                validate: {
-                  notSame: (value) =>
-                    // eslint-disable-next-line operator-linebreak
-                    value === getValues('password') ||
-                    'La confirmation du mot de passe est différent du mot de passe',
-                },
-              })}
+              // inputRef={register({
+              //   required,
+              //   validate: {
+              //     notSame: (value) =>
+              //       // eslint-disable-next-line operator-linebreak
+              //       value === getValues('password') ||
+              //       'La confirmation du mot de passe est différent du mot de passe',
+              //   },
+              // })}
+              /> }
+              name="password"
             />
             <Button type="submit" className="w-full btn-aro">
               Réinitialiser

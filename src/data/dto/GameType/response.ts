@@ -1,6 +1,7 @@
 export type GameTypeResponseDTO = {
    name?: string;
    description?: string;
+   game?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -10,6 +11,7 @@ export type GameTypeResponseDTO = {
  * @typedef {object} GameTypeResponseDTO
  * @property {string} name
  * @property {string} description
+ * @property {string} game
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

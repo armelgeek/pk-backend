@@ -9687,13 +9687,30 @@
 									"height": 13,
 									"text": "+description: string",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGOy/NJTkvuPfg=",
+									"_parent": {
+										"$ref": "AAAAAAGN1NuiXq8Fy58="
+									},
+									"model": {
+										"$ref": "AAAAAAGOy/NJJUvrGoc="
+									},
+									"font": "Arial;13;0",
+									"left": 29,
+									"top": 1004,
+									"width": 109.4716796875,
+									"height": 13,
+									"text": "+game: string",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 24,
 							"top": 969,
 							"width": 119.4716796875,
-							"height": 38
+							"height": 53
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -9716,7 +9733,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 29,
-									"top": 1012,
+									"top": 1027,
 									"width": 109.4716796875,
 									"height": 13,
 									"text": "+add()",
@@ -9733,7 +9750,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 29,
-									"top": 1027,
+									"top": 1042,
 									"width": 109.4716796875,
 									"height": 13,
 									"text": "+getAll()",
@@ -9750,7 +9767,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 29,
-									"top": 1042,
+									"top": 1057,
 									"width": 109.4716796875,
 									"height": 13,
 									"text": "+delete()",
@@ -9767,7 +9784,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 29,
-									"top": 1057,
+									"top": 1072,
 									"width": 109.4716796875,
 									"height": 13,
 									"text": "+update()",
@@ -9784,7 +9801,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 29,
-									"top": 1072,
+									"top": 1087,
 									"width": 109.4716796875,
 									"height": 13,
 									"text": "+get()",
@@ -9793,7 +9810,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 24,
-							"top": 1007,
+							"top": 1022,
 							"width": 119.4716796875,
 							"height": 83
 						},
@@ -9831,7 +9848,7 @@
 					"left": 24,
 					"top": 944,
 					"width": 119.4716796875,
-					"height": 146,
+					"height": 161,
 					"nameCompartment": {
 						"$ref": "AAAAAAGN1NuiXa8Au/c="
 					},
@@ -22878,6 +22895,17 @@
 					"name": "description",
 					"type": "string",
 					"form": "Description",
+					"bo": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGOy/NJJUvrGoc=",
+					"_parent": {
+						"$ref": "AAAAAAGN1NuiWq79u7Y="
+					},
+					"name": "game",
+					"type": "string",
+					"form": "Name",
 					"bo": true
 				}
 			],

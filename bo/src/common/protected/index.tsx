@@ -59,7 +59,21 @@ export const EntityContainer = ({ currententity, transformValue = (
         setPageCount(Math.ceil(
           totalCount || 0 / currentFilter.rowPerPage,
         ));
-        setEntitys(items);
+        const res = items?.map((item) => {
+          return Object.keys(item).reduce((acc, key) => {
+            if (typeof item[key] === "object") {
+              return {
+                ...acc,
+                [key]: item[key]?.name
+              }
+            }
+            return {
+              ...acc,
+              [key]: item[key]
+            }
+          }, {});
+        })
+        setEntitys(res);
       } else {
         setEntitys([]);
       }

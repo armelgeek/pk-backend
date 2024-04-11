@@ -197,6 +197,9 @@ export const CreateUpdate = ({
                     errors={errors}
                     autoFocus
                     required={required}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
                   />
                 )}
                 name={key}
@@ -216,6 +219,9 @@ export const CreateUpdate = ({
                     errors={errors}
                     autoFocus
                     required={required}
+                    onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
                   />
                 )}
                 name={key}
@@ -253,12 +259,7 @@ export const CreateUpdate = ({
               />;
             } if (propertie?.entity?.name) {
               return (
-                <Controller
-                  control={control}
-                  render={({
-                    field: { onChange, onBlur, value },
-                    formState: { errors },
-                  }) => (<MultiSelect
+                <MultiSelect
                     key={key}
                     name={key}
                     control={control}
@@ -267,13 +268,13 @@ export const CreateUpdate = ({
                     placeholder={`Select ${form}`}
                     // defaultValue={'1'}
                     rules={{ required }}
-                    errors={errors}
+                    // errors={errors}
                     label={form}
                     required
+                    // value={value}
+                    // onChange={onChange}
                   />
-                  )}
-                  name={key}
-                />
+                  
               )
             }
             return (
@@ -290,6 +291,9 @@ export const CreateUpdate = ({
                   errors={errors}
                   autoFocus
                   required={required}
+                  onBlur={onBlur}
+                    value={value}
+                    onChange={onChange}
                 />
                 )}
                 name={key}

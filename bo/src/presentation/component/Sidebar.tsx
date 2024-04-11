@@ -18,12 +18,7 @@ export const Sidebar = (props) => {
   return (
     <div
       className="sidebar h-screen flex flex-col"
-    // style={{ minWidth: '18rem', backgroundColor: '#338554' }}
     >
-      {/* <div className="flex items-center px-8 mb-5">
-        <img src={logo} alt="Logo BIONEXX" className="w-48" /> */}
-      {/* <p className="font-medium ml-4 text-lg">BACK OFFICE</p> */}
-      {/* </div> */}
       <div className="overflow-y-auto px-2 maxh-90 minw-100">
         <Accordion items={items as Item[]} onUrlChange={goTo} collapse={collapse} />
       </div>

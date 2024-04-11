@@ -24,7 +24,10 @@ export const ControlledAutoComplete = (props) => {
       control={control}
       name={name}
       rules={rules}
-      render={({ onChange, value }) => (
+      render={({
+        field: { onChange, onBlur, value },
+        formState: { errors },
+      }) => (
         <AutoComplete
           className={className}
           name={name}

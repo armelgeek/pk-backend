@@ -38,38 +38,38 @@ export const Signin = () => {
         <h1 className=" mb-4  text-md  text-center blue-text">Se connecter</h1>
         <form onSubmit={handleSubmit(submit)} className="flex flex-col form-auth">
           <div className="mb-4">
-          <Controller
-            control={control}
-            render={({
-              field: { onChange, onBlur, value },
-              formState: { errors },
-            }) => <Input
-              value='andoom@gmail.com'
+            <Controller
+              control={control}
+              render={({
+                field: { }, // onChange, onBlur, value
+                formState: { },//errors
+              }) => <Input
+                  value='andoom@gmail.com'
+                  name="email"
+                  label="Identifiant"
+                  placeholder="Votre adresse mail"
+                  // errors={errors}
+                  // inputRef={register({ required })}
+                  required
+                />}
               name="email"
-              label="Identifiant"
-              placeholder="Votre adresse mail"
-              errors={errors}
-              // inputRef={register({ required })}
-              required
-            /> }
-            name="email"
-          />
+            />
           </div>
           <div className="mb-4">
-          <Controller
-            control={control}
-            render={({
-              field: { onChange, onBlur, value },
-              formState: { errors },
-            }) =><Input
-              value='123@andoom'
-              name="password"
-              label="Mot de passe"
-              type="password"
-              // errors={errors}
-              // inputRef={register({ required })}
-              required
-              /> }
+            <Controller
+              control={control}
+              render={({
+                field: { }, //onChange, onBlur, value
+                formState: { },//errors
+              }) => <Input
+                  value='123@andoom'
+                  name="password"
+                  label="Mot de passe"
+                  type="password"
+                  // errors={errors}
+                  // inputRef={register({ required })}
+                  required
+                />}
               name="password"
             />
           </div>

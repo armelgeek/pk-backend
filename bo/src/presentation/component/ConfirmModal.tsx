@@ -42,5 +42,5 @@ ConfirmModal.defaultProps = {
   title: 'Confirmation',
   loading: false,
   open: false,
-  onClose: () => {},
+  onClose: () => { },
 };

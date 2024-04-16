@@ -28,16 +28,18 @@ export const Modal = (props) => {
         {/* Séparator */}
         <div className="border-b  mr-2 ml-2" />
 
-        {/* Content */}
-        <div
-          className={`px-32 py-4 overflow-y-auto ${isContentText ? 'flex justify-center' : ''}`}
-          style={{ maxHeight: '85vh' }}
-        >
-          {children}
-        </div>
+        <div className="modal-body">
+          {/* Content */}
+          <div
+            className={`px-32 py-4 overflow-y-auto ${isContentText ? 'flex justify-center' : ''}`}
+            style={{ maxHeight: '85vh' }}
+          >
+            {children}
+          </div>
 
-        {/* Action Button */}
-        <div>{actions}</div>
+          {/* Action Button */}
+          <div className='action-container'>{actions}</div>
+        </div>
       </div>
     </div>
   ) : (

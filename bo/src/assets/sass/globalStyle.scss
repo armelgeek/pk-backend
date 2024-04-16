@@ -1,0 +1,77 @@
+@import './table';
+
+body,
+html {
+  overflow: hidden;
+}
+
+#sideBar {
+  background: linear-gradient(135deg, rgba(155, 81, 224, 0.2), rgba(155, 81, 224, 0)),
+    #2E055A;
+}
+
+.form-auth-container {
+  box-shadow: 1px 1px #02020224,
+    1px 1px #02020224,
+    -1px 1px #02020224;
+}
+
+.primary-button {
+  background-color: rgba(95, 196, 235, 1);
+  border-radius: 100px;
+}
+
+.blue-text {
+  color: rgba(0, 255, 240, 1);
+}
+
+.menu-item {
+  button {
+    width: 100%;
+    transition: all .7s;
+  }
+
+  &:hover {
+    button {
+      background: linear-gradient(135deg, rgba(155, 81, 224, 0), rgba(3, 169, 244, 0.24)),
+        #2E055A;
+      color: rgb(155, 177, 175);
+    }
+  }
+
+  .active {
+    background-color: rgba(0, 255, 240, 1);
+
+    button {
+      color: #3f116f;
+    }
+  }
+}
+
+.dashboard-logo {
+  height: 70px;
+}
+
+.custom-submit {
+  background: linear-gradient(135deg, rgba(155, 81, 224, 0), rgba(3, 169, 244, 0.24)),
+    #2E055A;
+  border-radius: 5px;
+  min-height: 40px;
+  max-width: 200px;
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.action-container {
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

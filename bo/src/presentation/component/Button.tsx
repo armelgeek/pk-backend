@@ -53,11 +53,10 @@ export const Button = (props) => {
         {tooltip ? (
           <span
             className={
-              hover
-                ? 'flex absolute -top-5 mx-auto font-normal text-sm bg-gray-700 text-white rounded-lg px-2'
-                : 'hidden'
+              `tooltip ${hover
+                ? 'flex absolute  mx-auto font-normal text-sm  text-white px-2'
+                : 'hidden'}`
             }
-            style={{ left: '-50%' }}
           >
             {tooltip}
           </span>

@@ -10,7 +10,11 @@ module.exports = {
       './src/presentation/component/**/*.tsx',
       './src/presentation/container/*.tsx',
       './src/presentation/container/**/*.tsx',
-      './src/presentation/container/auth/*.tsx',
+      './src/presentation/container/**/*.tsx',
+      './src/presentation/container/protected/*.tsx',
+      './src/presentation/container/protected/Home.tsx',
+      './src/presentation/component/SideMenu/SideMenu.tsx',
+      './src/presentation/component/Modal.tsx',
     ],
   },
   darkMode: false, // or 'media' or 'class'
@@ -33,7 +37,7 @@ module.exports = {
           900: '#1D5C42'
         },
         blue: {
-          900: '#0F579E'
+          900: '#0F579E',
         },
         red: {
           600: '#EB5757'

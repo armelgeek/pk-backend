@@ -8,7 +8,9 @@ import 'react-awesome-lightbox/build/style.css';
 import App from './presentation/container/App';
 import { store } from './redux/store';
 import '../tailwind.out.css';
+import 'tailwindcss/tailwind.css';
 import './index.css';
+import './assets/sass/globalStyle.scss'
 
 const rootEl = document.getElementById('root');
 

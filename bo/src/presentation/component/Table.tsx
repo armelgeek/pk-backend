@@ -199,7 +199,7 @@ export const Table = (props) => {
 
       <div className="w-full overflow-auto bkg-custom-table">
         {/* <table {...getTableProps()} className="w-full divide-y"> */}
-        <table {...getTableProps()} className="visualisation-table w-full">
+        <table {...getTableProps()} className="visualisation-table w-full custom-table">
           <thead className="uppercase">
             {/* <thead className="text-left uppercase "> */}
             {headerGroups.map((headerGroup) => (
@@ -232,7 +232,7 @@ export const Table = (props) => {
                   {/* eslint-disable-next-line react/prop-types */}
                   {row.cells.map((cell) => (
                     <td
-                      className={`border-b ${cell.column.noDefaultStyle ? 'p-0 h-10' : ''
+                      className={`border-b ${cell.column.noDefaultStyle ? 'p-0' : ''
                         } ${`${cell.getCellProps().key}`.includes(rowSelectionId)
                           ? 'select-row'
                           : 'simple-row'

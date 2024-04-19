@@ -71,39 +71,38 @@ const partnerData = [
   },
 ];
 
-
 const strategy = [
   {
-    name: "GTO",
-    description: "GTO",
+    name: 'GTO',
+    description: 'GTO',
   },
   {
-    name: "Exploit",
-    description: "Exploit",
+    name: 'Exploit',
+    description: 'Exploit',
   },
   {
-    name: "Creatif",
-    description: "Creatif",
+    name: 'Creatif',
+    description: 'Creatif',
   },
   {
-    name: "Straigh for war",
-    description: "Straigh for war",
+    name: 'Straigh for war',
+    description: 'Straigh for war',
   },
   {
-    name: "Value oriented",
-    description: "Value oriented",
+    name: 'Value oriented',
+    description: 'Value oriented',
   },
   {
-    name: "ABC",
-    description: "ABC",
+    name: 'ABC',
+    description: 'ABC',
   },
   {
-    name: "Scared money",
-    description: "Scared money",
+    name: 'Scared money',
+    description: 'Scared money',
   },
   {
-    name: "Small ball",
-    description: "Small ball",
+    name: 'Small ball',
+    description: 'Small ball',
   },
 ];
 
@@ -300,7 +299,7 @@ export class InitSeeds implements Seeder {
     if (partenerCount < 2) {
       await partener.save(partnerData);
     }
-  
+
     if (sponsorCount < 2) {
       await sponsor.save(sponsorsData);
     }
@@ -401,56 +400,46 @@ export class InitSeeds implements Seeder {
         console.log('====================================');
       }
     }
-    !user.collectionIndexExists &&
-      user.createCollectionIndex({
-        nom: 'text',
-        prenom: 'text',
-        email: 'text',
-        adresse: 'text',
-      });
-    !langue.collectionIndexExists && langue.createCollectionIndex({ code: 'text', nom: 'text' });
-    !administrateur.collectionIndexExists &&
-      administrateur.createCollectionIndex({
-        nom: 'text',
-        prenom: 'text',
-        email: 'text',
-        adresseAdmin: 'text',
-        telAdmin: 'text',
-      });
-    !page.collectionIndexExists &&
-      page.createCollectionIndex({
-        name: 'text',
-        country: 'text',
-        adress: 'text',
-        email: 'text',
-        description: 'text',
-      });
-    !complementaryInformation.collectionIndexExists &&
-      complementaryInformation.createCollectionIndex({
-        nationality: 'text',
-        langues: 'text',
-        email: 'text',
-        job: 'text',
-        headonmob: 'text',
-        nb_titre: 'text',
-        rang_time_money: 'text',
-        period: 'text',
-      });
-    link.createCollectionIndex({
+    await user.createCollectionIndex({
+      nom: 'text',
+      prenom: 'text',
+      email: 'text',
+      adresse: 'text',
+    });
+    await administrateur.createCollectionIndex({
+      nom: 'text',
+      prenom: 'text',
+      email: 'text',
+      adresseAdmin: 'text',
+      telAdmin: 'text',
+    });
+    await page.createCollectionIndex({
+      name: 'text',
+      country: 'text',
+      adress: 'text',
+      email: 'text',
+      description: 'text',
+    });
+    await complementaryInformation.createCollectionIndex({
+      nationality: 'text',
+      langues: 'text',
+      email: 'text',
+      job: 'text',
+      headonmob: 'text',
+      nb_titre: 'text',
+      rang_time_money: 'text',
+      period: 'text',
+    });
+    await link.createCollectionIndex({
       name: 'text',
       link: 'text',
       description: 'text',
       profile: 'text',
     });
-    !sponsor.collectionIndexExists &&
-      sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
-    !partener.collectionIndexExists &&
-      partener.createCollectionIndex({ name: 'text', description: 'text' });
-    !pseudo.collectionIndexExists &&
-      pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
-    
-    !event &&
-    sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
+    await sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
+    await partener.createCollectionIndex({ name: 'text', description: 'text' });
+    await pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
+    await event.createCollectionIndex({ name: 'text', description: 'text' });
 
     if (subsriptionOfferCount === 0) {
       await initStripeProduct();

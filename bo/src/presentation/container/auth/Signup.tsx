@@ -35,67 +35,52 @@ export const Signup = () => {
         <form onSubmit={handleSubmit(submit)} className="flex flex-col register-form">
           <form onSubmit={handleSubmit(submit)}>
             <div className="mb-4">
-            <Controller
-            control={control}
-            render={({
-              field: { onChange, onBlur, value },
-              formState: { errors },
-            }) =><Input
-                name="email"
-                label="Adresse email"
-                placeholder="abc@example.xyz"
-                errors={errors}
-                // inputRef={register({
-                //   required,
-                //   validate: {
-                //     email: (value) => emailPattern.test(value) || emailErrorMessage,
-                //   },
-                // })}
-                /> }
+              <Controller
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => <Input
+                    name="email"
+                    label="Adresse email"
+                    placeholder="abc@example.xyz"
+                    errors={errors}
+                    value={value}
+                    onChange={onChange}
+                  />}
                 name="email"
               />
             </div>
             <div className="mb-4">
               <Controller
-            control={control}
-            render={({
-              field: { onChange, onBlur, value },
-              formState: { errors },
-            }) =><Input
-                name="password"
-                label="Mot de passe"
-                type="password"
-                // errors={errors}
-                // inputRef={register({
-                //   required,
-                //   minLength: {
-                //     message: 'Le mot de passe doit être composé de 8 caractères minimum',
-                //     value: 8,
-                //   },
-                // })}
-                /> }
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => <Input
+                    name="password"
+                    label="Mot de passe"
+                    type="password"
+                    value={value}
+                    onChange={onChange}
+                  />}
                 name="password"
               />
             </div>
             <div className="mb-4">
               <Controller
-            control={control}
-            render={({
-              field: { onChange, onBlur, value },
-              formState: { errors },
-            }) =><Input
-                name="passwordConfirm"
-                label="Confirmation mot de passe"
-                type="password"
-                errors={errors}
-                // inputRef={register({
-                //   required,
-                //   validate: {
-                //     notTheSame: (value) =>
-                //       getValues('password') === value || 'Mot de passe non identique',
-                //   },
-                // })}
-                /> }
+                control={control}
+                render={({
+                  field: { onChange, onBlur, value },
+                  formState: { errors },
+                }) => <Input
+                    name="passwordConfirm"
+                    label="Confirmation mot de passe"
+                    type="password"
+                    errors={errors}
+                    value={value}
+                    onChange={onChange}
+                  />}
                 name="passwordConfirm"
               />
             </div>
@@ -107,17 +92,6 @@ export const Signup = () => {
           </form>
         </form>
       </div>
-    </div >
-
-
-
-
-
-
-    // <div>
-
-
-
-    // </div>
+    </div>
   );
 };

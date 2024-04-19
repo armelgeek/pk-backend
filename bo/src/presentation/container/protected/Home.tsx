@@ -16,14 +16,10 @@ export const Home = () => {
   const { path } = useRouteMatch();
   const { pathname } = useLocation();
   const { updateBreadcrumb } = useApp();
-  // const { breadcrumb } = useSelector((state) => state.app);
   const getFullPath = (url) => `${path}${url}`;
   const history = useHistory();
   const { updateCredentials, state } = useAuth();
   const connectedUser = JSON.parse(localStorage.getItem(LocalStorageKeys.credentials));
-  // const _campagne:any = JSON.parse(localStorage.getItem('currentCampagne'));
-  // const [currentCampagne, setCurrentCampagne] =
-  // React.useState((_campagne && _campagne.label) ? _campagne.label : 'Aucune');
   const handleDisconnect = () => {
     localStorage.removeItem(LocalStorageKeys.credentials);
     updateCredentials(initialAuthState.credentials);
@@ -72,11 +68,6 @@ export const Home = () => {
             <div className="h-1 w-10 bg-green-900 rounded-lg" />
           </div>
           <div className="flex flex-col px-2 py-1">
-            {/* <p className="uppercase font-medium text-s">
-              campagne en cours:
-              {' '}
-              {currentCampagne}
-            </p> */}
             <div className="h-1 w-10 bg-blue-primary rounded-lg" />
           </div>
           <div className="flex items-center space-x-2">
@@ -102,9 +93,6 @@ export const Home = () => {
             <Route path={getFullPath('/tableau-bord')}>
               <TableauBord />
             </Route>
-            {/* <Route path={getFullPath('/utilisateur')}>
-              <Utilisateur />
-            </Route> */}
             {
               // eslint-disable-next-line max-len
               ...Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {
@@ -112,7 +100,6 @@ export const Home = () => {
                 return (
                   <Route path={getFullPath(`/${route}`)} key={entity}>
                     {Screen[entity]()}
-                    {/* <Categorie /> */}
                   </Route>
                 );
               })

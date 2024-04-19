@@ -114,7 +114,7 @@ export const EntityContainer = ({ currententity, transformValue = (
     setResetPageIndex(() => true);
     getEntitys({ ...filter, page: 1 });
   };
-  const handleSearchChange = (e) => setFilter((f) => ({ ...f, recherche: e.target.value }));
+  const handleSearchChange = (e) => setFilter((f) => ({ ...f, search: e.target.value }));
   const fetchData = (params) => {
     const newFilter = { ...filter, ...params };
     setFilter(newFilter);
@@ -140,7 +140,7 @@ export const EntityContainer = ({ currententity, transformValue = (
         <div className="flex searchInput">
           <Input
             name="search"
-            placeholder="recherche par email ..."
+            placeholder="recherche ..."
             value={filter.search}
             onChange={handleSearchChange}
             onEnterPress={handleSearch}

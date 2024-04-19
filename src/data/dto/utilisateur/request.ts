@@ -23,6 +23,7 @@ export type UtilisateurRequestDTO = {
    lague?: string;
    username?: string;
    profileId?: string;
+   twoFactorAuthentication?: string;
 }
 
 /**
@@ -51,5 +52,6 @@ export type UtilisateurRequestDTO = {
  * @property {string} lague
  * @property {string} username
  * @property {string} profileId
+ * @property {string} twoFactorAuthentication
  */
 

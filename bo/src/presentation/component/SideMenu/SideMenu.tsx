@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import {
   Menu,
   MenuItem, ProSidebar, SidebarContent, SidebarFooter, SidebarHeader,
@@ -22,6 +22,8 @@ import './Header.css';
 import logo from '../../../assets/img/logo.png';
 
 import { dataTDO } from "../../../data";
+import { LocalStorageKeys } from '../../../data/constants/LocalStorageKeys';
+import { initialAuthState, useAuth } from '../../../redux/ducks/auth';
 
 const icons = {
   parametre,
@@ -35,7 +37,6 @@ const icons = {
 };
 
 // eslint-disable-next-line react/prop-types
-// export const SideMenu = ({ }) => {
 export const SideMenu = ({ role }) => {
   // create initial menuCollapse state using useState hook
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -43,6 +44,15 @@ export const SideMenu = ({ role }) => {
   const menuIconClick = () => {
     // condition checking to change state from true to false and vice versa
     menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
+  };
+
+  const history = useHistory();
+  const { updateCredentials, state } = useAuth();
+  const connectedUser = JSON.parse(localStorage.getItem(LocalStorageKeys.credentials));
+  const handleDisconnect = () => {
+    localStorage.removeItem(LocalStorageKeys.credentials);
+    updateCredentials(initialAuthState.credentials);
+    history.replace('/auth');
   };
 
   const routes = Object.keys(dataTDO).filter((entity) => entity && dataTDO[entity]?.role <= role && dataTDO[entity]?.operations?.find(({ method, route }) => method && route)).map((entity) => {
@@ -112,7 +122,9 @@ export const SideMenu = ({ role }) => {
             </SidebarContent>
             <SidebarFooter>
               <Menu iconShape="square">
-                <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+                <div onClick={handleDisconnect}>
+                  <MenuItem icon={<FiLogOut />}>Logout</MenuItem>
+                </div>
               </Menu>
             </SidebarFooter>
           </ProSidebar>

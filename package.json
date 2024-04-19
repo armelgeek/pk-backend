@@ -19,7 +19,7 @@
     "deploy:dev": "npm run seed:dev && NODE_ENV=dev pm2 start pm2.config.js",
     "deploy:qualif": "npm run seed:qualif && NODE_ENV=qualif pm2 start pm2.config.js",
     "deploy:preprod": "npm run seed:preprod && NODE_ENV=preprod pm2 start pm2.config.js",
-    "prod": "npm run seed:prod && NODE_ENV=prod node dist/index.js",
+    "prod": "npm run seed:prod && node dist/index.js",
     "stop": "pm2 stop backend",
     "seed:config": "ts-node -r dotenv-flow/config ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node -r dotenv-flow/config ./node_modules/typeorm-seeding/dist/cli.js seed",

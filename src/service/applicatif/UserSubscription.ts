@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GenericSA } from '../../common/service/generic.sa';
 import {
   usersubscriptionFactory,
@@ -27,6 +28,11 @@ export class UserSubscriptionSA extends GenericSA<
       let data = await usersubscriptionSA.findOneWithRelation({ queries: { userId: id, pageId } });
       return data;
     } catch (error) {
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'getSubscriptionByUserSA',
+        message: error,
+        date: new Date().toISOString(),
+      });
       return Promise.reject(error);
     }
   }
@@ -40,6 +46,11 @@ export class UserSubscriptionSA extends GenericSA<
         prices: prices.data,
       };
     } catch (error) {
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'paymentConfigSA',
+        message: error,
+        date: new Date().toISOString(),
+      });
       return Promise.reject(error);
     }
   }
@@ -81,6 +92,11 @@ export class UserSubscriptionSA extends GenericSA<
       };
     } catch (error) {
       console.log('createPaymentIntentSA ==', { error });
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'createPaymentIntentSA',
+        message: error,
+        date: new Date().toISOString(),
+      });
       return Promise.reject(error);
     }
   }
@@ -150,6 +166,11 @@ export class UserSubscriptionSA extends GenericSA<
           .payment_intent as Stripe.PaymentIntent).client_secret,
       };
     } catch (error) {
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'createPaymentSubscriptionSA',
+        message: error,
+        date: new Date().toISOString(),
+      });
       return Promise.reject(error);
     }
   }

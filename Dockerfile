@@ -1,26 +1,26 @@
-FROM node:20.11.0 as build-bo
+# FROM node:20.11.0 as build-bo
 
-# Create the workdir 
-RUN mkdir -p /var/www/bo
+# # Create the workdir 
+# RUN mkdir -p /var/www/bo
 
-# RUN rm -rf /var/www/bo/models
+# # RUN rm -rf /var/www/bo/models
 
-# Set the workdir to /var/www/bo
-WORKDIR /var/www/bo
+# # Set the workdir to /var/www/bo
+# WORKDIR /var/www/bo
 
-# Copy the package.json & package.lock.json first
-# If there's no change in package.json,
-# Docker will skip this step and we will win more times in build process
-COPY ./bo/package*.json ./
+# # Copy the package.json & package.lock.json first
+# # If there's no change in package.json,
+# # Docker will skip this step and we will win more times in build process
+# COPY ./bo/package*.json ./
 
-# Install dependencies
-# This step will be skipped if there's no change to package.json
-RUN npm i --force
+# # Install dependencies
+# # This step will be skipped if there's no change to package.json
+# RUN npm i --force
 
-# Copy project folders & files
-COPY ./bo/. .
+# # Copy project folders & files
+# COPY ./bo/. .
 
-RUN npm run build:prod
+# RUN npm run build:prod
 
 FROM node:20.11.0
 
@@ -54,8 +54,8 @@ RUN npm run build
 
 COPY ./src/data/Fragment.json ./dist/data/
 
-RUN mkdir -p ./dist/bo
+# RUN mkdir -p ./dist/bo
 
-COPY --from=build-bo /var/www/bo/dist/. ./dist/bo/
+# COPY --from=build-bo /var/www/bo/dist/. ./dist/bo/
 
 CMD npm run prod --bind 0.0.0.0:4000

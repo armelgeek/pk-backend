@@ -194,6 +194,9 @@ export class EventDO {
   @Column("simple-array")
   days: string[];
 
+  @Column({nullable: true, unique: false})
+  finish: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

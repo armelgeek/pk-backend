@@ -62,6 +62,7 @@ export type EventResponseDTO = {
    cashEntryMax?: number;
    cashEntryMin?: number;
    days?: string[];
+   finish?: boolean;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -132,6 +133,7 @@ export type EventResponseDTO = {
  * @property {number} cashEntryMax
  * @property {number} cashEntryMin
  * @property {array<string>} days
+ * @property {boolean} finish
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

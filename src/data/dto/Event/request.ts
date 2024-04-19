@@ -62,6 +62,7 @@ export type EventRequestDTO = {
    cashEntryMax?: number;
    cashEntryMin?: number;
    days?: string[];
+   finish?: boolean;
 }
 
 /**
@@ -129,5 +130,6 @@ export type EventRequestDTO = {
  * @property {number} cashEntryMax
  * @property {number} cashEntryMin
  * @property {array<string>} days
+ * @property {boolean} finish
  */
 

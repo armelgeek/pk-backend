@@ -8,11 +8,10 @@ import { Button } from '../../component/Button';
 import { Input } from '../../component/Input';
 
 export const Signin = () => {
-  const { handleSubmit, register, setValue, control } = useForm({ mode: 'onBlur' });
+  const { handleSubmit, setValue, control } = useForm({ mode: 'onBlur' });
   const { signin } = useAuth();
   const [openSnackbar] = useCustomSnackbar();
   const [loading, setLoading] = React.useState(false);
-  const { required } = regexPatterns;
   const submit = async (data) => {
     setLoading(true);
     try {
@@ -23,10 +22,7 @@ export const Signin = () => {
       setLoading(false);
     }
   };
-  // {
-  //   "email": "pockerapps@gmail.com",
-  //   "password": "PockerApp#123"
-  // }
+
   React.useEffect(() => {
     setValue('email', 'pockerapps@gmail.com');
     setValue('password', 'PockerApp#123');
@@ -41,15 +37,14 @@ export const Signin = () => {
             <Controller
               control={control}
               render={({
-                field: { }, // onChange, onBlur, value
+                field: { onChange, onBlur, value }, // onChange, onBlur, value
                 formState: { },//errors
               }) => <Input
-                  value='andoom@gmail.com'
+                  value={value}
+                  onChange={onChange}
                   name="email"
                   label="Identifiant"
                   placeholder="Votre adresse mail"
-                  // errors={errors}
-                  // inputRef={register({ required })}
                   required
                 />}
               name="email"
@@ -59,15 +54,14 @@ export const Signin = () => {
             <Controller
               control={control}
               render={({
-                field: { }, //onChange, onBlur, value
+                field: { onChange, onBlur, value }, //onChange, onBlur, value
                 formState: { },//errors
               }) => <Input
-                  value='123@andoom'
+                  value={value}
                   name="password"
                   label="Mot de passe"
                   type="password"
-                  // errors={errors}
-                  // inputRef={register({ required })}
+                  onChange={onChange}
                   required
                 />}
               name="password"

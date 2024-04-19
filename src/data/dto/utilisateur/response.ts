@@ -23,6 +23,7 @@ export type UtilisateurResponseDTO = {
    lague?: string;
    username?: string;
    profileId?: string;
+   twoFactorAuthentication?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -54,6 +55,7 @@ export type UtilisateurResponseDTO = {
  * @property {string} lague
  * @property {string} username
  * @property {string} profileId
+ * @property {string} twoFactorAuthentication
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

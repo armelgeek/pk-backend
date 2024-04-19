@@ -31,6 +31,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'getSubscriptionByUserSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -49,6 +50,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'paymentConfigSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -95,6 +97,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'createPaymentIntentSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -169,6 +172,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'createPaymentSubscriptionSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);

@@ -1,5 +1,6 @@
 export interface ResetPasswordRequestDTO {
   email: string;
+  phone: PhoneRequestDTO;
 }
 
 export interface ResetPasswordConfirmRequestDTO {
@@ -9,7 +10,8 @@ export interface ResetPasswordConfirmRequestDTO {
 
 /**
  * @typedef {object} ResetPasswordRequestDTO
- * @property {string} email.required
+ * @property {string} email
+ * @property {PhoneRequestDTO} phone
  */
 
 /**

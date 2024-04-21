@@ -16,6 +16,9 @@ export type ProfileResponseDTO = {
    nom?: string;
    verification?: string;
    currency?: CurrencyRequestDTO;
+   friends?: string[];
+   followed?: string[];
+   situation?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -40,6 +43,9 @@ export type ProfileResponseDTO = {
  * @property {string} nom
  * @property {string} verification
  * @property {CurrencyRequestDTO} currency
+ * @property {array<string>} friends
+ * @property {array<string>} followed
+ * @property {string} situation
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -56,6 +56,15 @@ export class ProfileDO {
   @Column("simple-json")
   currency: { name?: string, code: string, codeFormat: string, symbol?: string };
 
+  @Column("simple-array")
+  friends: string[];
+
+  @Column("simple-array")
+  followed: string[];
+
+  @Column({nullable: true, unique: false})
+  situation: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -92,6 +92,22 @@ export class AuthentificationController {
     }
   };
 
+  twoFactorAuthentication = async (req, res, next) => {
+    try {
+      const {
+        body: { email, phone },
+      } = req;
+
+      const success = await this.serviceSA.twoFactorAuthentication({email, phone}, `http://${req.headers.host}`);
+
+      res.locals.data = success;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+
   verifyResetToken = async (req, res, next) => {
     try {
       const {

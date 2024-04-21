@@ -146,7 +146,7 @@ export const utilisateurRouter = utilisateurRoutes();
  */
 
 /**
- * GET /api/utilisateur/
+ * GET /api/utilisateur/{id}
  * @tags Utilisateur
  * @summary Récupérer un utilisateur par son id
  * @param {string} id.path.required

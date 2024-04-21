@@ -113,6 +113,53 @@ export class AuthentificationSA {
     }
   }
 
+  async twoFactorAuthentication({ email, phone }: { email?: string; phone?: PhoneRequestDTO }, boHost: string) {
+    try {
+      let found;
+      if (email) {
+        found = await utilisateurSA.findOneNotFail({ email });
+      } else {
+        found = await utilisateurSA.findOneNotFail({ phone });
+      }
+
+      if (!found) {
+        throw new Exception(HttpStatus.BAD_REQUEST, 'Email non trouvé dans la base de données');
+      }
+
+      const code = entierAleatoire(1111, 9999).toString();
+      await utilisateurSM.partialUpdate(found.id, { code });
+
+      if (email) {
+        await sendMail({
+          to: email,
+          subject: '[Pockerapply] - Authentification à deux facteurs',
+          body: `
+        Bonjour ${found.username},
+        <br /> <br />
+        <span>
+          <p>Voici votre d' authentification à deux facteurs: ${code}</p>
+        <br />
+        <br /> 
+        Si vous n'êtes pas à l'origine de ce changement de L'authentification à deux facteurs, veuillez ignorer ce mail.
+        <br /> <br /> <br />
+        Cordialement,
+        <br /> <br />
+        L'équipe Pockerapply.
+        `,
+        });
+      } else if (found && found.phone?.callingCode && found.phone?.phoneNumber) {
+        await sendSMS(
+          `Bonjour ${found.username}, Voici votre code d' authentification à deux facteurs : ${code}. L'équipe Pockerapply`,
+          `${found.phone?.callingCode}${found.phone?.phoneNumber}`,
+        );
+      }
+
+      return true;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async resetPassword(id: ObjectID, password: string) {
     return await utilisateurSA.resetPassword(id, password);
   }

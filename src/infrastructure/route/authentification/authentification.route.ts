@@ -41,6 +41,14 @@ const authentificationRoutes = () => {
       responseFormatter,
     );
 
+  router
+    .route('/two-factor-authentication')
+    .post(
+      schemaValidator(utilisateurPasswordResetRequestDTOSchema),
+      authentificationController.twoFactorAuthentication,
+      responseFormatter,
+    );
+
   router.get(
     '/verify-reset-token/:resetToken',
     authentificationController.verifyResetToken,
@@ -102,6 +110,16 @@ export const authentificationRouter = authentificationRoutes();
  * @return {AuthentificationResponseDTO} 200
  * @return {object} 400 - Mot de passe ou email éronné
  * @return {object} 500 - Erreur côté serveur
+ */
+
+/**
+ * POST /api/authentification/two-factor-authentication
+ * @tags Authentification
+ * @summary Authentification à deux facteurs
+ * @param {ResetPasswordRequestDTO} request.body.required
+ * @return {boolean} 200
+ * @return {object} 400 - Bad request
+ * @return {object} 500 - Erreur interne du serveur
  */
 
 /**

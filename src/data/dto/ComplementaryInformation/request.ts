@@ -7,7 +7,7 @@ export type ComplementaryInformationRequestDTO = {
    headonmob?: number;
    nbTitle?: number;
    rangTimeMoney?: string;
-   period?: string;
+   period?: Date;
    nbBracelet?: number;
 }
 
@@ -21,7 +21,7 @@ export type ComplementaryInformationRequestDTO = {
  * @property {number} headonmob
  * @property {number} nbTitle
  * @property {string} rangTimeMoney
- * @property {string} period
+ * @property {Date} period
  * @property {number} nbBracelet
  */
 

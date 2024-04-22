@@ -54,3 +54,15 @@ export const linkRouter = linkRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * GET /api/link/{id}
+ * @tags Link
+ * @security BearerAuth
+ * @summary List Link (getLink)
+ 
+ * @param {string} id.path.required 
+ * @return {LinkResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

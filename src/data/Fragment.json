@@ -3161,7 +3161,7 @@
 									"top": 456,
 									"width": 214.97607421875,
 									"height": 13,
-									"text": "+date_of_birth: string",
+									"text": "+date_of_birth: date",
 									"horizontalAlignment": 0
 								},
 								{
@@ -4434,13 +4434,30 @@
 									"height": 13,
 									"text": "+update()",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLOperationView",
+									"_id": "AAAAAAGO//LaudP/XWk=",
+									"_parent": {
+										"$ref": "AAAAAAGNhQE1FlAVYZk="
+									},
+									"model": {
+										"$ref": "AAAAAAGO//LalNP6rmc="
+									},
+									"font": "Arial;13;0",
+									"left": 37,
+									"top": 813,
+									"width": 109.4716796875,
+									"height": 13,
+									"text": "+get()",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 32,
 							"top": 748,
 							"width": 119.4716796875,
-							"height": 68
+							"height": 83
 						},
 						{
 							"_type": "UMLReceptionCompartmentView",
@@ -4480,7 +4497,7 @@
 					"left": 32,
 					"top": 640,
 					"width": 119.4716796875,
-					"height": 176,
+					"height": 191,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQE1FlAPovo="
 					},
@@ -6683,7 +6700,7 @@
 									"top": 478,
 									"width": 199.74267578125,
 									"height": 13,
-									"text": "+period: string",
+									"text": "+period: date",
 									"horizontalAlignment": 0
 								},
 								{
@@ -6849,7 +6866,7 @@
 					"left": 616,
 					"top": 328,
 					"width": 209.74267578125,
-					"height": 266,
+					"height": 281,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNmLfx/nDcaEs="
 					},
@@ -20288,8 +20305,8 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "date_of_birth",
-					"type": "string",
-					"form": "Metier",
+					"type": "date",
+					"form": "Date de Naisance",
 					"bo": true
 				},
 				{
@@ -20898,6 +20915,28 @@
 							"defaultValue": ""
 						}
 					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGO//LalNP6rmc=",
+					"_parent": {
+						"$ref": "AAAAAAGNhQE1FVAM29w="
+					},
+					"name": "get",
+					"route": "link/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGO//LalNP7uTc=",
+							"_parent": {
+								"$ref": "AAAAAAGO//LalNP6rmc="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
 				}
 			]
 		},
@@ -21360,7 +21399,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "getAll",
-					"role": "4",
+					"role": "0",
 					"route": "page-additional",
 					"method": "get"
 				},
@@ -21371,7 +21410,7 @@
 						"$ref": "AAAAAAGNhQtPMFEFICE="
 					},
 					"name": "add",
-					"role": "1",
+					"role": "0",
 					"route": "page-additional",
 					"method": "post"
 				},
@@ -21884,7 +21923,7 @@
 						"$ref": "AAAAAAGNmLfx/XDZAhE="
 					},
 					"name": "period",
-					"type": "string"
+					"type": "date"
 				},
 				{
 					"_type": "UMLAttribute",

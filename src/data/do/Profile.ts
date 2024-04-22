@@ -23,8 +23,8 @@ export class ProfileDO {
   @Column("simple-json")
   phone: { paysCode: string, phoneNumber: string, callingCode: string };
 
-  @Column({nullable: true, unique: false})
-  date_of_birth: string;
+  @Column({ type: 'timestamptz', default: new Date() })
+  date_of_birth: Date;
 
   @Column({nullable: true, unique: false})
   gender: string;

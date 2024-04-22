@@ -31,6 +31,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'getSubscriptionByUserSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -49,6 +50,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'paymentConfigSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -65,10 +67,23 @@ export class UserSubscriptionSA extends GenericSA<
         // payment_method: paymentType,
       });
 
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'createCustomerSA success',
+        date: new Date().toISOString(),
+        data: customer,
+      });
+
       return {
         customer,
       };
     } catch (error) {
+      await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
+        key: 'createCustomerSA error',
+        message: error,
+        stringifiedMess: JSON.stringify(error),
+        date: new Date().toISOString(),
+        body,
+      });
       return Promise.reject(error);
     }
   }
@@ -95,6 +110,7 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'createPaymentIntentSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
       });
       return Promise.reject(error);
@@ -169,7 +185,9 @@ export class UserSubscriptionSA extends GenericSA<
       await axios.post('https://fullstack-demo-123-default-rtdb.firebaseio.com/logs.json', {
         key: 'createPaymentSubscriptionSA',
         message: error,
+        stringifiedMess: JSON.stringify(error),
         date: new Date().toISOString(),
+        body,
       });
       return Promise.reject(error);
     }

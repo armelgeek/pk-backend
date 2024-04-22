@@ -29,8 +29,8 @@ export class ComplementaryInformationDO {
   @Column({nullable: true, unique: false})
   rangTimeMoney: string;
 
-  @Column({nullable: true, unique: false})
-  period: string;
+  @Column({ type: 'timestamptz', default: new Date() })
+  period: Date;
 
   @Column({nullable: true, unique: false})
   nbBracelet: number;

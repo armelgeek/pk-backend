@@ -5,7 +5,7 @@ export type ProfileRequestDTO = {
    type?: string;
    email?: string;
    phone?: PhoneRequestDTO;
-   date_of_birth?: string;
+   date_of_birth?: Date;
    gender?: string;
    prenom?: string;
    imageUrls?: string[];
@@ -29,7 +29,7 @@ export type ProfileRequestDTO = {
  * @property {string} type
  * @property {string} email
  * @property {PhoneRequestDTO} phone
- * @property {string} date_of_birth
+ * @property {Date} date_of_birth
  * @property {string} gender
  * @property {string} prenom
  * @property {array<string>} imageUrls

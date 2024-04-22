@@ -7,7 +7,7 @@ export type ComplementaryInformationResponseDTO = {
    headonmob?: number;
    nbTitle?: number;
    rangTimeMoney?: string;
-   period?: string;
+   period?: Date;
    nbBracelet?: number;
   createdAt: Date;
   updatedAt: Date;
@@ -24,7 +24,7 @@ export type ComplementaryInformationResponseDTO = {
  * @property {number} headonmob
  * @property {number} nbTitle
  * @property {string} rangTimeMoney
- * @property {string} period
+ * @property {Date} period
  * @property {number} nbBracelet
  * @property {string} id
  * @property {string} updatedAt

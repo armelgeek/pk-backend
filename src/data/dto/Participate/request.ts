@@ -16,6 +16,7 @@ export type ParticipateRequestDTO = {
    gain?: string;
    eliminate?: boolean;
    flag?: string;
+   message?: string;
 }
 
 /**
@@ -37,5 +38,6 @@ export type ParticipateRequestDTO = {
  * @property {string} gain
  * @property {boolean} eliminate
  * @property {string} flag
+ * @property {string} message
  */
 

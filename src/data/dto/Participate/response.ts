@@ -16,6 +16,7 @@ export type ParticipateResponseDTO = {
    gain?: string;
    eliminate?: boolean;
    flag?: string;
+   message?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -40,6 +41,7 @@ export type ParticipateResponseDTO = {
  * @property {string} gain
  * @property {boolean} eliminate
  * @property {string} flag
+ * @property {string} message
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

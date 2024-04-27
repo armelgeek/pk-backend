@@ -96,3 +96,7 @@
   declare interface PartenariatResponseDTO { }
   declare interface CurrencyRequestDTO { }
   declare interface CurrencyResponseDTO { }
+  declare interface TwoFactorAuthenticationRequestDTO { }
+  declare interface TwoFactorAuthenticationResponseDTO { }
+  declare interface AlbumRequestDTO { }
+  declare interface AlbumResponseDTO { }

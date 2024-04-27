@@ -159,11 +159,11 @@ export class GenericController<
    */
   findOne = async (req, res, next) => {
     const {
-      query: { page, rowPerPage, light, direction, sortField, match, recherche, ...queries },
+      query: { page, rowPerPage, light, direction, sortField, match, search, ...queries },
     } = req;
     try {
       const found = await this.serviceSA.findOneWithRelation({
-        search: recherche,
+        search,
         match,
         queries,
       });

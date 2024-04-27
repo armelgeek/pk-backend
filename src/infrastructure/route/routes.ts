@@ -44,6 +44,7 @@ import { notevalueRouter } from './NoteValue';
 import { noticedRouter } from './Noticed';
 import { partenariatRouter } from './Partenariat';
 import { twofactorauthenticationRouter } from './TwoFactorAuthentication';
+import { albumRouter } from './Album';
 
 export const routes = () => {
   const router = Router();
@@ -92,6 +93,7 @@ export const routes = () => {
  router.use('/noticed', noticedRouter);
  router.use('/partenariat', partenariatRouter);
  router.use('/two-factor-authentication', twofactorauthenticationRouter);
+ router.use('/album', albumRouter);
   
   return router;
 };

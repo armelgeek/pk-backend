@@ -14358,13 +14358,30 @@
 									"height": 13,
 									"text": "+flag: string",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGPHskG7XRTpqg=",
+									"_parent": {
+										"$ref": "AAAAAAGOJ0TmlLx1jRI="
+									},
+									"model": {
+										"$ref": "AAAAAAGPHskGtHRQbLY="
+									},
+									"font": "Arial;13;0",
+									"left": 1117,
+									"top": 325,
+									"width": 144.88525390625,
+									"height": 13,
+									"text": "+message: string",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 1112,
 							"top": 65,
 							"width": 154.88525390625,
-							"height": 263
+							"height": 278
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -14387,7 +14404,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1117,
-									"top": 333,
+									"top": 348,
 									"width": 144.88525390625,
 									"height": 13,
 									"text": "+getAll()",
@@ -14404,7 +14421,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1117,
-									"top": 348,
+									"top": 363,
 									"width": 144.88525390625,
 									"height": 13,
 									"text": "+delete()",
@@ -14421,7 +14438,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1117,
-									"top": 363,
+									"top": 378,
 									"width": 144.88525390625,
 									"height": 13,
 									"text": "+update()",
@@ -14438,7 +14455,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1117,
-									"top": 378,
+									"top": 393,
 									"width": 144.88525390625,
 									"height": 13,
 									"text": "+get()",
@@ -14455,7 +14472,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1117,
-									"top": 393,
+									"top": 408,
 									"width": 144.88525390625,
 									"height": 13,
 									"text": "+add()",
@@ -14464,7 +14481,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 1112,
-							"top": 328,
+							"top": 343,
 							"width": 154.88525390625,
 							"height": 83
 						},
@@ -14502,7 +14519,7 @@
 					"left": 1112,
 					"top": 40,
 					"width": 154.88525390625,
-					"height": 371,
+					"height": 386,
 					"nameCompartment": {
 						"$ref": "AAAAAAGOJ0Tmjrxwhr0="
 					},
@@ -25849,6 +25866,15 @@
 						"$ref": "AAAAAAGOJ0TmhrxtdM8="
 					},
 					"name": "flag",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPHskGtHRQbLY=",
+					"_parent": {
+						"$ref": "AAAAAAGOJ0TmhrxtdM8="
+					},
+					"name": "message",
 					"type": "string"
 				}
 			],

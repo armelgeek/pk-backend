@@ -56,6 +56,9 @@ export class ParticipateDO {
   @Column({nullable: true, unique: false})
   flag: string;
 
+  @Column({nullable: true, unique: false})
+  message: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

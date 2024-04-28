@@ -17,6 +17,10 @@ export type ParticipateRequestDTO = {
    eliminate?: boolean;
    flag?: string;
    message?: string;
+   pseudo?: string;
+   phone?: PhoneRequestDTO;
+   note?: string;
+   photo?: string;
 }
 
 /**
@@ -39,5 +43,9 @@ export type ParticipateRequestDTO = {
  * @property {boolean} eliminate
  * @property {string} flag
  * @property {string} message
+ * @property {string} pseudo
+ * @property {PhoneRequestDTO} phone
+ * @property {string} note
+ * @property {string} photo
  */
 

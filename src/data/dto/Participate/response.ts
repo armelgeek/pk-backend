@@ -17,6 +17,10 @@ export type ParticipateResponseDTO = {
    eliminate?: boolean;
    flag?: string;
    message?: string;
+   pseudo?: string;
+   phone?: PhoneRequestDTO;
+   note?: string;
+   photo?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -42,6 +46,10 @@ export type ParticipateResponseDTO = {
  * @property {boolean} eliminate
  * @property {string} flag
  * @property {string} message
+ * @property {string} pseudo
+ * @property {PhoneRequestDTO} phone
+ * @property {string} note
+ * @property {string} photo
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

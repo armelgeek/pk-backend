@@ -28365,8 +28365,8 @@
 			"_parent": {
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 			},
-			"name": "Media",
-			"route": "media",
+			"name": "Medias",
+			"route": "medias",
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
@@ -28432,7 +28432,7 @@
 						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
 					"name": "getAll",
-					"route": "media",
+					"route": "medias",
 					"method": "get"
 				},
 				{
@@ -28442,7 +28442,7 @@
 						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
 					"name": "delete",
-					"route": "media/{id}",
+					"route": "medias/{id}",
 					"method": "remove",
 					"templateParameters": [
 						{
@@ -28464,7 +28464,7 @@
 						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
 					"name": "update",
-					"route": "media/partialUpdate/{id}",
+					"route": "medias/partialUpdate/{id}",
 					"method": "put",
 					"templateParameters": [
 						{
@@ -28486,7 +28486,7 @@
 						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
 					"name": "get",
-					"route": "media/{id}",
+					"route": "medias/{id}",
 					"method": "get",
 					"templateParameters": [
 						{
@@ -28508,7 +28508,7 @@
 						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
 					"name": "add",
-					"route": "media",
+					"route": "medias",
 					"method": "post"
 				}
 			]

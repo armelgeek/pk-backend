@@ -100,5 +100,5 @@
   declare interface TwoFactorAuthenticationResponseDTO { }
   declare interface AlbumRequestDTO { }
   declare interface AlbumResponseDTO { }
-  declare interface MediaRequestDTO { }
-  declare interface MediaResponseDTO { }
+  declare interface MediasRequestDTO { }
+  declare interface MediasResponseDTO { }

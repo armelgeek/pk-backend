@@ -1,4 +1,4 @@
-export type mediaRequestDTO = {
+export type MediaRequestDTO = {
    type?: string;
    url?: string;
    size?: string[];
@@ -8,7 +8,7 @@ export type mediaRequestDTO = {
 }
 
 /**
- * @typedef {object} mediaRequestDTO
+ * @typedef {object} MediaRequestDTO
  * @property {string} type
  * @property {string} url
  * @property {array<string>} size

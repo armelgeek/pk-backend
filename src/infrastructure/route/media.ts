@@ -1,29 +1,29 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { mediaController } from '../controller/media';
+import { mediaController } from '../controller/Media';
 
-const mediaRoutes = () => genericRoute({ controller: mediaController, schema: Joi.media, name: 'media' });
+const mediaRoutes = () => genericRoute({ controller: mediaController, schema: Joi.Media, name: 'Media' });
 
 export const mediaRouter = mediaRoutes();
 
 /**
  * GET /api/media
- * @tags media
+ * @tags Media
  * @security BearerAuth
- * @summary List media (getAllmedia)
+ * @summary List Media (getAllMedia)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {mediaResponseDTO} 201
+ * @return {MediaResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
  * DELETE /api/media/{id}
- * @tags media
+ * @tags Media
  * @security BearerAuth
- * @summary Remove media (deletemedia)
+ * @summary Remove Media (deleteMedia)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
@@ -33,10 +33,10 @@ export const mediaRouter = mediaRoutes();
 
 /**
  * PUT /api/media/partialUpdate/{id}
- * @tags media
+ * @tags Media
  * @security BearerAuth
- * @summary Update media (updatemedia)
- * @param {mediaRequestDTO} request.body
+ * @summary Update Media (updateMedia)
+ * @param {MediaRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -45,23 +45,23 @@ export const mediaRouter = mediaRoutes();
 
 /**
  * GET /api/media/{id}
- * @tags media
+ * @tags Media
  * @security BearerAuth
- * @summary List media (getmedia)
+ * @summary List Media (getMedia)
  
  * @param {string} id.path.required 
- * @return {mediaResponseDTO} 201
+ * @return {MediaResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
  * POST /api/media
- * @tags media
+ * @tags Media
  * @security BearerAuth
- * @summary Create media (addmedia)
- * @param {mediaRequestDTO} request.body 
- * @return {mediaResponseDTO} 201
+ * @summary Create Media (addMedia)
+ * @param {MediaRequestDTO} request.body 
+ * @return {MediaResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

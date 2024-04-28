@@ -45,7 +45,7 @@ import { noticedRouter } from './Noticed';
 import { partenariatRouter } from './Partenariat';
 import { twofactorauthenticationRouter } from './TwoFactorAuthentication';
 import { albumRouter } from './Album';
-import { mediaRouter } from './media';
+import { mediaRouter } from './Media';
 
 export const routes = () => {
   const router = Router();

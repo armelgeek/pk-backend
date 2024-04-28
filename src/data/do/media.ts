@@ -1,7 +1,7 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity('media')
-export class mediaDO {
+export class MediaDO {
   @ObjectIdColumn()
   _id: ObjectID;
 

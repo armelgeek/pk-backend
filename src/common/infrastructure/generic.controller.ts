@@ -59,6 +59,23 @@ export class GenericController<
     }
   };
 
+  /**
+   * WS managing the update many of an entity
+   */
+  updateMany = async (req, res, next) => {
+    const { body: { data, query } } = req;
+    try {
+      const updated = await this.serviceSA.updateMany(query, data);
+
+      res.locals.data = updated;
+      res.locals.statusCode = HttpStatus.OK;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+
   partialUpdate = async (req, res, next) => {
     const {
       body,

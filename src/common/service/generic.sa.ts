@@ -50,6 +50,19 @@ export abstract class GenericSA<
     }
   }
 
+  async updateMany(query: TRequestDto, dto: TRequestDto): Promise<any> {
+    try {
+      const entity = this.factory.toDo(dto);
+      const data = this.factory.toDo(query);
+
+      const result = await this.serviceSM.updateMany(factoryObject(data, this.name), factoryObject(entity, this.name));
+
+      return this.factory.toResponseDto(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async partialUpdate(id: ObjectID, partialEntity): Promise<any> {
     try {
       const result = await this.serviceSM.partialUpdate(

@@ -63,6 +63,7 @@ export type EventRequestDTO = {
    cashEntryMin?: number;
    days?: string[];
    finish?: boolean;
+   actif?: boolean;
 }
 
 /**
@@ -131,5 +132,6 @@ export type EventRequestDTO = {
  * @property {number} cashEntryMin
  * @property {array<string>} days
  * @property {boolean} finish
+ * @property {boolean} actif
  */
 

@@ -7,6 +7,7 @@ export type PublicationRequestDTO = {
    private?: boolean;
    like?: string[];
    share?: string[];
+   actif?: boolean;
 }
 
 /**
@@ -19,5 +20,6 @@ export type PublicationRequestDTO = {
  * @property {boolean} private
  * @property {array<string>} like
  * @property {array<string>} share
+ * @property {boolean} actif
  */
 

@@ -1,14 +1,14 @@
 import { GenericFactory } from '../../common/constraint/factory/generic.factory';
 import { formatDateToLocaleWithHour } from '../../common/service/date.service';
 import { dataTDO } from '../../data';
-import { mediaDO } from '../../data/do/media';
+import { MediaDO } from '../../data/do/Media';
 // @ts-ignore
-import { mediaRequestDTO } from '../../data/dto/media/request';
+import { MediaRequestDTO } from '../../data/dto/Media/request';
 // @ts-ignore
-import { mediaResponseDTO } from '../../data/dto/media/response';
+import { MediaResponseDTO } from '../../data/dto/Media/response';
 
 const commonSchema = {
-  ...dataTDO.media.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
+  ...dataTDO.Media.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
 };
 const schema = { ...commonSchema };
 const responseSchema = {
@@ -18,11 +18,11 @@ const responseSchema = {
   updatedAt: 'updatedAt',
 };
 
-export class mediaFactory extends GenericFactory<
-  mediaDO,
-  mediaRequestDTO,
-  mediaResponseDTO
+export class MediaFactory extends GenericFactory<
+  MediaDO,
+  MediaRequestDTO,
+  MediaResponseDTO
 > {}
 
-export const mediaFactory = new mediaFactory(schema, schema, responseSchema);
+export const mediaFactory = new MediaFactory(schema, schema, responseSchema);
 

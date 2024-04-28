@@ -1,7 +1,7 @@
 import { EntityRepository, MongoRepository } from 'typeorm';
 
-import { mediaDO } from '../data/do/media';
+import { MediaDO } from '../data/do/Media';
 
-@EntityRepository(mediaDO)
-export class mediaRepository extends MongoRepository<mediaDO> {}
+@EntityRepository(MediaDO)
+export class MediaRepository extends MongoRepository<MediaDO> {}
 

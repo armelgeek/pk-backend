@@ -1,23 +1,23 @@
 import { GenericSA } from '../../common/service/generic.sa';
 import {
     mediaFactory,
-  mediaFactory,
-} from '../../constraint/factory/media';
-import { mediaDO } from '../../data/do/media';
+  MediaFactory,
+} from '../../constraint/factory/Media';
+import { MediaDO } from '../../data/do/Media';
 // @ts-ignore
-import { mediaRequestDTO } from '../../data/dto/media/request';
+import { MediaRequestDTO } from '../../data/dto/Media/request';
 // @ts-ignore
-import { mediaResponseDTO } from '../../data/dto/media/response';
-import { mediaSM, mediaSM } from '../metier/media';
+import { MediaResponseDTO } from '../../data/dto/Media/response';
+import { mediaSM, MediaSM } from '../metier/Media';
 
-export class mediaSA extends GenericSA<
-  mediaDO,
-  mediaRequestDTO,
-  mediaResponseDTO,
-  mediaSM,
-  mediaFactory
+export class MediaSA extends GenericSA<
+  MediaDO,
+  MediaRequestDTO,
+  MediaResponseDTO,
+  MediaSM,
+  MediaFactory
 > {
 }
 
-export const mediaSA = new mediaSA(mediaSM, mediaFactory, 'media');
+export const mediaSA = new MediaSA(mediaSM, mediaFactory, 'Media');
 

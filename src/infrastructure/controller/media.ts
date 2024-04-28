@@ -1,17 +1,17 @@
 import { GenericController } from '../../common/infrastructure/generic.controller';
-import { mediaDO } from '../../data/do/media';
+import { MediaDO } from '../../data/do/Media';
 // @ts-ignore
-import { mediaRequestDTO } from '../../data/dto/media/request';
+import { MediaRequestDTO } from '../../data/dto/Media/request';
 // @ts-ignore
-import { mediaResponseDTO } from '../../data/dto/media/response';
-import { mediaSA, mediaSA } from '../../service/applicatif/media';
+import { MediaResponseDTO } from '../../data/dto/Media/response';
+import { mediaSA, MediaSA } from '../../service/applicatif/Media';
 
-class mediaController extends GenericController<
-  mediaDO,
-  mediaRequestDTO,
-  mediaResponseDTO,
-  mediaSA
+class MediaController extends GenericController<
+  MediaDO,
+  MediaRequestDTO,
+  MediaResponseDTO,
+  MediaSA
 > {}
 
-export const mediaController = new mediaController(mediaSA);
+export const mediaController = new MediaController(mediaSA);
 

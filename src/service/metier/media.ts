@@ -1,11 +1,11 @@
 import { getCustomRepository } from 'typeorm';
 
 import { GenericSM } from '../../common/service/generic.sm';
-import { mediaDO } from '../../data/do/media';
-import { mediaRepository } from '../../repository/media';
+import { MediaDO } from '../../data/do/Media';
+import { MediaRepository } from '../../repository/Media';
 
-export class mediaSM extends GenericSM<mediaDO, string, mediaRepository> {
+export class MediaSM extends GenericSM<MediaDO, string, MediaRepository> {
 }
 
-export const mediaSM = new mediaSM(getCustomRepository(mediaRepository));
+export const mediaSM = new MediaSM(getCustomRepository(MediaRepository));
 

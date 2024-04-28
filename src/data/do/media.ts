@@ -1,36 +1,27 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('publication')
-export class PublicationDO {
+@Entity('media')
+export class mediaDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  content: string;
+  type: string;
+
+  @Column({nullable: true, unique: false})
+  url: string;
 
   @Column("simple-array")
-  imageUrls: string[];
-
-  @Column("simple-array")
-  videoUrls: string[];
+  size: string[];
 
   @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column("simple-json")
-  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  @Column({nullable: true, unique: false})
+  pageId: string;
 
   @Column({nullable: true, unique: false})
-  private: boolean;
-
-  @Column("simple-array")
-  like: string[];
-
-  @Column("simple-array")
-  share: string[];
-
-  @Column({nullable: true, unique: false})
-  actif: boolean;
+  category: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

@@ -46,6 +46,16 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     }
   }
 
+  async updateMany(query: DeepPartial<TDo>, partialEntity: DeepPartial<TDo>): Promise<any> {
+    try {
+      const updated = await this.repository.updateMany(query, partialEntity);
+
+      return updated;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async delete(id: ObjectID): Promise<any> {
     try {
       const affected = await this.repository.delete(id);

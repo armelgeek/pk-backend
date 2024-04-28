@@ -197,6 +197,9 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   finish: boolean;
 
+  @Column({nullable: true, unique: false})
+  actif: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

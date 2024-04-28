@@ -47,5 +47,12 @@ export const genericRoute = (option: RouteOption) => {
     responseFormatter,
   );
 
+  router.put(
+    '/update-many',
+    conditionnalJwtPassport(isSecured, name),
+    controller.updateMany,
+    responseFormatter,
+  );
+
   return router;
 };

@@ -59,6 +59,18 @@ export class ParticipateDO {
   @Column({nullable: true, unique: false})
   message: string;
 
+  @Column({nullable: true, unique: false})
+  pseudo: string;
+
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
+
+  @Column({nullable: true, unique: false})
+  note: string;
+
+  @Column({nullable: true, unique: false})
+  photo: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

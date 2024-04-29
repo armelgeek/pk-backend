@@ -26,6 +26,12 @@ export class AlbumDO {
   @Column("simple-array")
   comments: string[];
 
+  @Column({nullable: true, unique: false})
+  description: string;
+
+  @Column({nullable: true, unique: false})
+  cover: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

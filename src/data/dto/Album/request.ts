@@ -6,6 +6,8 @@ export type AlbumRequestDTO = {
    like?: string[];
    share?: string[];
    comments?: string[];
+   description?: string;
+   cover?: string;
 }
 
 /**
@@ -17,5 +19,7 @@ export type AlbumRequestDTO = {
  * @property {array<string>} like
  * @property {array<string>} share
  * @property {array<string>} comments
+ * @property {string} description
+ * @property {string} cover
  */
 

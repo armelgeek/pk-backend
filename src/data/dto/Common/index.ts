@@ -21,7 +21,7 @@ export type UpdateResponseDTO = {
  */
 
 export type CountResponseDTO = {
-   count: string;
+   data: number;
 }
 
 /**

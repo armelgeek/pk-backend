@@ -28814,6 +28814,16 @@
 					"name": "add",
 					"route": "donation",
 					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKwP6EHV+OIY=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "get",
+					"route": "donation/count/elements",
+					"method": "get"
 				}
 			]
 		}

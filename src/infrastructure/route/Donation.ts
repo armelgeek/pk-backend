@@ -66,3 +66,14 @@ export const donationRouter = donationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * GET /api/donation/count/elements
+ * @tags Donation
+ * @security BearerAuth
+ * @summary List Donation (getDonation)
+  
+ * @return {CountResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

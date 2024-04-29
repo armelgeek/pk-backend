@@ -46,6 +46,7 @@ import { partenariatRouter } from './Partenariat';
 import { twofactorauthenticationRouter } from './TwoFactorAuthentication';
 import { albumRouter } from './Album';
 import { mediasRouter } from './Medias';
+import { donationRouter } from './Donation';
 
 export const routes = () => {
   const router = Router();
@@ -96,6 +97,7 @@ export const routes = () => {
  router.use('/two-factor-authentication', twofactorauthenticationRouter);
  router.use('/album', albumRouter);
  router.use('/medias', mediasRouter);
+ router.use('/donation', donationRouter);
   
   return router;
 };

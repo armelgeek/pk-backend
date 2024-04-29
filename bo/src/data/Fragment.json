@@ -28679,6 +28679,143 @@
 					"method": "post"
 				}
 			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGPKu9nb3VJ1cw=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Donation",
+			"route": "donation",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPKu9ncHVKtsE=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "media",
+					"type": "string",
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPKu9ncHVL5FE=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "collectedFunds",
+					"type": "number"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPKu9ncHVMU0Q=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "donorsCount",
+					"type": "number",
+					"isArray": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPKu9ncHVNf7s=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "profileId",
+					"type": "string"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKu9ncHVRqBI=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "getAll",
+					"route": "donation",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKu9ncHVSZqE=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "delete",
+					"route": "donation/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPKu9ncHVTHUs=",
+							"_parent": {
+								"$ref": "AAAAAAGPKu9ncHVSZqE="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKu9ncHVUFQw=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "update",
+					"route": "donation/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPKu9ncHVVt3w=",
+							"_parent": {
+								"$ref": "AAAAAAGPKu9ncHVUFQw="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKu9ncHVWUF0=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "get",
+					"route": "donation/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPKu9ncHVXAgs=",
+							"_parent": {
+								"$ref": "AAAAAAGPKu9ncHVWUF0="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPKu9ncHVY6vQ=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "add",
+					"route": "donation",
+					"method": "post"
+				}
+			]
 		}
 	]
 }

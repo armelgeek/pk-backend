@@ -1,7 +1,7 @@
 export type DonationResponseDTO = {
-   media?: string;
+   media?: string[];
    collectedFunds?: number;
-   donorsCount?: number[];
+   donorsCount?: number;
    profileId?: string;
   createdAt: Date;
   updatedAt: Date;
@@ -10,9 +10,9 @@ export type DonationResponseDTO = {
 
 /**
  * @typedef {object} DonationResponseDTO
- * @property {string} media
+ * @property {array<string>} media
  * @property {number} collectedFunds
- * @property {array<number>} donorsCount
+ * @property {number} donorsCount
  * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt

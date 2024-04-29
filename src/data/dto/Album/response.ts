@@ -6,6 +6,8 @@ export type AlbumResponseDTO = {
    like?: string[];
    share?: string[];
    comments?: string[];
+   description?: string;
+   cover?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -20,6 +22,8 @@ export type AlbumResponseDTO = {
  * @property {array<string>} like
  * @property {array<string>} share
  * @property {array<string>} comments
+ * @property {string} description
+ * @property {string} cover
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

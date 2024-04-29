@@ -13054,7 +13054,7 @@
 									"top": 201,
 									"width": 173.8115234375,
 									"height": 13,
-									"text": "+badge: string",
+									"text": "+badge: file",
 									"horizontalAlignment": 0
 								},
 								{
@@ -25370,7 +25370,9 @@
 						"$ref": "AAAAAAGODWHQo7SMt7A="
 					},
 					"name": "validate",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Validation",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -25379,7 +25381,9 @@
 						"$ref": "AAAAAAGODWHQo7SMt7A="
 					},
 					"name": "description",
-					"type": "string"
+					"type": "string",
+					"form": "Description",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -25391,6 +25395,8 @@
 					"type": {
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
+					"form": "Page ",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -25400,7 +25406,9 @@
 						"$ref": "AAAAAAGODWHQo7SMt7A="
 					},
 					"name": "badge",
-					"type": "string"
+					"type": "file",
+					"form": "Badge",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -28687,6 +28695,7 @@
 				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 			},
 			"name": "Donation",
+			"role": "4",
 			"route": "donation",
 			"attributes": [
 				{
@@ -28696,8 +28705,10 @@
 						"$ref": "AAAAAAGPKu9nb3VJ1cw="
 					},
 					"name": "media",
-					"type": "string",
-					"isID": true
+					"type": "file",
+					"isArray": true,
+					"form": "Image / Video",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -28706,7 +28717,9 @@
 						"$ref": "AAAAAAGPKu9nb3VJ1cw="
 					},
 					"name": "collectedFunds",
-					"type": "number"
+					"type": "number",
+					"form": "Collected Funds",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -28716,7 +28729,8 @@
 					},
 					"name": "donorsCount",
 					"type": "number",
-					"isArray": true
+					"form": "Donors Count",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",

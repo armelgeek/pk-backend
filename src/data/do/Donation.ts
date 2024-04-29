@@ -5,14 +5,14 @@ export class DonationDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({nullable: true, unique: false})
-  media: string;
+  @Column("simple-array")
+  media: string[];
 
   @Column({nullable: true, unique: false})
   collectedFunds: number;
 
-  @Column("simple-array")
-  donorsCount: string[];
+  @Column({nullable: true, unique: false})
+  donorsCount: number;
 
   @Column({nullable: true, unique: false})
   profileId: string;

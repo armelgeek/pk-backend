@@ -23,6 +23,9 @@ export class MediasDO {
   @Column({nullable: true, unique: false})
   category: string;
 
+  @Column({nullable: true, unique: false})
+  eventId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

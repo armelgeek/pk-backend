@@ -28528,6 +28528,15 @@
 					},
 					"name": "category",
 					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPKaF21XTggHM=",
+					"_parent": {
+						"$ref": "AAAAAAGPI0wu63R2tvI="
+					},
+					"name": "eventId",
+					"type": "string"
 				}
 			],
 			"operations": [

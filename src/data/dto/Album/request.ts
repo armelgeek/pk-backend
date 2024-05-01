@@ -8,6 +8,7 @@ export type AlbumRequestDTO = {
    comments?: string[];
    description?: string;
    cover?: string;
+   views?: string[];
 }
 
 /**
@@ -21,5 +22,6 @@ export type AlbumRequestDTO = {
  * @property {array<string>} comments
  * @property {string} description
  * @property {string} cover
+ * @property {array<string>} views
  */
 

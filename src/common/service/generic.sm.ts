@@ -87,7 +87,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   findOneWithRelation(options): Promise<any> {
     const { where = {}, search, aggregate = [{ $match: {} }] } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
-    const { userId, utilisateurId, profileId, ...match } = where;
+    const { userId, utilisateurId, ...match } = where;
     return this.repository
       .aggregate([
         { $match: aggregate_search },

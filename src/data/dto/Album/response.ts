@@ -8,6 +8,7 @@ export type AlbumResponseDTO = {
    comments?: string[];
    description?: string;
    cover?: string;
+   views?: string[];
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -24,6 +25,7 @@ export type AlbumResponseDTO = {
  * @property {array<string>} comments
  * @property {string} description
  * @property {string} cover
+ * @property {array<string>} views
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

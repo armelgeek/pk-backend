@@ -26,6 +26,12 @@ export class MediasDO {
   @Column({nullable: true, unique: false})
   eventId: string;
 
+  @Column("simple-array")
+  shares: string[];
+
+  @Column("simple-array")
+  likes: string[];
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -102,3 +102,5 @@
   declare interface AlbumResponseDTO { }
   declare interface MediasRequestDTO { }
   declare interface MediasResponseDTO { }
+  declare interface DonationRequestDTO { }
+  declare interface DonationResponseDTO { }

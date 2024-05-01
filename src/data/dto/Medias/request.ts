@@ -6,6 +6,8 @@ export type MediasRequestDTO = {
    pageId?: string;
    category?: string;
    eventId?: string;
+   shares?: string[];
+   likes?: string[];
 }
 
 /**
@@ -17,5 +19,7 @@ export type MediasRequestDTO = {
  * @property {string} pageId
  * @property {string} category
  * @property {string} eventId
+ * @property {array<string>} shares
+ * @property {array<string>} likes
  */
 

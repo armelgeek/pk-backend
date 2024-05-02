@@ -26,6 +26,12 @@ export class IdentityVerificationDO {
   @Column({nullable: true, unique: false})
   partenariatId: string;
 
+  @Column({nullable: true, unique: false})
+  partnerId: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

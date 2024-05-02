@@ -14,6 +14,48 @@ export class PartenerDO {
   @Column({nullable: true, unique: false})
   description: string;
 
+  @Column("simple-json")
+  phone: { paysCode: string, phoneNumber: string, callingCode: string };
+
+  @Column({nullable: true, unique: false})
+  verification: string;
+
+  @Column("simple-array")
+  socialNetwork: string[];
+
+  @Column({nullable: true, unique: false})
+  profileId: string;
+
+  @Column({nullable: true, unique: false})
+  price: number;
+
+  @Column({nullable: true, unique: false})
+  autoRenewed: boolean;
+
+  @Column({nullable: true, unique: false})
+  subscriptionStripeId: string;
+
+  @Column({nullable: true, unique: false})
+  title: string;
+
+  @Column({nullable: true, unique: false})
+  hendonmob: number;
+
+  @Column({nullable: true, unique: false})
+  rangAllTimeMoney: string;
+
+  @Column({nullable: true, unique: false})
+  bracelet: number;
+
+  @Column({nullable: true, unique: false})
+  job: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
+  @Column({nullable: true, unique: false})
+  message: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

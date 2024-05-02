@@ -6,6 +6,8 @@ export type IdentityVerificationResponseDTO = {
    pageId?: string;
    badge?: string;
    partenariatId?: string;
+   partnerId?: string;
+   type?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -20,6 +22,8 @@ export type IdentityVerificationResponseDTO = {
  * @property {string} pageId
  * @property {string} badge
  * @property {string} partenariatId
+ * @property {string} partnerId
+ * @property {string} type
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

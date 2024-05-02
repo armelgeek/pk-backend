@@ -6,6 +6,8 @@ export type IdentityVerificationRequestDTO = {
    pageId?: string;
    badge?: string;
    partenariatId?: string;
+   partnerId?: string;
+   type?: string;
 }
 
 /**
@@ -17,5 +19,7 @@ export type IdentityVerificationRequestDTO = {
  * @property {string} pageId
  * @property {string} badge
  * @property {string} partenariatId
+ * @property {string} partnerId
+ * @property {string} type
  */
 

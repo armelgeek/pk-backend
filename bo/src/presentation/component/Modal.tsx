@@ -10,12 +10,12 @@ export const Modal = (props) => {
 
   return open ? (
     <div
-      className="w-screen h-screen bg-gray-50 absolute right-0 top-0 z-50 flex items-center justify-center transition duration-500 ease-out"
-      style={{ backgroundColor: 'rgba(0,0,0, 0.3)' }}
+      className="w-screen h-screen bg-gray-50 absolute right-0 top-0 z-50 flex items-center justify-center transition duration-500 ease-out ease-in"
+      style={{ backgroundColor: 'rgba(0,0,0, 0.59)' }}
     >
       <div
         className={mergeClassNames(' bg-white rounded-lg shadow-sm', className)}
-        style={{ minWidth: '45%', maxWidth: '55%', ...style }}
+        style={{ minWidth: '35%', maxWidth: '40%', ...style }}
       >
         {/* Header */}
         <div className="px-4 py-2 flex justify-center items-center text-black rounded-t-lg font-medium">
@@ -31,7 +31,7 @@ export const Modal = (props) => {
         <div className="modal-body">
           {/* Content */}
           <div
-            className={`px-32 py-4 overflow-y-auto ${isContentText ? 'flex justify-center' : ''}`}
+            className={`py-4 overflow-y-auto ${isContentText ? 'flex justify-center' : ''}`}
             style={{ maxHeight: '85vh' }}
           >
             {children}

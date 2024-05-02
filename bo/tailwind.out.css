@@ -780,10 +780,6 @@ select {
   top: 0px;
 }
 
-.-top-5 {
-  top: -1.25rem;
-}
-
 .right-0 {
   right: 0px;
 }
@@ -884,6 +880,10 @@ select {
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -894,10 +894,6 @@ select {
 
 .h-6 {
   height: 1.5rem;
-}
-
-.h-10 {
-  height: 2.5rem;
 }
 
 .h-16 {
@@ -1043,6 +1039,10 @@ select {
   cursor: not-allowed;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1073,6 +1073,10 @@ select {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1227,11 +1231,6 @@ select {
   background-color: rgba(229, 231, 235, var(--tw-bg-opacity));
 }
 
-.bg-gray-700 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(55, 65, 81, var(--tw-bg-opacity));
-}
-
 .bg-gray-900 {
   --tw-bg-opacity: 1;
   background-color: rgba(17, 24, 39, var(--tw-bg-opacity));
@@ -1304,11 +1303,6 @@ select {
 .px-8 {
   padding-left: 2rem;
   padding-right: 2rem;
-}
-
-.px-32 {
-  padding-left: 8rem;
-  padding-right: 8rem;
 }
 
 .py-0 {
@@ -1591,6 +1585,10 @@ select {
   transition-duration: 700ms;
 }
 
+.ease-in {
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
@@ -1631,11 +1629,6 @@ select {
 
   .xl\:translate-x-0 {
     --tw-translate-x: 0px;
-  }
-
-  .xl\:rounded-r {
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
   }
 }
 

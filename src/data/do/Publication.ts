@@ -32,8 +32,8 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   actif: boolean;
 
-  @Column({nullable: true, unique: false})
-  tags: string;
+  @Column("simple-array")
+  tags: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

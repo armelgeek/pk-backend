@@ -24724,6 +24724,7 @@
 					"type": {
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
+					"isArray": true,
 					"isID": true
 				}
 			],

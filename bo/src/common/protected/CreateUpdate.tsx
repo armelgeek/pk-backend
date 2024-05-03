@@ -223,8 +223,8 @@ export const CreateUpdate = ({
                         // errors={errors}
                         autoFocus
                         required={required}
-                      // onBlur={onBlur}
-                      // value={value}
+                        // onBlur={onBlur}
+                        value={'value'}
                       // onChange={onChange}
                       />
                     </div>
@@ -314,6 +314,8 @@ export const CreateUpdate = ({
             })
         }
       </div>
+      {/* Séparator */}
+      <div className="border-b separator  my-3" />
 
       <SaveCancel key={1} onCancelClick={onClose} loading={loading} />
     </form>

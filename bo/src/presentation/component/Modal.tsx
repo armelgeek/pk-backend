@@ -14,19 +14,19 @@ export const Modal = (props) => {
       style={{ backgroundColor: 'rgba(0,0,0, 0.59)' }}
     >
       <div
-        className={mergeClassNames(' bg-white rounded-lg shadow-sm', className)}
+        className={mergeClassNames('rounded-lg shadow-sm pk-modal ', className)}
         style={{ minWidth: '35%', maxWidth: '40%', ...style }}
       >
         {/* Header */}
-        <div className="px-4 py-2 flex justify-center items-center text-black rounded-t-lg font-medium">
-          <p className="text-center flex-1">{title}</p>
+        <div className="px-3 py-2 flex justify-center rounded-t-lg">
+          <p className="text-left flex-1 modal-title">{title}</p>
           <Button variant="icon" onClick={onClose} className="mr-2">
             <Close className="w-4" />
           </Button>
         </div>
 
         {/* Séparator */}
-        <div className="border-b  mr-2 ml-2" />
+        <div className="border-b separator  mr-2 ml-2" />
 
         <div className="modal-body">
           {/* Content */}
@@ -36,6 +36,8 @@ export const Modal = (props) => {
           >
             {children}
           </div>
+
+
 
           {/* Action Button */}
           <div className='action-container'>{actions}</div>

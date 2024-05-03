@@ -1,8 +1,13 @@
+@import './fonts';
 @import './table';
+@import './modal';
+@import './buttons';
 
 body,
 html {
   overflow: hidden;
+  font-family: "Lexend",
+    sans-serif;
 }
 
 #sideBar {
@@ -16,10 +21,7 @@ html {
     -1px 1px #02020224;
 }
 
-.primary-button {
-  background-color: rgba(95, 196, 235, 1);
-  border-radius: 100px;
-}
+
 
 .blue-text {
   color: rgba(0, 255, 240, 1);
@@ -74,4 +76,15 @@ html {
     align-items: center;
     justify-content: center;
   }
+}
+
+.input-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.separator {
+  height: 1px;
+  background: linear-gradient(45deg, rgba(0, 255, 240, 0), rgba(0, 255, 240, 1), rgba(0, 255, 240, 0));
+  border: none;
 }

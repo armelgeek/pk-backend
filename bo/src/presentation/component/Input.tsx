@@ -83,7 +83,7 @@ export const Input = (props) => {
     </div>
   ) : (
     <div className="flex flex-col inLayout">
-      <span className="block text-sm font-medium mb-2">
+      <span className="block  mb-1 input-label">
         {label}
         {required ? <span className="text-xs text-pink-500 ml-2">*</span> : ''}
       </span>
@@ -104,7 +104,7 @@ export const Input = (props) => {
             ? { onKeyDown: (e) => (e.key === 'e' || e.key === '-') && e.preventDefault() }
             : {})}
           className={mergeClassNames(
-            `rounded-input custom-input focus:ring-2 focus:border-transparent p-1 px-2 w-full ${disabled || readOnly ? 'bg-gray-200 cursor-not-allowed' : ''
+            `rounded-input custom-input text-white focus:ring-2 focus:border-transparent p-1 px-2 w-full ${disabled || readOnly ? 'bg-gray-200 cursor-not-allowed' : ''
             }  ${errors && errors[name]
               ? 'border-red-600 focus:ring-red-600'
               : 'border-gray-300 focus:ring-green-900'

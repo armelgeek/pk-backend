@@ -5,7 +5,6 @@ export type ParticipateRequestDTO = {
    isMemberClub?: boolean;
    payement?: boolean;
    hourRegistry?: Date;
-   hourEliminate?: Date;
    numberTable?: number;
    numberPlace?: number;
    numberBuyIn?: number;
@@ -23,6 +22,7 @@ export type ParticipateRequestDTO = {
    photo?: string;
    dateEliminate?: Date;
    hourEliminate?: Date;
+   dateRegistry?: Date;
 }
 
 /**
@@ -33,7 +33,6 @@ export type ParticipateRequestDTO = {
  * @property {boolean} isMemberClub
  * @property {boolean} payement
  * @property {Date} hourRegistry
- * @property {Date} hourEliminate
  * @property {number} numberTable
  * @property {number} numberPlace
  * @property {number} numberBuyIn
@@ -51,5 +50,6 @@ export type ParticipateRequestDTO = {
  * @property {string} photo
  * @property {Date} dateEliminate
  * @property {Date} hourEliminate
+ * @property {Date} dateRegistry
  */
 

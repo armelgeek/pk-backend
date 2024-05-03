@@ -5,7 +5,6 @@ export type ParticipateResponseDTO = {
    isMemberClub?: boolean;
    payement?: boolean;
    hourRegistry?: Date;
-   hourEliminate?: Date;
    numberTable?: number;
    numberPlace?: number;
    numberBuyIn?: number;
@@ -23,6 +22,7 @@ export type ParticipateResponseDTO = {
    photo?: string;
    dateEliminate?: Date;
    hourEliminate?: Date;
+   dateRegistry?: Date;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -36,7 +36,6 @@ export type ParticipateResponseDTO = {
  * @property {boolean} isMemberClub
  * @property {boolean} payement
  * @property {Date} hourRegistry
- * @property {Date} hourEliminate
  * @property {number} numberTable
  * @property {number} numberPlace
  * @property {number} numberBuyIn
@@ -54,6 +53,7 @@ export type ParticipateResponseDTO = {
  * @property {string} photo
  * @property {Date} dateEliminate
  * @property {Date} hourEliminate
+ * @property {Date} dateRegistry
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

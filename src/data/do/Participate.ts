@@ -23,9 +23,6 @@ export class ParticipateDO {
   @Column({ type: 'timestamptz', default: new Date() })
   hourRegistry: Date;
 
-  @Column({ type: 'timestamptz', default: new Date() })
-  hourEliminate: Date;
-
   @Column({nullable: true, unique: false})
   numberTable: number;
 
@@ -76,6 +73,9 @@ export class ParticipateDO {
 
   @Column({ type: 'timestamptz', default: new Date() })
   hourEliminate: Date;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  dateRegistry: Date;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

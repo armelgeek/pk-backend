@@ -21,6 +21,8 @@ export type ParticipateResponseDTO = {
    phone?: PhoneRequestDTO;
    note?: string;
    photo?: string;
+   dateEliminate?: Date;
+   hourEliminate?: Date;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -50,6 +52,8 @@ export type ParticipateResponseDTO = {
  * @property {PhoneRequestDTO} phone
  * @property {string} note
  * @property {string} photo
+ * @property {Date} dateEliminate
+ * @property {Date} hourEliminate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

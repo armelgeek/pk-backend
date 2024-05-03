@@ -72,6 +72,12 @@ export class ParticipateDO {
   photo: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
+  dateEliminate: Date;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  hourEliminate: Date;
+
+  @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 
   @Column({ type: 'timestamptz', default: new Date() })

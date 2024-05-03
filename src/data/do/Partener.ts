@@ -21,7 +21,7 @@ export class PartenerDO {
   verification: string;
 
   @Column("simple-array")
-  socialNetwork: string[];
+  link: string[];
 
   @Column({nullable: true, unique: false})
   profileId: string;

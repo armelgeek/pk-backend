@@ -4,7 +4,7 @@ export type PartenerRequestDTO = {
    description?: string;
    phone?: PhoneRequestDTO;
    verification?: string;
-   socialNetwork?: string[];
+   link?: string[];
    profileId?: string;
    price?: number;
    autoRenewed?: boolean;
@@ -25,7 +25,7 @@ export type PartenerRequestDTO = {
  * @property {string} description
  * @property {PhoneRequestDTO} phone
  * @property {string} verification
- * @property {array<string>} socialNetwork
+ * @property {array<string>} link
  * @property {string} profileId
  * @property {number} price
  * @property {boolean} autoRenewed

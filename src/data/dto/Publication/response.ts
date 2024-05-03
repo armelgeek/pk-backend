@@ -8,6 +8,7 @@ export type PublicationResponseDTO = {
    like?: string[];
    share?: string[];
    actif?: boolean;
+   tags?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -24,6 +25,7 @@ export type PublicationResponseDTO = {
  * @property {array<string>} like
  * @property {array<string>} share
  * @property {boolean} actif
+ * @property {string} tags
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

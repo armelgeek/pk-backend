@@ -1,3 +1,15 @@
+.custom-submit {
+  background: linear-gradient(135deg, rgba(155, 81, 224, 0.32), rgba(3, 169, 244, 0.78)),
+    #05335aeb;
+  border-radius: 5px;
+  min-height: 40px;
+  max-width: 200px;
+
+  span {
+    font-size: 13px;
+  }
+}
+
 .primary-button {
   background-color: rgba(95, 196, 235, 1);
   border-radius: 100px;

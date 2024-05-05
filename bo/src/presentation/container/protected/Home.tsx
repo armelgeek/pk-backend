@@ -64,17 +64,13 @@ export const Home = () => {
       <div className="flex flex-col flex-1 bg-gray-50 header-container">
         <div className="flex items-center justify-between px-8 top-header">
           <div className="flex flex-col px-2 py-1">
-            <p className="uppercase font-medium text-xl">BACK OFFICE</p>
+            <p className="uppercase font-medium text-white text-xl">BACK OFFICE</p>
             <div className="h-1 w-10 bg-green-900 rounded-lg" />
           </div>
           <div className="flex flex-col px-2 py-1">
             <div className="h-1 w-10 bg-blue-primary rounded-lg" />
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="flex flex-col">
-              <p className="text-sm">{connectedUser?.utilisateur?.nom}</p>
-              <p className="text-xs text-gray-600">{connectedUser?.utilisateur?.prenom}</p>
-            </div>
+          <div className="flex items-center space-x-2 user-profile-container">
             <Button
               variant="icon"
               className="my-0"
@@ -83,6 +79,11 @@ export const Home = () => {
             >
               <UserCircle className="w-12 text-gray-400" />
             </Button>
+            <div className="flex flex-col">
+              <p className="text-sm text-white">{connectedUser?.utilisateur?.nom}</p>
+              <p className="text-xs text-white">{connectedUser?.utilisateur?.prenom}</p>
+            </div>
+
           </div>
 
         </div>

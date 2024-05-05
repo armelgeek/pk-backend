@@ -2,6 +2,7 @@
 @import './table';
 @import './modal';
 @import './buttons';
+@import './scrollBar';
 
 body,
 html {
@@ -10,10 +11,61 @@ html {
     sans-serif;
 }
 
+.header-container {
+  background-color: rgba(46, 5, 90, 1);
+  // background: linear-gradient(135deg, rgba(27, 0, 56, 1), rgba(46, 5, 90, 1)),
+  //   #2E055A;
+}
+
+.int-page {
+  background-color: transparent;
+  // background: linear-gradient(135deg, rgba(27, 0, 56, 1), rgba(46, 5, 90, 1)),
+  //   #2E055A;
+}
+
+.top-header {
+  padding: 15px;
+  box-shadow: 0 0 5px #00000047;
+}
+
+.user-profile-container {
+  background: linear-gradient(135deg, #1b0038, #2e055a), #2E055A;
+  padding: 3px 25px;
+}
+
+.top-header-action {
+  border-bottom: solid 1px #fff;
+  padding-bottom: 15px;
+}
+
+
 #sideBar {
   background: linear-gradient(135deg, rgba(155, 81, 224, 0.2), rgba(155, 81, 224, 0)),
     #2E055A;
 }
+
+.pro-sidebar>.pro-sidebar-inner>.pro-sidebar-layout .pro-sidebar-content {
+  flex-grow: 1;
+  height: calc(100% - 107px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.menu-item {
+  border-bottom: solid 1px rgba(151, 71, 235, 0.3);
+  border-radius: 0.25rem;
+}
+
+.sidebar-item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  line-height: 28px;
+}
+
+.pro-item-content {
+  color: #fff;
+}
+
 
 .form-auth-container {
   box-shadow: 1px 1px #02020224,
@@ -37,7 +89,7 @@ html {
     button {
       background: linear-gradient(135deg, rgba(155, 81, 224, 0), rgba(3, 169, 244, 0.24)),
         #2E055A;
-      color: rgb(155, 177, 175);
+      color: #9bb1af;
     }
   }
 
@@ -54,17 +106,7 @@ html {
   height: 70px;
 }
 
-.custom-submit {
-  background: linear-gradient(135deg, rgba(155, 81, 224, 0), rgba(3, 169, 244, 0.24)),
-    #2E055A;
-  border-radius: 5px;
-  min-height: 40px;
-  max-width: 200px;
 
-  span {
-    font-size: 13px;
-  }
-}
 
 .modal-body {
   padding: 20px;

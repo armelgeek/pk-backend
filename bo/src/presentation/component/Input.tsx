@@ -45,7 +45,7 @@ export const Input = (props) => {
         {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
         <span className="flex">
           {fileLabel}
-          {required ? <p className="text-xs text-pink-500">*</p> : ''}
+          {required ? <p className="text-md text-pink-500">*</p> : ''}
         </span>
         <input
           name={name}
@@ -85,7 +85,7 @@ export const Input = (props) => {
     <div className="flex flex-col inLayout">
       <span className="block  mb-1 input-label">
         {label}
-        {required ? <span className="text-xs text-pink-500 ml-2">*</span> : ''}
+        {required ? <span className="text-md text-pink-500 ml-2">*</span> : ''}
       </span>
       <div className="relative w-full">
         <input

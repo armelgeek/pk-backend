@@ -315,7 +315,7 @@ export const CreateUpdate = ({
         }
       </div>
       {/* Séparator */}
-      <div className="border-b separator  my-3" />
+      <div className="border-b separator mt-5 mb-3" />
 
       <SaveCancel key={1} onCancelClick={onClose} loading={loading} />
     </form>

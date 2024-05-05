@@ -11,7 +11,7 @@ export const Modal = (props) => {
   return open ? (
     <div
       className="w-screen h-screen bg-gray-50 absolute right-0 top-0 z-50 flex items-center justify-center transition duration-500 ease-out ease-in"
-      style={{ backgroundColor: 'rgba(0,0,0, 0.59)' }}
+      style={{ backgroundColor: '#000000c9' }}
     >
       <div
         className={mergeClassNames('rounded-lg shadow-sm pk-modal ', className)}
@@ -21,7 +21,7 @@ export const Modal = (props) => {
         <div className="px-3 py-2 flex justify-center rounded-t-lg">
           <p className="text-left flex-1 modal-title">{title}</p>
           <Button variant="icon" onClick={onClose} className="mr-2">
-            <Close className="w-4" />
+            <Close className="w-4 text-white" />
           </Button>
         </div>
 

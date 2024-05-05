@@ -136,7 +136,7 @@ export const EntityContainer = ({ currententity, transformValue = (
           {currententity}
         </p>
       </div>
-      <div className="flex flex-col-left justify-between items-center mb-6">
+      <div className="flex flex-col-left justify-between items-center mb-6 top-header-action">
         <div className="flex searchInput">
           <Input
             name="search"

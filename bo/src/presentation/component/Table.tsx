@@ -240,7 +240,9 @@ export const Table = (props) => {
                       key={cell.value}
                       {...cell.getCellProps()}
                     >
-                      {cell.render('Cell')}
+                      <div className="table-value-inner">
+                        {cell.render('Cell')}
+                      </div>
                     </td>
                   ))}
                 </tr>

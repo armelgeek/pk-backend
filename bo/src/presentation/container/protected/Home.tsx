@@ -33,6 +33,30 @@ export const Home = () => {
   // const role = state?.auth?.credentials?.utilisateur?.role;
   const role = 4;
 
+  const currentURL = window.location.href;
+
+  const pageTitle = () => {
+    const currentURL = window.location.href;
+    const pageUrl = new URL(currentURL);
+    const pathName = pageUrl.pathname;
+    const pathSegments = pathName.split('/');
+    const lastSection = pathSegments[pathSegments.length - 1];
+
+    if (lastSection != 'app') {
+      return (
+        <p className=" font-medium text-white text-xl page-title">
+          Gestion  {lastSection}
+        </p>
+      );
+    } else {
+      return (
+        <p className=" font-medium text-white text-xl page-title">
+          Tableau de bord
+        </p>
+      );
+    }
+  }
+
   return (
     <div className="h-full flex">
 
@@ -64,7 +88,7 @@ export const Home = () => {
       <div className="flex flex-col flex-1 bg-gray-50 header-container">
         <div className="flex items-center justify-between px-8 top-header">
           <div className="flex flex-col px-2 py-1">
-            <p className="uppercase font-medium text-white text-xl page-title">Gestion Utilisateur</p>
+            {pageTitle()}
             <div className="h-1 w-10 page-title-after rounded-lg" />
           </div>
           <div className="flex flex-col px-2 py-1">
@@ -88,7 +112,7 @@ export const Home = () => {
 
         </div>
         <div
-          className="overflow-y-auto p-8 rounded-lg bg-white int-page"
+          className="overflow-y-auto px-4 py-8 rounded-lg bg-white int-page"
         >
           <Switch>
             <Route path={getFullPath('/tableau-bord')}>

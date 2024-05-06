@@ -24,7 +24,7 @@ export const ConfirmModal = (props) => {
       style={{ minWidth: '25%' }}
       isContentText
     >
-      <span className="text-center">{children}</span>
+      <span className="text-center text-white">{children}</span>
     </Modal>
   );
 };

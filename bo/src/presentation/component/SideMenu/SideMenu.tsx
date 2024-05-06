@@ -87,7 +87,7 @@ export const SideMenu = ({ role }) => {
   return (
     <>
       <div id="sideBar" className="transform  xl:translate-x-0  ease-in-out transition duration-500 flex justify-start items-start h-full  w-full sm:w-64 flex-col">
-        <div className="p-4 hidden w-full xl:flex justify-center  items-center space-x-3 border-gray-600 border-b space-y-3 pb-5 ">
+        <div className="p-2 hidden w-full xl:flex justify-center  items-center space-x-3 border-gray-600 border-b space-y-3">
           <img className="dashboard-logo" alt="PokerApply logo" src={logo} />
         </div>
         <div

@@ -1,31 +1,36 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import deleteIcon from '../../assets/img/delete_icon.svg';
+import deleteIcon from '../../assets/img/icon_BO/trash-blue.png';
 import { Button } from './Button';
-import { ReactComponent as EditIcon } from '../../assets/img/edit_icon.svg';
+import editIcon from '../../assets/img/icon_BO/edit.png';
 
 export const ActionBtn = (props) => {
   const { handleCreateUpdate, original, handleDeleteConfirmation } = props;
   return (
-    <span className="flex">
-      <Button
-        variant="icon"
-        className="my-0 mr-6"
-        onClick={handleCreateUpdate(original)}
-        tooltip="Modifier"
-      >
-        <EditIcon />
-      </Button>
-      <Button
-        variant="icon"
-        className="my-0"
-        onClick={handleDeleteConfirmation(original)}
-        tooltip="Supprimer"
-      >
-        <img src={deleteIcon} alt="Suppression" />
-      </Button>
-    </span>
+    <>
+      <span className="flex">
+        <Button
+          variant="icon"
+          className="my-0  btn-action "
+          onClick={handleCreateUpdate(original)}
+          tooltip="Modifier"
+        >
+          <img src={editIcon} alt="Suppression" />
+          {/* <EditIcon /> */}
+        </Button>
+      </span>
+      <span className="flex ml-2">
+        <Button
+          variant="icon"
+          className="my-0 btn-action delete"
+          onClick={handleDeleteConfirmation(original)}
+          tooltip="Supprimer"
+        >
+          <img src={deleteIcon} alt="Suppression" />
+        </Button>
+      </span>
+    </>
   );
 };
 

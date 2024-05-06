@@ -87,6 +87,7 @@ div[class^='Snackbar_snackbar-wrapper'] {
 
 .custom-input {
   font-size: 14px;
+  min-width: 70px;
   min-height: 40px;
   max-width: 300px;
   background-color: transparent;

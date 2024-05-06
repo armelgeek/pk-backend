@@ -208,7 +208,7 @@ export const Table = (props) => {
                   (column) => (
                     <th
                       {...column.getHeaderProps(column.getSortByToggleProps())}
-                      className="px-4 sticky top-0 bg-white shadow-md"
+                      className="px-4 sticky top-0 shadow-md"
                     >
                       <span className="flex">
                         <span className="w-auto font-medium text-back mr-2">
@@ -257,7 +257,7 @@ export const Table = (props) => {
       ) : data.length ? (
         ''
       ) : (
-        <p className="text-center text-sm py-4">Aucun résultat</p>
+        <p className="text-center text-white text-sm py-4">Aucun résultat</p>
       )}
       {isPaginated && (
         <div className="self-end mt-2">

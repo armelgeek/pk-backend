@@ -3,8 +3,10 @@ import * as PropTypes from 'prop-types';
 
 export const Image = (
   { value },
-// eslint-disable-next-line jsx-a11y/alt-text
-) => <div><img height={50} width={50} src={value} /></div>;
+  // eslint-disable-next-line jsx-a11y/alt-text
+) => (
+  value && <div className='w-full h-full flex items-center justify-center'><img height={40} width={40} src={value} /></div>
+);
 
 Image.propTypes = {
   value: PropTypes.string,

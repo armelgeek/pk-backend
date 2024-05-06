@@ -29,8 +29,10 @@ html {
 }
 
 .user-profile-container {
-  background: linear-gradient(135deg, #1b0038, #2e055a), #2E055A;
+  background: linear-gradient(135deg, rgba(155, 81, 224, 0.2), rgba(155, 81, 224, 0)),
+    #2e055a;
   padding: 3px 25px;
+  border: solid 1px rgba(97, 24, 174, 0.2);
 }
 
 .top-header-action {
@@ -89,7 +91,7 @@ html {
     button {
       background: linear-gradient(135deg, rgba(155, 81, 224, 0), rgba(3, 169, 244, 0.24)),
         #2E055A;
-      color: #9bb1af;
+      color: #ffffff;
     }
   }
 
@@ -129,4 +131,47 @@ html {
   height: 1px;
   background: linear-gradient(45deg, rgba(0, 255, 240, 0), rgba(0, 255, 240, 1), rgba(0, 255, 240, 0));
   border: none;
+}
+
+select:focus {
+  box-shadow: none;
+  border: transparent;
+}
+
+.page-title {
+  background-image: linear-gradient(to left, #5fc4eb, rgba(151, 71, 235, 0.3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+.page-title-after {
+  background: linear-gradient(to right, #00fff0, rgba(0, 255, 240, 0));
+  width: 80%;
+  height: 2px;
+}
+
+.pro-sidebar {
+  .pro-menu {
+    .pro-menu-item {
+      .pro-inner-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 8px 35px 8px 12px;
+        cursor: pointer;
+
+        .pro-icon-wrapper {
+          background-color: transparent !important;
+          color: #fff;
+
+          .pro-icon {
+            background: linear-gradient(#8537d7, #6118ae);
+            border-radius: 100%;
+          }
+        }
+      }
+    }
+  }
 }

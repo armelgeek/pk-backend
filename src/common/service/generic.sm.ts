@@ -36,6 +36,22 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     }
   }
 
+  async pushUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
+    try {
+      const option = { upsert: true, new: true, setDefaultsOnInsert: true };
+      const updated = await this.repository.findOneAndUpdate(
+        { _id },
+        { $push: partialEntity },
+        option,
+      );
+
+      return updated;
+    } catch (error) {
+      console.log({ error });
+      return Promise.reject(error);
+    }
+  }
+
   async update(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
     try {
       const updated = await this.repository.updateOne({ _id }, partialEntity);
@@ -106,7 +122,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const {
       take = 10,
       skip = 0,
-      order,
+      order = 1,
+      sortField,
       where = {},
       search,
       relation,
@@ -115,14 +132,16 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     } = options;
     const aggregate_search = search ? { $text: { $search: search } } : {};
     const { userId, utilisateurId, ...whereOut } = where;
+    const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
+
     return this.repository
       .aggregate([
         { $match: { ...whereOut, ...aggregate_search }},
         ...aggregate,
-        { $sort: { nom: 1 } },
+        { $sort: { ...sort_aggregate } },
         {
           $facet: {
-            metadata: [{ $count: 'total' }, { $addFields: { page: 10 } }],
+            metadata: [{ $count: 'total' }, { $addFields: { page: Number(take) } }],
             data: [{ $skip: Number(skip) * Number(take) }, { $limit: Number(take) }],
           },
         },

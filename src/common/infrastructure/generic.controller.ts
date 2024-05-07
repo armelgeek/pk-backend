@@ -76,6 +76,22 @@ export class GenericController<
     }
   };
 
+  pushUpdate = async (req, res, next) => {
+    const {
+      body,
+      params: { id },
+    } = req;
+    try {
+      const updated = await this.serviceSA.pushUpdate(id, body);
+
+      res.locals.data = updated;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+
   partialUpdate = async (req, res, next) => {
     const {
       body,
@@ -149,7 +165,7 @@ export class GenericController<
    */
   findAll = async (req, res, next) => {
     const {
-      query: { page = 1, rowPerPage = 10, light, direction, sortField, match, search, ...queries },
+      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, ...queries },
     } = req;
     try {
       const dtos = await this.serviceSA.findAll({

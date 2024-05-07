@@ -29400,6 +29400,149 @@
 					"method": "get"
 				}
 			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGPUtJHeFWI7TA=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Registration",
+			"role": "4",
+			"route": "registration",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPUtJHeFWKDZE=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "publicationId",
+					"type": {
+						"$ref": "AAAAAAGN1UIvcq/6Ym4="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPUtJHeFWLuMo=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "eventId",
+					"type": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPUtJHeFWM1+A=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "profileId",
+					"type": "string"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeFWN5v4=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "getAll",
+					"route": "registration",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeVWOzKU=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "delete",
+					"route": "registration/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPUtJHeVWPqvc=",
+							"_parent": {
+								"$ref": "AAAAAAGPUtJHeVWOzKU="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeVWQuiQ=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "update",
+					"route": "registration/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPUtJHeVWRTVg=",
+							"_parent": {
+								"$ref": "AAAAAAGPUtJHeVWQuiQ="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeVWS8yU=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "get",
+					"route": "registration/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPUtJHeVWTOso=",
+							"_parent": {
+								"$ref": "AAAAAAGPUtJHeVWS8yU="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeVWU+b0=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "add",
+					"route": "registration",
+					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPUtJHeVWVa0U=",
+					"_parent": {
+						"$ref": "AAAAAAGPUtJHeFWI7TA="
+					},
+					"name": "get",
+					"route": "registration/count/elements",
+					"method": "get"
+				}
+			]
 		}
 	]
 }

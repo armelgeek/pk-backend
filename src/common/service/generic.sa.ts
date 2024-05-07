@@ -75,6 +75,18 @@ export abstract class GenericSA<
     }
   }
 
+  async pushUpdate(id: ObjectID, partialEntity): Promise<any> {
+    try {
+      const result = await this.serviceSM.pushUpdate(
+        new ObjectID(id),
+        factoryObject(partialEntity, this.name),
+      );
+      return { id, update: result?.ok };
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   delete(id: ObjectID): Promise<any> {
     return this.serviceSM.delete(id);
   }
@@ -291,7 +303,7 @@ export abstract class GenericSA<
 
   async findAll(options): Promise<any> {
     try {
-      const { take, skip, direction, sortField, relation, search, match, bo, queries } = options;
+      const { take, skip, direction, sortField, order, relation, search, match, bo, queries, sort } = options;
       let newQueries = queries;
       const properties = dataTDO[this.name]?.attributes;
       let aggregate = [{ $match: {} }];
@@ -383,6 +395,8 @@ export abstract class GenericSA<
           match,
           aggregate,
           where: newQueries,
+          order,
+          sortField,
         },
         this.name,
       );

@@ -47,6 +47,7 @@ import { twofactorauthenticationRouter } from './TwoFactorAuthentication';
 import { albumRouter } from './Album';
 import { mediasRouter } from './Medias';
 import { donationRouter } from './Donation';
+import { registrationRouter } from './Registration';
 
 export const routes = () => {
   const router = Router();
@@ -98,6 +99,7 @@ export const routes = () => {
  router.use('/album', albumRouter);
  router.use('/medias', mediasRouter);
  router.use('/donation', donationRouter);
+ router.use('/registration', registrationRouter);
   
   return router;
 };

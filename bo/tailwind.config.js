@@ -15,6 +15,7 @@ module.exports = {
       './src/presentation/container/protected/Home.tsx',
       './src/presentation/component/SideMenu/SideMenu.tsx',
       './src/presentation/component/Modal.tsx',
+      './src/common/protected/CreateUpdate.tsx',
     ],
   },
   darkMode: false, // or 'media' or 'class'

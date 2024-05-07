@@ -155,111 +155,117 @@ export const CreateUpdate = ({
 
   return (
     <form id="submit-form" onSubmit={handleSubmit(submit)}>
-      {
-        // eslint-disable-next-line no-underscore-dangle
-        ...keys.filter(({ form, notUpdate }) => form && !(entity?._id && notUpdate))
-          .map(({ key, type, form, required, route, name, ...propertie }) => {
-            if (name === 'password') {
-              return <></>
-            }
-            if (type === 'boolean') {
-              return (
-                <Controller
-                  control={control}
-                  render={({
-                    field: { onChange, onBlur, value },
-                    formState: { errors },
-                  }) => (
-                    <Checkbox
-                      key={key}
-                      name={key}
-                      label={form}
-                      onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
-                      // inputRef={register({ required, maxLength: 100 })}
-                      checked={checkbox ? checkbox[key] : null}
-                    />
-                  )}
-                  name={key}
-                />);
-            } if (type === 'number') {
-              return <Controller
-                control={control}
-                render={({
-                  field: { onChange, onBlur, value },
-                  formState: { errors },
-                }) => (
-                  <Input
-                    type="number"
-                    key={key}
-                    label={form}
+      <div className="grid grid-cols-2 gap-3">
+        {
+          // eslint-disable-next-line no-underscore-dangle
+          ...keys.filter(({ form, notUpdate }) => form && !(entity?._id && notUpdate))
+            .map(({ key, type, form, required, route, name, ...propertie }) => {
+              if (name === 'password') {
+                return <></>
+              }
+              if (type === 'boolean') {
+                return (
+                  <Controller
+                    control={control}
+                    render={({
+                      // field: { onChange, onBlur, value },
+                      // formState: { errors },
+                    }) => (
+                      <Checkbox
+                        key={key}
+                        name={key}
+                        label={form}
+                        onChange={(e) => setCheckbox({ ...checkbox, [key]: e.target.checked })}
+                        // inputRef={register({ required, maxLength: 100 })}
+                        checked={checkbox ? checkbox[key] : null}
+                      />
+                    )}
                     name={key}
-                    // inputRef={register({ required, maxLength: 100 })}
-                    errors={errors}
-                    autoFocus
-                    required={required}
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                  />
-                )}
-                name={key}
-              />;
-            } if (type === 'string') {
-              return <Controller
-                control={control}
-                render={({
-                  field: { onChange, onBlur, value },
-                  formState: { errors },
-                }) => (
-                  <Input
-                    key={key}
-                    label={form}
-                    name={key}
-                    // inputRef={register({ required, maxLength: 10000 })}
-                    errors={errors}
-                    autoFocus
-                    required={required}
-                    onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
-                  />
-                )}
-                name={key}
-              />;
-            } if (type && type.$ref) {
-              const name = elements.find(({ _id }) => type.$ref === _id)?.name
-              if (name === 'Location') {
+                  />);
+              }
+
+              if (type === 'number') {
                 return <Controller
                   control={control}
                   render={({
-                    field: { onChange, onBlur, value },
-                    formState: { errors },
-                  }) => (<LieuComponent placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+                    // field: { onChange, onBlur, value },
+                    // formState: { errors },
+                  }) => (
+                    <Input
+                      type="number"
+                      key={key}
+                      label={form}
+                      name={key}
+                      // inputRef={register({ required, maxLength: 100 })}
+                      // errors={errors}
+                      autoFocus
+                      required={required}
+                    // onBlur={onBlur}
+                    // value={value}
+                    // onChange={onChange}
+                    />
                   )}
                   name={key}
                 />;
+              } if (type === 'string') {
+                return <Controller
+                  control={control}
+                  render={({
+                    // field: { onChange, onBlur, value },
+                    // formState: { errors },
+                  }) => (
+                    <div className="w-[6/12]">
+                      <Input
+                        key={key}
+                        label={form}
+                        name={key}
+                        // inputRef={register({ required, maxLength: 10000 })}
+                        // errors={errors}
+                        autoFocus
+                        required={required}
+                        // onBlur={onBlur}
+                        value={'value'}
+                      // onChange={onChange}
+                      />
+                    </div>
+
+                  )}
+                  name={key}
+                />;
+              } if (type && type.$ref) {
+                const name = elements.find(({ _id }) => type.$ref === _id)?.name
+                if (name === 'Location') {
+                  return <Controller
+                    control={control}
+                    render={({
+                      // field: { onChange, onBlur, value },
+                      // formState: { errors },
+                    }) => (<LieuComponent placeholder="location ..." title={form} onChage={(res: any) => setLocations({ ...locations, [key]: res })} />
+                    )}
+                    name={key}
+                  />;
+                }
               }
-            }
-            if (type === 'file') {
-              return <Controller
-                control={control}
-                render={({
-                  field: { onChange, onBlur, value },
-                  formState: { errors },
-                }) => (
-                  <MyDropzone
-                    keyName={name}
-                    name={form}
-                    key={key}
-                    setFile={setFiles}
-                    file={entity ? entity[key] : null}
-                  />
-                )}
-                name={key}
-              />;
-            } if (propertie?.entity?.name) {
-              return (
-                <MultiSelect
+              if (type === 'file') {
+                return <Controller
+                  control={control}
+                  render={({
+                    // field: { onChange, onBlur, value },
+                    // formState: { errors },
+                  }) => (
+                    <MyDropzone
+                      keyName={name}
+                      name={form}
+                      key={key}
+                      setFile={setFiles}
+                      file={entity ? entity[key] : null}
+                    />
+                  )}
+                  name={key}
+                />;
+              } if (propertie?.entity?.name) {
+                return (
+                  <MultiSelect
                     key={key}
                     name={key}
                     control={control}
@@ -271,36 +277,45 @@ export const CreateUpdate = ({
                     // errors={errors}
                     label={form}
                     required
+                  // value={value}
+                  // onChange={onChange}
+                  />
+
+                )
+              }
+
+              return (
+                <Controller
+                  control={control}
+                  render={({
+                    // field: { onChange, onBlur, value },
+                    // formState: { errors },
+                  }) => (
+
+
+                    <Input
+                      key={key}
+                      label={form}
+                      name={key}
+                      // inputRef={register({ required, maxLength: 10000 })}
+                      // errors={errors}
+                      autoFocus
+                      required={required}
+                    // onBlur={onBlur}
                     // value={value}
                     // onChange={onChange}
-                  />
-                  
-              )
-            }
-            return (
-              <Controller
-                control={control}
-                render={({
-                  field: { onChange, onBlur, value },
-                  formState: { errors },
-                }) => (<Input
-                  key={key}
-                  label={form}
+                    />
+
+
+                  )}
                   name={key}
-                  // inputRef={register({ required, maxLength: 10000 })}
-                  errors={errors}
-                  autoFocus
-                  required={required}
-                  onBlur={onBlur}
-                    value={value}
-                    onChange={onChange}
                 />
-                )}
-                name={key}
-              />
-            );
-          })
-      }
+              );
+            })
+        }
+      </div>
+      {/* Séparator */}
+      <div className="border-b separator mt-5 mb-3" />
 
       <SaveCancel key={1} onCancelClick={onClose} loading={loading} />
     </form>

@@ -15,6 +15,8 @@ import { Table } from '../../presentation/component/Table';
 import { CreateUpdate } from './CreateUpdate';
 import { ReactComponent as SearchIcon } from '../../assets/img/search_icon.svg';
 import { Columns } from '../../presentation/component/Columns';
+import searchIcon from '../../assets/img/icon_BO/search.png';
+
 
 export const EntityContainer = ({ currententity, transformValue = (
   res,
@@ -129,15 +131,15 @@ export const EntityContainer = ({ currententity, transformValue = (
 
   return (
     <div>
-      <div className="flex items-center justify-center">
+      {/* <div className="flex items-center justify-center">
         <p className="title-one">
           Gestion
           {' '}
           {currententity}
         </p>
-      </div>
-      <div className="flex flex-col-left justify-between items-center mb-6">
-        <div className="flex searchInput">
+      </div> */}
+      <div className="flex flex-col-left justify-between items-center mb-6 top-header-action">
+        <div className="flex searchInput justify-between items-center">
           <Input
             name="search"
             placeholder="recherche ..."
@@ -145,9 +147,10 @@ export const EntityContainer = ({ currententity, transformValue = (
             onChange={handleSearchChange}
             onEnterPress={handleSearch}
           />
-          <Button variant="icon" className="ml-2 hover:text-green-900" onClick={handleSearch}>
-            {/* <Search className="w-6" /> */}
-            <SearchIcon />
+          <Button variant="icon" className="ml-2  btn-action" onClick={handleSearch}>
+            <span>
+              <img src={searchIcon} alt="" />
+            </span>
           </Button>
         </div>
         <Button onClick={handleCreateUpdate()}>{`Ajouter ${currententity}` || ''}</Button>

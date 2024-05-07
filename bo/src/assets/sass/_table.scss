@@ -8,8 +8,13 @@
   }
 
   th {
-    height: 50px;
-    border: 0;
+    background-color: transparent;
+    // background-color: #7E40BF;
+    height: 30px;
+    background: transparent;
+    border-bottom: solid 2px rgba(151, 71, 235, 0.3);
+    color: #fff;
+    padding: 0 5px;
 
     span {
       font-size: 14px;
@@ -18,18 +23,43 @@
 
     &:last-child {
       text-align: right;
+      width: 7%;
     }
   }
 
   tr {
     td {
-      height: 30px;
-      padding: 0 5px;
+      height: 40px;
+      padding: 5px 0 0 0;
       border: 0;
       font-size: 13px;
+      background-color: transparent !important;
+
+      .table-value-inner {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        // background-color: rgba(151, 71, 235, 0.3);
+        padding: 0 5px;
+        color: #fff;
+      }
+
+      &:first-child {
+        .table-value-inner {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
 
       &:last-child {
         text-align: right;
+
+        .table-value-inner {
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+          justify-content: center;
+        }
       }
 
       button {
@@ -52,8 +82,16 @@
       }
     }
 
-    &:nth-child(odd) td {
-      background-color: #e5e5e5;
+    &:first-child {
+      td {
+        // padding-top: 15px;
+      }
+    }
+
+    &:nth-child(even) td {
+      .table-value-inner {
+        background-color: rgba(151, 71, 235, 0.3);
+      }
     }
 
     .tooltip {
@@ -61,7 +99,7 @@
       right: 0;
       font-size: 12px;
       border-radius: 3px;
-      background-color: #31075d;
+      background: linear-gradient(135deg, #5fc4eb, rgba(3, 169, 244, 0.78));
 
       &::after {
         content: '';
@@ -69,7 +107,7 @@
         height: 0px;
         border-style: solid;
         border-width: 5px 4px 0 4px;
-        border-color: #31075d transparent transparent transparent;
+        border-color: rgba(3, 169, 244, 0.78) transparent transparent transparent;
         transform: rotate(0deg);
         position: absolute;
         bottom: -5px;

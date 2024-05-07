@@ -23,9 +23,9 @@ export const TablePagination = (props) => {
 
   return (
     <div className={`flex items-center text-xs my-4 ${className}`}>
-      <div className="flex items-center">
+      <div className="flex items-center w-auto">
         <select
-          className="rounded-2xl border-gray-300 focus:ring-2 focus:ring-green-900 focus:border-transparent py-1 pl-2 pr-8 text-sm"
+          className="rounded-input custom-input text-[] focus:ring-2 focus:border-transparent p-1 px-2"
           value={pageSize}
           onChange={(e) => setPageSize(e.target.value)}
         >
@@ -35,23 +35,23 @@ export const TablePagination = (props) => {
             </option>
           ))}
         </select>
-        <p className="ml-3 mr-8">éléments par page</p>
+        <p className="ml-3 mr-8 text-white">éléments par page</p>
       </div>
 
       <div className="flex items-center">
         <Button variant="icon" onClick={previousPage} disabled={pageIndex === 0}>
           <ChevronLeft
-            className={`w-6 ${pageIndex === 0 ? 'text-gray-500 cursor-not-allowed' : ''}`}
+            className={`w-6 ${pageIndex === 0 ? 'text-white cursor-not-allowed' : 'text-white'}`}
           />
         </Button>
-        <p>
+        <p className="text-white">
           {`${pageIndex + 1} `}
           sur
           {` ${nb || 1}`}
         </p>
         <Button variant="icon" onClick={nextPage} disabled={nb === pageIndex + 1}>
           <ChevronRight
-            className={`w-6 ${nb === pageIndex + 1 ? 'text-gray-500 cursor-not-allowed' : ''}`}
+            className={`w-6 ${nb === pageIndex + 1 ? 'text-white cursor-not-allowed' : 'text-white'}`}
           />
         </Button>
       </div>

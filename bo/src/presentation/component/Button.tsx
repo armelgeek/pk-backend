@@ -61,7 +61,7 @@ export const Button = (props) => {
             {tooltip}
           </span>
         ) : null}
-        <span className="flex items-center justify-center">
+        <span className="flex items-center justify-center icon-container">
           {loading ? <Spinner className="mr-2 opci" /> : ''}
           {children}
           {menu && open && (

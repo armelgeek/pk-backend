@@ -9,7 +9,7 @@ export const SaveCancel = (props) => {
 
   return (
     <div className={mergeClassNames('flex justify-end w-full mt-20', className)}>
-      <Button variant="secondary" onClick={onCancelClick} loading={loading}>
+      <Button variant="secondary" className='secondary-btn' onClick={onCancelClick} loading={loading}>
         {cancelLabel}
       </Button>
       <Button

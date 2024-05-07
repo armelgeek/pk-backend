@@ -1,0 +1,49 @@
+.custom-submit {
+  background: linear-gradient(135deg, rgba(95, 196, 235, 1), rgba(3, 169, 244, 0.78));
+  border-radius: 5px;
+  min-height: 40px;
+  max-width: 200px;
+
+  span {
+    font-size: 13px;
+  }
+}
+
+.primary-button {
+  background-color: rgba(95, 196, 235, 1);
+  border-radius: 100px;
+}
+
+
+.secondary-btn {
+  background: linear-gradient(135deg, rgba(133, 55, 215, 0.5), rgba(97, 24, 174, 0.2)),
+    #2E055A !important;
+  border-radius: 5px;
+  min-height: 40px;
+  max-width: 200px;
+  border: none !important;
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.btn-action {
+  background: linear-gradient(#8537d7, #6118ae);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    &.icon-container {
+      height: 25px;
+      width: 25px;
+      display: inline-flex;
+      color: #fff !important;
+    }
+  }
+
+  &.delete {
+    background: linear-gradient(145deg, rgba(133, 55, 215, 1), rgba(174, 24, 142, 0.5));
+  }
+
+}

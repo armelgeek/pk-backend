@@ -9,7 +9,6 @@ export type MediasRequestDTO = {
    shares?: string[];
    likes?: string[];
    duration?: number;
-   duration?: number;
 }
 
 /**
@@ -23,7 +22,6 @@ export type MediasRequestDTO = {
  * @property {string} eventId
  * @property {array<string>} shares
  * @property {array<string>} likes
- * @property {number} duration
  * @property {number} duration
  */
 

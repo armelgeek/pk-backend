@@ -29222,15 +29222,6 @@
 					},
 					"name": "duration",
 					"type": "number"
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGPVsk5OlXcx94=",
-					"_parent": {
-						"$ref": "AAAAAAGPI0wu63R2tvI="
-					},
-					"name": "duration",
-					"type": "number"
 				}
 			],
 			"operations": [

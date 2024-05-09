@@ -12,6 +12,7 @@ export type PageResponseDTO = {
    verification?: string;
    pageId?: string;
    additionalInfo?: string;
+   location?: LocationRequestDTO;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -32,6 +33,7 @@ export type PageResponseDTO = {
  * @property {string} verification
  * @property {string} pageId
  * @property {string} additionalInfo
+ * @property {LocationRequestDTO} location
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

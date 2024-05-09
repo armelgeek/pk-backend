@@ -19,6 +19,7 @@ export type ProfileRequestDTO = {
    friends?: string[];
    followed?: string[];
    situation?: string;
+   location?: LocationRequestDTO;
 }
 
 /**
@@ -43,5 +44,6 @@ export type ProfileRequestDTO = {
  * @property {array<string>} friends
  * @property {array<string>} followed
  * @property {string} situation
+ * @property {LocationRequestDTO} location
  */
 

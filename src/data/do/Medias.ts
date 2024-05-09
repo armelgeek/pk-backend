@@ -32,6 +32,12 @@ export class MediasDO {
   @Column("simple-array")
   likes: string[];
 
+  @Column({nullable: true, unique: false})
+  duration: number;
+
+  @Column({nullable: true, unique: false})
+  duration: number;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

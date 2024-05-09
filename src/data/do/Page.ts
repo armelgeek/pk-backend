@@ -44,6 +44,9 @@ export class PageDO {
   @Column({nullable: true, unique: false})
   additionalInfo: string;
 
+  @Column("simple-json")
+  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

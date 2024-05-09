@@ -130,6 +130,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       match,
       aggregate = [],
     } = options;
+
     const aggregate_search = search ? { $text: { $search: search } } : {};
     const { userId, utilisateurId, ...whereOut } = where;
     const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
@@ -141,8 +142,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         { $sort: { ...sort_aggregate } },
         {
           $facet: {
-            metadata: [{ $count: 'total' }, { $addFields: { page: Number(take) } }],
-            data: [{ $skip: Number(skip) * Number(take) }, { $limit: Number(take) }],
+            metadata: [{ $count: 'total' }],
+            data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
           },
         },
       ])

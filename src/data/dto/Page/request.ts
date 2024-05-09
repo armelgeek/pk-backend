@@ -12,6 +12,7 @@ export type PageRequestDTO = {
    verification?: string;
    pageId?: string;
    additionalInfo?: string;
+   location?: LocationRequestDTO;
 }
 
 /**
@@ -29,5 +30,6 @@ export type PageRequestDTO = {
  * @property {string} verification
  * @property {string} pageId
  * @property {string} additionalInfo
+ * @property {LocationRequestDTO} location
  */
 

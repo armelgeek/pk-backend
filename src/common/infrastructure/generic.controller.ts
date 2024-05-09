@@ -175,7 +175,7 @@ export class GenericController<
         direction,
         queries,
         light: JSON.parse(light || 'true'),
-        take: rowPerPage,
+        take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
       });
 

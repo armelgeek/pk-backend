@@ -9,7 +9,6 @@ export type MediasResponseDTO = {
    shares?: string[];
    likes?: string[];
    duration?: number;
-   duration?: number;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -26,7 +25,6 @@ export type MediasResponseDTO = {
  * @property {string} eventId
  * @property {array<string>} shares
  * @property {array<string>} likes
- * @property {number} duration
  * @property {number} duration
  * @property {string} id
  * @property {string} updatedAt

@@ -35,6 +35,12 @@ export class AlbumDO {
   @Column("simple-array")
   views: string[];
 
+  @Column({nullable: true, unique: false})
+  eventId: string;
+
+  @Column({nullable: true, unique: false})
+  pageId: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

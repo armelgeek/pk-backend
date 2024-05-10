@@ -106,3 +106,5 @@
   declare interface DonationResponseDTO { }
   declare interface RegistrationRequestDTO { }
   declare interface RegistrationResponseDTO { }
+  declare interface SettingsRequestDTO { }
+  declare interface SettingsResponseDTO { }

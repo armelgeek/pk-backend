@@ -20483,13 +20483,47 @@
 									"height": 13,
 									"text": "+views: string",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGPYfdKHlX0jm8=",
+									"_parent": {
+										"$ref": "AAAAAAGPHlfcAXPArRs="
+									},
+									"model": {
+										"$ref": "AAAAAAGPYfdJ+lXxnJM="
+									},
+									"font": "Arial;13;0",
+									"left": 1845,
+									"top": 252,
+									"width": 153.537109375,
+									"height": 13,
+									"text": "+eventId: Event",
+									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGPYfeKO1X8Sck=",
+									"_parent": {
+										"$ref": "AAAAAAGPHlfcAXPArRs="
+									},
+									"model": {
+										"$ref": "AAAAAAGPYfeKHlX5A1c="
+									},
+									"font": "Arial;13;0",
+									"left": 1845,
+									"top": 267,
+									"width": 153.537109375,
+									"height": 13,
+									"text": "+pageId: Page",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 1840,
 							"top": 97,
 							"width": 163.537109375,
-							"height": 158
+							"height": 188
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -20512,7 +20546,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1845,
-									"top": 260,
+									"top": 290,
 									"width": 153.537109375,
 									"height": 13,
 									"text": "+getAll()",
@@ -20529,7 +20563,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1845,
-									"top": 275,
+									"top": 305,
 									"width": 153.537109375,
 									"height": 13,
 									"text": "+delete()",
@@ -20546,7 +20580,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1845,
-									"top": 290,
+									"top": 320,
 									"width": 153.537109375,
 									"height": 13,
 									"text": "+update()",
@@ -20563,7 +20597,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1845,
-									"top": 305,
+									"top": 335,
 									"width": 153.537109375,
 									"height": 13,
 									"text": "+get()",
@@ -20580,7 +20614,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 1845,
-									"top": 320,
+									"top": 350,
 									"width": 153.537109375,
 									"height": 13,
 									"text": "+add()",
@@ -20589,7 +20623,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 1840,
-							"top": 255,
+							"top": 285,
 							"width": 163.537109375,
 							"height": 83
 						},
@@ -20627,7 +20661,7 @@
 					"left": 1840,
 					"top": 72,
 					"width": 163.537109375,
-					"height": 266,
+					"height": 296,
 					"nameCompartment": {
 						"$ref": "AAAAAAGPHlfb/HO7+aM="
 					},
@@ -29030,6 +29064,28 @@
 					"name": "views",
 					"type": "string",
 					"isArray": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPYfdJ+lXxnJM=",
+					"_parent": {
+						"$ref": "AAAAAAGPHlfb9nO47mw="
+					},
+					"name": "eventId",
+					"type": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					}
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPYfeKHlX5A1c=",
+					"_parent": {
+						"$ref": "AAAAAAGPHlfb9nO47mw="
+					},
+					"name": "pageId",
+					"type": {
+						"$ref": "AAAAAAGNhQPY9VBuOYg="
+					}
 				}
 			],
 			"operations": [
@@ -29325,29 +29381,6 @@
 			"attributes": [
 				{
 					"_type": "UMLAttribute",
-					"_id": "AAAAAAGPKu9ncHVKtsE=",
-					"_parent": {
-						"$ref": "AAAAAAGPKu9nb3VJ1cw="
-					},
-					"name": "media",
-					"type": "file",
-					"isArray": true,
-					"form": "Image / Video",
-					"bo": true
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGPKu9ncHVL5FE=",
-					"_parent": {
-						"$ref": "AAAAAAGPKu9nb3VJ1cw="
-					},
-					"name": "collectedFunds",
-					"type": "number",
-					"form": "Collected Funds",
-					"bo": true
-				},
-				{
-					"_type": "UMLAttribute",
 					"_id": "AAAAAAGPKu9ncHVMU0Q=",
 					"_parent": {
 						"$ref": "AAAAAAGPKu9nb3VJ1cw="
@@ -29463,6 +29496,28 @@
 					"name": "get",
 					"route": "donation/count/elements",
 					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYf47kVZOTq0=",
+					"_parent": {
+						"$ref": "AAAAAAGPKu9nb3VJ1cw="
+					},
+					"name": "getSum",
+					"route": "donation/sum/{field}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPYf47kVZPjv8=",
+							"_parent": {
+								"$ref": "AAAAAAGPYf47kVZOTq0="
+							},
+							"name": "field",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
 				}
 			]
 		},
@@ -29606,6 +29661,128 @@
 					"name": "get",
 					"route": "registration/count/elements",
 					"method": "get"
+				}
+			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGPYfhvEFYOoPs=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Settings",
+			"role": "4",
+			"route": "settings",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPYfhvEFYPVU0=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "donationDescription",
+					"type": "string",
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPYfhvEFYQbMc=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "donationImages",
+					"type": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"isID": true
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYfhvEFYSdFw=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "getAll",
+					"route": "settings",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYfhvEFYT824=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "delete",
+					"route": "settings/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPYfhvEFYUR+I=",
+							"_parent": {
+								"$ref": "AAAAAAGPYfhvEFYT824="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYfhvEFYVUIA=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "update",
+					"route": "settings/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPYfhvEFYWE+4=",
+							"_parent": {
+								"$ref": "AAAAAAGPYfhvEFYVUIA="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYfhvEFYXswg=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "get",
+					"route": "settings/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPYfhvEFYYqCY=",
+							"_parent": {
+								"$ref": "AAAAAAGPYfhvEFYXswg="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPYfhvEFYZj2M=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "add",
+					"route": "settings",
+					"method": "post"
 				}
 			]
 		}

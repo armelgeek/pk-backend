@@ -48,6 +48,7 @@ import { albumRouter } from './Album';
 import { mediasRouter } from './Medias';
 import { donationRouter } from './Donation';
 import { registrationRouter } from './Registration';
+import { settingsRouter } from './Settings';
 
 export const routes = () => {
   const router = Router();
@@ -100,6 +101,7 @@ export const routes = () => {
  router.use('/medias', mediasRouter);
  router.use('/donation', donationRouter);
  router.use('/registration', registrationRouter);
+ router.use('/settings', settingsRouter);
   
   return router;
 };

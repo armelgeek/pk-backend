@@ -1,4 +1,5 @@
 import {
+  AggregationCursor,
   DeepPartial,
   FindConditions,
   FindManyOptions,
@@ -156,5 +157,29 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   async find(): Promise<any> {
     return this.repository.find();
+  }
+
+  sum(options, name): AggregationCursor<any> {
+    const {
+      take = 10000,
+      skip = 0,
+      where = {},
+    } = options;
+
+    const { userId, utilisateurId, ...whereOut } = where;
+
+    console.log(' bgggg sdcl,sdmcvndslm ds,cmsdnv ====================================');
+    console.log(whereOut);
+    console.log('====================================');
+    return this.repository
+      .aggregate([
+        { $match: { ...whereOut }},
+        {
+          $groupe: {
+            _id: null,
+            "donorsCount": { $sum: '$donorsCount' }
+          },
+        },
+      ])
   }
 }

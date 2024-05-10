@@ -9,6 +9,8 @@ export type AlbumRequestDTO = {
    description?: string;
    cover?: string;
    views?: string[];
+   eventId?: string;
+   pageId?: string;
 }
 
 /**
@@ -23,5 +25,7 @@ export type AlbumRequestDTO = {
  * @property {string} description
  * @property {string} cover
  * @property {array<string>} views
+ * @property {string} eventId
+ * @property {string} pageId
  */
 

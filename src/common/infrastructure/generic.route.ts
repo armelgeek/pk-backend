@@ -61,5 +61,7 @@ export const genericRoute = (option: RouteOption) => {
     responseFormatter,
   );
 
+  router.get('/sum/:attribut', conditionnalJwtPassport(isSecured, name), controller.sum, responseFormatter);
+
   return router;
 };

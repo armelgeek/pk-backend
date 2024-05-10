@@ -441,4 +441,28 @@ export abstract class GenericSA<
       return Promise.reject(error);
     }
   }
+
+  async sum(options): Promise<any> {
+    try {
+      const { take, skip, sortField, order, relation, search, match, queries } = options;
+      let newQueries = queries;
+      const data = await this.serviceSM.sum(
+        {
+          relation,
+          search,
+          take,
+          skip,
+          match,
+          where: newQueries,
+          order,
+          sortField,
+        },
+        this.name,
+      );
+
+      return data;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
 }

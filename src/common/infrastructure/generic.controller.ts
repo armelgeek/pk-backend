@@ -229,4 +229,36 @@ export class GenericController<
       next(error);
     }
   };
+
+
+  /**
+   * WS returning Sum
+   */
+  sum = async (req, res, next) => {
+    const {
+      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, ...queries },
+    } = req;
+    try {
+      const dtos = await this.serviceSA.findAll({
+        search,
+        match,
+        sortField,
+        direction,
+        queries,
+        light: JSON.parse(light || 'true'),
+        take: rowPerPage * 1,
+        skip: (page - 1) * rowPerPage,
+      });
+
+      console.log('====================================');
+      console.log(dtos);
+      console.log('====================================');
+
+      res.locals.data = dtos;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
 }

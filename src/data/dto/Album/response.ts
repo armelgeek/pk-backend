@@ -9,6 +9,8 @@ export type AlbumResponseDTO = {
    description?: string;
    cover?: string;
    views?: string[];
+   eventId?: string;
+   pageId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -26,6 +28,8 @@ export type AlbumResponseDTO = {
  * @property {string} description
  * @property {string} cover
  * @property {array<string>} views
+ * @property {string} eventId
+ * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

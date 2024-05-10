@@ -77,3 +77,15 @@ export const donationRouter = donationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * GET /api/donation/sum/{field}
+ * @tags Donation
+ * @security BearerAuth
+ * @summary List Donation (getSumDonation)
+ 
+ * @param {string} field.path.required 
+ * @return {DonationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

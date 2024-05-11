@@ -1,6 +1,6 @@
 export type SettingsResponseDTO = {
    donationDescription?: string;
-   donationImages?: string;
+   donationImages?: string[];
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -9,7 +9,7 @@ export type SettingsResponseDTO = {
 /**
  * @typedef {object} SettingsResponseDTO
  * @property {string} donationDescription
- * @property {string} donationImages
+ * @property {array<string>} donationImages
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

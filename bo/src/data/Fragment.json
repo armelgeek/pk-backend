@@ -29692,8 +29692,9 @@
 					},
 					"name": "donationImages",
 					"type": {
-						"$ref": "AAAAAAGNwG41kKyhSxE="
+						"$ref": "AAAAAAGPI0wu63R2tvI="
 					},
+					"isArray": true,
 					"isID": true
 				}
 			],

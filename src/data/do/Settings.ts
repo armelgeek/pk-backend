@@ -8,8 +8,8 @@ export class SettingsDO {
   @Column({nullable: true, unique: false})
   donationDescription: string;
 
-  @Column({nullable: true, unique: false})
-  donationImages: string;
+  @Column("simple-array")
+  donationImages: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

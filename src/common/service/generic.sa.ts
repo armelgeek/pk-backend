@@ -487,9 +487,6 @@ export abstract class GenericSA<
       return {
         sum,
         totalCount,
-        ...(!Number.isNaN(take) && !Number.isNaN(skip)
-          ? { hasNext: take * (skip / take + 1) < totalCount }
-          : {}),
       };
     } catch (error) {
       return Promise.reject(error);

@@ -236,10 +236,12 @@ export class GenericController<
    */
   sum = async (req, res, next) => {
     const {
+      params: { field },
       query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, ...queries },
     } = req;
+
     try {
-      const dtos = await this.serviceSA.findAll({
+      const dtos = await this.serviceSA.sum({
         search,
         match,
         sortField,
@@ -248,11 +250,8 @@ export class GenericController<
         light: JSON.parse(light || 'true'),
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
+        field,
       });
-
-      console.log('====================================');
-      console.log(dtos);
-      console.log('====================================');
 
       res.locals.data = dtos;
 

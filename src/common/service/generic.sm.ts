@@ -159,7 +159,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     return this.repository.find();
   }
 
-  sum(options, name): AggregationCursor<any> {
+  sum(options, name): Promise<any> {
     const {
       take = 10000,
       skip = 0,
@@ -168,18 +168,15 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
     const { userId, utilisateurId, ...whereOut } = where;
 
-    console.log(' bgggg sdcl,sdmcvndslm ds,cmsdnv ====================================');
-    console.log(whereOut);
-    console.log('====================================');
     return this.repository
       .aggregate([
-        { $match: { ...whereOut }},
+        { $match: whereOut },
         {
-          $groupe: {
-            _id: null,
-            "donorsCount": { $sum: '$donorsCount' }
+          $facet: {
+            metadata: [{ $count: 'total' }],
+            data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
           },
         },
-      ])
+      ]).toArray()
   }
 }

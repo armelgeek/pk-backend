@@ -55,7 +55,10 @@ export abstract class GenericSA<
       const entity = this.factory.toDo(dto);
       const data = this.factory.toDo(query);
 
-      const result = await this.serviceSM.updateMany(factoryObject(data, this.name), factoryObject(entity, this.name));
+      const result = await this.serviceSM.updateMany(
+        factoryObject(data, this.name),
+        factoryObject(entity, this.name),
+      );
 
       return this.factory.toResponseDto(result);
     } catch (error) {
@@ -303,7 +306,19 @@ export abstract class GenericSA<
 
   async findAll(options): Promise<any> {
     try {
-      const { take, skip, direction, sortField, order, relation, search, match, bo, queries, sort } = options;
+      const {
+        take,
+        skip,
+        direction,
+        sortField,
+        order,
+        relation,
+        search,
+        match,
+        bo,
+        queries,
+        sort,
+      } = options;
       let newQueries = queries;
       const properties = dataTDO[this.name]?.attributes;
       let aggregate = [{ $match: {} }];
@@ -444,7 +459,7 @@ export abstract class GenericSA<
 
   async sum(options): Promise<any> {
     try {
-      const { take, skip, sortField, order, relation, search, match, queries } = options;
+      const { take, skip, sortField, order, relation, search, match, queries, field } = options;
       let newQueries = queries;
       const data = await this.serviceSM.sum(
         {
@@ -460,7 +475,22 @@ export abstract class GenericSA<
         this.name,
       );
 
-      return data;
+      const sum = (data[0]?.data || []).reduce((acc, curr) => {
+        if (!isNaN(curr[field])) {
+          return acc + curr[field];
+        }
+        return acc;
+      }, 0);
+
+      const totalCount = data[0]?.metadata[0]?.total;
+
+      return {
+        sum,
+        totalCount,
+        ...(!Number.isNaN(take) && !Number.isNaN(skip)
+          ? { hasNext: take * (skip / take + 1) < totalCount }
+          : {}),
+      };
     } catch (error) {
       return Promise.reject(error);
     }

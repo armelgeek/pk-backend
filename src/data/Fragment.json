@@ -29786,6 +29786,158 @@
 					"method": "post"
 				}
 			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGPd97qXUQ460Y=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Report",
+			"role": "4",
+			"route": "report",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPd97qXUQ5kKU=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "publicationId",
+					"type": {
+						"$ref": "AAAAAAGN1UIvcq/6Ym4="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPd97qXkQ6dXY=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "eventId",
+					"type": {
+						"$ref": "AAAAAAGNwG41kKyhSxE="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPd97qXkQ7ea8=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "profileId",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPd9/uBERcSuc=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "type",
+					"type": "string"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkQ8uow=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "getAll",
+					"route": "report",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkQ9Fes=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "delete",
+					"route": "report/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPd97qXkQ+qy8=",
+							"_parent": {
+								"$ref": "AAAAAAGPd97qXkQ9Fes="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkQ/j7s=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "update",
+					"route": "report/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPd97qXkRAavs=",
+							"_parent": {
+								"$ref": "AAAAAAGPd97qXkQ/j7s="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkRBbME=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "get",
+					"route": "report/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPd97qXkRCK24=",
+							"_parent": {
+								"$ref": "AAAAAAGPd97qXkRBbME="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkRDvOE=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "add",
+					"route": "report",
+					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPd97qXkREZII=",
+					"_parent": {
+						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "get",
+					"route": "report/count/elements",
+					"method": "get"
+				}
+			]
 		}
 	]
 }

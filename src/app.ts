@@ -31,7 +31,7 @@ class App {
       this.initCron();
       // const res = await sendNotification({
       //   tokens: [
-      //     'cn4D4hSASuqi0alLYOU8-v:APA91bFLhY9LrAoQw5mQlIZiIOJ_cZR0RzaVzdC_TLTJqkBnL_h_W6YEHYUFdj54RQMF4cfTNcrHHZ-a8TGFnUIX73TmvCL5HskLK34xogGDKhqF8cZzGnXHHD7kcrwKX7QwkuM8Bg3O',
+      //     'dKbtcN7KR2-qSkmhLw-duC:APA91bE2hq1rjlE_f45DxurqM4sg1UfszdyAAf1jq9DdCem7IaDyV0k8TnwMSa2i6uvFe07rAeMxyLwsfiy9L-rNkYpG2D8rT-CvPxR3g8uJVczKNwE0WQnZns_ZyfjOb0OELiZqMe7C',
       //   ],
       //   title: 'title',
       //   body: 'Push Notification for POC REACT NATIVE WEB',
@@ -56,15 +56,16 @@ class App {
     const { default: passport } = await import('./service/middleware/passport');
     this.app.use(passport.initialize());
 
-    this.app.post('/api/upload', async (req, res) => {
+    this.app.post('/api/upload/:resource_type', async (req, res) => {
       try {
         // @ts-ignore
         const file = req.files?.file?.tempFilePath;
-        console.log(file);
+        const resource_type = req.params.resource_type === "video" ? { resource_type: req.params.resource_type } : {};
         const uploadResponse = await cloudinary.uploader.upload(file, {
           upload_preset: 'profil',
+          ...resource_type,
         });
-        console.log(uploadResponse);
+
         res.json({ msg: 'yaya', url: uploadResponse?.secure_url });
       } catch (err) {
         console.error(err);

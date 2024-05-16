@@ -23,6 +23,7 @@ export type ParticipateResponseDTO = {
    dateEliminate?: Date;
    hourEliminate?: Date;
    dateRegistry?: Date;
+   country?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -54,6 +55,7 @@ export type ParticipateResponseDTO = {
  * @property {Date} dateEliminate
  * @property {Date} hourEliminate
  * @property {Date} dateRegistry
+ * @property {string} country
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

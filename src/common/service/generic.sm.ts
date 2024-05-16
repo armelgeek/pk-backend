@@ -18,7 +18,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async create(entity: DeepPartial<TDo>): Promise<any> {
-    return await this.repository.save({...entity, createdAt: new Date()});
+    return await this.repository.save({ ...entity, createdAt: new Date() });
   }
 
   async partialUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
@@ -130,17 +130,30 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       relation,
       match,
       aggregate = [],
+      new__Queries,
     } = options;
 
     const aggregate_search = search ? { $text: { $search: search } } : {};
-    const { userId, utilisateurId, ...whereOut } = where;
+    const { userId, utilisateurId, longitude, latitude, maxDistance, ...whereOut } = where;
     const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
+
+    const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : []
 
     return this.repository
       .aggregate([
-        { $match: { ...whereOut, ...aggregate_search }},
+        { $match: { ...whereOut, ...aggregate_search } },
         ...aggregate,
+        ...search_query,
         { $sort: { ...sort_aggregate } },
+        // {
+        //   $geoWithin: {
+        //     $geometry: {
+        //       type: 'Point',
+        //       coordinates: [longitude, latitude],
+        //     },
+        //   },
+        //   $maxDistance: 10000,
+        // },
         {
           $facet: {
             metadata: [{ $count: 'total' }],
@@ -160,11 +173,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   sum(options, name): Promise<any> {
-    const {
-      take = 10000,
-      skip = 0,
-      where = {},
-    } = options;
+    const { take = 10000, skip = 0, where = {} } = options;
 
     const { userId, utilisateurId, ...whereOut } = where;
 
@@ -177,6 +186,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
             data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
           },
         },
-      ]).toArray()
+      ])
+      .toArray();
   }
 }

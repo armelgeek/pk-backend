@@ -320,6 +320,7 @@ export abstract class GenericSA<
         sort,
       } = options;
       let newQueries = queries;
+      let new__Queries = {};
       const properties = dataTDO[this.name]?.attributes;
       let aggregate = [{ $match: {} }];
       if (!bo && properties) {
@@ -365,17 +366,6 @@ export abstract class GenericSA<
               ...acc,
               [`${key}`]: new ObjectID(queries[key]),
             };
-          } else if (key?.split('__')?.length === 2) {
-            if (ObjectID.isValid(queries[key])) {
-              return {
-                ...acc,
-                [key.replace('__', '.')]: new ObjectID(queries[key]),
-              };
-            }
-            return {
-              ...acc,
-              [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },
-            };
           } else if (key?.split('_lte')?.length === 2) {
             return {
               ...acc,
@@ -393,10 +383,39 @@ export abstract class GenericSA<
               [`${key}`]: queries[key] === 'true' ? true : false,
             };
           }
-
+          if (key?.split('__')?.length === 2) {
+            return {
+              ...acc,
+            };
+          }
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },
+          };
+        }, {});
+
+        new__Queries = Object.keys(queries).reduce((acc, key) => {
+          if (key?.split('__')?.length === 2) {
+            if (ObjectID.isValid(queries[key])) {
+              return {
+                ...acc,
+                [key.replace('__', '.')]: new ObjectID(queries[key]),
+              };
+            }
+
+            if (Array.isArray(queries[key])) {
+              return {
+                ...acc,
+                [key.replace('__', '.')]: { $in: queries[key] },
+              };
+            }
+            return {
+              ...acc,
+              [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },
+            };
+          }
+          return {
+            ...acc,
           };
         }, {});
       }
@@ -410,6 +429,7 @@ export abstract class GenericSA<
           match,
           aggregate,
           where: newQueries,
+          new__Queries: new__Queries,
           order,
           sortField,
         },

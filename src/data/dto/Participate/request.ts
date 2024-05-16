@@ -23,6 +23,7 @@ export type ParticipateRequestDTO = {
    dateEliminate?: Date;
    hourEliminate?: Date;
    dateRegistry?: Date;
+   country?: string;
 }
 
 /**
@@ -51,5 +52,6 @@ export type ParticipateRequestDTO = {
  * @property {Date} dateEliminate
  * @property {Date} hourEliminate
  * @property {Date} dateRegistry
+ * @property {string} country
  */
 

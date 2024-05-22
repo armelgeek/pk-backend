@@ -110,3 +110,5 @@
   declare interface SettingsResponseDTO { }
   declare interface ReportRequestDTO { }
   declare interface ReportResponseDTO { }
+  declare interface VisitorsRequestDTO { }
+  declare interface VisitorsResponseDTO { }

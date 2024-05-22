@@ -15,7 +15,7 @@ export class EventDO {
   shortDescription: string;
 
   @Column("simple-json")
-  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  location: { type: string, coordinates: string[] };
 
   @Column({ type: 'timestamptz', default: new Date() })
   startDate: Date;

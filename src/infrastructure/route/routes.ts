@@ -50,6 +50,7 @@ import { donationRouter } from './Donation';
 import { registrationRouter } from './Registration';
 import { settingsRouter } from './Settings';
 import { reportRouter } from './Report';
+import { visitorsRouter } from './Visitors';
 
 export const routes = () => {
   const router = Router();
@@ -104,6 +105,7 @@ export const routes = () => {
  router.use('/registration', registrationRouter);
  router.use('/settings', settingsRouter);
  router.use('/report', reportRouter);
+ router.use('/visitors', visitorsRouter);
   
   return router;
 };

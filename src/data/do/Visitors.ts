@@ -1,18 +1,15 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('settings')
-export class SettingsDO {
+@Entity('visitors')
+export class VisitorsDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  donationDescription: string;
+  eventId: string;
 
-  @Column("simple-array")
-  donationImages: string[];
-
-  @Column("simple-array")
-  countries: string[];
+  @Column({nullable: true, unique: false})
+  profileId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

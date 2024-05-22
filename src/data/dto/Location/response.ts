@@ -1,8 +1,6 @@
 export type LocationResponseDTO = {
-   accuracy?: number;
-   longitude?: number;
-   latitude?: number;
-   altitude?: number;
+   type?: string;
+   coordinates?: number[];
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -10,10 +8,8 @@ export type LocationResponseDTO = {
 
 /**
  * @typedef {object} LocationResponseDTO
- * @property {number} accuracy
- * @property {number} longitude
- * @property {number} latitude
- * @property {number} altitude
+ * @property {string} type
+ * @property {array<number>} coordinates
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

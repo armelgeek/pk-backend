@@ -8872,7 +8872,7 @@
 									"font": "Arial;13;1",
 									"left": 533,
 									"top": 743,
-									"width": 111.66162109375,
+									"width": 126.1025390625,
 									"height": 13,
 									"text": "Location"
 								},
@@ -8907,7 +8907,7 @@
 							"font": "Arial;13;0",
 							"left": 528,
 							"top": 736,
-							"width": 121.66162109375,
+							"width": 136.1025390625,
 							"height": 25,
 							"stereotypeLabel": {
 								"$ref": "AAAAAAGNwG5iq6zPjuw="
@@ -8944,9 +8944,9 @@
 									"font": "Arial;13;0",
 									"left": 533,
 									"top": 766,
-									"width": 111.66162109375,
+									"width": 126.1025390625,
 									"height": 13,
-									"text": "+accuracy: number",
+									"text": "+type: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8961,51 +8961,17 @@
 									"font": "Arial;13;0",
 									"left": 533,
 									"top": 781,
-									"width": 111.66162109375,
+									"width": 126.1025390625,
 									"height": 13,
-									"text": "+longitude: number",
-									"horizontalAlignment": 0
-								},
-								{
-									"_type": "UMLAttributeView",
-									"_id": "AAAAAAGNwJgHQK0jVc4=",
-									"_parent": {
-										"$ref": "AAAAAAGNwG5irKzTB1E="
-									},
-									"model": {
-										"$ref": "AAAAAAGNwJgHN60gL2Y="
-									},
-									"font": "Arial;13;0",
-									"left": 533,
-									"top": 796,
-									"width": 111.66162109375,
-									"height": 13,
-									"text": "+latitude: number",
-									"horizontalAlignment": 0
-								},
-								{
-									"_type": "UMLAttributeView",
-									"_id": "AAAAAAGNwJikIa0uXWY=",
-									"_parent": {
-										"$ref": "AAAAAAGNwG5irKzTB1E="
-									},
-									"model": {
-										"$ref": "AAAAAAGNwJikCa0r1VA="
-									},
-									"font": "Arial;13;0",
-									"left": 533,
-									"top": 811,
-									"width": 111.66162109375,
-									"height": 13,
-									"text": "+altitude: number",
+									"text": "+coordinates: number",
 									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 528,
 							"top": 761,
-							"width": 121.66162109375,
-							"height": 68
+							"width": 136.1025390625,
+							"height": 38
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -9018,8 +8984,8 @@
 							},
 							"font": "Arial;13;0",
 							"left": 528,
-							"top": 829,
-							"width": 121.66162109375,
+							"top": 799,
+							"width": 136.1025390625,
 							"height": 10
 						},
 						{
@@ -9059,7 +9025,7 @@
 					"containerChangeable": true,
 					"left": 528,
 					"top": 736,
-					"width": 121.66162109375,
+					"width": 136.1025390625,
 					"height": 103,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNwG5iq6zOKlM="
@@ -23994,8 +23960,8 @@
 					"_parent": {
 						"$ref": "AAAAAAGNwG5ip6zL/40="
 					},
-					"name": "accuracy",
-					"type": "number"
+					"name": "type",
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24003,26 +23969,9 @@
 					"_parent": {
 						"$ref": "AAAAAAGNwG5ip6zL/40="
 					},
-					"name": "longitude",
-					"type": "number"
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGNwJgHN60gL2Y=",
-					"_parent": {
-						"$ref": "AAAAAAGNwG5ip6zL/40="
-					},
-					"name": "latitude",
-					"type": "number"
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGNwJikCa0r1VA=",
-					"_parent": {
-						"$ref": "AAAAAAGNwG5ip6zL/40="
-					},
-					"name": "altitude",
-					"type": "number"
+					"name": "coordinates",
+					"type": "number",
+					"isArray": true
 				}
 			]
 		},
@@ -29725,6 +29674,16 @@
 					},
 					"isArray": true,
 					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPoFisiUSAwPc=",
+					"_parent": {
+						"$ref": "AAAAAAGPYfhvEFYOoPs="
+					},
+					"name": "countries",
+					"type": "string",
+					"isArray": true
 				}
 			],
 			"operations": [
@@ -29961,6 +29920,134 @@
 					"_id": "AAAAAAGPd97qXkREZII=",
 					"_parent": {
 						"$ref": "AAAAAAGPd97qXUQ460Y="
+					},
+					"name": "get",
+					"route": "report/count/elements",
+					"method": "get"
+				}
+			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGPoF7REkSUicg=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Visitors",
+			"role": "4",
+			"route": "visitors",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPoF7REkSW258=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "eventId",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGPoF7REkSXXoo=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "profileId",
+					"type": "string"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSZ+co=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "getAll",
+					"route": "visitors",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSaLYw=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "delete",
+					"route": "visitors/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPoF7REkSb6Ec=",
+							"_parent": {
+								"$ref": "AAAAAAGPoF7REkSaLYw="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSc8Q4=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "update",
+					"route": "visitors/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPoF7REkSd71w=",
+							"_parent": {
+								"$ref": "AAAAAAGPoF7REkSc8Q4="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSeCzM=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "get",
+					"route": "visitors/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGPoF7REkSf660=",
+							"_parent": {
+								"$ref": "AAAAAAGPoF7REkSeCzM="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSgL1U=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
+					},
+					"name": "add",
+					"route": "report",
+					"method": "post"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGPoF7REkSh6ys=",
+					"_parent": {
+						"$ref": "AAAAAAGPoF7REkSUicg="
 					},
 					"name": "get",
 					"route": "report/count/elements",

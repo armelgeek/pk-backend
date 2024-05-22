@@ -1,5 +1,5 @@
 import { ObjectID } from 'mongodb';
-import { dataTDO } from '../../data';
+import { LocationElementId, dataTDO } from '../../data';
 
 export const factoryObject = (data, name) => {
   const keys = Object.keys(data);
@@ -20,6 +20,18 @@ export const factoryObject = (data, name) => {
           newAcc = {
             ...newAcc,
             [key]: new Date(acc[key]),
+          };
+        }
+        else if (type?.$ref === LocationElementId && acc[key]?.latitude && acc[key]?.longitude) {
+          newAcc = {
+            ...newAcc,
+            [key]: {
+              "type": "Point",
+              "coordinates": [
+                acc[key]?.latitude,
+                acc[key]?.longitude,
+              ]
+            },
           };
         } else if (type === 'boolean') {
           newAcc = {

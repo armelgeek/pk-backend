@@ -18,7 +18,7 @@ export class PublicationDO {
   profileId: string;
 
   @Column("simple-json")
-  location: { accuracy?: number, longitude: number, latitude: number, altitude?: number };
+  location: { type: string, coordinates: string[] };
 
   @Column({nullable: true, unique: false})
   private: boolean;

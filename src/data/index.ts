@@ -43,6 +43,8 @@ export const dataTDO = todataTDO(ownedElements);
 
 export const elements = ownedElements
 
+export const LocationElementId = ownedElements.find(({ name }) => name === 'Location')?._id;
+
 export const dataAggregates = {
 
 }

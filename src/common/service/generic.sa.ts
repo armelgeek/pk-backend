@@ -356,12 +356,22 @@ export abstract class GenericSA<
       if (queries && Array.isArray(Object.keys(queries)) && properties) {
         newQueries = Object.keys(queries).reduce((acc, key) => {
           const isExist = properties.find((propertie) => propertie?.key === key);
-          if (key === '$or') {
+          if (key?.split('__')?.length === 2) {
+            return {
+              ...acc,
+            };
+          } else if (key === '$or') {
             return {
               ...acc,
               [`${key}`]: toQueryOr(queries[key], this.name),
             };
           } else if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
+            if (Array.isArray(queries[key])) {
+              return {
+                ...acc,
+                [key.replace('__', '.')]: { $in: queries[key].map((id) => new ObjectID(id)) },
+              };
+            }
             return {
               ...acc,
               [`${key}`]: new ObjectID(queries[key]),
@@ -383,9 +393,10 @@ export abstract class GenericSA<
               [`${key}`]: queries[key] === 'true' ? true : false,
             };
           }
-          if (key?.split('__')?.length === 2) {
+          if (Array.isArray(queries[key])) {
             return {
               ...acc,
+              [key.replace('__', '.')]: { $in: queries[key] },
             };
           }
           return {
@@ -396,10 +407,23 @@ export abstract class GenericSA<
 
         new__Queries = Object.keys(queries).reduce((acc, key) => {
           if (key?.split('__')?.length === 2) {
+            const row = key?.split('__')[1];
             if (ObjectID.isValid(queries[key])) {
               return {
                 ...acc,
                 [key.replace('__', '.')]: new ObjectID(queries[key]),
+              };
+            } else if (row?.split('_lte')?.length === 2) {
+              const row_row = `${key?.split('__')[0]}.${row?.split('_lte')[0]}`;
+              return {
+                ...acc,
+                [row_row]: { $lte: new Date(queries[key]) },
+              };
+            } else if (row?.split('_gte')?.length === 2) {
+              const row_row = `${key?.split('__')[0]}.${row?.split('_gte')[0]}`;
+              return {
+                ...acc,
+                [row_row]: { $gte: new Date(queries[key]) },
               };
             }
 

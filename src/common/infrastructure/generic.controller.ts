@@ -63,7 +63,9 @@ export class GenericController<
    * WS managing the update many of an entity
    */
   updateMany = async (req, res, next) => {
-    const { body: { data, query } } = req;
+    const {
+      body: { data, query },
+    } = req;
     try {
       const updated = await this.serviceSA.updateMany(query, data);
 
@@ -165,7 +167,19 @@ export class GenericController<
    */
   findAll = async (req, res, next) => {
     const {
-      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, lookup, ...queries },
+      query: {
+        page = 1,
+        rowPerPage = 10,
+        light,
+        direction,
+        sortField,
+        order,
+        match,
+        search,
+        lookup,
+        geoNear,
+        ...queries
+      },
     } = req;
 
     try {
@@ -178,7 +192,7 @@ export class GenericController<
         light: JSON.parse(light || 'true'),
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
-        lookup
+        lookup,
       });
 
       res.locals.data = dtos;
@@ -232,14 +246,23 @@ export class GenericController<
     }
   };
 
-
   /**
    * WS returning Sum
    */
   sum = async (req, res, next) => {
     const {
       params: { field },
-      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, ...queries },
+      query: {
+        page = 1,
+        rowPerPage = 10,
+        light,
+        direction,
+        sortField,
+        order,
+        match,
+        search,
+        ...queries
+      },
     } = req;
 
     try {

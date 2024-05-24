@@ -317,11 +317,14 @@ export abstract class GenericSA<
         bo,
         queries,
         lookup = [],
+        geoNear,
         sort,
       } = options;
       let newQueries = queries;
       let new__Queries = {};
       const properties = dataTDO[this.name]?.attributes;
+
+      const geoNearAggregate = geoNear ? [{ $geoNear: JSON.parse(geoNear) }] : [];
 
       let aggregate = lookup
         ? JSON.parse(lookup).reduce((acc, curr) => {
@@ -377,6 +380,7 @@ export abstract class GenericSA<
         aggregate = [
           ...aggregate,
           ...toAggregate,
+          ...geoNearAggregate,
         ];
       }
 

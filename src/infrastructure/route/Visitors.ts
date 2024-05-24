@@ -56,7 +56,7 @@ export const visitorsRouter = visitorsRoutes();
  */
 
 /**
- * POST /api/report
+ * POST /api/visitors
  * @tags Visitors
  * @security BearerAuth
  * @summary Create Visitors (addVisitors)
@@ -67,7 +67,7 @@ export const visitorsRouter = visitorsRoutes();
  */
 
 /**
- * GET /api/report/count/elements
+ * GET /api/visitors/count/elements
  * @tags Visitors
  * @security BearerAuth
  * @summary List Visitors (getVisitors)

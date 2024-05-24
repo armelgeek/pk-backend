@@ -102,7 +102,6 @@ export abstract class GenericSA<
         const toAggrecate = properties
           .filter(({ isID, entity }) => isID && entity?.name)
           .reduce((acc, { name, entity, isArray }) => {
-            // return ({ isArray, ...entity });
             let lookup2 = [];
             const lookup = {
               $lookup: {
@@ -317,12 +316,40 @@ export abstract class GenericSA<
         match,
         bo,
         queries,
+        lookup = [],
+        geoNear,
         sort,
       } = options;
       let newQueries = queries;
       let new__Queries = {};
       const properties = dataTDO[this.name]?.attributes;
-      let aggregate = [{ $match: {} }];
+
+      const geoNearAggregate = geoNear ? [{ $geoNear: JSON.parse(geoNear) }] : [];
+
+      let aggregate = lookup
+        ? JSON.parse(lookup).reduce((acc, curr) => {
+            const { from, foreignField, localField } = curr;
+            const lookup = {
+              $lookup: {
+                from,
+                localField,
+                foreignField: foreignField || '_id',
+                as: from,
+              },
+            };
+            return [
+              ...acc,
+              lookup,
+              {
+                $unwind: {
+                  path: `$${from}`,
+                  preserveNullAndEmptyArrays: true,
+                },
+              },
+            ];
+          }, [])
+        : [];
+
       if (!bo && properties) {
         const toAggregate = properties
           .filter(({ isID, entity }) => isID && entity?.name)
@@ -350,7 +377,11 @@ export abstract class GenericSA<
             }
             return [...acc, lookup];
           }, []);
-        aggregate = [...aggregate, ...toAggregate];
+        aggregate = [
+          ...aggregate,
+          ...toAggregate,
+          ...geoNearAggregate,
+        ];
       }
 
       if (queries && Array.isArray(Object.keys(queries)) && properties) {

@@ -30040,7 +30040,7 @@
 						"$ref": "AAAAAAGPoF7REkSUicg="
 					},
 					"name": "add",
-					"route": "report",
+					"route": "visitors",
 					"method": "post"
 				},
 				{
@@ -30050,7 +30050,7 @@
 						"$ref": "AAAAAAGPoF7REkSUicg="
 					},
 					"name": "get",
-					"route": "report/count/elements",
+					"route": "visitors/count/elements",
 					"method": "get"
 				}
 			]

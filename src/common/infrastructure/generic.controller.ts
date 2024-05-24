@@ -165,8 +165,9 @@ export class GenericController<
    */
   findAll = async (req, res, next) => {
     const {
-      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, ...queries },
+      query: { page = 1, rowPerPage = 10, light, direction, sortField, order,  match, search, lookup, ...queries },
     } = req;
+
     try {
       const dtos = await this.serviceSA.findAll({
         search,
@@ -177,6 +178,7 @@ export class GenericController<
         light: JSON.parse(light || 'true'),
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
+        lookup
       });
 
       res.locals.data = dtos;

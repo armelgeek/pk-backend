@@ -316,7 +316,7 @@ export abstract class GenericSA<
         match,
         bo,
         queries,
-        lookup = [],
+        lookup,
         geoNear,
         sort,
       } = options;

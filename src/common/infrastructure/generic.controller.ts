@@ -193,6 +193,7 @@ export class GenericController<
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
         lookup,
+        geoNear
       });
 
       res.locals.data = dtos;

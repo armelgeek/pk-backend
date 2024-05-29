@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb';
 
 import { GenericFactory } from '../constraint/factory/generic.factory';
 import { GenericSM } from './generic.sm';
-import { factoryObject, toQueryOr } from './transformer';
+import { factoryObject, toQueryAnd, toQueryOr } from './transformer';
 
 import { dataTDO } from '../../data';
 import { removeId } from '../../utils';
@@ -328,26 +328,26 @@ export abstract class GenericSA<
 
       let aggregate = lookup
         ? JSON.parse(lookup).reduce((acc, curr) => {
-            const { from, foreignField, localField } = curr;
-            const lookup = {
-              $lookup: {
-                from,
-                localField,
-                foreignField: foreignField || '_id',
-                as: from,
+          const { from, foreignField, localField } = curr;
+          const lookup = {
+            $lookup: {
+              from,
+              localField,
+              foreignField: foreignField || '_id',
+              as: from,
+            },
+          };
+          return [
+            ...acc,
+            lookup,
+            {
+              $unwind: {
+                path: `$${from}`,
+                preserveNullAndEmptyArrays: true,
               },
-            };
-            return [
-              ...acc,
-              lookup,
-              {
-                $unwind: {
-                  path: `$${from}`,
-                  preserveNullAndEmptyArrays: true,
-                },
-              },
-            ];
-          }, [])
+            },
+          ];
+        }, [])
         : [];
 
       if (!bo && properties) {
@@ -378,9 +378,9 @@ export abstract class GenericSA<
             return [...acc, lookup];
           }, []);
         aggregate = [
+          ...geoNearAggregate,
           ...aggregate,
           ...toAggregate,
-          ...geoNearAggregate,
         ];
       }
 
@@ -394,8 +394,15 @@ export abstract class GenericSA<
           } else if (key === '$or') {
             return {
               ...acc,
-              [`${key}`]: toQueryOr(queries[key], this.name),
+              ...toQueryOr(queries[key], this.name),
             };
+ 
+          } else if (key === '$and') {
+            return {
+              ...acc,
+              ...toQueryAnd(queries[key], this.name),
+            };
+
           } else if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
             if (Array.isArray(queries[key])) {
               return {

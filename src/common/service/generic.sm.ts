@@ -139,12 +139,13 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
     const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : []
 
-    return this.repository
+    const aggregationPipeline = this.repository
       .aggregate([
-        { $match: { ...whereOut, ...aggregate_search } },
         ...aggregate,
+        { $match: { ...whereOut, ...aggregate_search } },
         ...search_query,
         { $sort: { ...sort_aggregate } },
+
         // {
         //   $geoWithin: {
         //     $geometry: {
@@ -155,13 +156,25 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         //   $maxDistance: 10000,
         // },
         {
+          $group: {
+            _id: "$_id",
+            doc: { $first: "$$ROOT" }
+          },
+        },
+        {
+          $replaceRoot: { newRoot: "$doc" } // Replace la racine avec le document complet conservé
+        },
+        {
           $facet: {
             metadata: [{ $count: 'total' }],
             data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
           },
         },
+
       ])
       .toArray();
+    console.log("Aggregation Pipeline:", aggregationPipeline);
+    return aggregationPipeline
   }
 
   async count(query: ObjectLiteral): Promise<any> {

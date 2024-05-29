@@ -47,8 +47,13 @@ export const factoryObject = (data, name) => {
 };
 
 export const toQueryOr = (query, name) => {
-  const queries = JSON.parse(query['$or']);
-  return {
-    $or: queries?.map((item) => factoryObject(item, name)),
-  };
+  const queries = JSON.parse(query);
+  return { $or: queries?.map((item) => factoryObject(item, name)) };
 };
+
+
+export const toQueryAnd = (query, name) => {
+  const queries = JSON.parse(query);
+  return { $and: queries?.map((item) => factoryObject(item, name)) };
+};
+

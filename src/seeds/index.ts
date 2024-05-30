@@ -419,7 +419,6 @@ export class InitSeeds implements Seeder {
       adress: 'text',
       email: 'text',
       description: 'text',
-      location: '2dsphere',
     });
     await complementaryInformation.createCollectionIndex({
       nationality: 'text',
@@ -440,9 +439,9 @@ export class InitSeeds implements Seeder {
     await sponsor.createCollectionIndex({ nom: 'text', description: 'text' });
     await partener.createCollectionIndex({ name: 'text', description: 'text' });
     await pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
-    await event.createCollectionIndex({ name: 'text', description: 'text', location: '2dsphere' });
+    await event.createCollectionIndex({ name: 'text', description: 'text' });
 
-    await profile.createCollectionIndex({ location: '2dsphere' });
+    // await profile.createCollectionIndex({ location: '2dsphere' });
     // await event.createCollectionIndex({ location: '2dsphere' });
     // await page.createCollectionIndex({ location: '2dsphere' });
 

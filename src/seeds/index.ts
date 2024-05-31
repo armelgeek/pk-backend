@@ -441,9 +441,9 @@ export class InitSeeds implements Seeder {
     await pseudo.createCollectionIndex({ name: 'text', link: 'text', code: 'text' });
     await event.createCollectionIndex({ name: 'text', description: 'text' });
 
-    // await profile.createCollectionIndex({ location: '2dsphere' });
-    // await event.createCollectionIndex({ location: '2dsphere' });
-    // await page.createCollectionIndex({ location: '2dsphere' });
+    await profile.createCollectionIndex({ location: '2dsphere' });
+    await event.createCollectionIndex({ location: '2dsphere' });
+    await page.createCollectionIndex({ location: '2dsphere' });
 
     if (subsriptionOfferCount === 0) {
       await initStripeProduct();

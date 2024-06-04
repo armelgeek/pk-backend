@@ -30107,15 +30107,6 @@
 					},
 					"name": "value",
 					"type": "string"
-				},
-				{
-					"_type": "UMLAttribute",
-					"_id": "AAAAAAGP4elY1rduDtc=",
-					"_parent": {
-						"$ref": "AAAAAAGP4ejuTbdmqaI="
-					},
-					"name": "id",
-					"type": "string"
 				}
 			]
 		},

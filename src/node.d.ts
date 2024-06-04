@@ -112,3 +112,7 @@
   declare interface ReportResponseDTO { }
   declare interface VisitorsRequestDTO { }
   declare interface VisitorsResponseDTO { }
+  declare interface FilterItemRequestDTO { }
+  declare interface FilterItemResponseDTO { }
+  declare interface FilterRequestDTO { }
+  declare interface FilterResponseDTO { }

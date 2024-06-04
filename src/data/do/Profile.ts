@@ -68,6 +68,9 @@ export class ProfileDO {
   @Column("simple-json")
   location: { type: string, coordinates: string[] };
 
+  @Column({nullable: true, unique: false})
+  filter: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

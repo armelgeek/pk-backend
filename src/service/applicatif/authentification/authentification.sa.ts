@@ -21,6 +21,10 @@ export class AuthentificationSA {
     return utilisateurSM.findOne({ email });
   }
 
+  findByEmailOrUsernameOrPhoneUsers(email: string): Promise<any> {
+    return utilisateurSM.findOne({ email });
+  }
+
   findById(id: string) {
     return utilisateurSM.findById(id);
   }

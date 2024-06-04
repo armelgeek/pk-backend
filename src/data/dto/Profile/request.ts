@@ -20,6 +20,7 @@ export type ProfileRequestDTO = {
    followed?: string[];
    situation?: string;
    location?: LocationRequestDTO;
+   filter?: string;
 }
 
 /**
@@ -45,5 +46,6 @@ export type ProfileRequestDTO = {
  * @property {array<string>} followed
  * @property {string} situation
  * @property {LocationRequestDTO} location
+ * @property {string} filter
  */
 

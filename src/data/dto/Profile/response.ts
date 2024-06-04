@@ -20,6 +20,7 @@ export type ProfileResponseDTO = {
    followed?: string[];
    situation?: string;
    location?: LocationRequestDTO;
+   filter?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -48,6 +49,7 @@ export type ProfileResponseDTO = {
  * @property {array<string>} followed
  * @property {string} situation
  * @property {LocationRequestDTO} location
+ * @property {string} filter
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

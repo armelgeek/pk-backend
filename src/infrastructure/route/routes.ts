@@ -51,6 +51,7 @@ import { registrationRouter } from './Registration';
 import { settingsRouter } from './Settings';
 import { reportRouter } from './Report';
 import { visitorsRouter } from './Visitors';
+import { filterRouter } from './Filter';
 
 export const routes = () => {
   const router = Router();
@@ -106,6 +107,7 @@ export const routes = () => {
  router.use('/settings', settingsRouter);
  router.use('/report', reportRouter);
  router.use('/visitors', visitorsRouter);
+ router.use('/filter', filterRouter);
   
   return router;
 };

@@ -5,6 +5,7 @@ export const authentificationRequestDTOSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required().regex(regexPatternValidator.password),
   token: Joi.string().allow(''),
+  type: Joi.string().allow(''),
 });
 
 export const resetPasswordRequestDTOSchema = Joi.object({

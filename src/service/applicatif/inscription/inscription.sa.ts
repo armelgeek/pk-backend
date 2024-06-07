@@ -77,11 +77,11 @@ export class InscriptionSA {
       // pour prevenir la verification de mail et telephone parce que si l'utilisateur s'inscrit de nouveau
       // il faut juste mettre a jour l'information
       if (utilisateurByEmailOrPhone || utilisateurByPhone) {
-        if (utilisateurByPhone.code != null && utilisateurByPhone.code != "" && utilisateurByEmailOrPhone.code != null && utilisateurByEmailOrPhone.code != "") {
+        if (utilisateurByPhone.code &&  utilisateurByEmailOrPhone.code && utilisateurByPhone.code != null &&  utilisateurByPhone.code != "" && utilisateurByEmailOrPhone.code != null && utilisateurByEmailOrPhone.code != "") {
 
           const code = entierAleatoire(1111, 9999).toString();
           const expirationDate = new Date();
-          expirationDate.setMinutes(expirationDate.getMinutes() + 10); // le code expire dans 10 Minutes
+          expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
 
           const updated = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id || utilisateurByPhone._id, {
             username: utilisateurDO.username,
@@ -147,7 +147,7 @@ export class InscriptionSA {
 
       const code = entierAleatoire(1111, 9999).toString();
       const expirationDate = new Date();
-      expirationDate.setMinutes(expirationDate.getMinutes() + 10); // le code expire dans 10 Minutes
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
       const saved = await utilisateurSM.create(utilisateurDO);
       if (!saved) {
         return {
@@ -277,7 +277,7 @@ export class InscriptionSA {
 
       const code = entierAleatoire(1111, 9999).toString();
       const expirationDate = new Date();
-      expirationDate.setMinutes(expirationDate.getMinutes() + 10); // le code expire dans 10 Minutes
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
       const saved = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, { code, codeExpireAt: expirationDate });
 
       await sendMail({
@@ -326,7 +326,7 @@ export class InscriptionSA {
         };
       }
       if (utilisateurByEmailOrPhone?.code == code) {
-        if (new Date(utilisateurByEmailOrPhone?.codeExpireAt) >= new Date()) {
+        if (utilisateurByEmailOrPhone.codeExpireAt && new Date(utilisateurByEmailOrPhone?.codeExpireAt) >= new Date()) {
           const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone?._id, {
             code: '',
             codeExpireAt: null,

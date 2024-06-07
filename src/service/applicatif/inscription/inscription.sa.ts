@@ -17,6 +17,7 @@ import { profileSA } from '../Profile';
 import { profileFactory } from '../../../constraint/factory/Profile';
 import { complementaryinformationSA } from '../ComplementaryInformation';
 import { baseinformationSA } from '../BaseInformation';
+import { sendSMS } from '../../middleware/sms';
 
 export function entierAleatoire(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -44,30 +45,111 @@ export class InscriptionSA {
     });
   }
 
+  async updateProfile(dto: InscriptionRequestDTO, profileId: number | string, id: number | string) {
+    const { email, phone = '', nom = '', prenom = '', imageUrl = '' } = dto;
+    const info = await complementaryinformationSA.partialUpdate(id, {
+      email,
+      phone,
+    });
+    return await profileSA.partialUpdate(profileId, {
+      photo: imageUrl,
+      type: 'VIP',
+      email,
+      phone,
+      nom,
+      prenom,
+      imageUrls: [],
+    });
+  }
+
   async create(dto: InscriptionRequestDTO) {
     try {
       const utilisateurDO = this.factory.toDo(dto);
       const { email, password, phone } = dto;
-
+      let utilisateurByPhone = null;
       const utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
+
       if (phone?.phoneNumber) {
-        const utilisateurByPhone = await utilisateurSM.findOneNotFail({
+        utilisateurByPhone = await utilisateurSM.findOneNotFail({
           phone: phone
         });
+      }
+      
+      // pour prevenir la verification de mail et telephone parce que si l'utilisateur s'inscrit de nouveau
+      // il faut juste mettre a jour l'information
+      if (utilisateurByEmailOrPhone || utilisateurByPhone) {
+        if (utilisateurByEmailOrPhone?.code != null && utilisateurByEmailOrPhone?.code != "") {
 
-        if (utilisateurByPhone) {
-          throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
+          const code = entierAleatoire(1111, 9999).toString();
+          const expirationDate = new Date();
+          expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
+
+          const updated = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, {
+            username: utilisateurDO.username,
+            password: await bcrypt.hashSync(utilisateurDO.password, 10),
+            email: utilisateurDO.email,
+            phone: utilisateurDO.phone,
+          });
+          if (!updated) {
+            return {
+              create: false,
+            };
+          }
+
+          const profile = await profileSA.findOneNotFail({ _id: utilisateurByEmailOrPhone.profileId || utilisateurByPhone.profileId });
+
+          await this.updateProfile(dto, utilisateurByEmailOrPhone.profileId || utilisateurByPhone.profileId, profile.info);
+
+          await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id || utilisateurByPhone._id, {
+            code,
+            codeExpireAt: expirationDate,
+            password: await bcrypt.hashSync(password, 10),
+          });
+          await sendMail({
+            to: email,
+            subject: '[Pockerapply] - Validation compte',
+            body: `
+            Bonjour ${utilisateurDO.username || utilisateurDO.nom},
+            <br /> <br />
+            <span>
+              <p>Voici votre code de validation: ${code} , le code expire dans 5 minutes.</p>
+            <br />
+            <br /> 
+            Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
+            <br /> <br /> <br />
+            Cordialement,
+            <br /> <br />
+            L'équipe Pockerapply.
+          `,
+          });
+          if (utilisateurDO.phone?.callingCode && utilisateurDO.phone?.phoneNumber) {
+            await sendSMS(
+              `Bonjour ${utilisateurDO.username}, Voici votre code de validation: ${code} , le code expire dans 10 minutes. L'équipe Pockerapply`,
+              `${utilisateurDO.phone?.callingCode}${utilisateurDO.phone?.phoneNumber}`,
+            );
+          }
+          return {
+            create: true,
+          };
+        } else {
+
+          if (utilisateurByEmailOrPhone) {
+            throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
+          }
+          else if (utilisateurByPhone) {
+            throw new Exception(HttpStatus.BAD_REQUEST, 'Numéro téléphone existant');
+          }
+          else if (utilisateurByEmailOrPhone && utilisateurByPhone) {
+
+            // throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
+          }
         }
       }
 
-      if (utilisateurByEmailOrPhone) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
-      }
-
       const code = entierAleatoire(1111, 9999).toString();
-
+      const expirationDate = new Date();
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
       const saved = await utilisateurSM.create(utilisateurDO);
-
       if (!saved) {
         return {
           create: false,
@@ -77,28 +159,33 @@ export class InscriptionSA {
       const profile = await this.createProfile(dto);
       await utilisateurSM.partialUpdate(saved._id, {
         code,
+        codeExpireAt: expirationDate,
         profileId: new ObjectID(profile?.id),
         password: await bcrypt.hashSync(password, 10),
       });
-
       await sendMail({
         to: email,
         subject: '[Pockerapply] - Validation compte',
         body: `
-      Bonjour ${utilisateurDO.username || utilisateurDO.nom},
-      <br /> <br />
-      <span>
-        <p>Voici votre code de validation: ${code}</p>
-      <br />
-      <br /> 
-      Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
-      <br /> <br /> <br />
-      Cordialement,
-      <br /> <br />
-      L'équipe Pockerapply.
-      `,
+        Bonjour ${utilisateurDO.username || utilisateurDO.nom},
+        <br /> <br />
+        <span>
+          <p>Voici votre code de validation: ${code} , le code expire dans 5 minutes.</p>
+        <br />
+        <br /> 
+        Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
+        <br /> <br /> <br />
+        Cordialement,
+        <br /> <br />
+        L'équipe Pockerapply.
+        `,
       });
-
+      if (utilisateurDO.phone?.callingCode && utilisateurDO.phone?.phoneNumber) {
+        await sendSMS(
+          `Bonjour ${utilisateurDO.username}, Voici votre code de validation: ${code} , le code expire dans 5 minutes. L'équipe Pockerapply`,
+          `${utilisateurDO.phone?.callingCode}${utilisateurDO.phone?.phoneNumber}`,
+        );
+      }
       return {
         create: true,
       };
@@ -182,7 +269,7 @@ export class InscriptionSA {
       }
 
       if (!utilisateurByEmailOrPhone) {
-        throw new Exception(HttpStatus.BAD_REQUEST, 'Email déjà existant');
+        throw new Exception(HttpStatus.BAD_REQUEST, 'Utilisateur introuvable');
       }
 
       if (utilisateurByEmailOrPhone?.actif) {
@@ -190,7 +277,9 @@ export class InscriptionSA {
       }
 
       const code = entierAleatoire(1111, 9999).toString();
-      const saved = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, { code });
+      const expirationDate = new Date();
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
+      const saved = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, { code, codeExpireAt: expirationDate });
 
       await sendMail({
         to: email,
@@ -199,7 +288,7 @@ export class InscriptionSA {
       Bonjour ${utilisateurByEmailOrPhone.username || utilisateurByEmailOrPhone.nom},
       <br /> <br />
       <span>
-        <p>Voici votre code de validation: ${code}</p>
+        <p>Voici votre code de validation: ${code},le code expire dans 5 minutes.</p>
       <br />
       <br /> 
       Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
@@ -209,7 +298,12 @@ export class InscriptionSA {
       L'équipe Pockerapply.
       `,
       });
-
+      if (utilisateurByEmailOrPhone.phone?.callingCode && utilisateurByEmailOrPhone.phone?.phoneNumber) {
+        await sendSMS(
+          `Bonjour ${utilisateurByEmailOrPhone.username}, Voici votre code de validation: ${code} , le code expire dans 5 minutes. L'équipe Pockerapply`,
+          `${utilisateurByEmailOrPhone.phone?.callingCode}${utilisateurByEmailOrPhone.phone?.phoneNumber}`,
+        );
+      }
       return saved;
     } catch (error) {
       return Promise.reject(error);
@@ -219,33 +313,54 @@ export class InscriptionSA {
   async validationCode(dto: ValidationCodeRequestDTO) {
     try {
       const { email, code, phone } = dto;
-      let utilisateurByEmailOrPhone;
-      if (phone) {
+      //let utilisateurByEmailOrPhone;
+      /**if (phone) {
         utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ phone });
-      } else if(email) {
-        utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
-      }
-      
-      if (utilisateurByEmailOrPhone?.code === code) {
-        const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone?._id, {
-          code: '',
-          actif: true,
-        });
-
-        const { accessToken, refreshToken } = await generateTokens(value);
-
+      } else if (email) {**/
+      let utilisateurByEmailOrPhone = await utilisateurSM.findOneNotFail({ email });
+      //}
+      if (!utilisateurByEmailOrPhone) {
         return {
-          id: value?._id,
-          validation: true,
-          accessToken,
-          refreshToken,
-          deviceToken: '',
-          utilisateur: value,
+          validation: false,
+          expired: false,
+          userNotFound: true
         };
       }
-      return {
-        validation: false,
-      };
+      if (utilisateurByEmailOrPhone?.code == code) {
+        if (utilisateurByEmailOrPhone.codeExpireAt && new Date(utilisateurByEmailOrPhone?.codeExpireAt) >= new Date()) {
+          const { value } = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone?._id, {
+            code: '',
+            codeExpireAt: null,
+            actif: true,
+          });
+
+          const { accessToken, refreshToken } = await generateTokens(value);
+
+          return {
+            id: value?._id,
+            validation: true,
+            expired: false,
+            userNotFound: false,
+            accessToken,
+            refreshToken,
+            deviceToken: '',
+            utilisateur: value,
+          };
+        } else {
+          this.reSendCode({ email, phone })
+          return {
+            validation: false,
+            expired: true,
+            userNotFound: false
+          };
+        }
+      } else {
+        return {
+          validation: false,
+          expired: false,
+          userNotFound: false
+        };
+      }
     } catch (error) {
       return Promise.reject(error);
     }

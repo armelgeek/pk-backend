@@ -74,16 +74,17 @@ export class InscriptionSA {
           phone: phone
         });
       }
+      
       // pour prevenir la verification de mail et telephone parce que si l'utilisateur s'inscrit de nouveau
       // il faut juste mettre a jour l'information
       if (utilisateurByEmailOrPhone || utilisateurByPhone) {
-        if (utilisateurByPhone.code &&  utilisateurByEmailOrPhone.code && utilisateurByPhone.code != null &&  utilisateurByPhone.code != "" && utilisateurByEmailOrPhone.code != null && utilisateurByEmailOrPhone.code != "") {
+        if (utilisateurByEmailOrPhone?.code != null && utilisateurByEmailOrPhone?.code != "") {
 
           const code = entierAleatoire(1111, 9999).toString();
           const expirationDate = new Date();
           expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
 
-          const updated = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id || utilisateurByPhone._id, {
+          const updated = await utilisateurSM.partialUpdate(utilisateurByEmailOrPhone._id, {
             username: utilisateurDO.username,
             password: await bcrypt.hashSync(utilisateurDO.password, 10),
             email: utilisateurDO.email,

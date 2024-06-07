@@ -111,7 +111,7 @@ export class InscriptionSA {
             Bonjour ${utilisateurDO.username || utilisateurDO.nom},
             <br /> <br />
             <span>
-              <p>Voici votre code de validation: ${code} , le code expire dans 10 minutes.</p>
+              <p>Voici votre code de validation: ${code} , le code expire dans 5 minutes.</p>
             <br />
             <br /> 
             Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
@@ -169,7 +169,7 @@ export class InscriptionSA {
         Bonjour ${utilisateurDO.username || utilisateurDO.nom},
         <br /> <br />
         <span>
-          <p>Voici votre code de validation: ${code} , le code expire dans 10 minutes.</p>
+          <p>Voici votre code de validation: ${code} , le code expire dans 5 minutes.</p>
         <br />
         <br /> 
         Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
@@ -181,7 +181,7 @@ export class InscriptionSA {
       });
       if (utilisateurDO.phone?.callingCode && utilisateurDO.phone?.phoneNumber) {
         await sendSMS(
-          `Bonjour ${utilisateurDO.username}, Voici votre code de validation: ${code} , le code expire dans 10 minutes. L'équipe Pockerapply`,
+          `Bonjour ${utilisateurDO.username}, Voici votre code de validation: ${code} , le code expire dans 5 minutes. L'équipe Pockerapply`,
           `${utilisateurDO.phone?.callingCode}${utilisateurDO.phone?.phoneNumber}`,
         );
       }
@@ -287,7 +287,7 @@ export class InscriptionSA {
       Bonjour ${utilisateurByEmailOrPhone.username || utilisateurByEmailOrPhone.nom},
       <br /> <br />
       <span>
-        <p>Voici votre code de validation: ${code},le code expire dans 10 minutes.</p>
+        <p>Voici votre code de validation: ${code},le code expire dans 5 minutes.</p>
       <br />
       <br /> 
       Si vous n'êtes pas à l'origine de cette inscription, veuillez ignorer ce mail.
@@ -299,7 +299,7 @@ export class InscriptionSA {
       });
       if (utilisateurByEmailOrPhone.phone?.callingCode && utilisateurByEmailOrPhone.phone?.phoneNumber) {
         await sendSMS(
-          `Bonjour ${utilisateurByEmailOrPhone.username}, Voici votre code de validation: ${code} , le code expire dans 10 minutes. L'équipe Pockerapply`,
+          `Bonjour ${utilisateurByEmailOrPhone.username}, Voici votre code de validation: ${code} , le code expire dans 5 minutes. L'équipe Pockerapply`,
           `${utilisateurByEmailOrPhone.phone?.callingCode}${utilisateurByEmailOrPhone.phone?.phoneNumber}`,
         );
       }

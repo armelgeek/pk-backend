@@ -11,6 +11,12 @@ export class VisitorsDO {
   @Column({nullable: true, unique: false})
   profileId: string;
 
+  @Column({nullable: true, unique: false})
+  target: string;
+  
+  @Column({nullable: true, unique: false})
+  type: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

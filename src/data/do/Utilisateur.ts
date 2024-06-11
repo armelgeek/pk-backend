@@ -80,6 +80,9 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   twoFactorAuthentication: string;
 
+  @Column({nullable: true, unique: false})
+  verified: boolean;
+  
   @Column({type: 'timestamptz', nullable: true})
   codeExpireAt : Date
   

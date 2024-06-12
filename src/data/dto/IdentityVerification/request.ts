@@ -8,6 +8,8 @@ export type IdentityVerificationRequestDTO = {
    partenariatId?: string;
    partnerId?: string;
    type?: string;
+   status: string;
+   commentaire?: string
 }
 
 /**
@@ -21,5 +23,7 @@ export type IdentityVerificationRequestDTO = {
  * @property {string} partenariatId
  * @property {string} partnerId
  * @property {string} type
+ * @property {string} status
+ * @property {string} commentaire
  */
 

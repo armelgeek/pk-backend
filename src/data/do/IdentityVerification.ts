@@ -32,6 +32,13 @@ export class IdentityVerificationDO {
   @Column({nullable: true, unique: false})
   type: string;
 
+
+  @Column({nullable: true, unique: false})
+  status: string;
+
+  @Column({nullable: true, unique: false})
+  commentaire: string;
+  
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

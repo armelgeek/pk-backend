@@ -71,6 +71,9 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   filter: string;
 
+  @Column({nullable: true, unique: false, default: false})
+  verified: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

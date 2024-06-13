@@ -66,3 +66,13 @@ export const identityverificationRouter = identityverificationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/identity-verification/send-verification-mail
+ * @tags IdentityVerification
+ * @security BearerAuth
+ * @summary Create IdentityVerification (sendMailIdentityVerification)
+ * @param {IdentityVerificationRequestDTO} request.body
+ * @return {object} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */

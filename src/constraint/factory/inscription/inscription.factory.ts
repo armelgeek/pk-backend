@@ -11,7 +11,7 @@ const commonSchema = {
   ...dataTDO.Utilisateur.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
 };
 
-const schema = { ...commonSchema, username: 'username' };
+const schema = { ...commonSchema, username: 'username',verified: false };
 // @ts-ignore
 const { password, ...withOutPassword } = schema;
 const responseSchema = { id: '_id', ...withOutPassword };

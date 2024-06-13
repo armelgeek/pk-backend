@@ -62,6 +62,7 @@ export const genericRoute = (option: RouteOption) => {
   );
 
   router.get('/sum/:field', conditionnalJwtPassport(isSecured, name), controller.sum, responseFormatter);
+  router.post('/send-verification-mail', conditionnalJwtPassport(isSecured, name), controller.sendMail, responseFormatter);
 
   return router;
 };

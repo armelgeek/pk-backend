@@ -3,6 +3,7 @@ import { HttpStatus } from '../../data/constants/http-status';
 import { GenericFactory } from '../constraint/factory/generic.factory';
 import { GenericSA } from '../service/generic.sa';
 import { GenericSM } from '../service/generic.sm';
+import { sendMail as sendMailFunction } from '../../service/middleware/nodemailer';
 
 export class GenericController<
   TDo,
@@ -286,4 +287,53 @@ export class GenericController<
       next(error);
     }
   };
+  sendMail = async (req, res, next) => {
+
+    try {
+      const { nom, prenom, email, status, comment } = req.body;
+
+      if (status === 1) {
+        await sendMailFunction({
+          to: email,
+          subject: '[PokerApps] - Validation de l\'identité',
+          body: `
+          Bonjour ${nom} ${prenom},
+          <br /> <br />
+          <span>
+            <p>Votre demande de validation d'identité a été acceptée.</p>
+            <p>Merci de faire partie de notre communauté.</p>
+          </span>
+          <br /> <br /> <br />
+          Cordialement,
+          <br /> <br />
+          L'équipe de PokerApps.
+        `,
+        });
+      } else if (status === 2) {
+        await sendMailFunction({
+          to: email,
+          subject: '[Pockerapply] - Refus de validation d\'identité',
+          body: `
+          Bonjour ${nom} ${prenom},
+          <br /> <br />
+          <span>
+            <p>Nous regrettons de vous informer que votre demande de validation d'identité a été refusée.</p>
+            <p>Raison : ${comment}</p>
+          </span>
+          <br /> <br /> <br />
+          Cordialement,
+          <br /> <br />
+          L'équipe Pockerapply.
+        `,
+        });
+      }
+      res.locals.data = true;
+      res.locals.statusCode = HttpStatus.OK;
+      next();
+    } catch (error) {
+      console.log('error',error);
+      next(error);
+
+    }
+  }
 }

@@ -12,6 +12,7 @@ export interface InscriptionRequestDTO {
   ville: string;
   password: string;
   adresse: string;
+  verified: boolean;
 }
 
 /**
@@ -30,6 +31,7 @@ export interface InscriptionRequestDTO {
  * @property {string} facebookId
  * @property {string} appleId
  * @property {string} imageUrl
+ * @property {string} verified
  */
 
 export interface SocialInscriptionRequestDTO {

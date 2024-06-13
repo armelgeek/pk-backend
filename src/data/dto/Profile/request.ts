@@ -21,6 +21,7 @@ export type ProfileRequestDTO = {
    situation?: string;
    location?: LocationRequestDTO;
    filter?: string;
+   verified?: boolean;
 }
 
 /**

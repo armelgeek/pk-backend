@@ -1,27 +1,27 @@
 export type ProfileResponseDTO = {
-  info?: string;
-  photo?: string;
-  cover?: string;
-  type?: string;
-  email?: string;
-  phone?: PhoneRequestDTO;
-  date_of_birth?: Date;
-  gender?: string;
-  prenom?: string;
-  imageUrls?: string[];
-  country?: string;
-  city?: string;
-  children?: string;
-  description?: string;
-  nom?: string;
-  verification?: string;
-  currency?: CurrencyRequestDTO;
-  friends?: string[];
-  followed?: string[];
-  situation?: string;
-  location?: LocationRequestDTO;
-  filter?: string;
-  verified?: boolean;
+   info?: string;
+   photo?: string;
+   cover?: string;
+   type?: string;
+   email?: string;
+   phone?: PhoneRequestDTO;
+   date_of_birth?: Date;
+   gender?: string;
+   prenom?: string;
+   imageUrls?: string[];
+   country?: string;
+   city?: string;
+   children?: string;
+   description?: string;
+   nom?: string;
+   verification?: string;
+   currency?: CurrencyRequestDTO;
+   friends?: string[];
+   followed?: string[];
+   situation?: string;
+   location?: LocationRequestDTO;
+   filter?: string;
+   verified?: boolean;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -51,6 +51,7 @@ export type ProfileResponseDTO = {
  * @property {string} situation
  * @property {LocationRequestDTO} location
  * @property {string} filter
+ * @property {boolean} verified
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -79,10 +79,13 @@ export class UtilisateurDO {
 
   @Column({nullable: true, unique: false})
   twoFactorAuthentication: string;
-  
-  @Column({type: 'timestamptz', nullable: true})
-  codeExpireAt : Date
-  
+
+  @Column({nullable: true, unique: false})
+  isNotOnboarding: boolean;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  codeExpireAt: Date;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

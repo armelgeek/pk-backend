@@ -23,9 +23,9 @@ export type UtilisateurRequestDTO = {
    lague?: string;
    username?: string;
    profileId?: string;
-   verified?: boolean;
-   codeExpireAt?: Date;
    twoFactorAuthentication?: string;
+   isNotOnboarding?: boolean;
+   codeExpireAt?: Date;
 }
 
 /**
@@ -54,8 +54,8 @@ export type UtilisateurRequestDTO = {
  * @property {string} lague
  * @property {string} username
  * @property {string} profileId
- * @property {string} verified
- * @property {string} codeExpireAt
  * @property {string} twoFactorAuthentication
+ * @property {boolean} isNotOnboarding
+ * @property {Date} codeExpireAt
  */
 

@@ -13,7 +13,7 @@ export class VisitorsDO {
 
   @Column({nullable: true, unique: false})
   target: string;
-  
+
   @Column({nullable: true, unique: false})
   type: string;
 

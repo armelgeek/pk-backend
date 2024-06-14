@@ -24,6 +24,8 @@ export type UtilisateurResponseDTO = {
    username?: string;
    profileId?: string;
    twoFactorAuthentication?: string;
+   isNotOnboarding?: boolean;
+   codeExpireAt?: Date;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -56,6 +58,8 @@ export type UtilisateurResponseDTO = {
  * @property {string} username
  * @property {string} profileId
  * @property {string} twoFactorAuthentication
+ * @property {boolean} isNotOnboarding
+ * @property {Date} codeExpireAt
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

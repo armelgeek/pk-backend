@@ -48,5 +48,6 @@ export type ProfileRequestDTO = {
  * @property {string} situation
  * @property {LocationRequestDTO} location
  * @property {string} filter
+ * @property {boolean} verified
  */
 

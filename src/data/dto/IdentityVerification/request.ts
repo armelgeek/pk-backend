@@ -8,8 +8,8 @@ export type IdentityVerificationRequestDTO = {
    partenariatId?: string;
    partnerId?: string;
    type?: string;
-   status: string;
-   commentaire?: string
+   status?: string;
+   commentaire?: string;
 }
 
 /**

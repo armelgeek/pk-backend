@@ -1,9 +1,10 @@
-import { ObjectID as ObjectIDType, MongoRepository } from 'typeorm';
-import { HttpStatus } from '../../data/constants/http-status';
-import { GenericFactory } from '../constraint/factory/generic.factory';
-import { GenericSA } from '../service/generic.sa';
-import { GenericSM } from '../service/generic.sm';
-import { sendMail as sendMailFunction } from '../../service/middleware/nodemailer';
+import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
+import { ObjectID } from 'mongodb';
+import { HttpStatus } from "../../data/constants/http-status";
+import { GenericFactory } from "../constraint/factory/generic.factory";
+import { GenericSA } from "../service/generic.sa";
+import { GenericSM } from "../service/generic.sm";
+import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
 
 export class GenericController<
   TDo,
@@ -334,6 +335,32 @@ export class GenericController<
       console.log('error',error);
       next(error);
 
+    }
+  };
+  hasFollowed = async (req, res, next) => {
+  const { params } = req;
+    /**
+     * const andConditions = [
+     *   { age: { $gte: 18 } },
+     *   { status: 'active' }
+     * ];
+     *
+     * const orConditions = [
+     *   { role: 'admin' },
+     *   { role: 'user' }
+     * ];
+     */
+    try {
+      const data = await this.serviceSA.findByAttributes([
+        { follow:new ObjectID(params.profileId) },
+        { follower: new ObjectID(params.id)}
+      ],[]);
+      res.locals.data = data;
+      res.locals.statusCode = HttpStatus.OK;
+    next();
+   } catch (error) {
+    console.log('error',error);
+    next(error);
     }
   }
 }

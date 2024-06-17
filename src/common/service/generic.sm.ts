@@ -1,14 +1,7 @@
-import {
-  AggregationCursor,
-  DeepPartial,
-  FindConditions,
-  FindManyOptions,
-  MongoRepository,
-  ObjectLiteral,
-} from 'typeorm';
+import { DeepPartial, FindConditions, FindManyOptions, MongoRepository, ObjectLiteral } from "typeorm";
 import { ObjectID } from 'mongodb';
-import { HttpStatus } from '../../data/constants/http-status';
-import { Exception } from '../../service/middleware/exception-handler';
+import { HttpStatus } from "../../data/constants/http-status";
+import { Exception } from "../../service/middleware/exception-handler";
 
 export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TDo>> {
   protected repository: TRepository;
@@ -201,5 +194,21 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         },
       ])
       .toArray();
+  }
+
+  async findByAttributes(
+    andConditions: FindConditions<TDo>[],
+    orConditions: FindConditions<TDo>[]
+  ): Promise<TDo[]> {
+    try {
+      const andQuery = andConditions.length > 0 ? { $and: andConditions } : {};
+      const orQuery = orConditions.length > 0 ? { $or: orConditions } : {};
+      const finalQuery = { ...andQuery, ...orQuery };
+
+      return await this.repository.find({ where: finalQuery });
+    } catch (error) {
+      console.error('Error finding by attributes:', error);
+      throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by attributes');
+    }
   }
 }

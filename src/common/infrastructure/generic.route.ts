@@ -36,7 +36,7 @@ export const genericRoute = (option: RouteOption) => {
       controller.update,
       responseFormatter,
     );
-  
+
   router.get('/count/elements', conditionnalJwtPassport(isSecured, name), controller.count, responseFormatter);
   router.get('/find/one', conditionnalJwtPassport(isSecured, name), controller.findOne, responseFormatter);
 
@@ -63,6 +63,6 @@ export const genericRoute = (option: RouteOption) => {
 
   router.get('/sum/:field', conditionnalJwtPassport(isSecured, name), controller.sum, responseFormatter);
   router.post('/send-verification-mail', conditionnalJwtPassport(isSecured, name), controller.sendMail, responseFormatter);
-
+  router.get('/me/:profileId/has-followed/:id', conditionnalJwtPassport(isSecured, name), controller.hasFollowed, responseFormatter);
   return router;
 };

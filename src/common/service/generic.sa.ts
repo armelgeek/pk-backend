@@ -1,12 +1,12 @@
-import { FindConditions, MongoRepository, ObjectLiteral } from 'typeorm';
-import { ObjectID } from 'mongodb';
+import { FindConditions, MongoRepository, ObjectLiteral } from "typeorm";
+import { ObjectID } from "mongodb";
 
-import { GenericFactory } from '../constraint/factory/generic.factory';
-import { GenericSM } from './generic.sm';
-import { factoryObject, toQueryAnd, toQueryOr } from './transformer';
+import { GenericFactory } from "../constraint/factory/generic.factory";
+import { GenericSM } from "./generic.sm";
+import { factoryObject, toQueryAnd, toQueryOr } from "./transformer";
 
-import { dataTDO } from '../../data';
-import { removeId } from '../../utils';
+import { dataTDO } from "../../data";
+import { removeId } from "../../utils";
 
 export abstract class GenericSA<
   TDo,
@@ -396,7 +396,7 @@ export abstract class GenericSA<
               ...acc,
               ...toQueryOr(queries[key], this.name),
             };
- 
+
           } else if (key === '$and') {
             return {
               ...acc,
@@ -570,6 +570,14 @@ export abstract class GenericSA<
         sum,
         totalCount,
       };
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+  async findByAttributes(andConditions, orConditions): Promise<any> {
+    try {
+      const data = await this.serviceSM.findByAttributes(andConditions, orConditions);
+      return this.factory.toResponseDto(data || []);
     } catch (error) {
       return Promise.reject(error);
     }

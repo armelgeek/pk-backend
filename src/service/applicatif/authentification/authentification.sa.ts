@@ -71,6 +71,7 @@ export class AuthentificationSA {
   }
 
   async passwordResetRequest({ email, phone }: { email?: string; phone?: PhoneRequestDTO }, boHost: string) {
+
     try {
       let found;
       if (email) {
@@ -84,7 +85,9 @@ export class AuthentificationSA {
       }
 
       const code = entierAleatoire(1111, 9999).toString();
-      await utilisateurSM.partialUpdate(found.id, { code });
+      const expirationDate = new Date();
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
+      await utilisateurSM.partialUpdate(found.id, { code , codeExpireAt: expirationDate });
 
       if (email) {
         await sendMail({
@@ -131,7 +134,9 @@ export class AuthentificationSA {
       }
 
       const code = entierAleatoire(1111, 9999).toString();
-      await utilisateurSM.partialUpdate(found.id, { code });
+      const expirationDate = new Date();
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
+      await utilisateurSM.partialUpdate(found.id, { code,codeExpireAt: expirationDate});
 
       if (email) {
         await sendMail({

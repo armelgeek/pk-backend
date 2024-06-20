@@ -6,7 +6,7 @@ export class NotificationDO {
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  titre: string;
+  title: string;
 
   @Column({nullable: true, unique: false})
   message: string;
@@ -16,6 +16,12 @@ export class NotificationDO {
 
   @Column("simple-array")
   usersIds: string[];
+
+  @Column({nullable: true, unique: false})
+  user: string;
+
+  @Column({nullable: true, unique: false})
+  view: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

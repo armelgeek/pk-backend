@@ -6,3 +6,51 @@ const notificationRoutes = () => genericRoute({ controller: notificationControll
 
 export const notificationRouter = notificationRoutes();
 
+/**
+ * POST /api/profile
+ * @tags Notification
+ * @security BearerAuth
+ * @summary Create Notification (notificationNotification)
+ * @param {NotificationRequestDTO} request.body 
+ * @return {NotificationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/notification
+ * @tags Notification
+ * @security BearerAuth
+ * @summary List Notification (getAllNotification)
+ 
+ * @param {number} page.query
+ * @param {number} rowPerPage.query 
+ * @return {NotificationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * GET /api/notification/{id}
+ * @tags Notification
+ * @security BearerAuth
+ * @summary List Notification (getNotification)
+ 
+ * @param {string} id.path.required 
+ * @return {NotificationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * PUT /api/notification/partialUpdate/{id}
+ * @tags Notification
+ * @security BearerAuth
+ * @summary Update Notification (updateNotification)
+ * @param {NotificationRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

@@ -31,14 +31,11 @@ class App {
       this.initCron();
       // const res = await sendNotification({
       //   tokens: [
-      //     'dKbtcN7KR2-qSkmhLw-duC:APA91bE2hq1rjlE_f45DxurqM4sg1UfszdyAAf1jq9DdCem7IaDyV0k8TnwMSa2i6uvFe07rAeMxyLwsfiy9L-rNkYpG2D8rT-CvPxR3g8uJVczKNwE0WQnZns_ZyfjOb0OELiZqMe7C',
+      //     'ehfh-DJdSvKh6utgSoKWd6:APA91bGGLQRHESSmvRPIqufeW4cmmP6f8f-GIxsTuxG13bfjbsb8KdtPPNSKlR59BsmepKOOtzxJKujr3XC-RysJvukkJVz-fA4nS5DLXubRjRuZLX5_Y614IlDzn1D89vQDSYiUb9Lc',
       //   ],
       //   title: 'title',
       //   body: 'Push Notification for POC REACT NATIVE WEB',
       // });
-      // console.log('====================================');
-      // console.log(res);
-      // console.log('====================================');
       return this.app.listen(configs.port, () => logger.info(`Listening on ${configs.port}`));
     } catch (error) {
       return Promise.reject(error);

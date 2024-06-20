@@ -273,6 +273,12 @@ export abstract class GenericSA<
               [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },
             };
           }
+          if (ObjectID.isValid(queries[key])) {
+            return {
+              ...acc,
+              [key]: queries[key],
+            };
+          }
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },
@@ -377,6 +383,7 @@ export abstract class GenericSA<
             }
             return [...acc, lookup];
           }, []);
+
         aggregate = [
           ...geoNearAggregate,
           ...aggregate,
@@ -437,6 +444,13 @@ export abstract class GenericSA<
               [key.replace('__', '.')]: { $in: queries[key] },
             };
           }
+
+          if (ObjectID.isValid(queries[key])) {
+            return {
+              ...acc,
+              [key]: queries[key],
+            };
+          }
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },
@@ -471,6 +485,7 @@ export abstract class GenericSA<
                 [key.replace('__', '.')]: { $in: queries[key] },
               };
             }
+
             return {
               ...acc,
               [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },

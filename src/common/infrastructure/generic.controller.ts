@@ -1,10 +1,15 @@
-import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
+import { MongoRepository, ObjectID as ObjectIDType } from 'typeorm';
 import { ObjectID } from 'mongodb';
-import { HttpStatus } from "../../data/constants/http-status";
-import { GenericFactory } from "../constraint/factory/generic.factory";
-import { GenericSA } from "../service/generic.sa";
-import { GenericSM } from "../service/generic.sm";
-import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
+import { HttpStatus } from '../../data/constants/http-status';
+import { GenericFactory } from '../constraint/factory/generic.factory';
+import { GenericSA } from '../service/generic.sa';
+import { GenericSM } from '../service/generic.sm';
+import { sendMail as sendMailFunction } from '../../service/middleware/nodemailer';
+import { sendNotification } from '../../service/middleware/firebase-cloud-messaging';
+import { UtilisateurRepository } from '../../repository/Utilisateur';
+import { UtilisateurSA, utilisateurSA } from '../../service/applicatif/Utilisateur';
+import { DeviceSA, deviceSA } from '../../service/applicatif/Device';
+import { NotificationSA, notificationSA } from '../../service/applicatif/Notification';
 
 export class GenericController<
   TDo,
@@ -19,9 +24,15 @@ export class GenericController<
   >
 > {
   serviceSA: TSa;
+  userSA: UtilisateurSA;
+  deviceSA: DeviceSA;
+  notificationSA: NotificationSA;
 
   constructor(serviceSA) {
     this.serviceSA = serviceSA;
+    this.userSA = utilisateurSA;
+    this.deviceSA = deviceSA;
+    this.notificationSA = notificationSA;
   }
 
   /**
@@ -195,7 +206,7 @@ export class GenericController<
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
         lookup,
-        geoNear
+        geoNear,
       });
 
       res.locals.data = dtos;
@@ -289,14 +300,24 @@ export class GenericController<
     }
   };
   sendMail = async (req, res, next) => {
-
     try {
-      const { nom, prenom, email, status, comment } = req.body;
+      const { nom, prenom, email, status, comment, profileId } = req.body;
+      let tokens = [];
+      const currentUser = await this.userSA.findOne({ profileId: ObjectID(profileId) });
+
+      if (currentUser.id) {
+        const devices = await this.deviceSA.findAll({ user: currentUser.id });
+
+        if (devices?.items.length) {
+          tokens = devices.items.map(({ token }) => token);
+        }
+
+      }
 
       if (status === 1) {
         await sendMailFunction({
           to: email,
-          subject: '[PokerApps] - Validation de l\'identité',
+          subject: "[PokerApply] - Validation de l'identité",
           body: `
           Bonjour ${nom} ${prenom},
           <br /> <br />
@@ -307,13 +328,27 @@ export class GenericController<
           <br /> <br /> <br />
           Cordialement,
           <br /> <br />
-          L'équipe de PokerApps.
+          L'équipe de PokerApply.
         `,
         });
+        if (tokens?.length > 0) {
+          sendNotification({
+            tokens,
+            title: "[PokerApply] - Validation de l'identité",
+            body:
+              "Votre demande de validation d'identité a été acceptée. Merci de faire partie de notre communauté.",
+          });
+          await notificationSA.create({
+            user: currentUser.id,
+            title: "[PokerApply] - Refus de validation d'identité",
+            message:
+              "Votre demande de validation d'identité a été acceptée. Merci de faire partie de notre communauté.",
+          });
+        }
       } else if (status === 2) {
         await sendMailFunction({
           to: email,
-          subject: '[Pockerapply] - Refus de validation d\'identité',
+          subject: "[PokerApply] - Refus de validation d'identité",
           body: `
           Bonjour ${nom} ${prenom},
           <br /> <br />
@@ -324,21 +359,33 @@ export class GenericController<
           <br /> <br /> <br />
           Cordialement,
           <br /> <br />
-          L'équipe Pockerapply.
+          L'équipe PokerApply.
         `,
         });
+        if (tokens?.length > 0) {
+          await sendNotification({
+            tokens,
+            title: "[PokerApply] - Refus de validation d'identité",
+            body:
+              "Nous regrettons de vous informer que votre demande de validation d'identité a été refusée. Raison : ${comment}",
+          });
+          await notificationSA.create({
+            user: currentUser.id,
+            title: "[PokerApply] - Refus de validation d'identité",
+            message: `Nous regrettons de vous informer que votre demande de validation d'identité a été refusée. Raison : ${comment}`,
+          });
+        }
       }
       res.locals.data = true;
       res.locals.statusCode = HttpStatus.OK;
       next();
     } catch (error) {
-      console.log('error',error);
+      console.log('error', error);
       next(error);
-
     }
   };
   hasFollowed = async (req, res, next) => {
-  const { params } = req;
+    const { params } = req;
     /**
      * const andConditions = [
      *   { age: { $gte: 18 } },
@@ -351,16 +398,16 @@ export class GenericController<
      * ];
      */
     try {
-      const data = await this.serviceSA.findByAttributes([
-        { follow:new ObjectID(params.profileId) },
-        { follower: new ObjectID(params.id)}
-      ],[]);
+      const data = await this.serviceSA.findByAttributes(
+        [{ follow: new ObjectID(params.profileId) }, { follower: new ObjectID(params.id) }],
+        [],
+      );
       res.locals.data = data;
       res.locals.statusCode = HttpStatus.OK;
-    next();
-   } catch (error) {
-    console.log('error',error);
-    next(error);
+      next();
+    } catch (error) {
+      console.log('error', error);
+      next(error);
     }
-  }
+  };
 }

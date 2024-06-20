@@ -1,8 +1,10 @@
 export type NotificationResponseDTO = {
-   titre?: string;
+   title?: string;
    message?: string;
    tous?: boolean;
    usersIds?: string[];
+   user?: string;
+   view?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -10,10 +12,12 @@ export type NotificationResponseDTO = {
 
 /**
  * @typedef {object} NotificationResponseDTO
- * @property {string} titre
+ * @property {string} title
  * @property {string} message
  * @property {boolean} tous
  * @property {array<string>} usersIds
+ * @property {string} user
+ * @property {string} view
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

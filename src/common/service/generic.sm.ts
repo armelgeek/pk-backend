@@ -166,7 +166,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
       ])
       .toArray();
-    console.log("Aggregation Pipeline:", aggregationPipeline);
+
     return aggregationPipeline
   }
 

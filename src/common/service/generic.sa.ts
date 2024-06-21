@@ -448,9 +448,10 @@ export abstract class GenericSA<
           if (ObjectID.isValid(queries[key])) {
             return {
               ...acc,
-              [key]: queries[key],
+              [key]: ObjectID(queries[key]),
             };
           }
+
           return {
             ...acc,
             [key]: { $regex: new RegExp(queries[key]) },

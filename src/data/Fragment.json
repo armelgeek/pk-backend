@@ -63,7 +63,8 @@
 					"name": "user",
 					"type": {
 						"$ref": "AAAAAAF7dq9wlCA0k1A="
-					}
+					},
+					"isID": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -1535,7 +1536,7 @@
 									"top": 314,
 									"width": 144.1552734375,
 									"height": 13,
-									"text": "+user: Utilisateur",
+									"text": "+user: Utilisateur {id}",
 									"horizontalAlignment": 0
 								},
 								{

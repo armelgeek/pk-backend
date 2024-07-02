@@ -9,6 +9,7 @@ export type PublicationResponseDTO = {
    share?: string[];
    actif?: boolean;
    tags?: string[];
+   pageId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -26,6 +27,7 @@ export type PublicationResponseDTO = {
  * @property {array<string>} share
  * @property {boolean} actif
  * @property {array<string>} tags
+ * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

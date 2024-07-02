@@ -9,6 +9,7 @@ export type PublicationRequestDTO = {
    share?: string[];
    actif?: boolean;
    tags?: string[];
+   pageId?: string;
 }
 
 /**
@@ -23,5 +24,6 @@ export type PublicationRequestDTO = {
  * @property {array<string>} share
  * @property {boolean} actif
  * @property {array<string>} tags
+ * @property {string} pageId
  */
 

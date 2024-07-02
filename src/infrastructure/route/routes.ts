@@ -52,6 +52,7 @@ import { settingsRouter } from './Settings';
 import { reportRouter } from './Report';
 import { visitorsRouter } from './Visitors';
 import { filterRouter } from './Filter';
+import { pagepermissionsRouter } from './PagePermissions';
 
 export const routes = () => {
   const router = Router();
@@ -108,6 +109,7 @@ export const routes = () => {
  router.use('/report', reportRouter);
  router.use('/visitors', visitorsRouter);
  router.use('/filter', filterRouter);
+ router.use('/page-permission', pagepermissionsRouter);
   
   return router;
 };

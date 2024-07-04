@@ -1,15 +1,56 @@
-import { MongoRepository, ObjectID as ObjectIDType } from 'typeorm';
-import { ObjectID } from 'mongodb';
-import { HttpStatus } from '../../data/constants/http-status';
-import { GenericFactory } from '../constraint/factory/generic.factory';
-import { GenericSA } from '../service/generic.sa';
-import { GenericSM } from '../service/generic.sm';
-import { sendMail as sendMailFunction } from '../../service/middleware/nodemailer';
-import { sendNotification } from '../../service/middleware/firebase-cloud-messaging';
-import { UtilisateurRepository } from '../../repository/Utilisateur';
-import { UtilisateurSA, utilisateurSA } from '../../service/applicatif/Utilisateur';
-import { DeviceSA, deviceSA } from '../../service/applicatif/Device';
-import { NotificationSA, notificationSA } from '../../service/applicatif/Notification';
+import {MongoRepository, ObjectID as ObjectIDType} from 'typeorm';
+import {ObjectID} from 'mongodb';
+import {v4 as uuid} from 'uuid';
+import {AES, enc, lib, mode, pad} from 'crypto-js';
+import {HttpStatus} from '../../data/constants/http-status';
+import {GenericFactory} from '../constraint/factory/generic.factory';
+import {GenericSA} from '../service/generic.sa';
+import {GenericSM} from '../service/generic.sm';
+import {sendMail as sendMailFunction} from '../../service/middleware/nodemailer';
+import {sendNotification} from '../../service/middleware/firebase-cloud-messaging';
+import {UtilisateurSA, utilisateurSA} from '../../service/applicatif/Utilisateur';
+import {DeviceSA, deviceSA} from '../../service/applicatif/Device';
+import {NotificationSA, notificationSA} from '../../service/applicatif/Notification';
+import {PageSA, pageSA} from "../../service/applicatif/Page";
+
+function encrypt(plainText:string, secret) {
+  const key = enc.Utf8.parse(secret);
+  const iv = lib.WordArray.create(key.words.slice(0, 4));
+
+  const cipherText = AES.encrypt(plainText, key, {
+    iv,
+    mode: mode.CBC,
+    padding: pad.Pkcs7,
+  });
+  return cipherText.toString();
+}
+function decrypt(cipherText, secret, iv) {
+  let iv1 = enc.Base64.parse(iv);
+
+  const key = enc.Utf8.parse(secret);
+  const cipherBytes = enc.Base64.parse(cipherText);
+
+  const decrypted = AES.decrypt({ciphertext: cipherBytes}, key, {
+    iv: iv1,
+    mode: mode.CBC,
+    padding: pad.Pkcs7
+  });
+
+  return decrypted.toString(enc.Utf8);
+}
+
+function generateHashedLink(baseURL,pageId, secretKey, expirationMinutes) {
+
+  const expirationDate = new Date(Date.now() + expirationMinutes * 60000).toISOString();
+
+  const dataToHash = `${pageId}:${expirationDate}`;
+
+  const hash = encrypt(dataToHash, secretKey);
+  const encodedHash = encodeURIComponent(hash);
+
+  const linkHash =  `${baseURL}?id=${pageId}&exp=${expirationDate}&hash=${encodedHash}`
+  return linkHash.replace(/\s+/g, '');
+}
 
 export class GenericController<
   TDo,
@@ -27,11 +68,13 @@ export class GenericController<
   userSA: UtilisateurSA;
   deviceSA: DeviceSA;
   notificationSA: NotificationSA;
+  pageSA: PageSA;
 
   constructor(serviceSA) {
     this.serviceSA = serviceSA;
     this.userSA = utilisateurSA;
     this.deviceSA = deviceSA;
+    this.pageSA = pageSA;
     this.notificationSA = notificationSA;
   }
 
@@ -411,6 +454,34 @@ export class GenericController<
       res.locals.statusCode = HttpStatus.OK;
       next();
     } catch (error) {
+      console.log('error', error);
+      next(error);
+    }
+  };
+  addMemberToPage = async (req, res, next) => {
+    try {
+      const {email, pageId }: {
+        email: string,
+        pageId: string
+      } = req.body;
+      const currentPage = await this.pageSA.findById(pageId);
+    // 7 jours
+      const link = generateHashedLink('http://localhost:8008/app/casino-request-verification', pageId,'pokerapply', 10080);
+      await sendMailFunction({
+        to: email,
+        subject: `[PokerApply] - Invitation a devenir membre du Casino '${currentPage.name}' `,
+        body: `
+          <span>
+            <p>Bonjour,</p>
+            <p>Nous vous invitons à rejoindre le Casino '${currentPage.name}'. Pour accepter l'invitation, veuillez cliquer sur le lien ci-dessous :</p>
+            <p><a href="${link}">${link}</a></p>
+          </span>
+        `,
+      });
+      res.locals.data = true;
+      res.locals.statusCode = HttpStatus.OK;
+      next();
+    }catch(error){
       console.log('error', error);
       next(error);
     }

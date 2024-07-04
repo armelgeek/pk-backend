@@ -3,6 +3,7 @@ export type LevelResponseDTO = {
    bigBlind?: string;
    anteBb?: string;
    duration?: string;
+   name?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -14,6 +15,7 @@ export type LevelResponseDTO = {
  * @property {string} bigBlind
  * @property {string} anteBb
  * @property {string} duration
+ * @property {string} name
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

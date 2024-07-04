@@ -17,6 +17,9 @@ export class LevelDO {
   @Column({nullable: true, unique: false})
   duration: string;
 
+  @Column({nullable: true, unique: false})
+  name: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

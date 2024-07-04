@@ -7986,7 +7986,7 @@
 									"top": 526,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+parking: boolean",
+									"text": "+parking: boolean = false",
 									"horizontalAlignment": 0
 								},
 								{
@@ -8241,7 +8241,7 @@
 									"top": 751,
 									"width": 228.0078125,
 									"height": 13,
-									"text": "+timeClock: boolean",
+									"text": "+timeClock: boolean = false",
 									"horizontalAlignment": 0
 								},
 								{
@@ -13241,13 +13241,30 @@
 									"height": 13,
 									"text": "+duration: string",
 									"horizontalAlignment": 0
+								},
+								{
+									"_type": "UMLAttributeView",
+									"_id": "AAAAAAGQfK1uMHhjxDk=",
+									"_parent": {
+										"$ref": "AAAAAAGN831qUvmtb10="
+									},
+									"model": {
+										"$ref": "AAAAAAGQfK1uHHhge6w="
+									},
+									"font": "Arial;13;0",
+									"left": 557,
+									"top": 1402,
+									"width": 105.84716796875,
+									"height": 13,
+									"text": "+name: string",
+									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 552,
 							"top": 1337,
 							"width": 115.84716796875,
-							"height": 68
+							"height": 83
 						},
 						{
 							"_type": "UMLOperationCompartmentView",
@@ -13270,7 +13287,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 557,
-									"top": 1410,
+									"top": 1425,
 									"width": 105.84716796875,
 									"height": 13,
 									"text": "+getAll()",
@@ -13287,7 +13304,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 557,
-									"top": 1425,
+									"top": 1440,
 									"width": 105.84716796875,
 									"height": 13,
 									"text": "+delete()",
@@ -13304,7 +13321,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 557,
-									"top": 1440,
+									"top": 1455,
 									"width": 105.84716796875,
 									"height": 13,
 									"text": "+update()",
@@ -13321,7 +13338,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 557,
-									"top": 1455,
+									"top": 1470,
 									"width": 105.84716796875,
 									"height": 13,
 									"text": "+get()",
@@ -13338,7 +13355,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 557,
-									"top": 1470,
+									"top": 1485,
 									"width": 105.84716796875,
 									"height": 13,
 									"text": "+add()",
@@ -13347,7 +13364,7 @@
 							],
 							"font": "Arial;13;0",
 							"left": 552,
-							"top": 1405,
+							"top": 1420,
 							"width": 115.84716796875,
 							"height": 83
 						},
@@ -13389,7 +13406,7 @@
 					"left": 552,
 					"top": 1312,
 					"width": 115.84716796875,
-					"height": 176,
+					"height": 191,
 					"nameCompartment": {
 						"$ref": "AAAAAAGN831qT/mol3Y="
 					},
@@ -23596,7 +23613,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "name",
-					"type": "string"
+					"type": "string",
+					"form": "Titre",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23634,7 +23653,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startDate",
-					"type": "date"
+					"type": "date",
+					"form": "Date Debut",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23643,7 +23664,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startTime",
-					"type": "string"
+					"type": "string",
+					"form": "Date Fin",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23652,7 +23675,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "contact",
-					"type": "string"
+					"type": "string",
+					"form": "Contact",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23661,7 +23686,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "description",
-					"type": "string"
+					"type": "string",
+					"form": "Description",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23670,7 +23697,10 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "parking",
-					"type": "boolean"
+					"type": "boolean",
+					"defaultValue": "false",
+					"form": "Parking",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23679,7 +23709,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "restauration",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Restauration",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23698,7 +23730,9 @@
 					},
 					"name": "photos",
 					"type": "string",
-					"isArray": true
+					"isArray": true,
+					"form": "Photo",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23717,7 +23751,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "private",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Private",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23739,9 +23775,12 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "profileId",
+					"route": "nom",
 					"type": {
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
+					"form": "Profile",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -23751,7 +23790,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "nbDay",
-					"type": "number"
+					"type": "number",
+					"form": "Nombre de jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23760,7 +23801,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "nbGames",
-					"type": "number"
+					"type": "number",
+					"form": "Nombre jeux",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23769,7 +23812,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startStack",
-					"type": "string"
+					"type": "string",
+					"form": "start Stack",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23778,7 +23823,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "nbRebu",
-					"type": "number"
+					"type": "number",
+					"form": "Nombre Rebu",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23787,7 +23834,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "devise",
-					"type": "string"
+					"type": "string",
+					"form": "Devise",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23796,7 +23845,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "latReg",
-					"type": "string"
+					"type": "string",
+					"form": "lat Reg",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23805,7 +23856,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "dealer",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "dealer",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23814,7 +23867,10 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "timeClock",
-					"type": "boolean"
+					"type": "boolean",
+					"defaultValue": "false",
+					"form": "timeClock",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23823,7 +23879,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "reEntry",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "reEntry",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23832,7 +23890,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "memberCard",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Member Card",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23841,7 +23901,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "prizePool",
-					"type": "string"
+					"type": "string",
+					"form": "Prize Pool",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23850,7 +23912,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "bounty",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Bounty",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23859,7 +23923,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "bountyText",
-					"type": "string"
+					"type": "string",
+					"form": "label bounty",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23877,9 +23943,12 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "tournamentType",
+					"route": "name",
 					"type": {
 						"$ref": "AAAAAAGN1PWGva9QX7Q="
 					},
+					"form": "Tounament Type",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -23889,9 +23958,12 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "gameType",
+					"route": "name",
 					"type": {
 						"$ref": "AAAAAAGN1NuiWq79u7Y="
 					},
+					"form": "Game Type",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -23901,7 +23973,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "jackpot",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Jackpot",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23910,7 +23984,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "jackpotText",
-					"type": "string"
+					"type": "string",
+					"form": "Label jackpot",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23919,7 +23995,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "buyin",
-					"type": "string"
+					"type": "string",
+					"form": "Buyin",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23928,7 +24006,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "bonus",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Bonus",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23937,7 +24017,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "bonusText",
-					"type": "string"
+					"type": "string",
+					"form": "Label bonus",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23946,7 +24028,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "addon",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Addon",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23955,7 +24039,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "addonPrice",
-					"type": "string"
+					"type": "string",
+					"form": "addon Price",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23964,7 +24050,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "nbParticipantMax",
-					"type": "string"
+					"type": "string",
+					"form": "Nombre participant Max",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23982,7 +24070,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "hotel",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Hotel",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -23991,7 +24081,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "qualification",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Qualification",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24000,7 +24092,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "titleDay",
-					"type": "string"
+					"type": "string",
+					"form": "title du jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24009,7 +24103,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startDateDay",
-					"type": "date"
+					"type": "date",
+					"form": "Jour de debut",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24018,7 +24114,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "startTimeDay",
-					"type": "string"
+					"type": "string",
+					"form": "Heur de debut",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24027,7 +24125,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "lateReg",
-					"type": "string"
+					"type": "string",
+					"form": "late Reg",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24036,7 +24136,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "limitRegEntry",
-					"type": "string"
+					"type": "string",
+					"form": "limit Reg Entry",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24045,7 +24147,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "durationDay",
-					"type": "number"
+					"type": "number",
+					"form": "Duration Jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24054,10 +24158,13 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "levels",
+					"route": "name",
 					"type": {
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"isArray": true,
+					"form": "Level",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -24067,7 +24174,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "duration",
-					"type": "string"
+					"type": "string",
+					"form": "Duration",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24076,7 +24185,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "type",
-					"type": "string"
+					"type": "string",
+					"form": "Type",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24085,7 +24196,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "limitRegBuy",
-					"type": "string"
+					"type": "string",
+					"form": "limit Reg Buy",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24094,7 +24207,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "status",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Status",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24103,9 +24218,11 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "pageId",
+					"route": "name",
 					"type": {
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
+					"form": "Page",
 					"isID": true
 				},
 				{
@@ -24115,7 +24232,10 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "eventId",
-					"type": "string"
+					"route": "name",
+					"type": "string",
+					"form": "Evenement",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24124,7 +24244,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "mainTournament",
-					"type": "number"
+					"type": "number",
+					"form": "main Tournament",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24133,7 +24255,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "nbParticipantPerTable",
-					"type": "number"
+					"type": "number",
+					"form": "nb Participant Par Table",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24142,7 +24266,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "cashBigBlind",
-					"type": "string"
+					"type": "string",
+					"form": "cash Big Blind",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24151,7 +24277,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "cashSmallBlind",
-					"type": "string"
+					"type": "string",
+					"form": "cash Small Blind",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24160,7 +24288,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "cashEntryMax",
-					"type": "number"
+					"type": "number",
+					"form": "cash Entry Max",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24169,7 +24299,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "cashEntryMin",
-					"type": "number"
+					"type": "number",
+					"form": "cash Entry Min",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24182,6 +24314,8 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"isArray": true,
+					"form": "Jours",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -24191,7 +24325,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "finish",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "tERMINER",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -24200,7 +24336,9 @@
 						"$ref": "AAAAAAGNwG41kKyhSxE="
 					},
 					"name": "actif",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Active",
+					"bo": true
 				}
 			],
 			"operations": [
@@ -26112,7 +26250,9 @@
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"name": "smallBlind",
-					"type": "string"
+					"type": "string",
+					"form": "small Blind",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26121,7 +26261,9 @@
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"name": "bigBlind",
-					"type": "string"
+					"type": "string",
+					"form": "big Blind",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26130,7 +26272,9 @@
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"name": "anteBb",
-					"type": "string"
+					"type": "string",
+					"form": "anteBb",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26139,7 +26283,20 @@
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"name": "duration",
-					"type": "string"
+					"type": "string",
+					"form": "Duration",
+					"bo": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQfK1uHHhge6w=",
+					"_parent": {
+						"$ref": "AAAAAAGN831qRPml/oU="
+					},
+					"name": "name",
+					"type": "string",
+					"form": "Name",
+					"bo": true
 				}
 			],
 			"operations": [
@@ -26596,7 +26753,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "qualification",
-					"type": "boolean"
+					"type": "boolean",
+					"form": "Qualification",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26605,7 +26764,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "titleDay",
-					"type": "string"
+					"type": "string",
+					"form": "Titre de jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26614,7 +26775,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "startDateDay",
-					"type": "string"
+					"type": "string",
+					"form": "start Date Day",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26623,7 +26786,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "startTimeDay",
-					"type": "string"
+					"type": "string",
+					"form": "startTimeDay",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26632,7 +26797,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "lateReg",
-					"type": "string"
+					"type": "string",
+					"form": "lateReg",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26641,7 +26808,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "limitRegEntry",
-					"type": "string"
+					"type": "string",
+					"form": "limit Reg Entry",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26650,7 +26819,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "limitRegBuy",
-					"type": "string"
+					"type": "string",
+					"form": "limit Reg Buy",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26659,7 +26830,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "durationDay",
-					"type": "string"
+					"type": "string",
+					"form": "Duration du jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26668,7 +26841,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "nbTableDay",
-					"type": "string"
+					"type": "string",
+					"form": "Nb Table par jour",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26677,7 +26852,9 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "duration",
-					"type": "string"
+					"type": "string",
+					"form": "Duration",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",
@@ -26686,10 +26863,13 @@
 						"$ref": "AAAAAAGOF+TUpWexLF8="
 					},
 					"name": "levels",
+					"route": "name",
 					"type": {
 						"$ref": "AAAAAAGN831qRPml/oU="
 					},
 					"isArray": true,
+					"form": "Level",
+					"bo": true,
 					"isID": true
 				},
 				{
@@ -26700,7 +26880,9 @@
 					},
 					"name": "photos",
 					"type": "string",
-					"isArray": true
+					"isArray": true,
+					"form": "Photo",
+					"bo": true
 				},
 				{
 					"_type": "UMLAttribute",

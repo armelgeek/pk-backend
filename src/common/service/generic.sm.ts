@@ -132,9 +132,9 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const { userId, utilisateurId, longitude, latitude, maxDistance, ...whereOut } = where;
     const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
 
-    const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : []
+    const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : [];
     const isExist = exists ? { [exists]: { $exists: true } } : {};
-    const isNotExist = no_exists ? { [no_exists]: { $exists: false } } : {};
+    const isNotExist = no_exists ? { $or: [ { [no_exists]: { $exists: false } }, { [no_exists]: null } ] } : {};
 
     const aggregationPipeline = this.repository
       .aggregate([

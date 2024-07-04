@@ -3,6 +3,7 @@ export type LevelRequestDTO = {
    bigBlind?: string;
    anteBb?: string;
    duration?: string;
+   name?: string;
 }
 
 /**
@@ -11,5 +12,6 @@ export type LevelRequestDTO = {
  * @property {string} bigBlind
  * @property {string} anteBb
  * @property {string} duration
+ * @property {string} name
  */
 

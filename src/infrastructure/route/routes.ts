@@ -53,6 +53,7 @@ import { reportRouter } from './Report';
 import { visitorsRouter } from './Visitors';
 import { filterRouter } from './Filter';
 import { pagepermissionsRouter } from './PagePermissions';
+import { friendsRouter } from './Friends';
 
 export const routes = () => {
   const router = Router();
@@ -110,6 +111,7 @@ export const routes = () => {
  router.use('/visitors', visitorsRouter);
  router.use('/filter', filterRouter);
  router.use('/page-permission', pagepermissionsRouter);
+ router.use('/friends', friendsRouter);
   
   return router;
 };

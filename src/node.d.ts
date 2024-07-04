@@ -118,3 +118,5 @@
   declare interface FilterResponseDTO { }
   declare interface PagePermissionsRequestDTO { }
   declare interface PagePermissionsResponseDTO { }
+  declare interface FriendsRequestDTO { }
+  declare interface FriendsResponseDTO { }

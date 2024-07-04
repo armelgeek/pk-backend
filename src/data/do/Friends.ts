@@ -1,0 +1,36 @@
+import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+
+@Entity('friends')
+export class FriendsDO {
+  @ObjectIdColumn()
+  _id: ObjectID;
+
+  @Column({nullable: true, unique: false})
+  follow: string;
+
+  @Column({nullable: true, unique: false})
+  follower: string;
+
+  @Column({nullable: true, unique: false})
+  confirmed: boolean;
+
+  @Column({nullable: true, unique: false})
+  cancel: boolean;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  createdAt: Date;
+
+  @Column({ type: 'timestamptz', default: new Date() })
+  updatedAt: Date;
+
+  @BeforeInsert()
+  beforeInsert() {
+    this.createdAt = new Date();
+  }
+
+  @BeforeUpdate()
+  beforeUpdate() {
+    this.updatedAt = new Date();
+  }
+}
+

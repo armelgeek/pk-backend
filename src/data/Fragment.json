@@ -30884,6 +30884,147 @@
 					"method": "get"
 				}
 			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGQfIMXUnfOuA4=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "Friends",
+			"route": "friends",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQfIMXUnfPq3Q=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "follow",
+					"type": {
+						"$ref": "AAAAAAGNhPEOj08PCNo="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQfIMXUnfQQ6U=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "follower",
+					"type": {
+						"$ref": "AAAAAAGNhPEOj08PCNo="
+					},
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQfIMXUnfSfUY=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "confirmed",
+					"type": "boolean"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQfIMXUnfTTJ8=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "cancel",
+					"type": "boolean"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGQfIMXUnfUJDk=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "getAll",
+					"route": "friends",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGQfIMXUnfVAt8=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "delete",
+					"route": "friends/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGQfIMXUnfWVL4=",
+							"_parent": {
+								"$ref": "AAAAAAGQfIMXUnfVAt8="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGQfIMXUnfXj8g=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "update",
+					"route": "friends/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGQfIMXUnfY5rY=",
+							"_parent": {
+								"$ref": "AAAAAAGQfIMXUnfXj8g="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGQfIMXUnfZiqQ=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "get",
+					"route": "friends/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGQfIMXUnfaHwA=",
+							"_parent": {
+								"$ref": "AAAAAAGQfIMXUnfZiqQ="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGQfIMXUnfb3Lw=",
+					"_parent": {
+						"$ref": "AAAAAAGQfIMXUnfOuA4="
+					},
+					"name": "add",
+					"route": "friends",
+					"method": "post"
+				}
+			]
 		}
 	]
 }

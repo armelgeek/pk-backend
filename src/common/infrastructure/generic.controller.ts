@@ -191,6 +191,8 @@ export class GenericController<
         search,
         lookup,
         geoNear,
+        exists,
+        no_exists,
         ...queries
       },
     } = req;
@@ -207,6 +209,8 @@ export class GenericController<
         skip: (page - 1) * rowPerPage,
         lookup,
         geoNear,
+        exists,
+        no_exists,
       });
 
       res.locals.data = dtos;
@@ -290,6 +294,7 @@ export class GenericController<
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
         field,
+
       });
 
       res.locals.data = dtos;

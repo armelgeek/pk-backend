@@ -122,6 +122,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       search,
       relation,
       match,
+      exists,
+      no_exists,
       aggregate = [],
       new__Queries,
     } = options;
@@ -131,10 +133,12 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
 
     const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : []
+    const isExist = exists ? { [exists]: { $exists: true } } : {};
+    const isNotExist = no_exists ? { [no_exists]: { $exists: false } } : {};
 
     const aggregationPipeline = this.repository
       .aggregate([
-        { $match: { ...whereOut, ...aggregate_search } },
+        { $match: { ...isExist, ...isNotExist, ...whereOut, ...aggregate_search } },
         ...search_query,
         ...aggregate,
         { $sort: { ...sort_aggregate } },

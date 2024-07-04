@@ -324,6 +324,8 @@ export abstract class GenericSA<
         queries,
         lookup,
         geoNear,
+        exists,
+        no_exists,
         sort,
       } = options;
       let newQueries = queries;
@@ -510,6 +512,8 @@ export abstract class GenericSA<
           new__Queries: new__Queries,
           order,
           sortField,
+          exists,
+          no_exists,
         },
         this.name,
       );

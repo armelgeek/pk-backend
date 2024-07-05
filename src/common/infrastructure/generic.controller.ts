@@ -12,6 +12,7 @@ import {UtilisateurSA, utilisateurSA} from '../../service/applicatif/Utilisateur
 import {DeviceSA, deviceSA} from '../../service/applicatif/Device';
 import {NotificationSA, notificationSA} from '../../service/applicatif/Notification';
 import {PageSA, pageSA} from "../../service/applicatif/Page";
+import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -66,6 +67,7 @@ export class GenericController<
 > {
   serviceSA: TSa;
   userSA: UtilisateurSA;
+  profileSA: ProfileSA;
   deviceSA: DeviceSA;
   notificationSA: NotificationSA;
   pageSA: PageSA;
@@ -75,6 +77,7 @@ export class GenericController<
     this.userSA = utilisateurSA;
     this.deviceSA = deviceSA;
     this.pageSA = pageSA;
+    this.profileSA = profileSA;
     this.notificationSA = notificationSA;
   }
 
@@ -351,7 +354,8 @@ export class GenericController<
     try {
       const { nom, prenom, email, status, comment, profileId } = req.body;
       let tokens = [];
-      const currentUser = await this.userSA.findOne({ profileId: ObjectID(profileId) });
+    
+      const currentUser = await this.profileSA.findById(profileId);
 
       if (currentUser.id) {
         const devices = await this.deviceSA.findAll({ user: currentUser.id });
@@ -466,7 +470,7 @@ export class GenericController<
       } = req.body;
       const currentPage = await this.pageSA.findById(pageId);
     // 7 jours
-      const link = generateHashedLink('http://localhost:8008/app/casino-request-verification', pageId,'pokerapply', 10080);
+      const link = generateHashedLink('http://213.136.89.152:3000/app/casino-request-verification', pageId,'pokerapply', 10080);
       await sendMailFunction({
         to: email,
         subject: `[PokerApply] - Invitation a devenir membre du Casino '${currentPage.name}' `,

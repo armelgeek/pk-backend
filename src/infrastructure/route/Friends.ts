@@ -11,9 +11,9 @@ export const friendsRouter = friendsRoutes();
  * @tags Friends
  * @security BearerAuth
  * @summary List Friends (getAllFriends)
- 
+
  * @param {number} page.query
- * @param {number} rowPerPage.query 
+ * @param {number} rowPerPage.query
  * @return {FriendsResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -24,8 +24,8 @@ export const friendsRouter = friendsRoutes();
  * @tags Friends
  * @security BearerAuth
  * @summary Remove Friends (deleteFriends)
- 
- * @param {string} id.path.required 
+
+ * @param {string} id.path.required
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -37,7 +37,7 @@ export const friendsRouter = friendsRoutes();
  * @security BearerAuth
  * @summary Update Friends (updateFriends)
  * @param {FriendsRequestDTO} request.body
- * @param {string} id.path.required 
+ * @param {string} id.path.required
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -48,8 +48,8 @@ export const friendsRouter = friendsRoutes();
  * @tags Friends
  * @security BearerAuth
  * @summary List Friends (getFriends)
- 
- * @param {string} id.path.required 
+
+ * @param {string} id.path.required
  * @return {FriendsResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,9 +60,20 @@ export const friendsRouter = friendsRoutes();
  * @tags Friends
  * @security BearerAuth
  * @summary Create Friends (addFriends)
- * @param {FriendsRequestDTO} request.body 
+ * @param {FriendsRequestDTO} request.body
  * @return {FriendsResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * GET /api/friends/me/{profileId}/is-friend/{id}
+ * @tags Friends
+ * @security BearerAuth
+ * @summary  Is Friend (isFriend)
+
+ * @param {string} id.path.required
+ * @return {FriendsResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */

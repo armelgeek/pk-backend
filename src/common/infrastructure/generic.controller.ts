@@ -1,18 +1,17 @@
-import {MongoRepository, ObjectID as ObjectIDType} from 'typeorm';
-import {ObjectID} from 'mongodb';
-import {v4 as uuid} from 'uuid';
-import {AES, enc, lib, mode, pad} from 'crypto-js';
-import {HttpStatus} from '../../data/constants/http-status';
-import {GenericFactory} from '../constraint/factory/generic.factory';
-import {GenericSA} from '../service/generic.sa';
-import {GenericSM} from '../service/generic.sm';
-import {sendMail as sendMailFunction} from '../../service/middleware/nodemailer';
-import {sendNotification} from '../../service/middleware/firebase-cloud-messaging';
-import {UtilisateurSA, utilisateurSA} from '../../service/applicatif/Utilisateur';
-import {DeviceSA, deviceSA} from '../../service/applicatif/Device';
-import {NotificationSA, notificationSA} from '../../service/applicatif/Notification';
-import {PageSA, pageSA} from "../../service/applicatif/Page";
-import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
+import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
+import { ObjectID } from "mongodb";
+import { AES, enc, lib, mode, pad } from "crypto-js";
+import { HttpStatus } from "../../data/constants/http-status";
+import { GenericFactory } from "../constraint/factory/generic.factory";
+import { GenericSA } from "../service/generic.sa";
+import { GenericSM } from "../service/generic.sm";
+import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
+import { sendNotification } from "../../service/middleware/firebase-cloud-messaging";
+import { UtilisateurSA, utilisateurSA } from "../../service/applicatif/Utilisateur";
+import { DeviceSA, deviceSA } from "../../service/applicatif/Device";
+import { NotificationSA, notificationSA } from "../../service/applicatif/Notification";
+import { PageSA, pageSA } from "../../service/applicatif/Page";
+import { ProfileSA, profileSA } from "../../service/applicatif/Profile";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -354,7 +353,7 @@ export class GenericController<
     try {
       const { nom, prenom, email, status, comment, profileId } = req.body;
       let tokens = [];
-    
+
       const currentUser = await this.profileSA.findById(profileId);
 
       if (currentUser.id) {
@@ -455,6 +454,20 @@ export class GenericController<
         [],
       );
       res.locals.data = data;
+      res.locals.statusCode = HttpStatus.OK;
+      next();
+    } catch (error) {
+      console.log('error', error);
+      next(error);
+    }
+  };
+  isFriend =  async (req, res, next) => {
+    const { params } = req;
+    try {
+      res.locals.data = await this.serviceSA.findByAttributes(
+        [{ follow: new ObjectID(params.id) }, { follower: new ObjectID(params.profileId) }],
+        [],
+      );
       res.locals.statusCode = HttpStatus.OK;
       next();
     } catch (error) {

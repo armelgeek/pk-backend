@@ -67,3 +67,5 @@ buck-out/
 # *.env
 /bo/dist
 # ormconfig.*
+mongo-data-staging
+mongo-data-preprod

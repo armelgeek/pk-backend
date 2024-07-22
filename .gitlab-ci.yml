@@ -20,7 +20,7 @@ deploy_dev:
     - |
       ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER@$NETWORK_TEMP" "
         cd ${BACKEND_DIR}
-        git pull origin staging
+        git pull origin develop
         docker compose build --no-cache backend &&
         docker compose stop backend &&
         docker compose up -d backend &&

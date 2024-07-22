@@ -1,5 +1,7 @@
 stages:
   - deploy
+variables:
+  BACKEND_DIR: /home/project/poker-project/mobile-app-backend
 
 deploy_dev:
   stage: deploy
@@ -8,22 +10,22 @@ deploy_dev:
   - cd
   - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
   - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  - ssh-keyscan $NETWORK > ~/.ssh/known_hosts
+  - echo "$SSH_PRIVATE_KEY_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
+  - chmod 600 ~/.ssh/ssh_key
+  - ssh-keyscan $NETWORK_TEMP > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 
   script:
     - |
-      ssh -t -oStrictHostKeyChecking=no "$USER@$NETWORK" "
-        cd /home/mobile-app-backend
-        git pull
-        docker-compose stop backend 
-        docker-compose up -d --build 
-        sleep 20
-        docker image prune -f
-        docker system prune -f
-        docker-compose logs backend"
+      ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER@$NETWORK_TEMP" "
+        cd ${BACKEND_DIR}
+        git pull origin staging
+        docker compose build --no-cache backend &&
+        docker compose stop backend &&
+        docker compose up -d backend &&
+        docker system prune -a -f 
+        docker compose logs backend
+        "
   only:
     - develop

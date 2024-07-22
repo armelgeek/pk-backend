@@ -1,7 +1,7 @@
 stages:
   - deploy
 variables:
-  BACKEND_DIR: /home/project/poker-project/mobile-app-backend
+  BACKEND_DIR: /home/projects/pokerapps/mobile-app-backend
 
 deploy_dev:
   stage: deploy

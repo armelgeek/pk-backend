@@ -14,6 +14,7 @@ deploy_dev:
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
   - chmod 600 ~/.ssh/ssh_key
+  - cat ~/.ssh/ssh_key
   - ssh-keyscan $NETWORK_TEMP > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
 

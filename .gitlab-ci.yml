@@ -3,7 +3,8 @@ stages:
 
 variables:
   BUILD_DIR: /home/projects/pokerapps/mobile-app-backend
-  CONTAINER_NAME: backend
+  CONTAINER_NAME: backend-node-mongo
+  SERVICE_NAME: backend
 deploy_dev:
   stage: deploy
   image: alpine

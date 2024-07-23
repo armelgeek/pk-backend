@@ -17,24 +17,22 @@ deploy_dev:
   - chmod 644 ~/.ssh/known_hosts
   - eval $(ssh-agent -s)
   - ssh-add ~/.ssh/ssh_key
-
-
+  
   script:
-    - echo "Connecting to ssh ..."
-    - |
-     ssh -i ~/.ssh/ssh_key "${USER}@${NETWORK_TEMP}" "
-        cd ${BUILD_DIR}
-        git pull origin develop && 
-        if ! docker compose build --no-cache; then
-         echo "Docker build failed ."
-         exit 1
-        fi
-        docker compose stop ${CONTAINER_NAME} || true &&
-        cd .. &&
-        docker compose up -d ${CONTAINER_NAME} &&
-        docker system prune -f -a
-      "
-    - echo "Backend-app successfully deployed."
+  - echo "Connecting to ssh ..."
+  - |
+    ssh -i ~/.ssh/ssh_key "${USER}@${NETWORK_TEMP}" "
+      cd ${BUILD_DIR}
+      git pull origin develop && 
+      if ! docker compose build --no-cache; then
+        echo "Docker build failed ."
+        exit 1
+      fi
+      docker compose stop ${CONTAINER_NAME} || true &&
+      docker compose up -d ${SERVICE_NAME} &&
+      docker system prune -f -a
+    "
+  - echo "Back Office successfully deployed."
 
   only:
     - develop

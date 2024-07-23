@@ -19,7 +19,6 @@ deploy_dev:
 
   script:
     - |
-      echo $USER $NETWORK_TEMP
       ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER@$NETWORK_TEMP" "
         cd ${BACKEND_DIR}
         git pull origin develop

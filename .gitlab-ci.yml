@@ -1,17 +1,18 @@
 stages:
-  - deploy
+  - deploy-dev
 variables:
   BACKEND_DIR: /home/projects/pokerapps/mobile-app-backend
+  IMAGE_NAME: backend
 
 deploy_dev:
-  stage: deploy
+  stage: deploy-dev
   image: alpine
   before_script:
   - cd
   - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
   - eval $(ssh-agent -s)
   - mkdir -p ~/.ssh
-  - echo "$SSH_KEY_PRIVATE_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
+  - echo "$SSH_PRIVATE_KEY_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
   - chmod 600 ~/.ssh/ssh_key
   - ssh-keyscan $NETWORK_TEMP > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
@@ -21,11 +22,14 @@ deploy_dev:
       ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER@$NETWORK_TEMP" "
         cd ${BACKEND_DIR}
         git pull origin develop
-        docker compose build --no-cache backend &&
-        docker compose stop backend &&
-        docker compose up -d backend &&
+        if ! docker compose build --no-cache ${IMAGE_NAME}; then
+          echo 'Docker build failed.'
+          exit 1
+        fi
+        docker compose stop ${IMAGE_NAME} || true &&
+        docker compose up -d ${IMAGE_NAME} &&
         docker system prune -a -f 
-        docker compose logs backend
+        docker compose logs ${IMAGE_NAME}
         "
   only:
     - develop

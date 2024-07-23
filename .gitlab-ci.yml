@@ -11,7 +11,7 @@ deploy_dev:
   - cd
   - 'command -v ssh-agent >/dev/null || ( apk add openssh )'
   - mkdir -p ~/.ssh
-  - echo "$SSH_PRIVATE_KEY_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
+  - echo "$SSH_KEY_PRIVATE_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
   - chmod 600 ~/.ssh/ssh_key
   - ssh-keyscan $NETWORK_TEMP > ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts

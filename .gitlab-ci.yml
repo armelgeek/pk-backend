@@ -1,15 +1,15 @@
 stages:
-  - deploy-dev
-variables:
-  BACKEND_DIR: /home/projects/pokerapps/mobile-app-backend
-  IMAGE_NAME: backend
+  - deploy
 
+variables:
+  BUILD_DIR: /home/projects/pokerapps/mobile-app-backend
+  CONTAINER_NAME: backend
 deploy_dev:
-  stage: deploy-dev
+  stage: deploy
   image: alpine
   before_script:
   - cd
-  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - 'command -v ssh-agent >/dev/null || ( apk add openssh )'
   - mkdir -p ~/.ssh
   - echo "$SSH_PRIVATE_KEY_TEMP" | tr -d '\r' > ~/.ssh/ssh_key
   - chmod 600 ~/.ssh/ssh_key
@@ -18,19 +18,23 @@ deploy_dev:
   - eval $(ssh-agent -s)
   - ssh-add ~/.ssh/ssh_key
 
+
   script:
+    - echo "Connecting to ssh ..."
     - |
-      ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER@$NETWORK_TEMP" "
-        cd ${BACKEND_DIR}
-        git pull origin develop
-        if ! docker compose build --no-cache ${IMAGE_NAME}; then
-          echo 'Docker build failed.'
-          exit 1
+     ssh -i ~/.ssh/ssh_key "${USER}@${NETWORK_TEMP}" "
+        cd ${BUILD_DIR}
+        git pull origin develop && 
+        if ! docker compose build --no-cache; then
+         echo "Docker build failed ."
+         exit 1
         fi
-        docker compose stop ${IMAGE_NAME} || true &&
-        docker compose up -d ${IMAGE_NAME} &&
-        docker system prune -a -f 
-        docker compose logs ${IMAGE_NAME}
-        "
+        docker compose stop ${CONTAINER_NAME} || true &&
+        cd .. &&
+        docker compose up -d ${CONTAINER_NAME} &&
+        docker system prune -f -a
+      "
+    - echo "Backend-app successfully deployed."
+
   only:
     - develop

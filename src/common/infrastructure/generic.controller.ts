@@ -12,6 +12,7 @@ import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
 import {NotificationSA, notificationSA} from "../../service/applicatif/Notification";
 import {PageSA, pageSA} from "../../service/applicatif/Page";
 import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
+import {PublicationSA, publicationSA} from "../../service/applicatif/Publication";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -69,6 +70,7 @@ export class GenericController<
   profileSA: ProfileSA;
   deviceSA: DeviceSA;
   notificationSA: NotificationSA;
+  publicationSA: PublicationSA;
   pageSA: PageSA;
 
   constructor(serviceSA) {
@@ -78,6 +80,7 @@ export class GenericController<
     this.pageSA = pageSA;
     this.profileSA = profileSA;
     this.notificationSA = notificationSA;
+    this.publicationSA = publicationSA;
   }
 
   /**
@@ -503,22 +506,34 @@ export class GenericController<
       next(error);
     }
   };
-  findRegistration=async(req, res, next) => {
-     const params = req.query;
-    if(params.profileId){
-      res.locals.data = await this.serviceSA.findByAttributes(
-          [{profileId:  params.profileId}],
-          [],
+  findRegistration = async (req, res, next) => {
+    const params = req.query;
+    let data;
+
+    if (params.profileId) {
+      data = await this.serviceSA.findByAttributes(
+          [{ profileId: params.profileId }],
+          []
       );
-      res.locals.statusCode = HttpStatus.OK;
-      next();
-    }else{
-      res.locals.data = await this.serviceSA.findByAttributes(
-          [{profileId: params.profileId, publicationId: new ObjectID(params.publicationId)}],
-          [],
+    } else {
+      data = await this.serviceSA.findByAttributes(
+          [{ profileId: params.profileId, publicationId: new ObjectID(params.publicationId) }],
+          []
       );
-      res.locals.statusCode = HttpStatus.OK;
-      next();
     }
-  }
+
+    res.locals.data = await Promise.all(
+        data.map(async (d: any) => {
+          const publication = await this.publicationSA.findById(d.publicationId);
+          d['publication'] = {
+            _id: d.publicationId,
+            ...publication
+          };
+          return d;
+        })
+    );
+    res.locals.statusCode = HttpStatus.OK;
+    next();
+  };
+
 }

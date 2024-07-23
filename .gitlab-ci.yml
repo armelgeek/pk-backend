@@ -33,7 +33,7 @@ deploy_dev:
       docker compose up -d ${SERVICE_NAME} &&
       docker system prune -f -a
     "
-  - echo "Back Office successfully deployed."
+  - echo "mobile-app-backend successfully deployed."
 
   only:
     - develop

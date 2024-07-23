@@ -504,17 +504,17 @@ export class GenericController<
     }
   };
   findRegistration=async(req, res, next) => {
-    const {params} = req;
+     const params = req.query;
     if(params.profileId){
       res.locals.data = await this.serviceSA.findByAttributes(
-          [{profileId: params.profileId}],
+          [{profileId:  params.profileId}],
           [],
       );
       res.locals.statusCode = HttpStatus.OK;
       next();
     }else{
       res.locals.data = await this.serviceSA.findByAttributes(
-          [{profileId: new ObjectID(params.profileId), publicationId: new ObjectID(params.publicationId)}],
+          [{profileId: params.profileId, publicationId: new ObjectID(params.publicationId)}],
           [],
       );
       res.locals.statusCode = HttpStatus.OK;

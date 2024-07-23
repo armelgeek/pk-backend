@@ -79,12 +79,10 @@ export const registrationRouter = registrationRoutes();
 
 
 /**
- * GET /api/find/registration
+ * GET /api/registration/to/find
  * @tags Registration
  * @security BearerAuth
  * @summary find Registration (findRegistration)
- * @param {string} profileId.path.required
- * @param {string} publicationId.path
  * @return {RegistrationResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

@@ -11,9 +11,9 @@ export const registrationRouter = registrationRoutes();
  * @tags Registration
  * @security BearerAuth
  * @summary List Registration (getAllRegistration)
- 
+
  * @param {number} page.query
- * @param {number} rowPerPage.query 
+ * @param {number} rowPerPage.query
  * @return {RegistrationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -24,8 +24,8 @@ export const registrationRouter = registrationRoutes();
  * @tags Registration
  * @security BearerAuth
  * @summary Remove Registration (deleteRegistration)
- 
- * @param {string} id.path.required 
+
+ * @param {string} id.path.required
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -37,7 +37,7 @@ export const registrationRouter = registrationRoutes();
  * @security BearerAuth
  * @summary Update Registration (updateRegistration)
  * @param {RegistrationRequestDTO} request.body
- * @param {string} id.path.required 
+ * @param {string} id.path.required
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -48,8 +48,8 @@ export const registrationRouter = registrationRoutes();
  * @tags Registration
  * @security BearerAuth
  * @summary List Registration (getRegistration)
- 
- * @param {string} id.path.required 
+
+ * @param {string} id.path.required
  * @return {RegistrationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,7 +60,7 @@ export const registrationRouter = registrationRoutes();
  * @tags Registration
  * @security BearerAuth
  * @summary Create Registration (addRegistration)
- * @param {RegistrationRequestDTO} request.body 
+ * @param {RegistrationRequestDTO} request.body
  * @return {RegistrationResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -71,9 +71,23 @@ export const registrationRouter = registrationRoutes();
  * @tags Registration
  * @security BearerAuth
  * @summary List Registration (getRegistration)
-  
+
  * @return {CountResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
+
+
+/**
+ * GET /api/find/registration
+ * @tags Registration
+ * @security BearerAuth
+ * @summary find Registration (findRegistration)
+ * @param {string} profileId.path.required
+ * @param {string} publicationId.path
+ * @return {RegistrationResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+
 

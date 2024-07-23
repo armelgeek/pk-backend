@@ -65,6 +65,7 @@ export const genericRoute = (option: RouteOption) => {
   router.post('/send-verification-mail', conditionnalJwtPassport(isSecured, name), controller.sendMail, responseFormatter);
   router.get('/me/:profileId/has-followed/:id', conditionnalJwtPassport(isSecured, name), controller.hasFollowed, responseFormatter);
   router.get('/me/:profileId/is-friend/:id', conditionnalJwtPassport(isSecured, name), controller.isFriend, responseFormatter);
+  router.get('/find/registration', conditionnalJwtPassport(isSecured, name), controller.findRegistration, responseFormatter);
   router.post('/add-member', conditionnalJwtPassport(isSecured, name), controller.addMemberToPage, responseFormatter);
   return router;
 };

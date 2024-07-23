@@ -1,17 +1,17 @@
-import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
-import { ObjectID } from "mongodb";
-import { AES, enc, lib, mode, pad } from "crypto-js";
-import { HttpStatus } from "../../data/constants/http-status";
-import { GenericFactory } from "../constraint/factory/generic.factory";
-import { GenericSA } from "../service/generic.sa";
-import { GenericSM } from "../service/generic.sm";
-import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
-import { sendNotification } from "../../service/middleware/firebase-cloud-messaging";
-import { UtilisateurSA, utilisateurSA } from "../../service/applicatif/Utilisateur";
-import { DeviceSA, deviceSA } from "../../service/applicatif/Device";
-import { NotificationSA, notificationSA } from "../../service/applicatif/Notification";
-import { PageSA, pageSA } from "../../service/applicatif/Page";
-import { ProfileSA, profileSA } from "../../service/applicatif/Profile";
+import {MongoRepository, ObjectID as ObjectIDType} from "typeorm";
+import {ObjectID} from "mongodb";
+import {AES, enc, lib, mode, pad} from "crypto-js";
+import {HttpStatus} from "../../data/constants/http-status";
+import {GenericFactory} from "../constraint/factory/generic.factory";
+import {GenericSA} from "../service/generic.sa";
+import {GenericSM} from "../service/generic.sm";
+import {sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
+import {sendNotification} from "../../service/middleware/firebase-cloud-messaging";
+import {UtilisateurSA, utilisateurSA} from "../../service/applicatif/Utilisateur";
+import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
+import {NotificationSA, notificationSA} from "../../service/applicatif/Notification";
+import {PageSA, pageSA} from "../../service/applicatif/Page";
+import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -471,10 +471,10 @@ export class GenericController<
       res.locals.statusCode = HttpStatus.OK;
       next();
     } catch (error) {
-      console.log('error', error);
       next(error);
     }
   };
+
   addMemberToPage = async (req, res, next) => {
     try {
       const {email, pageId }: {
@@ -483,7 +483,7 @@ export class GenericController<
       } = req.body;
       const currentPage = await this.pageSA.findById(pageId);
     // 7 jours
-      const link = generateHashedLink('http://213.136.89.152:3000/app/casino-request-verification', pageId,'pokerapply', 10080);
+      const link = generateHashedLink('http://localhost:3000/app/casino-request-verification', pageId,'pokerapply', 10080);
       await sendMailFunction({
         to: email,
         subject: `[PokerApply] - Invitation a devenir membre du Casino '${currentPage.name}' `,
@@ -503,4 +503,22 @@ export class GenericController<
       next(error);
     }
   };
+  findRegistration=async(req, res, next) => {
+    const {params} = req;
+    if(params.profileId){
+      res.locals.data = await this.serviceSA.findByAttributes(
+          [{profileId: params.profileId}],
+          [],
+      );
+      res.locals.statusCode = HttpStatus.OK;
+      next();
+    }else{
+      res.locals.data = await this.serviceSA.findByAttributes(
+          [{profileId: new ObjectID(params.profileId), publicationId: new ObjectID(params.publicationId)}],
+          [],
+      );
+      res.locals.statusCode = HttpStatus.OK;
+      next();
+    }
+  }
 }

@@ -524,6 +524,11 @@ export class GenericController<
 
     res.locals.data = await Promise.all(
         data.map(async (d: any) => {
+          const profile = await this.profileSA.findById(d.profileId);
+          d['profile'] = {
+            _id: d.profileId,
+            ...profile
+          };
           const publication = await this.publicationSA.findById(d.publicationId);
           d['publication'] = {
             _id: d.publicationId,

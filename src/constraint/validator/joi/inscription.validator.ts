@@ -20,20 +20,20 @@ export const inscriptionRequestDTOSchema = Joi.object({
 
 export const reSendCodeRequestDTOSchema = Joi.object({
   email: Joi.string().email(),
-  phone: Joi.object().keys({
+  /**phone: Joi.object().keys({
     paysCode: Joi.string().required(),
     phoneNumber: Joi.string().required(),
     callingCode: Joi.string().required(),
-  }),
+  }),**/
 });
 
 export const validationCodeRequestDTOSchema = Joi.object({
   email: Joi.string().email(),
-  phone: Joi.object().keys({
+  /**phone: Joi.object().keys({
     paysCode: Joi.string().required(),
     phoneNumber: Joi.string().required(),
     callingCode: Joi.string().required(),
-  }),
+  }),**/
   code: Joi.string().required(),
 });
 

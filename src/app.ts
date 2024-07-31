@@ -57,10 +57,16 @@ class App {
       try {
         // @ts-ignore
         const file = req.files?.file?.tempFilePath;
-        const resource_type = req.params.resource_type === "video" ? { resource_type: req.params.resource_type } : {};
+
+        const { resource_type } = req.params;
+
+        const resourceOptions = (resource_type === "video" || resource_type === "audio")
+            ? { resource_type }
+            : {};
+
         const uploadResponse = await cloudinary.uploader.upload(file, {
           upload_preset: 'profil',
-          ...resource_type,
+          ...resourceOptions,
         });
 
         res.json({ msg: 'yaya', url: uploadResponse?.secure_url });

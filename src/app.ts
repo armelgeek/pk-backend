@@ -72,7 +72,7 @@ class App {
         res.json({ msg: 'yaya', url: uploadResponse?.secure_url });
       } catch (err) {
         console.error(err);
-        res.status(500).json({ err: 'Something went wrong' });
+        res.status(500).json({ err });
       }
     });
   };

@@ -467,10 +467,18 @@ export class GenericController<
   isFriend =  async (req, res, next) => {
     const { params } = req;
     try {
-      res.locals.data = await this.serviceSA.findByAttributes(
-        [{ follow: new ObjectID(params.id) }, { follower: new ObjectID(params.profileId) }],
-        [],
-      );
+      if(params.id != undefined) {
+        res.locals.data = await this.serviceSA.findByAttributes(
+          [{ follow: new ObjectID(params.id) }, { follower: new ObjectID(params.profileId) }],
+          [],
+        );
+      }else{
+        res.locals.data = await this.serviceSA.findByAttributes(
+          [{ follower: new ObjectID(params.profileId) }],
+          [],
+        );
+      }
+
       res.locals.statusCode = HttpStatus.OK;
       next();
     } catch (error) {

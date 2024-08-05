@@ -3,9 +3,9 @@ import { formatDateToLocaleWithHour } from '../../common/service/date.service';
 import { dataTDO } from '../../data';
 import { SharingNoteDO } from '../../data/do/SharingNote';
 // @ts-ignore
-import { SharingNoteRequestDTO } from '../../data/dto/SharingNotes/request';
+import { SharingNoteRequestDTO } from '../../data/dto/SharingNote/request';
 // @ts-ignore
-import { SharingNoteResponseDTO } from '../../data/dto/SharingNotes/response';
+import { SharingNoteResponseDTO } from '../../data/dto/SharingNote/response';
 
 const commonSchema = {
   ...dataTDO.SharingNote.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),

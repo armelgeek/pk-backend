@@ -31207,6 +31207,133 @@
 					"method": "post"
 				}
 			]
+		},
+		{
+			"_type": "UMLClass",
+			"_id": "AAAAAAGRInC4/p3lV/c=",
+			"_parent": {
+				"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+			},
+			"name": "SharingNote",
+			"route": "sharing-note",
+			"attributes": [
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGRInC4/p3mSyY=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "profileId",
+					"type": "string"
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGRInC4/p3nHgk=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "nodeId",
+					"type": "Node",
+					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGRInC4/p3o48o=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "shareId",
+					"type": "string"
+				}
+			],
+			"operations": [
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGRInC4/p3qpvA=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "getAll",
+					"route": "sharing-note",
+					"method": "get"
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGRInC4/p3rn0c=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "delete",
+					"route": "sharing-note/{id}",
+					"method": "remove",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGRInC4/p3sCF8=",
+							"_parent": {
+								"$ref": "AAAAAAGRInC4/p3rn0c="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGRInC4/53t/Gg=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "update",
+					"route": "sharing-note/partialUpdate/{id}",
+					"method": "put",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGRInC4/53uBmc=",
+							"_parent": {
+								"$ref": "AAAAAAGRInC4/53t/Gg="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGRInC4/53vRUg=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "get",
+					"route": "sharing-note/{id}",
+					"method": "get",
+					"templateParameters": [
+						{
+							"_type": "UMLTemplateParameter",
+							"_id": "AAAAAAGRInC4/53wQjE=",
+							"_parent": {
+								"$ref": "AAAAAAGRInC4/53vRUg="
+							},
+							"name": "id",
+							"parameterType": "",
+							"defaultValue": ""
+						}
+					]
+				},
+				{
+					"_type": "UMLOperation",
+					"_id": "AAAAAAGRInC4/53x+to=",
+					"_parent": {
+						"$ref": "AAAAAAGRInC4/p3lV/c="
+					},
+					"name": "add",
+					"route": "sharing-note",
+					"method": "post"
+				}
+			]
 		}
 	]
 }

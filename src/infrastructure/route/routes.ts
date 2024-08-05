@@ -54,6 +54,7 @@ import { visitorsRouter } from './Visitors';
 import { filterRouter } from './Filter';
 import { pagepermissionsRouter } from './PagePermissions';
 import { friendsRouter } from './Friends';
+import { sharingnoteRouter } from './SharingNote';
 
 export const routes = () => {
   const router = Router();
@@ -112,6 +113,7 @@ export const routes = () => {
  router.use('/filter', filterRouter);
  router.use('/page-permission', pagepermissionsRouter);
  router.use('/friends', friendsRouter);
+ router.use('/sharing-note', sharingnoteRouter);
   
   return router;
 };

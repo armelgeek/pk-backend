@@ -1,14 +1,14 @@
 import { GenericFactory } from '../../common/constraint/factory/generic.factory';
 import { formatDateToLocaleWithHour } from '../../common/service/date.service';
 import { dataTDO } from '../../data';
-import { sharingNoteDO } from '../../data/do/sharingNote';
+import { SharingNoteDO } from '../../data/do/SharingNote';
 // @ts-ignore
-import { sharingNoteRequestDTO } from '../../data/dto/sharingNote/request';
+import { SharingNoteRequestDTO } from '../../data/dto/SharingNote/request';
 // @ts-ignore
-import { sharingNoteResponseDTO } from '../../data/dto/sharingNote/response';
+import { SharingNoteResponseDTO } from '../../data/dto/SharingNote/response';
 
 const commonSchema = {
-  ...dataTDO.sharingNote.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
+  ...dataTDO.SharingNote.attributes.reduce((acc, { key }) => ({ ...acc, [key]: key }), {}),
 };
 const schema = { ...commonSchema };
 const responseSchema = {
@@ -18,11 +18,11 @@ const responseSchema = {
   updatedAt: 'updatedAt',
 };
 
-export class sharingNoteFactory extends GenericFactory<
-  sharingNoteDO,
-  sharingNoteRequestDTO,
-  sharingNoteResponseDTO
+export class SharingNoteFactory extends GenericFactory<
+  SharingNoteDO,
+  SharingNoteRequestDTO,
+  SharingNoteResponseDTO
 > {}
 
-export const sharingnoteFactory = new sharingNoteFactory(schema, schema, responseSchema);
+export const sharingnoteFactory = new SharingNoteFactory(schema, schema, responseSchema);
 

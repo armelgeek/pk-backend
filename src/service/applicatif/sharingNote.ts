@@ -1,23 +1,23 @@
 import { GenericSA } from '../../common/service/generic.sa';
 import {
     sharingnoteFactory,
-  sharingNoteFactory,
-} from '../../constraint/factory/sharingNote';
-import { sharingNoteDO } from '../../data/do/sharingNote';
-// @ts-ignore
-import { sharingNoteRequestDTO } from '../../data/dto/sharingNote/request';
-// @ts-ignore
-import { sharingNoteResponseDTO } from '../../data/dto/sharingNote/response';
-import { sharingnoteSM, sharingNoteSM } from '../metier/sharingNote';
+  SharingNoteFactory,
+} from '../../constraint/factory/SharingNote';
+import { SharingNoteDO } from '../../data/do/SharingNote';
 
-export class sharingNoteSA extends GenericSA<
-  sharingNoteDO,
-  sharingNoteRequestDTO,
-  sharingNoteResponseDTO,
-  sharingNoteSM,
-  sharingNoteFactory
+// @ts-ignore
+import { SharingNoteRequestDTO } from '../../data/dto/SharingNote/request';
+// @ts-ignore
+import { SharingNoteResponseDTO } from '../../data/dto/SharingNote/response';
+import { sharingnoteSM, SharingNoteSM } from '../metier/SharingNote';
+
+export class SharingNoteSA extends GenericSA<
+  SharingNoteDO,
+  SharingNoteRequestDTO,
+  SharingNoteResponseDTO,
+  SharingNoteSM,
+  SharingNoteFactory
 > {
 }
 
-export const sharingnoteSA = new sharingNoteSA(sharingnoteSM, sharingnoteFactory, 'sharingNote');
-
+export const sharingNoteSA = new SharingNoteSA(sharingnoteSM, sharingnoteFactory, 'SharingNote');

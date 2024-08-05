@@ -1,29 +1,29 @@
 import { genericRoute } from '../../common/infrastructure/generic.route';
 import Joi from '../../constraint/validator/joi';
-import { sharingnoteController } from '../controller/sharingNote';
+import { sharingnoteController } from '../controller/SharingNote';
 
-const sharingnoteRoutes = () => genericRoute({ controller: sharingnoteController, schema: Joi.sharingNote, name: 'sharingNote' });
+const sharingnoteRoutes = () => genericRoute({ controller: sharingnoteController, schema: Joi.SharingNote, name: 'SharingNote' });
 
 export const sharingnoteRouter = sharingnoteRoutes();
 
 /**
  * GET /api/sharing-note
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
- * @summary List sharingNote (getAllsharingNote)
+ * @summary List SharingNote (getAllSharingNote)
  
  * @param {number} page.query
  * @param {number} rowPerPage.query 
- * @return {sharingNoteResponseDTO} 201
+ * @return {SharingNoteResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
  * DELETE /api/sharing-note/{id}
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
- * @summary Remove sharingNote (deletesharingNote)
+ * @summary Remove SharingNote (deleteSharingNote)
  
  * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
@@ -33,10 +33,10 @@ export const sharingnoteRouter = sharingnoteRoutes();
 
 /**
  * PUT /api/sharing-note/partialUpdate/{id}
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
- * @summary Update sharingNote (updatesharingNote)
- * @param {sharingNoteRequestDTO} request.body
+ * @summary Update SharingNote (updateSharingNote)
+ * @param {SharingNoteRequestDTO} request.body
  * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
@@ -45,23 +45,23 @@ export const sharingnoteRouter = sharingnoteRoutes();
 
 /**
  * GET /api/sharing-note/{id}
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
- * @summary List sharingNote (getsharingNote)
+ * @summary List SharingNote (getSharingNote)
  
  * @param {string} id.path.required 
- * @return {sharingNoteResponseDTO} 201
+ * @return {SharingNoteResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
 
 /**
  * POST /api/sharing-note
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
- * @summary Create sharingNote (addsharingNote)
- * @param {sharingNoteRequestDTO} request.body 
- * @return {sharingNoteResponseDTO} 201
+ * @summary Create SharingNote (addSharingNote)
+ * @param {SharingNoteRequestDTO} request.body 
+ * @return {SharingNoteResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

@@ -1,23 +1,13 @@
-export type sharingNoteRequestDTO = {
-   nom?: string;
-   prenom?: string;
-   friends?: number;
-   city?: string;
-   country?: string;
-   status?: string;
-   shareBy?: string;
-   photo?: string;
+export type SharingNoteRequestDTO = {
+   profileId?: string;
+   nodeId?: string;
+   shareId?: string;
 }
 
 /**
- * @typedef {object} sharingNoteRequestDTO
- * @property {string} nom
- * @property {string} prenom
- * @property {number} friends
- * @property {string} city
- * @property {string} country
- * @property {string} status
- * @property {string} shareBy
- * @property {string} photo
+ * @typedef {object} SharingNoteRequestDTO
+ * @property {string} profileId
+ * @property {string} nodeId
+ * @property {string} shareId
  */
 

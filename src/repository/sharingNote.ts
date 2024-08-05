@@ -1,7 +1,7 @@
 import { EntityRepository, MongoRepository } from 'typeorm';
 
-import { sharingNoteDO } from '../data/do/sharingNote';
+import { SharingNoteDO } from '../data/do/SharingNote';
 
-@EntityRepository(sharingNoteDO)
-export class sharingNoteRepository extends MongoRepository<sharingNoteDO> {}
+@EntityRepository(SharingNoteDO)
+export class SharingNoteRepository extends MongoRepository<SharingNoteDO> {}
 

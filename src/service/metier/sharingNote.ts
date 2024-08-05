@@ -1,11 +1,11 @@
 import { getCustomRepository } from 'typeorm';
 
 import { GenericSM } from '../../common/service/generic.sm';
-import { sharingNoteDO } from '../../data/do/sharingNote';
-import { sharingNoteRepository } from '../../repository/sharingNote';
+import { SharingNoteDO } from '../../data/do/SharingNote';
+import { SharingNoteRepository } from '../../repository/SharingNote';
 
-export class sharingNoteSM extends GenericSM<sharingNoteDO, string, sharingNoteRepository> {
+export class SharingNoteSM extends GenericSM<SharingNoteDO, string, SharingNoteRepository> {
 }
 
-export const sharingnoteSM = new sharingNoteSM(getCustomRepository(sharingNoteRepository));
+export const sharingnoteSM = new SharingNoteSM(getCustomRepository(SharingNoteRepository));
 

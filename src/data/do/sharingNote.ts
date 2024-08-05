@@ -1,33 +1,18 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
 @Entity('sharingnote')
-export class sharingNoteDO {
+export class SharingNoteDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  nom: string;
+  profileId: string;
 
   @Column({nullable: true, unique: false})
-  prenom: string;
+  nodeId: string;
 
   @Column({nullable: true, unique: false})
-  friends: number;
-
-  @Column({nullable: true, unique: false})
-  city: string;
-
-  @Column({nullable: true, unique: false})
-  country: string;
-
-  @Column({nullable: true, unique: false})
-  status: string;
-
-  @Column({nullable: true, unique: false})
-  shareBy: string;
-
-  @Column({nullable: true, unique: false})
-  photo: string;
+  shareId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

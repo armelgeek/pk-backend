@@ -35,9 +35,6 @@ export class ComplementaryInformationDO {
   @Column({nullable: true, unique: false})
   nbBracelet: number;
 
-  @Column({nullable: true, unique: false})
-  verified: boolean;
-  
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

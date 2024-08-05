@@ -120,3 +120,5 @@
   declare interface PagePermissionsResponseDTO { }
   declare interface FriendsRequestDTO { }
   declare interface FriendsResponseDTO { }
+  declare interface SharingNoteRequestDTO { }
+  declare interface SharingNoteResponseDTO { }

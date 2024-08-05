@@ -6,9 +6,9 @@ import {
 import { SharingNoteDO } from '../../data/do/SharingNote';
 
 // @ts-ignore
-import { SharingNoteRequestDTO } from '../../data/dto/SharingNotes/request';
+import { SharingNoteRequestDTO } from '../../data/dto/SharingNote/request';
 // @ts-ignore
-import { SharingNoteResponseDTO } from '../../data/dto/SharingNotes/response';
+import { SharingNoteResponseDTO } from '../../data/dto/SharingNote/response';
 import { sharingnoteSM, SharingNoteSM } from '../metier/SharingNote';
 
 export class SharingNoteSA extends GenericSA<

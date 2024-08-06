@@ -68,7 +68,7 @@ export const sharingnoteRouter = sharingnoteRoutes();
 
 /**
  * GET /api/sharing-note/to/{profileId}
- * @tags sharingNote
+ * @tags SharingNote
  * @security BearerAuth
  * @summary get sharingNote for (getSharedNoteFor)
 

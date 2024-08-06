@@ -13,6 +13,7 @@ import {NotificationSA, notificationSA} from "../../service/applicatif/Notificat
 import {PageSA, pageSA} from "../../service/applicatif/Page";
 import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
 import {PublicationSA, publicationSA} from "../../service/applicatif/Publication";
+import { noteSA,NoteSA } from "../../service/applicatif/Note";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -72,6 +73,7 @@ export class GenericController<
   notificationSA: NotificationSA;
   publicationSA: PublicationSA;
   pageSA: PageSA;
+  noteSA: NoteSA;
 
   constructor(serviceSA) {
     this.serviceSA = serviceSA;
@@ -81,6 +83,7 @@ export class GenericController<
     this.profileSA = profileSA;
     this.notificationSA = notificationSA;
     this.publicationSA = publicationSA;
+    this.noteSA = noteSA;
   }
 
   /**
@@ -548,5 +551,29 @@ export class GenericController<
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
+  getSharedNoteFor = async (req,res, next) => {
+    const params = req.query;
+    let data = await this.serviceSA.findByAttributes(
+        [{ profileId: params.profileId }],
+        []
+    );
+    res.locals.data = await Promise.all(
+      data.map(async (d: any) => {
+        const profile = await this.profileSA.findById(d.shareId);
+        d['sharedBy'] = {
+          _id: d.shareId,
+          ...profile
+        };
+        const note = await this.noteSA.findById(d.nodeId);
+        d['note'] = {
+          _id: d.nodeId,
+          ...note
+        };
+        return d;
+      })
+    );
+    res.locals.statusCode = HttpStatus.OK;
+    next();
+  }
 
 }

@@ -554,7 +554,7 @@ export class GenericController<
   getSharedNoteFor = async (req,res, next) => {
     const params = req.query;
     let data = await this.serviceSA.findByAttributes(
-        [{ profileId: params.profileId }],
+        [{ profileId: new ObjectID(params.profileId) }],
         []
     );
     res.locals.data = await Promise.all(

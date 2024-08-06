@@ -554,20 +554,21 @@ export class GenericController<
   getSharedNoteFor = async (req,res, next) => {
     const params = req.query;
     let data = await this.serviceSA.findByAttributes(
-        [{ profileId: new ObjectID(params.profileId) }],
+        [{ profileId: params.profileId }],
         []
     );
     res.locals.data = await Promise.all(
       data.map(async (d: any) => {
-        const profile = await this.profileSA.findById(d.shareId);
+
+        const note = await this.noteSA.findById(d.nodeId);
+        Object.assign(d, note);
+
+        const profile = await this.profileSA.findById(note.profileId);
+       console.log('profile',profile);
+        const sharedBy = await this.profileSA.findById(d.shareId);
         d['sharedBy'] = {
           _id: d.shareId,
-          ...profile
-        };
-        const note = await this.noteSA.findById(d.nodeId);
-        d['note'] = {
-          _id: d.nodeId,
-          ...note
+          ...sharedBy
         };
         return d;
       })

@@ -1,12 +1,19 @@
 stages:
-  - deploy
+  - deploy-staging
+  - deploy-preprod
+  - deploy-dev
 
 variables:
-  BUILD_DIR: /home/projects/pokerapps/mobile-app-backend
-  CONTAINER_NAME: backend-node-mongo
-  SERVICE_NAME: backend
+  BACKEND_DEV_DIR: /home/projects/pokerapps/mobile-app-backend
+  CONTAINER_DEV_NAME: backend-node-mongo
+  SERVICE_DEV_NAME: backend
+  BACKEND_STAGING_DIR: /home/pokerapp/staging/mobile-app-backend
+  BACKEND_PREPROD_DIR: /home/pokerapp/proto/mobile-app-backend
+  IMAGE_NAME_STAGING: backend-staging
+  IMAGE_NAME_PREPROD: backend-preprod
+
 deploy_dev:
-  stage: deploy
+  stage: deploy-dev
   image: alpine
   before_script:
   - cd
@@ -23,17 +30,79 @@ deploy_dev:
   - echo "Connecting to ssh ..."
   - |
     ssh -i ~/.ssh/ssh_key "${USER}@${NETWORK_TEMP}" "
-      cd ${BUILD_DIR}
+      cd ${BACKEND_DEV_DIR}
       git pull origin develop && 
       if ! docker compose build --no-cache; then
         echo "Docker build failed ."
         exit 1
       fi
-      docker compose stop ${CONTAINER_NAME} || true &&
-      docker compose up -d ${SERVICE_NAME} &&
+      docker compose stop ${CONTAINER_DEV_NAME} || true &&
+      docker compose up -d ${SERVICE_DEV_NAME} &&
       docker system prune -f -a
     "
   - echo "mobile-app-backend successfully deployed."
-
   only:
     - develop
+
+
+deploy_staging:
+  stage: deploy-staging
+  image: alpine
+  before_script:
+  - cd
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' > ~/.ssh/ssh_key
+  - chmod 600 ~/.ssh/ssh_key
+  - ssh-keyscan $NETWORK_STAGING > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+  script:
+    - |
+      ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER_STAGING@$NETWORK_STAGING" "
+        cd ${BACKEND_STAGING_DIR}
+        git pull origin staging
+        if ! docker compose build --no-cache ${IMAGE_NAME_STAGING}; then
+          echo 'Docker build failed.'
+          exit 1
+        fi
+        docker compose stop ${IMAGE_NAME_STAGING} || true &&
+        docker compose up -d ${IMAGE_NAME_STAGING} &&
+        docker system prune -a -f 
+        docker compose logs ${IMAGE_NAME_STAGING}
+        "
+  only:
+    - staging
+
+deploy_preprod:
+  stage: deploy-preprod
+  image: alpine
+  before_script:
+  - cd
+  - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )'
+  - eval $(ssh-agent -s)
+  - mkdir -p ~/.ssh
+  - echo "$SSH_PRIVATE_KEY_STAGING" | tr -d '\r' > ~/.ssh/ssh_key
+  - chmod 600 ~/.ssh/ssh_key
+  - ssh-keyscan $NETWORK_STAGING > ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+  script:
+    - |
+      ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER_STAGING@$NETWORK_STAGING" "
+        cd ${BACKEND_PREPROD_DIR}
+        git pull origin pre-prod
+        cp ormconfig.preprod.js ormconfig.js
+        if ! docker compose build --no-cache backend-preprod; then
+          echo 'Docker build failed.'
+          exit 1
+        fi
+        docker compose stop ${IMAGE_NAME_PREPROD} || true &&
+        docker compose up -d ${IMAGE_NAME_PREPROD} &&
+        docker system prune -a -f 
+        docker compose logs ${IMAGE_NAME_PREPROD}
+        git checkout pre-prod
+        "
+  only:
+    - pre-prod

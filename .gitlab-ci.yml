@@ -63,6 +63,7 @@ deploy_staging:
       ssh -o StrictHostKeyChecking=no -i ~/.ssh/ssh_key "$USER_STAGING@$NETWORK_STAGING" "
         cd ${BACKEND_STAGING_DIR}
         git pull origin staging
+        cp ormconfig.staging.js ormconfig.js
         if ! docker compose build --no-cache ${IMAGE_NAME_STAGING}; then
           echo 'Docker build failed.'
           exit 1
@@ -71,6 +72,7 @@ deploy_staging:
         docker compose up -d ${IMAGE_NAME_STAGING} &&
         docker system prune -a -f 
         docker compose logs ${IMAGE_NAME_STAGING}
+        git checkout staging
         "
   only:
     - staging

@@ -615,6 +615,7 @@ export class GenericController<
           _id: data.shareId,
           ...sharedBy
     };
+    res.locals.data = data;
     res.locals.statusCode = HttpStatus.OK;
     next();
   };

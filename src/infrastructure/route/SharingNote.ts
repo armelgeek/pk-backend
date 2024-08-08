@@ -80,7 +80,7 @@ export const sharingnoteRouter = sharingnoteRoutes();
 
 
 /**
- * GET /api/sharing-note/to/get-by-id
+ * GET /api/sharing-note/to/getById
  * @tags SharingNote
  * @security BearerAuth
  * @summary get sharingNote  (findSharedNoteById)

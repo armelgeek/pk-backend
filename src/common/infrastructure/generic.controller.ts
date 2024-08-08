@@ -609,7 +609,7 @@ export class GenericController<
     res.locals.data = {
       profileShared: sharedNote['profile'],
       comparison: {
-        myNotes: myNotes,
+        myNotes: myNotes[0],
         sharedNote: sharedNote
       }
     };

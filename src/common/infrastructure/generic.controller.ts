@@ -604,7 +604,7 @@ export class GenericController<
       res.locals.statusCode = HttpStatus.OK;
       next();
     }
-    myNotes[0]['profile'] = await this.profileSA.findById(params.profileId);
+    myNotes[0]['profile'] = await this.profileSA.findById(myNotes[0]['profileId']);
     sharedNote['profile'] = await this.profileSA.findById(params.sharedProfileNotedId);
     res.locals.data = {
       comparison: {

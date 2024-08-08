@@ -602,5 +602,20 @@ export class GenericController<
     };
     res.locals.statusCode = HttpStatus.OK;
     next();
-  }
+  };
+  findSharedNoteById = async (req,res, next) => {
+    const params = req.query;
+    let data = await this.serviceSA.findById(params.sharedNoteId);
+        const note = await this.noteSA.findById(data.nodeId);
+        Object.assign(data, note);
+
+    data['profile'] = await this.profileSA.findById(params.profileId);
+        const sharedBy = await this.profileSA.findById(data.shareId);
+    data['sharedBy'] = {
+          _id: data.shareId,
+          ...sharedBy
+    };
+    res.locals.statusCode = HttpStatus.OK;
+    next();
+  };
 }

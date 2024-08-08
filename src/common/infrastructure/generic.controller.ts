@@ -1,19 +1,19 @@
-import {MongoRepository, ObjectID as ObjectIDType} from "typeorm";
-import {ObjectID} from "mongodb";
-import {AES, enc, lib, mode, pad} from "crypto-js";
-import {HttpStatus} from "../../data/constants/http-status";
-import {GenericFactory} from "../constraint/factory/generic.factory";
-import {GenericSA} from "../service/generic.sa";
-import {GenericSM} from "../service/generic.sm";
-import {sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
-import {sendNotification} from "../../service/middleware/firebase-cloud-messaging";
-import {UtilisateurSA, utilisateurSA} from "../../service/applicatif/Utilisateur";
-import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
-import {NotificationSA, notificationSA} from "../../service/applicatif/Notification";
-import {PageSA, pageSA} from "../../service/applicatif/Page";
-import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
-import {PublicationSA, publicationSA} from "../../service/applicatif/Publication";
-import { noteSA,NoteSA } from "../../service/applicatif/Note";
+import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
+import { ObjectID } from "mongodb";
+import { AES, enc, lib, mode, pad } from "crypto-js";
+import { HttpStatus } from "../../data/constants/http-status";
+import { GenericFactory } from "../constraint/factory/generic.factory";
+import { GenericSA } from "../service/generic.sa";
+import { GenericSM } from "../service/generic.sm";
+import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
+import { sendNotification } from "../../service/middleware/firebase-cloud-messaging";
+import { UtilisateurSA, utilisateurSA } from "../../service/applicatif/Utilisateur";
+import { DeviceSA, deviceSA } from "../../service/applicatif/Device";
+import { NotificationSA, notificationSA } from "../../service/applicatif/Notification";
+import { PageSA, pageSA } from "../../service/applicatif/Page";
+import { ProfileSA, profileSA } from "../../service/applicatif/Profile";
+import { PublicationSA, publicationSA } from "../../service/applicatif/Publication";
+import { noteSA, NoteSA } from "../../service/applicatif/Note";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -563,7 +563,7 @@ export class GenericController<
         const note = await this.noteSA.findById(d.nodeId);
         Object.assign(d, note);
 
-
+        d['profile'] = await this.profileSA.findById(params.profileId);
         const sharedBy = await this.profileSA.findById(d.shareId);
         d['sharedBy'] = {
           _id: d.shareId,

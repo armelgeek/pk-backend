@@ -69,5 +69,6 @@ export const genericRoute = (option: RouteOption) => {
   router.post('/add-member', conditionnalJwtPassport(isSecured, name), controller.addMemberToPage, responseFormatter);
   router.get('/to/get', conditionnalJwtPassport(isSecured, name), controller.getSharedNoteFor, responseFormatter);
   router.get('/to/check', conditionnalJwtPassport(isSecured, name), controller.checkHasNotedSameUser, responseFormatter);
+  router.get('/to/compare', conditionnalJwtPassport(isSecured, name), controller.comparateNoteByUser, responseFormatter);
   return router;
 };

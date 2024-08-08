@@ -78,3 +78,15 @@ export const noteRouter = noteRoutes();
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
+
+
+/**
+ * GET /api/note/to/compare
+ * @tags Note
+ * @security BearerAuth
+ * @summary Compared note with shared note (comparateNoteByUser)
+
+ * @return {NoteResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */

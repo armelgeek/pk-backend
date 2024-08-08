@@ -579,12 +579,29 @@ export class GenericController<
   checkHasNotedSameUser = async (req,res, next) => {
     const params = req.query;
     let data = await this.serviceSA.findByAttributes(
-        [{ profileId: new ObjectID(params.profileNotedId), createdBy: new ObjectID(params.profileId) }],
+        [{ profileId: new ObjectID(params.sharedProfileNotedId), createdBy: new ObjectID(params.profileId) }],
         []
     );
     res.locals.data = data.length > 0;
     res.locals.statusCode = HttpStatus.OK;
     next();
+  };
+  comparateNoteByUser = async (req,res, next) => {
+    const params = req.query;
+    const [myNotes, sharedNote] = await Promise.all([
+      this.serviceSA.findByAttributes(
+        [{ profileId: new ObjectID(params.sharedProfileNotedId), createdBy: new ObjectID(params.profileId) }],
+        []
+      ),
+      this.noteSA.findById(params.sharedNoteId)
+    ]);
+    res.locals.data = {
+      comparison: {
+        myNotes: myNotes,
+        sharedNote: sharedNote
+      }
+    };
+    res.locals.statusCode = HttpStatus.OK;
+    next();
   }
-
 }

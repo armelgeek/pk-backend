@@ -608,10 +608,8 @@ export class GenericController<
     sharedNote['profile'] = await this.profileSA.findById(params.sharedProfileNotedId);
     res.locals.data = {
       profileShared: sharedNote['profile'],
-      comparison: {
         myNotes: myNotes[0],
         sharedNote: sharedNote
-      }
     };
     res.locals.statusCode = HttpStatus.OK;
     next();

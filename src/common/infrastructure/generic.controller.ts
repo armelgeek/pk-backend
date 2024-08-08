@@ -559,7 +559,7 @@ export class GenericController<
     );
     res.locals.data = await Promise.all(
       data.map(async (d: any) => {
-
+        d['shareNoteId'] = d.id;
         const note = await this.noteSA.findById(d.nodeId);
         Object.assign(d, note);
 

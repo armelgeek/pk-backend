@@ -563,7 +563,7 @@ export class GenericController<
         const note = await this.noteSA.findById(d.nodeId);
         Object.assign(d, note);
 
-        d['profile'] = await this.profileSA.findById(d.profileId);
+        d['profile'] = await this.profileSA.findById(d.profileId._id  || d.profileId);
         const sharedBy = await this.profileSA.findById(d.shareId);
         d['sharedBy'] = {
           _id: d.shareId,

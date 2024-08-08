@@ -575,6 +575,16 @@ export class GenericController<
     );
     res.locals.statusCode = HttpStatus.OK;
     next();
+  };
+  checkHasNotedSameUser = async (req,res, next) => {
+    const params = req.query;
+    let data = await this.serviceSA.findByAttributes(
+        [{ profileId: new ObjectID(params.profileNotedId), createdBy: new ObjectID(params.profileId) }],
+        []
+    );
+    res.locals.data = data.length > 0;
+    res.locals.statusCode = HttpStatus.OK;
+    next();
   }
 
 }

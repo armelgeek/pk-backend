@@ -521,7 +521,7 @@ export class GenericController<
     const params = req.query;
     let data;
 
-    if (params.profileId) {
+    if (params.profileId && params.publicationId== undefined) {
       data = await this.serviceSA.findByAttributes(
           [{ profileId: params.profileId }],
           []

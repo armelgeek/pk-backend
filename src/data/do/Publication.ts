@@ -44,6 +44,12 @@ export class PublicationDO {
   @Column({ type: 'timestamptz', default: new Date() })
   updatedAt: Date;
 
+  @Column({nullable: true, unique: false})
+  original_id: string;
+
+  @Column({nullable: true, unique: false, default: false})
+  is_shared: boolean;
+
   @BeforeInsert()
   beforeInsert() {
     this.createdAt = new Date();

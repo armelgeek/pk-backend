@@ -25278,6 +25278,14 @@
 						"$ref": "AAAAAAGNhQPY9VBuOYg="
 					},
 					"isID": true
+				},
+				{
+					"_type": "UMLAttribute",
+					"_id": "AAAAAAGQc2b7ZU8J65A=",
+					"_parent": { "$ref": "AAAAAAGN1UIvcq/6Ym4=" },
+					"name": "isShared",
+					"type": "boolean",
+					"defaultValue": false
 				}
 			],
 			"operations": [

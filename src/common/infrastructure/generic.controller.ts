@@ -92,6 +92,7 @@ export class GenericController<
   create = async (req, res, next) => {
     const { body } = req;
     try {
+      console.log('ici ca body',body);
       const created = await this.serviceSA.create(body);
 
       res.locals.data = created;

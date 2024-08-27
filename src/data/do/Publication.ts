@@ -38,17 +38,17 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
+  @Column({nullable: true, unique: false, default: ''})
+  originalId: string;
+
+  @Column({nullable: true, unique: false, default: false})
+  isShared: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 
   @Column({ type: 'timestamptz', default: new Date() })
   updatedAt: Date;
-
-  @Column({nullable: true, unique: false})
-  originalId: string;
-
-  @Column({nullable: true, unique: false, default: false})
-  isShared: boolean;
 
   @BeforeInsert()
   beforeInsert() {

@@ -45,10 +45,10 @@ export class PublicationDO {
   updatedAt: Date;
 
   @Column({nullable: true, unique: false})
-  original_id: string;
+  originalId: string;
 
   @Column({nullable: true, unique: false, default: false})
-  is_shared: boolean;
+  isShared: boolean;
 
   @BeforeInsert()
   beforeInsert() {

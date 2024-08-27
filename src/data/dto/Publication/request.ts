@@ -10,6 +10,8 @@ export type PublicationRequestDTO = {
    actif?: boolean;
    tags?: string[];
    pageId?: string;
+   originalId?: string;
+   isShared?: boolean
 }
 
 /**
@@ -25,5 +27,7 @@ export type PublicationRequestDTO = {
  * @property {boolean} actif
  * @property {array<string>} tags
  * @property {string} pageId
+ * @property {string} originalId
+ * @property {boolean} isShared
  */
 

@@ -5,6 +5,10 @@ export type NotificationRequestDTO = {
    usersIds?: string[];
    user?: string;
    view?: string;
+   targetId?: string;
+   target?: string;
+   type?: string;
+   sender?: string;
 }
 
 /**
@@ -15,5 +19,9 @@ export type NotificationRequestDTO = {
  * @property {array<string>} usersIds
  * @property {string} user
  * @property {string} view
+ * @property {string} targetId
+ * @property {string} target
+ * @property {string} type
+ * @property {string} sender
  */
 

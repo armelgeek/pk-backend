@@ -23,6 +23,18 @@ export class NotificationDO {
   @Column({nullable: true, unique: false})
   view: string;
 
+  @Column({nullable: true, unique: false})
+  targetId: string;
+
+  @Column({nullable: true, unique: false})
+  target: string;
+
+  @Column({nullable: true, unique: false})
+  type: string;
+
+  @Column({nullable: true, unique: false})
+  sender: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -24806,7 +24806,8 @@
 						"$ref": "AAAAAAGN1KwsVK6MJCE="
 					},
 					"name": "target",
-					"type": "string"
+					"type": "string",
+					"isID": true
 				},
 				{
 					"_type": "UMLAttribute",

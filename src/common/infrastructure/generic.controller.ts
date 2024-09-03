@@ -54,6 +54,7 @@ function generateHashedLink(baseURL,pageId, secretKey, expirationMinutes) {
   return linkHash.replace(/\s+/g, '');
 }
 
+
 export class GenericController<
   TDo,
   TRequestDto,
@@ -631,4 +632,35 @@ export class GenericController<
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
+  notifyUser = async (req, res, next) => {
+    const { userIds, message, title } = req.body;
+    let tokens = [];
+
+    try {
+      for (const userId of userIds) {
+        const devices = await this.deviceSA.findAll({ user: userId });
+        if (devices && devices.items.length) {
+          tokens.push(...devices.items.map(({ token }) => token));
+        }
+      }
+
+      if (tokens.length > 0) {
+        await sendNotification({
+          tokens: tokens,
+          title: `[PokerApply] - ${title}`,
+          body: message,
+        });
+      }
+
+      res.locals.data = 'ok';
+      res.locals.statusCode = HttpStatus.OK;
+    } catch (error) {
+      res.locals.data = 'error';
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error notifying users:', error);
+    }
+
+    next();
+  };
+
 }

@@ -652,7 +652,7 @@ export class GenericController<
         });
       }
 
-      res.locals.data = 'ok';
+      res.locals.data = tokens;
       res.locals.statusCode = HttpStatus.OK;
     } catch (error) {
       res.locals.data = 'error';

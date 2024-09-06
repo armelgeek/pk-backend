@@ -22369,9 +22369,7 @@
 						"$ref": "AAAAAAGNhQE1FVAM29w="
 					},
 					"name": "profileId",
-					"type": {
-						"$ref": "AAAAAAGNhPEOj08PCNo="
-					},
+					"type": "string",
 					"isID": true
 				},
 				{
@@ -22381,9 +22379,8 @@
 						"$ref": "AAAAAAGNhQE1FVAM29w="
 					},
 					"name": "pageId",
-					"type": {
-						"$ref": "AAAAAAGNhQPY9VBuOYg="
-					}
+					"type": "string",
+					"isID": true
 				}
 			],
 			"operations": [

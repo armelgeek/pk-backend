@@ -22371,7 +22371,8 @@
 					"name": "profileId",
 					"type": {
 						"$ref": "AAAAAAGNhPEOj08PCNo="
-					}
+					},
+					"isID": true
 				},
 				{
 					"_type": "UMLAttribute",

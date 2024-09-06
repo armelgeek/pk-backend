@@ -22369,8 +22369,9 @@
 						"$ref": "AAAAAAGNhQE1FVAM29w="
 					},
 					"name": "profileId",
-					"type": "string",
-					"isID": true
+					"type": {
+						"$ref": "AAAAAAGNhPEOj08PCNo="
+					}
 				},
 				{
 					"_type": "UMLAttribute",
@@ -22379,8 +22380,9 @@
 						"$ref": "AAAAAAGNhQE1FVAM29w="
 					},
 					"name": "pageId",
-					"type": "string",
-					"isID": true
+					"type": {
+						"$ref": "AAAAAAGNhQPY9VBuOYg="
+					}
 				}
 			],
 			"operations": [

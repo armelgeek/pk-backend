@@ -31,11 +31,14 @@ class App {
       this.initCron();
       // const res = await sendNotification({
       //   tokens: [
-      //     'ehfh-DJdSvKh6utgSoKWd6:APA91bGGLQRHESSmvRPIqufeW4cmmP6f8f-GIxsTuxG13bfjbsb8KdtPPNSKlR59BsmepKOOtzxJKujr3XC-RysJvukkJVz-fA4nS5DLXubRjRuZLX5_Y614IlDzn1D89vQDSYiUb9Lc',
+      //     'c1ckbu41TDiMPCkZLlDhZg:APA91bFf8-RHrqee76aI7Kg3iOJy2H21jesHN8WEAP1bQrjQG8qh-MGhp2OHMi6JOMkJJaBy6qzKBLNtNL7Q99NBtylhe6NLjxEfh8fU1d__FMkhl145N7fHfLH5S3WKe8Cq63xgrXk6',
       //   ],
       //   title: 'title',
       //   body: 'Push Notification for POC REACT NATIVE WEB',
       // });
+      // console.log('sendNotification ====================================');
+      // console.log(res);
+      // console.log('====================================');
       return this.app.listen(configs.port, () => logger.info(`Listening on ${configs.port}`));
     } catch (error) {
       return Promise.reject(error);
@@ -78,10 +81,25 @@ class App {
   };
   private initRoutes = async () => {
     const { appRouter } = await import('./infrastructure/route/app.route');
+
+    this.app.post('/api/test/notification', async (req, res) => {
+      const message = await sendNotification({
+        tokens: [req.body.token],
+        title: 'title',
+        body: 'Push Notification for POC REACT NATIVE WEB',
+      });
+      console.log('sendNotification ====================================');
+      console.log(message);
+      console.log('====================================');
+      res.json({ message });
+    });
+  
     this.app.use('/api', appRouter, responseFormatter);
-    // this.app.get('/', (_, res) => {
-    //   res.json({ message: 'It works ok ok ok !!!' });
-    // });
+
+    this.app.get('/', async (_, res) => {
+      res.json({ message: 'It works ok ok ok !!!' });
+    });
+
     this.app.use(express.static(path.resolve(__dirname, '../public/')));
     this.app.use(express.static(path.resolve(__dirname, '../bo/dist')));
     this.app.use(express.static(path.resolve(__dirname, '/bo/')));

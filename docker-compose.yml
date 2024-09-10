@@ -27,7 +27,7 @@ services:
     depends_on:
       # - minio
       - mongo
-    environment:
+    env_file:
       - .env
     external_links:
       - mongo

@@ -31,6 +31,8 @@ export type UtilisateurRequestDTO = {
    deletionState: string;
    isDeactivated?: boolean;
    secondNotificationDate?: string;
+   reactivateCode?: string;
+   reactivateExpiredDate?: string;
 }
 
 /**
@@ -67,5 +69,7 @@ export type UtilisateurRequestDTO = {
  * @property {string} deletionState
  * @property {boolean} isDeactivated
  * @property {string} secondNotificationDate
+ * @property {string} reactivateCode
+ * @property {string} reactivateExpiredDate
  */
 

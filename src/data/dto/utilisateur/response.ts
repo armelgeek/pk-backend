@@ -31,6 +31,8 @@ export type UtilisateurResponseDTO = {
    deletionState: string;
    isDeactivated?: boolean;
    secondNotificationDate?: string;
+   reactivateCode?: string;
+   reactivateExpiredDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -70,6 +72,8 @@ export type UtilisateurResponseDTO = {
  * @property {string} deletionState
  * @property {boolean} isDeactivated
  * @property {string} secondNotificationDate
+ * @property {string} reactivateCode
+ * @property {string} reactivateExpiredDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

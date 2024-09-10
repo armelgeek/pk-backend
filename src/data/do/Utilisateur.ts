@@ -101,6 +101,12 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   secondNotificationDate: string;
 
+  @Column({nullable: true, unique: false})
+  reactivateCode: string;
+
+  @Column({nullable: true, unique: false})
+  reactivateExpiredDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

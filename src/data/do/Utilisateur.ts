@@ -98,6 +98,9 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   isDeactivated: boolean;
 
+  @Column({nullable: true, unique: false})
+  secondNotificationDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

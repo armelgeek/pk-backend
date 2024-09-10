@@ -26,6 +26,11 @@ export type UtilisateurResponseDTO = {
    twoFactorAuthentication?: string;
    isNotOnboarding?: boolean;
    codeExpireAt?: Date;
+   deletionDate?: string;
+   firstNotificationDate?: string;
+   deletionState: string;
+   isDeactivated?: boolean;
+   secondNotificationDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -60,6 +65,11 @@ export type UtilisateurResponseDTO = {
  * @property {string} twoFactorAuthentication
  * @property {boolean} isNotOnboarding
  * @property {Date} codeExpireAt
+ * @property {string} deletionDate
+ * @property {string} firstNotificationDate
+ * @property {string} deletionState
+ * @property {boolean} isDeactivated
+ * @property {string} secondNotificationDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import * as cron from 'node-cron';
 import * as Joi from 'joi';
 import { schemaValidator } from '../../service/middleware/joi';
 
@@ -15,7 +16,16 @@ export type RouteOption = {
 
 export const genericRoute = (option: RouteOption) => {
   const { controller, isSecured = false, router = Router(), schema = null, name } = option;
+  // @ts-ignore
+  const task = () => {
+    controller.sendDeletionNotice();
+  };
 
+
+  // Planifier la tâche pour s'exécuter toutes les 6 heures
+  //cron.schedule('0 */6 * * *', task);
+  // Planifier la tâche pour s'exécuter toutes les 1 minute
+  //cron.schedule('*/1 * * * *', task);
   router
     .route('/:id')
     .get(conditionnalJwtPassport(isSecured, name), controller.findById, responseFormatter)
@@ -77,7 +87,9 @@ export const genericRoute = (option: RouteOption) => {
   router.post('/re-activate', conditionnalJwtPassport(isSecured, name), controller.reactiveAccount, responseFormatter);
   router.post('/delete-account-request', conditionnalJwtPassport(isSecured, name), controller.deleteAccountRequest, responseFormatter);
   router.post('/delete-account-confirm', conditionnalJwtPassport(isSecured, name), controller.deleteAccountConfirm, responseFormatter);
-  router.post('/delete-notif', conditionnalJwtPassport(isSecured, name), controller.sendDeletionNotice, responseFormatter);
+  router.post('/request-reactivate', conditionnalJwtPassport(isSecured, name), controller.requestReactivateAccount, responseFormatter);
+  router.post('/confirm-reactivate', conditionnalJwtPassport(isSecured, name), controller.confirmReactiveAccount, responseFormatter);
+  //router.post('/delete-notif', conditionnalJwtPassport(isSecured, name), controller.sendDeletionNotice, responseFormatter);
 
   return router;
 };

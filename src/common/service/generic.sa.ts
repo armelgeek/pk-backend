@@ -606,9 +606,9 @@ export abstract class GenericSA<
     }
   }
 
-  async findByLteDates(dateField, date): Promise<any> {
+  async findBetweenDates(firstDate: string, lastDate?: string, otherCondition?: any): Promise<any> {
     try {
-      const data = await this.serviceSM.findByLteDates(dateField,date);
+      const data = await this.serviceSM.findBetweenDates(firstDate, lastDate, otherCondition);
       return this.factory.toResponseDto(data || []);
     } catch (error) {
       return Promise.reject(error);

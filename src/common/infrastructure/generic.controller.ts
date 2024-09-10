@@ -5,7 +5,7 @@ import {HttpStatus} from "../../data/constants/http-status";
 import {GenericFactory} from "../constraint/factory/generic.factory";
 import {GenericSA} from "../service/generic.sa";
 import {GenericSM} from "../service/generic.sm";
-import {sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
+import {sendMail, sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
 import {sendNotification} from "../../service/middleware/firebase-cloud-messaging";
 import {UtilisateurSA, utilisateurSA} from "../../service/applicatif/Utilisateur";
 import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
@@ -16,6 +16,8 @@ import {PublicationSA, publicationSA} from "../../service/applicatif/Publication
 import {authentificationSA, AuthentificationSA} from '../../service/applicatif/authentification/authentification.sa';
 import {noteSA, NoteSA} from "../../service/applicatif/Note";
 import moment = require("moment");
+import {utilisateurSM} from "../../service/metier/utilisateur/utilisateur.sm";
+import {entierAleatoire} from "../../service/applicatif/inscription/inscription.sa";
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -796,8 +798,8 @@ export class GenericController<
 
     return {
       deletionDate: deletionDate,
-      firstNotificationDate: firstNotificationDate.format('YYYY-MM-DD HH:mm:ss'),
-      secondNotificationDate: secondNotificationDate.format('YYYY-MM-DD HH:mm:ss'),
+      firstNotificationDate: firstNotificationDate.toISOString(),
+      secondNotificationDate: secondNotificationDate.toISOString(),
     };
   };
 
@@ -834,8 +836,8 @@ export class GenericController<
       res.locals.data = await this.userSA.updateFields(userId, {
           isDeactivated: true,
           deletionState: 'NONE',
-          deactivatedDate: currentDate.format('YYYY-MM-DD HH:mm:ss'),
-          deletionDate: deletionDate.format('YYYY-MM-DD HH:mm:ss'),
+          deactivatedDate: currentDate.toISOString(),
+          deletionDate: deletionDate.toISOString(),
           firstNotificationDate: firstNotificationDate,
           secondNotificationDate: secondNotificationDate
         });
@@ -851,51 +853,143 @@ export class GenericController<
   }
   sendDeletionNotice = async () => {
     try {
-      const currentDate = moment();
-
-      const usersForFirstNotification = await this.userSA.findByLteDates({
-        firstNotificationDate: currentDate.format('YYYY-MM-DD HH:mm:ss')
+      // @ts-ignore
+      const usersForFirstNotification = await this.userSA.findBetweenDates('firstNotificationDate','secondNotificationDate',{
+        deletionState:  { $ne: 'FIRST_NOTIF' }
       });
 
       console.log(`Found ${usersForFirstNotification.length} users to send first notification`);
 
       await Promise.all(usersForFirstNotification.map(async user => {
         await this.userSA.updateFields(user.id, { deletionState: 'FIRST_NOTIF' });
-        await this.sendDeleteReminderNotification(user.id, 'first');
+        await this.sendDeleteReminderNotification(user, 'first-process', 'First warning: Your account will be deleted soon.');
       }));
 
 
-      const usersForSecondNotification = await this.userSA.findByLteDates({
-        secondNotificationDate: currentDate.format('YYYY-MM-DD HH:mm:ss')
+      // @ts-ignore
+      const usersForSecondNotification = await this.userSA.findBetweenDates('secondNotificationDate','deletionDate',{
+        deletionState:  { $eq: 'FIRST_NOTIF' }
       });
 
       console.log(`Found ${usersForSecondNotification.length} users to send second notification`);
 
       await Promise.all(usersForSecondNotification.map(async user => {
-        await this.userSA.updateFields(user.userId, { deletionState: 'SECOND_NOTIF' });
+        await this.userSA.updateFields(user.id, { deletionState: 'SECOND_NOTIF' });
 
-        await this.sendDeleteReminderNotification(user._id, 'second');
+        await this.sendDeleteReminderNotification(user, 'second-process', 'Second warning: Your account will be deleted imminently.');
       }));
 
-      /**const allCountToDelete = await this.userSA.findByLteDates({
-        deletionDate: currentDate.format('YYYY-MM-DD HH:mm:ss') }
+      const allUserToDelete = await this.userSA.findBetweenDates('deletionDate',undefined, {
+        deletionState: {
+          $eq: 'SECOND_NOTIF'
+        }
       });
 
-      console.log(`Found ${allCountToDelete.length} users to delete`);
+      console.log(`Found ${allUserToDelete.length} users to delete`);
 
-      await Promise.all(allCountToDelete.map(async user => {
-        await this.userSA.delete(user._id);
+      await Promise.all(allUserToDelete.map(async user => {
+        //await this.userSA.delete(user.id);
 
-        await this.sendDeleteReminderNotification(user._id, 'delete');
+        await this.sendDeleteReminderNotification(user, 'final-process','Your account has been deleted.');
       }));
-          **/
-
     } catch (error) {
       console.error('Error sending deletion notices:', error);
     }
   };
-  sendDeleteReminderNotification = async (userId, notificationType) => {
-    console.log(`Sending ${notificationType} notification to user ${userId}`);
-  };
+  sendDeleteReminderNotification = async (user,type, message) => {
+    console.log(`Sending ${message} notification to user ${user.nom}`);
+    const code = entierAleatoire(1111, 9999).toString();
+    const expirationDate = new Date();
+    expirationDate.setMinutes(expirationDate.getMinutes() + 5);
+    const saved = await this.userSA.updateFields(user.id, { reactivateCode: code, reactivateExpiredDate: expirationDate });
+    if(type !='final-process') {
+      /**await sendMailFunction({
+          to: user.email,
+          subject: "[PokerApply] - Suppression de compte",
+          body: `Bonjour ${user.username || user.nom},
+         <br /> <br />
+         <span>
+         <p>${message}</p>
+        <p>Une code de réactivation est généré pour vous: ${code} </p>
+         <br />
+         <br />
+         Si vous n'êtes pas à l'origine de cette action, veuillez ignorer ce mail.
+         <br /> <br /> <br />
+         Cordialement,
+         <br /> <br />
+         L'équipe Pockerapply.
+         `,
+        });**/
 
+    }
+  }
+  requestReactivateAccount = async (req, res, next) => {
+    const {userId} = req.body;
+    const code = entierAleatoire(1111, 9999).toString();
+    const expirationDate = new Date();
+    expirationDate.setMinutes(expirationDate.getMinutes() + 5);
+    const saved = await this.userSA.updateFields(userId, { reactivateCode: code, reactivateExpiredDate: expirationDate });
+
+    if (saved) {
+      const user = await this.userSA.findById(userId);
+     /** await sendMail({
+        to: user.email,
+        subject: '[Pokerapply] - Validation compte',
+        body: `
+      Bonjour ${user.username || user.nom},
+      <br /> <br />
+      <span>
+        <p>Voici votre code de reactivation: ${code},le code expire dans 5 minutes.</p>
+      <br />
+      <br />
+      Si vous n'êtes pas à l'origine de cette action, veuillez ignorer ce mail.
+      <br /> <br /> <br />
+      Cordialement,
+      <br /> <br />
+      L'équipe Pockerapply.
+      `,
+      });**/
+      res.locals.data = true;
+      res.locals.message = "The code has been sent to your email.";
+      res.locals.statusCode = HttpStatus.OK;
+    } else {
+      res.locals.data = false;
+      res.locals.message = "An error occurred. Please try again.";
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error delete confirmation:', 'user not found');
+    }
+    next();
+  }
+  confirmReactiveAccount = async(req, res, next) => {
+    const {userId, code} = req.body;
+    try{
+      const user = await this.userSA.findById(userId);
+      console.log('user', user && user.reactivateCode == code && user.reactivateExpiredDate > new Date());
+      if(user && user.reactivateCode == code && user.reactivateExpiredDate > new Date()){
+        res.locals.data = await this.userSA.updateFields(userId, {
+          reactivateCode: null,
+          reactivateExpiredDate: null,
+          deletionState: 'NONE',
+          deactivatedDate: null,
+          deletionDate: null,
+          firstNotificationDate: null,
+          secondNotificationDate: null,
+          isDeactivated: false
+        });
+        res.locals.message = "Your account has been reactivated.";
+        res.locals.statusCode = HttpStatus.OK;
+      }else{
+        res.locals.data = false;
+        res.locals.message = "The code entered is not valid. Please try again.";
+        res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+        console.error('Error delete confirmation:', 'user not found');
+      }
+
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error delete confirmation:', error);
+    }
+    next();
+  }
 }

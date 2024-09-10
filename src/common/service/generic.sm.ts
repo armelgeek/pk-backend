@@ -2,6 +2,7 @@ import { DeepPartial, FindConditions, FindManyOptions, MongoRepository, ObjectLi
 import { ObjectID } from 'mongodb';
 import { HttpStatus } from "../../data/constants/http-status";
 import { Exception } from "../../service/middleware/exception-handler";
+import * as moment from "moment";
 
 export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TDo>> {
   protected repository: TRepository;
@@ -230,16 +231,29 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by attributes');
     }
   }
-  async findByLteDates(
-      dateField: string,
-      date: Date
+  async findBetweenDates(
+      firstDate: string,
+      lastDate?: string,
+      otherCondition?: any,
   ): Promise<TDo[]> {
+    const now = new Date().toISOString();
     try {
-      const dateQuery = {
-        [dateField]: {   $lte: date }
+
+      const dateQuery: any = {
+        [firstDate]: { $lte: now },
       };
 
-      return await this.repository.find({ where: dateQuery });
+      if (lastDate) {
+        dateQuery[lastDate] = { $gt: now };
+      } else {
+        dateQuery[firstDate] = { $lt: now };
+      }
+
+      if (otherCondition) {
+        Object.assign(dateQuery, otherCondition);
+      }
+    console.log('dateQuery',dateQuery);
+      return await this.repository.find({ where: { $and: [dateQuery] }});
     } catch (error) {
       console.error('Error finding by dates:', error);
       throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by dates');

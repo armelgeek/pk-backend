@@ -86,6 +86,18 @@ export class UtilisateurDO {
   @Column({ type: 'timestamptz', default: new Date() })
   codeExpireAt: Date;
 
+  @Column({nullable: true, unique: false})
+  deletionDate: string;
+
+  @Column({nullable: true, unique: false})
+  firstNotificationDate: string;
+
+  @Column({nullable: false, unique: true})
+  deletionState: string;
+
+  @Column({nullable: true, unique: false})
+  isDeactivated: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

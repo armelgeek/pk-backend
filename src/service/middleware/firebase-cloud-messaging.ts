@@ -11,9 +11,10 @@ export const sendNotification = async ({ tokens, title, body }) => {
   const messaging = admin.messaging();
 
   try {
-    const data = await messaging.sendToDevice(tokens, {
+    const data = await Promise.all(tokens.map(async (token) =>  await messaging.send({
       notification: { title, body },
-    });
+      token
+    })));
 
     return data;
   } catch (error) {

@@ -1,19 +1,21 @@
-import { MongoRepository, ObjectID as ObjectIDType } from "typeorm";
-import { ObjectID } from "mongodb";
-import { AES, enc, lib, mode, pad } from "crypto-js";
-import { HttpStatus } from "../../data/constants/http-status";
-import { GenericFactory } from "../constraint/factory/generic.factory";
-import { GenericSA } from "../service/generic.sa";
-import { GenericSM } from "../service/generic.sm";
-import { sendMail as sendMailFunction } from "../../service/middleware/nodemailer";
-import { sendNotification } from "../../service/middleware/firebase-cloud-messaging";
-import { UtilisateurSA, utilisateurSA } from "../../service/applicatif/Utilisateur";
-import { DeviceSA, deviceSA } from "../../service/applicatif/Device";
-import { NotificationSA, notificationSA } from "../../service/applicatif/Notification";
-import { PageSA, pageSA } from "../../service/applicatif/Page";
-import { ProfileSA, profileSA } from "../../service/applicatif/Profile";
-import { PublicationSA, publicationSA } from "../../service/applicatif/Publication";
-import { noteSA, NoteSA } from "../../service/applicatif/Note";
+import {MongoRepository, ObjectID as ObjectIDType} from "typeorm";
+import {ObjectID} from "mongodb";
+import {AES, enc, lib, mode, pad} from "crypto-js";
+import {HttpStatus} from "../../data/constants/http-status";
+import {GenericFactory} from "../constraint/factory/generic.factory";
+import {GenericSA} from "../service/generic.sa";
+import {GenericSM} from "../service/generic.sm";
+import {sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
+import {sendNotification} from "../../service/middleware/firebase-cloud-messaging";
+import {UtilisateurSA, utilisateurSA} from "../../service/applicatif/Utilisateur";
+import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
+import {NotificationSA, notificationSA} from "../../service/applicatif/Notification";
+import {PageSA, pageSA} from "../../service/applicatif/Page";
+import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
+import {PublicationSA, publicationSA} from "../../service/applicatif/Publication";
+import {authentificationSA, AuthentificationSA} from '../../service/applicatif/authentification/authentification.sa';
+import {noteSA, NoteSA} from "../../service/applicatif/Note";
+import moment = require("moment");
 
 function encrypt(plainText:string, secret) {
   const key = enc.Utf8.parse(secret);
@@ -75,6 +77,7 @@ export class GenericController<
   publicationSA: PublicationSA;
   pageSA: PageSA;
   noteSA: NoteSA;
+  authentificationSA: AuthentificationSA;
 
   constructor(serviceSA) {
     this.serviceSA = serviceSA;
@@ -85,6 +88,7 @@ export class GenericController<
     this.notificationSA = notificationSA;
     this.publicationSA = publicationSA;
     this.noteSA = noteSA;
+    this.authentificationSA = authentificationSA;
   }
 
   /**
@@ -661,6 +665,237 @@ export class GenericController<
     }
 
     next();
+  };
+
+
+  // gestion de suppression de compte
+  /**
+   *
+   *  Crée une demande de désactivation du compte. Nécessite une confirmation et un mot de passe.
+   */
+  deactivateRequest = async (req, res, next) => {
+    const {userId, password} = req.body;
+    try{
+    const user = await this.userSA.findById(userId);
+      res.locals.data = this.authentificationSA.validatePassword(password, user.password);
+      res.locals.message = "Account deactivation requested. Please confirm to proceed.";
+      res.locals.statusCode = HttpStatus.OK;
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error desactive requesst:', error);
+    }
+    next();
+  }
+  /**
+   *
+   * Valide la désactivation après la deuxième confirmation et la saisie du mot de passe.
+   */
+  deactivateConfirmation = async (req, res, next) => {
+    const {userId} = req.body;
+    try{
+      const user = await this.userSA.findById(userId)
+      const { _id, ...data } = user;
+      // si c'est déja desactive donc pas la paine de continuer
+      if(!user.isDeactivated || typeof  user.isDeactivated === 'undefined'){
+
+        const updatedUser = await this.userSA.updateFields(userId, {
+          isDeactivated: true,
+          deactivatedDate: moment().format('YYYY-MM-DD HH:mm:ss'),
+        });
+        res.locals.data = updatedUser;
+        res.locals.message = "Your account has been deactivated.";
+        res.locals.statusCode = HttpStatus.OK;
+      }else{
+        res.locals.data = false;
+        res.locals.message = "Your account is already deactivated.";
+        res.locals.statusCode = HttpStatus.OK;
+      }
+
+
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error desactive requesst:', error);
+    }
+    next();
+  }
+  reactiveAccount = async  (req, res, next) => {
+    const {userId} = req.body;
+    try{
+      const user = await this.userSA.findById(userId)
+      // si c'est déja active donc pas la paine de continuer
+      if(user.isDeactivated && typeof  user.isDeactivated != 'undefined'){
+
+        res.locals.data = await this.userSA.updateFields(userId, {
+          isDeactivated: false,
+          deactivatedDate: null,
+          deletionState: 'NONE',
+          deletionDate: null,
+          firstNotificationDate: null,
+          secondNotificationDate: null
+        });
+        res.locals.message = "Your account has been re-activated.";
+        res.locals.statusCode = HttpStatus.OK;
+      }else{
+        res.locals.data = false;
+        res.locals.message = "Your account is already activated.";
+        res.locals.statusCode = HttpStatus.OK;
+      }
+
+
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error desactive requesst:', error);
+    }
+    next();
+
+
+  }
+  deleteAccountRequest = async (req, res, next) => {
+    const {userId, password} = req.body;
+    try{
+      const user = await this.userSA.findById(userId);
+      res.locals.data = this.authentificationSA.validatePassword(password, user.password);
+      res.locals.message = "Account delete requested. Please confirm to proceed.";
+      res.locals.statusCode = HttpStatus.OK;
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error delete request:', error);
+    }
+    next();
+  }
+
+  calculateDeletionDates = (
+      baseDate,
+      deletionDelay,
+      deletionUnit,
+      firstNotificationDelay,
+      firstNotificationUnit,
+      secondNotificationDelay,
+      secondNotificationUnit
+  ) => {
+    const unitToSeconds = {
+      seconds: 1,
+      minutes: 60,
+      hours: 3600,
+      days: 86400,
+      weeks: 604800,
+    };
+
+    const deletionDelayInSeconds = deletionDelay * (unitToSeconds[deletionUnit] || 1);
+    const firstNotificationDelayInSeconds = firstNotificationDelay * (unitToSeconds[firstNotificationUnit] || 1);
+    const secondNotificationDelayInSeconds = secondNotificationDelay * (unitToSeconds[secondNotificationUnit] || 1);
+
+    const deletionDate = baseDate.clone().add(deletionDelayInSeconds, 'seconds');
+
+    const firstNotificationDate = deletionDate.clone().subtract(firstNotificationDelayInSeconds, 'seconds');
+    const secondNotificationDate = deletionDate.clone().subtract(secondNotificationDelayInSeconds, 'seconds');
+
+    return {
+      deletionDate: deletionDate,
+      firstNotificationDate: firstNotificationDate.format('YYYY-MM-DD HH:mm:ss'),
+      secondNotificationDate: secondNotificationDate.format('YYYY-MM-DD HH:mm:ss'),
+    };
+  };
+
+
+
+
+  deleteAccountConfirm = async  (req, res, next) => {
+    const {userId} = req.body;
+    /**const deletionValue = parseInt(process.env.DELETION_DELAY, 10) || 5;
+    const deletionUnit = process.env.DELETION_UNIT || 'minutes';
+    const firstNotificationValue = parseInt(process.env.FIRST_NOTIFICATION_DELAY, 10) || 4;
+    const firstNotificationUnit = process.env.FIRST_NOTIFICATION_UNIT || 'minutes';
+    const secondNotificationValue = parseInt(process.env.SECOND_NOTIFICATION_DELAY, 10) || 2;
+    const secondNotificationUnit = process.env.SECOND_NOTIFICATION_UNIT || 'minutes';
+**/
+
+    const deletionValue = 5;
+    const deletionUnit = 'minutes';
+    const firstNotificationValue = 4;
+    const firstNotificationUnit = 'minutes';
+    const secondNotificationValue = 2;
+    const secondNotificationUnit = 'minutes';
+    const currentDate = moment();
+
+    const { deletionDate, firstNotificationDate, secondNotificationDate } = this.calculateDeletionDates(
+        currentDate,
+        deletionValue, deletionUnit,
+        firstNotificationValue,
+        firstNotificationUnit,
+        secondNotificationValue,
+        secondNotificationUnit
+    );
+    try{
+      res.locals.data = await this.userSA.updateFields(userId, {
+          isDeactivated: true,
+          deletionState: 'NONE',
+          deactivatedDate: currentDate.format('YYYY-MM-DD HH:mm:ss'),
+          deletionDate: deletionDate.format('YYYY-MM-DD HH:mm:ss'),
+          firstNotificationDate: firstNotificationDate,
+          secondNotificationDate: secondNotificationDate
+        });
+        res.locals.message = "Your account has been deactivated.";
+        res.locals.statusCode = HttpStatus.OK;
+
+    } catch (error) {
+      res.locals.data = false;
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error delete confirmation:', error);
+    }
+    next();
+  }
+  sendDeletionNotice = async () => {
+    try {
+      const currentDate = moment();
+
+      const usersForFirstNotification = await this.userSA.findByLteDates({
+        firstNotificationDate: currentDate.format('YYYY-MM-DD HH:mm:ss')
+      });
+
+      console.log(`Found ${usersForFirstNotification.length} users to send first notification`);
+
+      await Promise.all(usersForFirstNotification.map(async user => {
+        await this.userSA.updateFields(user.id, { deletionState: 'FIRST_NOTIF' });
+        await this.sendDeleteReminderNotification(user.id, 'first');
+      }));
+
+
+      const usersForSecondNotification = await this.userSA.findByLteDates({
+        secondNotificationDate: currentDate.format('YYYY-MM-DD HH:mm:ss')
+      });
+
+      console.log(`Found ${usersForSecondNotification.length} users to send second notification`);
+
+      await Promise.all(usersForSecondNotification.map(async user => {
+        await this.userSA.updateFields(user.userId, { deletionState: 'SECOND_NOTIF' });
+
+        await this.sendDeleteReminderNotification(user._id, 'second');
+      }));
+
+      /**const allCountToDelete = await this.userSA.findByLteDates({
+        deletionDate: currentDate.format('YYYY-MM-DD HH:mm:ss') }
+      });
+
+      console.log(`Found ${allCountToDelete.length} users to delete`);
+
+      await Promise.all(allCountToDelete.map(async user => {
+        await this.userSA.delete(user._id);
+
+        await this.sendDeleteReminderNotification(user._id, 'delete');
+      }));
+          **/
+
+    } catch (error) {
+      console.error('Error sending deletion notices:', error);
+    }
+  };
+  sendDeleteReminderNotification = async (userId, notificationType) => {
+    console.log(`Sending ${notificationType} notification to user ${userId}`);
   };
 
 }

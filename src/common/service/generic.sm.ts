@@ -30,6 +30,21 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     }
   }
 
+  async updateFields(_id: ObjectID, updateData: any): Promise<any> {
+    try {
+      const result = await this.repository.updateOne({ _id: new ObjectID(_id) }, { $set: updateData });
+
+      if (result.modifiedCount === 0) {
+        throw new Error('Document non trouvé ou aucune mise à jour effectuée');
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour des champs:', error);
+      throw new Error(`La mise à jour a échoué : ${error.message}`);
+    }
+  }
+
   async pushUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
     try {
       const option = { upsert: true, new: true, setDefaultsOnInsert: true };
@@ -213,6 +228,21 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     } catch (error) {
       console.error('Error finding by attributes:', error);
       throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by attributes');
+    }
+  }
+  async findByLteDates(
+      dateField: string,
+      date: Date
+  ): Promise<TDo[]> {
+    try {
+      const dateQuery = {
+        [dateField]: {   $lte: date }
+      };
+
+      return await this.repository.find({ where: dateQuery });
+    } catch (error) {
+      console.error('Error finding by dates:', error);
+      throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by dates');
     }
   }
 }

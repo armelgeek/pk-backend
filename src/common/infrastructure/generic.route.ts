@@ -22,10 +22,6 @@ export const genericRoute = (option: RouteOption) => {
   };
 
 
-  // Planifier la tâche pour s'exécuter toutes les 6 heures
-  //cron.schedule('0 */6 * * *', task);
-  // Planifier la tâche pour s'exécuter toutes les 1 minute
-  //cron.schedule('*/1 * * * *', task);
   router
     .route('/:id')
     .get(conditionnalJwtPassport(isSecured, name), controller.findById, responseFormatter)

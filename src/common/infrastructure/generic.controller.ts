@@ -898,19 +898,14 @@ export class GenericController<
   };
   sendDeleteReminderNotification = async (user,type, message) => {
     console.log(`Sending ${message} notification to user ${user.nom}`);
-    const code = entierAleatoire(1111, 9999).toString();
-    const expirationDate = new Date();
-    expirationDate.setMinutes(expirationDate.getMinutes() + 5);
-    const saved = await this.userSA.updateFields(user.id, { reactivateCode: code, reactivateExpiredDate: expirationDate });
     if(type !='final-process') {
-      /**await sendMailFunction({
+      await sendMailFunction({
           to: user.email,
           subject: "[PokerApply] - Suppression de compte",
           body: `Bonjour ${user.username || user.nom},
          <br /> <br />
          <span>
          <p>${message}</p>
-        <p>Une code de réactivation est généré pour vous: ${code} </p>
          <br />
          <br />
          Si vous n'êtes pas à l'origine de cette action, veuillez ignorer ce mail.
@@ -919,7 +914,7 @@ export class GenericController<
          <br /> <br />
          L'équipe Pockerapply.
          `,
-        });**/
+        });
 
     }
   }
@@ -927,19 +922,19 @@ export class GenericController<
     const {userId} = req.body;
     const code = entierAleatoire(1111, 9999).toString();
     const expirationDate = new Date();
-    expirationDate.setMinutes(expirationDate.getMinutes() + 5);
+    expirationDate.setMinutes(expirationDate.getMinutes() + 15);
     const saved = await this.userSA.updateFields(userId, { reactivateCode: code, reactivateExpiredDate: expirationDate });
 
     if (saved) {
       const user = await this.userSA.findById(userId);
-     /** await sendMail({
+     await sendMail({
         to: user.email,
-        subject: '[Pokerapply] - Validation compte',
+        subject: '[Pokerapply] - Réactivation de compte',
         body: `
       Bonjour ${user.username || user.nom},
       <br /> <br />
       <span>
-        <p>Voici votre code de reactivation: ${code},le code expire dans 5 minutes.</p>
+        <p>Voici votre code de reactivation: ${code},le code expire dans 15 minutes.</p>
       <br />
       <br />
       Si vous n'êtes pas à l'origine de cette action, veuillez ignorer ce mail.
@@ -948,7 +943,7 @@ export class GenericController<
       <br /> <br />
       L'équipe Pockerapply.
       `,
-      });**/
+      });
       res.locals.data = true;
       res.locals.message = "The code has been sent to your email.";
       res.locals.statusCode = HttpStatus.OK;
@@ -964,7 +959,6 @@ export class GenericController<
     const {userId, code} = req.body;
     try{
       const user = await this.userSA.findById(userId);
-      console.log('user', user && user.reactivateCode == code && user.reactivateExpiredDate > new Date());
       if(user && user.reactivateCode == code && user.reactivateExpiredDate > new Date()){
         res.locals.data = await this.userSA.updateFields(userId, {
           reactivateCode: null,

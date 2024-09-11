@@ -90,6 +90,9 @@ export abstract class GenericSA<
     }
   }
 
+  updateFields(id: ObjectID, partialEntity): Promise<any> {
+    return this.serviceSM.updateFields(id, partialEntity);
+  }
   delete(id: ObjectID): Promise<any> {
     return this.serviceSM.delete(id);
   }
@@ -597,6 +600,15 @@ export abstract class GenericSA<
   async findByAttributes(andConditions, orConditions): Promise<any> {
     try {
       const data = await this.serviceSM.findByAttributes(andConditions, orConditions);
+      return this.factory.toResponseDto(data || []);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async findBetweenDates(firstDate: string, lastDate?: string, otherCondition?: any): Promise<any> {
+    try {
+      const data = await this.serviceSM.findBetweenDates(firstDate, lastDate, otherCondition);
       return this.factory.toResponseDto(data || []);
     } catch (error) {
       return Promise.reject(error);

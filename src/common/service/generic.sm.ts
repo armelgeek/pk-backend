@@ -2,6 +2,7 @@ import { DeepPartial, FindConditions, FindManyOptions, MongoRepository, ObjectLi
 import { ObjectID } from 'mongodb';
 import { HttpStatus } from "../../data/constants/http-status";
 import { Exception } from "../../service/middleware/exception-handler";
+import * as moment from "moment";
 
 export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TDo>> {
   protected repository: TRepository;
@@ -27,6 +28,21 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     } catch (error) {
       console.log({ error });
       return Promise.reject(error);
+    }
+  }
+
+  async updateFields(_id: ObjectID, updateData: any): Promise<any> {
+    try {
+      const result = await this.repository.updateOne({ _id: new ObjectID(_id) }, { $set: updateData });
+
+      if (result.modifiedCount === 0) {
+        throw new Error('Document non trouvé ou aucune mise à jour effectuée');
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour des champs:', error);
+      throw new Error(`La mise à jour a échoué : ${error.message}`);
     }
   }
 
@@ -213,6 +229,34 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     } catch (error) {
       console.error('Error finding by attributes:', error);
       throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by attributes');
+    }
+  }
+  async findBetweenDates(
+      firstDate: string,
+      lastDate?: string,
+      otherCondition?: any,
+  ): Promise<TDo[]> {
+    const now = new Date().toISOString();
+    try {
+
+      const dateQuery: any = {
+        [firstDate]: { $lte: now },
+      };
+
+      if (lastDate) {
+        dateQuery[lastDate] = { $gt: now };
+      } else {
+        dateQuery[firstDate] = { $lt: now };
+      }
+
+      if (otherCondition) {
+        Object.assign(dateQuery, otherCondition);
+      }
+    console.log('dateQuery',dateQuery);
+      return await this.repository.find({ where: { $and: [dateQuery] }});
+    } catch (error) {
+      console.error('Error finding by dates:', error);
+      throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by dates');
     }
   }
 }

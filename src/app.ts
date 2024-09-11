@@ -13,8 +13,10 @@ import cloudinary from './utils/cloudinary';
 import { SubscriptionOfferDO } from './data/do/SubscriptionOffer';
 import { UserSubscriptionDO } from './data/do/UserSubscription';
 import { initFirebaseSdk, sendNotification } from './service/middleware/firebase-cloud-messaging';
+import {sendDeletionNotice} from "./service/cron/reminder-delete-account";
 
 const fileupload = require('express-fileupload');
+
 
 /**
  * Initialisation du serveur express
@@ -93,7 +95,7 @@ class App {
       console.log('====================================');
       res.json({ message });
     });
-  
+
     this.app.use('/api', appRouter, responseFormatter);
 
     this.app.get('/', async (_, res) => {
@@ -122,6 +124,7 @@ class App {
    */
   private async initCron() {
     const cronSchedule = '0 12 * * *';
+    const cronReminderDeleteAccount = '';
     cron.schedule(cronSchedule, async () => {
       const { usersubscriptionSA } = await import('./service/applicatif/UserSubscription');
       const { subscriptionofferSA } = await import('./service/applicatif/SubscriptionOffer');
@@ -171,7 +174,14 @@ class App {
         throw e;
       }
     });
+    // Planifier la tâche pour s'exécuter toutes les 6 heures
+    //cron.schedule('0 */6 * * *', task);
+    // Planifier la tâche pour s'exécuter toutes les 1 minute
+   //cron.schedule('*/1 * * * *', async () => {
+   //   await sendDeletionNotice();
+    //});
   }
+
 }
 
 export default new App();

@@ -676,19 +676,45 @@ export class GenericController<
    *  Crée une demande de désactivation du compte. Nécessite une confirmation et un mot de passe.
    */
   deactivateRequest = async (req, res, next) => {
-    const {userId, password} = req.body;
-    try{
+  const { userId, password } = req.body;
+
+  try {
     const user = await this.userSA.findById(userId);
-      res.locals.data = this.authentificationSA.validatePassword(password, user.password);
-      res.locals.message = "Account deactivation requested. Please confirm to proceed.";
-      res.locals.statusCode = HttpStatus.OK;
-    } catch (error) {
+
+    if (!user) {
       res.locals.data = false;
-      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-      console.error('Error desactive requesst:', error);
+      res.locals.isError = true;
+      res.locals.message = "Utilisateur non trouvé. Veuillez vérifier l'ID utilisateur et réessayer.";
+      res.locals.statusCode = HttpStatus.NOT_FOUND;
+      return next();
     }
-    next();
+
+    const isPasswordValid = this.authentificationSA.validatePassword(password, user.password);
+
+    if (!isPasswordValid) {
+      res.locals.data = false;
+      res.locals.isError = true;
+      res.locals.message = "Mot de passe incorrect. Veuillez réessayer.";
+      res.locals.statusCode = HttpStatus.UNAUTHORIZED;
+      return next();
+    }
+
+    // Si l'utilisateur et le mot de passe sont valides
+    res.locals.data = true;
+    res.locals.isError = false;
+    res.locals.message = "Demande de désactivation du compte. Veuillez confirmer pour continuer.";
+    res.locals.statusCode = HttpStatus.OK;
+  } catch (error) {
+    res.locals.data = false;
+       res.locals.isError = true;
+    res.locals.message = "Une erreur s'est produite lors du traitement de la demande de désactivation. Veuillez réessayer plus tard.";
+    res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+    console.error('Erreur lors de la demande de désactivation :', error);
   }
+
+    next();
+  };
+
   /**
    *
    * Valide la désactivation après la deuxième confirmation et la saisie du mot de passe.
@@ -737,10 +763,11 @@ export class GenericController<
           firstNotificationDate: null,
           secondNotificationDate: null
         });
+        res.locals.data = true;
         res.locals.message = "Your account has been re-activated.";
         res.locals.statusCode = HttpStatus.OK;
       }else{
-        res.locals.data = false;
+        res.locals.data = true;
         res.locals.message = "Your account is already activated.";
         res.locals.statusCode = HttpStatus.OK;
       }
@@ -748,6 +775,7 @@ export class GenericController<
 
     } catch (error) {
       res.locals.data = false;
+      res.locals.message = "Une erreur s'est produite lors du traitement de la réactivation de compte. Veuillez réessayer plus tard."
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error desactive requesst:', error);
     }

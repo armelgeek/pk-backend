@@ -85,7 +85,7 @@ export const genericRoute = (option: RouteOption) => {
   router.post('/delete-account-confirm', conditionnalJwtPassport(isSecured, name), controller.deleteAccountConfirm, responseFormatter);
   router.post('/request-reactivate', conditionnalJwtPassport(isSecured, name), controller.requestReactivateAccount, responseFormatter);
   router.post('/confirm-reactivate', conditionnalJwtPassport(isSecured, name), controller.confirmReactiveAccount, responseFormatter);
-  //router.post('/delete-notif', conditionnalJwtPassport(isSecured, name), controller.sendDeletionNotice, responseFormatter);
+  router.post('/delete-notif', conditionnalJwtPassport(isSecured, name), controller.sendDeletionNotice, responseFormatter);
 
   return router;
 };

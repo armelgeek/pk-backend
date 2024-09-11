@@ -529,12 +529,19 @@ export class GenericController<
     const params = req.query;
     let data;
 
-    if (params.profileId && params.publicationId== undefined) {
+    if (params.profileId && params.publicationId== undefined && params.eventId == undefined) {
       data = await this.serviceSA.findByAttributes(
           [{ profileId: params.profileId }],
           []
       );
-    } else {
+    }
+    else if (params.profileId && params.publicationId== undefined && params.eventId) {
+      data = await this.serviceSA.findByAttributes(
+        [{ profileId: params.profileId, eventId: new ObjectID(params.eventId) }],
+        []
+      );
+    }
+    else {
       data = await this.serviceSA.findByAttributes(
           [{ profileId: params.profileId, publicationId: new ObjectID(params.publicationId) }],
           []

@@ -38,11 +38,11 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
-  @Column({nullable: true, unique: false, default: ''})
-  originalId: string;
-
-  @Column({nullable: true, unique: false, default: false})
+  @Column({nullable: true, unique: false})
   isShared: boolean;
+
+  @Column({nullable: true, unique: false})
+  originalId: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

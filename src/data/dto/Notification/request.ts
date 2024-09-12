@@ -9,6 +9,7 @@ export type NotificationRequestDTO = {
    target?: string;
    type?: string;
    sender?: string;
+   receiver?: string;
 }
 
 /**
@@ -23,5 +24,6 @@ export type NotificationRequestDTO = {
  * @property {string} target
  * @property {string} type
  * @property {string} sender
+ * @property {string} receiver
  */
 

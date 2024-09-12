@@ -6,37 +6,13 @@ export class ConfindialityDO {
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  gender: string;
-
-  @Column({nullable: true, unique: false})
-  description: string;
-
-  @Column({nullable: true, unique: false})
-  nationality: string;
-
-  @Column({nullable: true, unique: false})
-  residence: string;
-
-  @Column({nullable: true, unique: false})
-  date_of_birth: string;
-
-  @Column({nullable: true, unique: false})
-  participation: string;
-
-  @Column({nullable: true, unique: false})
-  result: string;
-
-  @Column({nullable: true, unique: false})
-  location: string;
-
-  @Column({nullable: true, unique: false})
-  sponsors: string;
-
-  @Column({nullable: true, unique: false})
-  partner: string;
+  option: string;
 
   @Column({nullable: true, unique: false})
   profileId: string;
+
+  @Column({nullable: true, unique: false})
+  name: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

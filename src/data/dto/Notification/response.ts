@@ -9,6 +9,7 @@ export type NotificationResponseDTO = {
    target?: string;
    type?: string;
    sender?: string;
+   receiver?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -26,6 +27,7 @@ export type NotificationResponseDTO = {
  * @property {string} target
  * @property {string} type
  * @property {string} sender
+ * @property {string} receiver
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

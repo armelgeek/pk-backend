@@ -10,6 +10,8 @@ export type PublicationResponseDTO = {
    actif?: boolean;
    tags?: string[];
    pageId?: string;
+   isShared?: boolean;
+   originalId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -28,6 +30,8 @@ export type PublicationResponseDTO = {
  * @property {boolean} actif
  * @property {array<string>} tags
  * @property {string} pageId
+ * @property {boolean} isShared
+ * @property {string} originalId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

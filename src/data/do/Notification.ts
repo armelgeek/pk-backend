@@ -35,6 +35,9 @@ export class NotificationDO {
   @Column({nullable: true, unique: false})
   sender: string;
 
+  @Column({nullable: true, unique: false})
+  receiver: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

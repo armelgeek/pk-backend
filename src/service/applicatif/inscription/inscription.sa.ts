@@ -131,6 +131,10 @@ export class InscriptionSA {
           }
           return {
             create: true,
+            utilisateur: {
+            ...updated,
+            profileId: profile?.id,
+        },
           };
         } else {
 
@@ -149,7 +153,7 @@ export class InscriptionSA {
 
       const code = entierAleatoire(1111, 9999).toString();
       const expirationDate = new Date();
-      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 10 Minutes
+      expirationDate.setMinutes(expirationDate.getMinutes() + 5); // le code expire dans 5 Minutes
       const saved = await utilisateurSM.create(utilisateurDO);
       if (!saved) {
         return {
@@ -189,6 +193,10 @@ export class InscriptionSA {
       }
       return {
         create: true,
+        utilisateur: {
+            ...saved,
+            profileId: profile?.id,
+        },
       };
     } catch (error) {
       return Promise.reject(error);

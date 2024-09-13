@@ -164,3 +164,84 @@ export const utilisateurRouter = utilisateurRoutes();
  * @return {object} 500 - Erreur côté serveur
  * @return {object} 400 - Données non conforme
  */
+
+
+/**
+ * POST /api/utilisateur/desactive-request
+ * @tags Utilisateur
+ * @summary envoyer une demande de desactivation de compte
+ * @param {string} userId.path.required
+ * @param {string} password.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+/**
+ * POST /api/utilisateur/desactive-confirm
+ * @tags Utilisateur
+ * @summary confirmer la demande de desactivation de compte
+ * @param {string} userId.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+
+/**
+ * POST /api/utilisateur/re-activate
+ * @tags Utilisateur
+ * @summary  reactiver le compte
+ * @param {string} userId.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+
+/**
+ * POST /api/utilisateur/delete-account-request
+ * @tags Utilisateur
+ * @summary  envoyer une demande de suppression de compte
+ * @param {string} userId.path.required
+ * @param {string} password.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+
+/**
+ * POST /api/utilisateur/delete-account-confirm
+ * @tags Utilisateur
+ * @summary  confirmer la demande de suppression de compte
+ * @param {string} userId.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+
+
+/**
+ * POST /api/utilisateur/request-reactivate
+ * @tags Utilisateur
+ * @summary  envoyer une demande de reactivation de compte
+ * @param {string} userId.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */
+
+
+
+/**
+ * POST /api/utilisateur/confirm-reactivate
+ * @tags Utilisateur
+ * @summary  confirmer une demande de reactivation de compte
+ * @param {string} userId.path.required
+ * @param {string} code.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
+ */

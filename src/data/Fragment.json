@@ -118,7 +118,8 @@
 						"$ref": "AAAAAAF7cQFjEwfHL80="
 					},
 					"name": "receiver",
-					"type": "string"
+					"type": "string",
+					"isID": true
 				}
 			],
 			"operations": [
@@ -1874,7 +1875,7 @@
 									"top": 404,
 									"width": 144.1552734375,
 									"height": 13,
-									"text": "+receiver: string",
+									"text": "+receiver: string {id}",
 									"horizontalAlignment": 0
 								}
 							],
@@ -11035,7 +11036,7 @@
 									"font": "Arial;13;1",
 									"left": 45,
 									"top": 1207,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "Publication"
 								},
@@ -11066,7 +11067,7 @@
 							"font": "Arial;13;0",
 							"left": 40,
 							"top": 1200,
-							"width": 130.8974609375,
+							"width": 131.7734375,
 							"height": 25,
 							"stereotypeLabel": {
 								"$ref": "AAAAAAGN1UIvcq/+QSI="
@@ -11103,7 +11104,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1230,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+content: string",
 									"horizontalAlignment": 0
@@ -11120,7 +11121,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1245,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+imageUrls: string",
 									"horizontalAlignment": 0
@@ -11137,7 +11138,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1260,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+videoUrls: string",
 									"horizontalAlignment": 0
@@ -11154,7 +11155,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1275,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+profileId: Profile {id}",
 									"horizontalAlignment": 0
@@ -11171,7 +11172,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1290,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+location: Location",
 									"horizontalAlignment": 0
@@ -11188,7 +11189,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1305,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+private: boolean",
 									"horizontalAlignment": 0
@@ -11205,7 +11206,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1320,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+like: string = []",
 									"horizontalAlignment": 0
@@ -11222,7 +11223,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1335,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+share: string = []",
 									"horizontalAlignment": 0
@@ -11239,7 +11240,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1350,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+actif: boolean",
 									"horizontalAlignment": 0
@@ -11256,7 +11257,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1365,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+tags: Profile {id}",
 									"horizontalAlignment": 0
@@ -11273,7 +11274,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1380,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+pageId: Page {id}",
 									"horizontalAlignment": 0
@@ -11290,7 +11291,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1395,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+isShared: boolean",
 									"horizontalAlignment": 0
@@ -11307,16 +11308,16 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1410,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
-									"text": "+originalId: string",
+									"text": "+originalId: string {id}",
 									"horizontalAlignment": 0
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 40,
 							"top": 1225,
-							"width": 130.8974609375,
+							"width": 131.7734375,
 							"height": 203
 						},
 						{
@@ -11341,7 +11342,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1433,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+add()",
 									"horizontalAlignment": 0
@@ -11358,7 +11359,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1448,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+getAll()",
 									"horizontalAlignment": 0
@@ -11375,7 +11376,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1463,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+delete()",
 									"horizontalAlignment": 0
@@ -11392,7 +11393,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1478,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+update()",
 									"horizontalAlignment": 0
@@ -11409,7 +11410,7 @@
 									"font": "Arial;13;0",
 									"left": 45,
 									"top": 1493,
-									"width": 120.8974609375,
+									"width": 121.7734375,
 									"height": 13,
 									"text": "+get()",
 									"horizontalAlignment": 0
@@ -11418,7 +11419,7 @@
 							"font": "Arial;13;0",
 							"left": 40,
 							"top": 1428,
-							"width": 130.8974609375,
+							"width": 131.7734375,
 							"height": 83
 						},
 						{
@@ -11454,7 +11455,7 @@
 					"containerChangeable": true,
 					"left": 40,
 					"top": 1200,
-					"width": 130.8974609375,
+					"width": 131.7734375,
 					"height": 311,
 					"nameCompartment": {
 						"$ref": "AAAAAAGN1UIvcq/9/o8="
@@ -25445,7 +25446,8 @@
 						"$ref": "AAAAAAGN1UIvcq/6Ym4="
 					},
 					"name": "originalId",
-					"type": "string"
+					"type": "string",
+					"isID": true
 				}
 			],
 			"operations": [

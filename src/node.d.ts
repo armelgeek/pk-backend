@@ -128,3 +128,5 @@
   declare interface SoftbanResponseDTO { }
   declare interface BlockingRequestDTO { }
   declare interface BlockingResponseDTO { }
+  declare interface AssessmentRequestDTO { }
+  declare interface AssessmentResponseDTO { }

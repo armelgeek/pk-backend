@@ -58,6 +58,7 @@ import { sharingnoteRouter } from './SharingNote';
 import { restrictionRouter } from './Restriction';
 import { softbanRouter } from './Softban';
 import { blockingRouter } from './Blocking';
+import { assessmentRouter } from './Assessment';
 
 export const routes = () => {
   const router = Router();
@@ -120,6 +121,7 @@ export const routes = () => {
  router.use('/restriction', restrictionRouter);
  router.use('/softban', softbanRouter);
  router.use('/blocking', blockingRouter);
+ router.use('/assessment', assessmentRouter);
   
   return router;
 };

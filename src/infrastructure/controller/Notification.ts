@@ -13,5 +13,5 @@ class NotificationController extends GenericController<
   NotificationSA
 > {}
 
-export const notificationController = new NotificationController(notificationSA);
+export const notificationController = new NotificationController(notificationSA, "Notification");
 

@@ -13,5 +13,5 @@ class AlbumController extends GenericController<
   AlbumSA
 > {}
 
-export const albumController = new AlbumController(albumSA);
+export const albumController = new AlbumController(albumSA, "Album");
 

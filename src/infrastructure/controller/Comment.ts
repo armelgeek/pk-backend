@@ -13,5 +13,5 @@ class CommentController extends GenericController<
   CommentSA
 > {}
 
-export const commentController = new CommentController(commentSA);
+export const commentController = new CommentController(commentSA, "Comment");
 

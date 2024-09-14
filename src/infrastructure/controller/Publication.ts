@@ -13,5 +13,5 @@ class PublicationController extends GenericController<
   PublicationSA
 > {}
 
-export const publicationController = new PublicationController(publicationSA);
+export const publicationController = new PublicationController(publicationSA, "Publication");
 

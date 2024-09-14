@@ -3,6 +3,7 @@ export type ReportRequestDTO = {
    eventId?: string;
    profileId?: string;
    type?: string;
+   reportProfileId?: string;
 }
 
 /**
@@ -11,5 +12,6 @@ export type ReportRequestDTO = {
  * @property {string} eventId
  * @property {string} profileId
  * @property {string} type
+ * @property {string} reportProfileId
  */
 

@@ -38,6 +38,9 @@ export class CommentDO {
   @Column({nullable: true, unique: false})
   type: string;
 
+  @Column({nullable: true, unique: false})
+  activityDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -22,6 +22,9 @@ export type ProfileRequestDTO = {
    location?: LocationRequestDTO;
    filter?: string;
    verified?: boolean;
+   nbSignalement?: number;
+   banDate?: string;
+   endDate?: string;
 }
 
 /**
@@ -49,5 +52,8 @@ export type ProfileRequestDTO = {
  * @property {LocationRequestDTO} location
  * @property {string} filter
  * @property {boolean} verified
+ * @property {number} nbSignalement
+ * @property {string} banDate
+ * @property {string} endDate
  */
 

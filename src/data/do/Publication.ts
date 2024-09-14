@@ -44,6 +44,9 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   originalId: string;
 
+  @Column({nullable: true, unique: false})
+  activityDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

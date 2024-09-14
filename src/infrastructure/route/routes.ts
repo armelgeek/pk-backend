@@ -55,6 +55,9 @@ import { filterRouter } from './Filter';
 import { pagepermissionsRouter } from './PagePermissions';
 import { friendsRouter } from './Friends';
 import { sharingnoteRouter } from './SharingNote';
+import { restrictionRouter } from './Restriction';
+import { softbanRouter } from './Softban';
+import { blockingRouter } from './Blocking';
 
 export const routes = () => {
   const router = Router();
@@ -114,6 +117,9 @@ export const routes = () => {
  router.use('/page-permission', pagepermissionsRouter);
  router.use('/friends', friendsRouter);
  router.use('/sharing-note', sharingnoteRouter);
+ router.use('/restriction', restrictionRouter);
+ router.use('/softban', softbanRouter);
+ router.use('/blocking', blockingRouter);
   
   return router;
 };

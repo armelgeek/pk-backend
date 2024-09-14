@@ -12,6 +12,7 @@ export type PublicationResponseDTO = {
    pageId?: string;
    isShared?: boolean;
    originalId?: string;
+   activityDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -32,6 +33,7 @@ export type PublicationResponseDTO = {
  * @property {string} pageId
  * @property {boolean} isShared
  * @property {string} originalId
+ * @property {string} activityDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

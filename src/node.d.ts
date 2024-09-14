@@ -122,3 +122,9 @@
   declare interface FriendsResponseDTO { }
   declare interface SharingNoteRequestDTO { }
   declare interface SharingNoteResponseDTO { }
+  declare interface RestrictionRequestDTO { }
+  declare interface RestrictionResponseDTO { }
+  declare interface SoftbanRequestDTO { }
+  declare interface SoftbanResponseDTO { }
+  declare interface BlockingRequestDTO { }
+  declare interface BlockingResponseDTO { }

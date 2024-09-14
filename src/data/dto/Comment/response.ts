@@ -10,6 +10,7 @@ export type CommentResponseDTO = {
    veryhappy?: string[];
    media?: string;
    type?: string;
+   activityDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -28,6 +29,7 @@ export type CommentResponseDTO = {
  * @property {array<string>} veryhappy
  * @property {string} media
  * @property {string} type
+ * @property {string} activityDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

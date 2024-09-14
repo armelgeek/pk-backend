@@ -74,6 +74,15 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   verified: boolean;
 
+  @Column({nullable: true, unique: false})
+  nbSignalement: number;
+
+  @Column({nullable: true, unique: false})
+  banDate: string;
+
+  @Column({nullable: true, unique: false})
+  endDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

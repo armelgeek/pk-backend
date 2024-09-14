@@ -22,6 +22,9 @@ export type ProfileResponseDTO = {
    location?: LocationRequestDTO;
    filter?: string;
    verified?: boolean;
+   nbSignalement?: number;
+   banDate?: string;
+   endDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -52,6 +55,9 @@ export type ProfileResponseDTO = {
  * @property {LocationRequestDTO} location
  * @property {string} filter
  * @property {boolean} verified
+ * @property {number} nbSignalement
+ * @property {string} banDate
+ * @property {string} endDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

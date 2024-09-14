@@ -1,24 +1,21 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('report')
-export class ReportDO {
+@Entity('softban')
+export class SoftbanDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
   @Column({nullable: true, unique: false})
-  publicationId: string;
+  niveau: number;
 
   @Column({nullable: true, unique: false})
-  eventId: string;
+  titre: string;
 
   @Column({nullable: true, unique: false})
-  profileId: string;
+  duration: number;
 
-  @Column({nullable: true, unique: false})
-  type: string;
-
-  @Column({nullable: true, unique: false})
-  reportProfileId: string;
+  @Column("simple-array")
+  restrictions: string[];
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

@@ -1,24 +1,18 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('report')
-export class ReportDO {
+@Entity('blocking')
+export class BlockingDO {
   @ObjectIdColumn()
   _id: ObjectID;
-
-  @Column({nullable: true, unique: false})
-  publicationId: string;
-
-  @Column({nullable: true, unique: false})
-  eventId: string;
 
   @Column({nullable: true, unique: false})
   profileId: string;
 
   @Column({nullable: true, unique: false})
-  type: string;
+  blockingProfile: string;
 
   @Column({nullable: true, unique: false})
-  reportProfileId: string;
+  reason: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

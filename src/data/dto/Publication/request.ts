@@ -12,6 +12,7 @@ export type PublicationRequestDTO = {
    pageId?: string;
    isShared?: boolean;
    originalId?: string;
+   activityDate?: string;
 }
 
 /**
@@ -29,5 +30,6 @@ export type PublicationRequestDTO = {
  * @property {string} pageId
  * @property {boolean} isShared
  * @property {string} originalId
+ * @property {string} activityDate
  */
 

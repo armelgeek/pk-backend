@@ -3,6 +3,7 @@ export type ReportResponseDTO = {
    eventId?: string;
    profileId?: string;
    type?: string;
+   reportProfileId?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -14,6 +15,7 @@ export type ReportResponseDTO = {
  * @property {string} eventId
  * @property {string} profileId
  * @property {string} type
+ * @property {string} reportProfileId
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

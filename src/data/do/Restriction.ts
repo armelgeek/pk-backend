@@ -1,24 +1,24 @@
 import { BeforeInsert, BeforeUpdate, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
-@Entity('report')
-export class ReportDO {
+@Entity('restriction')
+export class RestrictionDO {
   @ObjectIdColumn()
   _id: ObjectID;
-
-  @Column({nullable: true, unique: false})
-  publicationId: string;
-
-  @Column({nullable: true, unique: false})
-  eventId: string;
-
-  @Column({nullable: true, unique: false})
-  profileId: string;
 
   @Column({nullable: true, unique: false})
   type: string;
 
   @Column({nullable: true, unique: false})
-  reportProfileId: string;
+  limit: number;
+
+  @Column({nullable: true, unique: false})
+  frequence: number;
+
+  @Column({nullable: true, unique: false})
+  action: string;
+
+  @Column({nullable: true, unique: false})
+  functionality: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

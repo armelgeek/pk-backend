@@ -1,12 +1,15 @@
-import { FindConditions, MongoRepository, ObjectLiteral } from "typeorm";
-import { ObjectID } from "mongodb";
+import { FindConditions, MongoRepository, ObjectLiteral } from 'typeorm';
+import { ObjectID } from 'mongodb';
 
-import { GenericFactory } from "../constraint/factory/generic.factory";
-import { GenericSM } from "./generic.sm";
-import { factoryObject, toQueryAnd, toQueryOr } from "./transformer";
+import { GenericFactory } from '../constraint/factory/generic.factory';
+import { GenericSM } from './generic.sm';
+import { factoryObject, toQueryAnd, toQueryOr } from './transformer';
 
-import { dataTDO } from "../../data";
-import { removeId } from "../../utils";
+import { dataTDO } from '../../data';
+import { removeId } from '../../utils';
+import { sendNotification } from '../../service/middleware/firebase-cloud-messaging';
+import { DeviceSA, deviceSA } from '../../service/applicatif/Device';
+import { DeviceRepository } from '../../repository/Device';
 
 export abstract class GenericSA<
   TDo,
@@ -31,7 +34,17 @@ export abstract class GenericSA<
     try {
       const entity = this.factory.toDo(dto);
       const result = await this.serviceSM.create(factoryObject(entity, this.name));
-
+      // if (this.name === 'Notification') {
+      //   // @ts-ignore
+      //   const devices = await deviceSA.findByQueries({ user: { $in: entity?.usersIds } });
+      //   console.log('================= devices ===================');
+      //   console.log(devices);
+      //   console.log('====================================');
+      //   if (devices?.length > 0) {
+      //     const tokens = devices.map(({ token }) => token);
+      //     await sendNotification({ ...result, tokens });
+      //   }
+      // }
       return this.factory.toResponseDto(result);
     } catch (error) {
       return Promise.reject(error);
@@ -339,26 +352,26 @@ export abstract class GenericSA<
 
       let aggregate = lookup
         ? JSON.parse(lookup).reduce((acc, curr) => {
-          const { from, foreignField, localField } = curr;
-          const lookup = {
-            $lookup: {
-              from,
-              localField,
-              foreignField: foreignField || '_id',
-              as: from,
-            },
-          };
-          return [
-            ...acc,
-            lookup,
-            {
-              $unwind: {
-                path: `$${from}`,
-                preserveNullAndEmptyArrays: true,
+            const { from, foreignField, localField } = curr;
+            const lookup = {
+              $lookup: {
+                from,
+                localField,
+                foreignField: foreignField || '_id',
+                as: from,
               },
-            },
-          ];
-        }, [])
+            };
+            return [
+              ...acc,
+              lookup,
+              {
+                $unwind: {
+                  path: `$${from}`,
+                  preserveNullAndEmptyArrays: true,
+                },
+              },
+            ];
+          }, [])
         : [];
 
       if (!bo && properties) {
@@ -389,11 +402,7 @@ export abstract class GenericSA<
             return [...acc, lookup];
           }, []);
 
-        aggregate = [
-          ...geoNearAggregate,
-          ...aggregate,
-          ...toAggregate,
-        ];
+        aggregate = [...geoNearAggregate, ...aggregate, ...toAggregate];
       }
 
       if (queries && Array.isArray(Object.keys(queries)) && properties) {
@@ -408,13 +417,11 @@ export abstract class GenericSA<
               ...acc,
               ...toQueryOr(queries[key], this.name),
             };
-
           } else if (key === '$and') {
             return {
               ...acc,
               ...toQueryAnd(queries[key], this.name),
             };
-
           } else if (isExist && isExist?.isID && ObjectID.isValid(queries[key])) {
             if (Array.isArray(queries[key])) {
               return {
@@ -536,6 +543,10 @@ export abstract class GenericSA<
     } catch (error) {
       return Promise.reject(error);
     }
+  }
+
+  async findByQueries(queries): Promise<any> {
+    return this.serviceSM.findByQueries(queries);
   }
 
   async count(query: ObjectLiteral): Promise<number> {

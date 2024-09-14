@@ -54,3 +54,14 @@ export const notificationRouter = notificationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * POST /api/notification
+ * @tags Notification
+ * @security BearerAuth
+ * @summary Create Notification (addNotification)
+ * @param {NotificationRequestDTO} request.body 
+ * @return {NotificationResponseDTO} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

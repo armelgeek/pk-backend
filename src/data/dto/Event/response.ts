@@ -64,6 +64,7 @@ export type EventResponseDTO = {
    days?: string[];
    finish?: boolean;
    actif?: boolean;
+   activityDate?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -136,6 +137,7 @@ export type EventResponseDTO = {
  * @property {array<string>} days
  * @property {boolean} finish
  * @property {boolean} actif
+ * @property {string} activityDate
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

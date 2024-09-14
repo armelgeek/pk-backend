@@ -1,25 +1,28 @@
-import {MongoRepository, ObjectID as ObjectIDType} from "typeorm";
-import {ObjectID} from "mongodb";
-import {AES, enc, lib, mode, pad} from "crypto-js";
-import {HttpStatus} from "../../data/constants/http-status";
-import {GenericFactory} from "../constraint/factory/generic.factory";
-import {GenericSA} from "../service/generic.sa";
-import {GenericSM} from "../service/generic.sm";
-import {sendMail, sendMail as sendMailFunction} from "../../service/middleware/nodemailer";
-import {sendNotification} from "../../service/middleware/firebase-cloud-messaging";
-import {UtilisateurSA, utilisateurSA} from "../../service/applicatif/Utilisateur";
-import {DeviceSA, deviceSA} from "../../service/applicatif/Device";
-import {NotificationSA, notificationSA} from "../../service/applicatif/Notification";
-import {PageSA, pageSA} from "../../service/applicatif/Page";
-import {ProfileSA, profileSA} from "../../service/applicatif/Profile";
-import {PublicationSA, publicationSA} from "../../service/applicatif/Publication";
-import {authentificationSA, AuthentificationSA} from '../../service/applicatif/authentification/authentification.sa';
-import {noteSA, NoteSA} from "../../service/applicatif/Note";
-import moment = require("moment");
-import {utilisateurSM} from "../../service/metier/utilisateur/utilisateur.sm";
-import {entierAleatoire} from "../../service/applicatif/inscription/inscription.sa";
+import { MongoRepository, ObjectID as ObjectIDType } from 'typeorm';
+import { ObjectID } from 'mongodb';
+import { AES, enc, lib, mode, pad } from 'crypto-js';
+import { HttpStatus } from '../../data/constants/http-status';
+import { GenericFactory } from '../constraint/factory/generic.factory';
+import { GenericSA } from '../service/generic.sa';
+import { GenericSM } from '../service/generic.sm';
+import { sendMail, sendMail as sendMailFunction } from '../../service/middleware/nodemailer';
+import { sendNotification } from '../../service/middleware/firebase-cloud-messaging';
+import { UtilisateurSA, utilisateurSA } from '../../service/applicatif/Utilisateur';
+import { DeviceSA, deviceSA } from '../../service/applicatif/Device';
+import { NotificationSA, notificationSA } from '../../service/applicatif/Notification';
+import { PageSA, pageSA } from '../../service/applicatif/Page';
+import { ProfileSA, profileSA } from '../../service/applicatif/Profile';
+import { PublicationSA, publicationSA } from '../../service/applicatif/Publication';
+import {
+  authentificationSA,
+  AuthentificationSA,
+} from '../../service/applicatif/authentification/authentification.sa';
+import { noteSA, NoteSA } from '../../service/applicatif/Note';
+import moment = require('moment');
+import { utilisateurSM } from '../../service/metier/utilisateur/utilisateur.sm';
+import { entierAleatoire } from '../../service/applicatif/inscription/inscription.sa';
 
-function encrypt(plainText:string, secret) {
+function encrypt(plainText: string, secret) {
   const key = enc.Utf8.parse(secret);
   const iv = lib.WordArray.create(key.words.slice(0, 4));
 
@@ -36,17 +39,16 @@ function decrypt(cipherText, secret, iv) {
   const key = enc.Utf8.parse(secret);
   const cipherBytes = enc.Base64.parse(cipherText);
 
-  const decrypted = AES.decrypt({ciphertext: cipherBytes}, key, {
+  const decrypted = AES.decrypt({ ciphertext: cipherBytes }, key, {
     iv: iv1,
     mode: mode.CBC,
-    padding: pad.Pkcs7
+    padding: pad.Pkcs7,
   });
 
   return decrypted.toString(enc.Utf8);
 }
 
-function generateHashedLink(baseURL,pageId, secretKey, expirationMinutes) {
-
+function generateHashedLink(baseURL, pageId, secretKey, expirationMinutes) {
   const expirationDate = new Date(Date.now() + expirationMinutes * 60000).toISOString();
 
   const dataToHash = `${pageId}:${expirationDate}`;
@@ -54,10 +56,9 @@ function generateHashedLink(baseURL,pageId, secretKey, expirationMinutes) {
   const hash = encrypt(dataToHash, secretKey);
   const encodedHash = encodeURIComponent(hash);
 
-  const linkHash =  `${baseURL}?id=${pageId}&exp=${expirationDate}&hash=${encodedHash}`
+  const linkHash = `${baseURL}?id=${pageId}&exp=${expirationDate}&hash=${encodedHash}`;
   return linkHash.replace(/\s+/g, '');
 }
-
 
 export class GenericController<
   TDo,
@@ -71,6 +72,7 @@ export class GenericController<
     GenericFactory<TDo, TRequestDto, TResponseDto>
   >
 > {
+  // name: string;
   serviceSA: TSa;
   userSA: UtilisateurSA;
   profileSA: ProfileSA;
@@ -91,6 +93,7 @@ export class GenericController<
     this.publicationSA = publicationSA;
     this.noteSA = noteSA;
     this.authentificationSA = authentificationSA;
+    // this.name = name
   }
 
   /**
@@ -99,7 +102,7 @@ export class GenericController<
   create = async (req, res, next) => {
     const { body } = req;
     try {
-      console.log('ici ca body',body);
+      console.log('ici ca body', body);
       const created = await this.serviceSA.create(body);
 
       res.locals.data = created;
@@ -353,7 +356,6 @@ export class GenericController<
         take: rowPerPage * 1,
         skip: (page - 1) * rowPerPage,
         field,
-
       });
 
       res.locals.data = dtos;
@@ -376,7 +378,6 @@ export class GenericController<
         if (devices?.items.length) {
           tokens = devices.items.map(({ token }) => token);
         }
-
       }
 
       if (status === 1) {
@@ -475,15 +476,15 @@ export class GenericController<
       next(error);
     }
   };
-  isFriend =  async (req, res, next) => {
+  isFriend = async (req, res, next) => {
     const { params } = req;
     try {
-      if(params.id != undefined) {
+      if (params.id != undefined) {
         res.locals.data = await this.serviceSA.findByAttributes(
           [{ follow: new ObjectID(params.id) }, { follower: new ObjectID(params.profileId) }],
           [],
         );
-      }else{
+      } else {
         res.locals.data = await this.serviceSA.findByAttributes(
           [{ follower: new ObjectID(params.profileId) }],
           [],
@@ -499,13 +500,21 @@ export class GenericController<
 
   addMemberToPage = async (req, res, next) => {
     try {
-      const {email, pageId }: {
-        email: string,
-        pageId: string
+      const {
+        email,
+        pageId,
+      }: {
+        email: string;
+        pageId: string;
       } = req.body;
       const currentPage = await this.pageSA.findById(pageId);
-    // 7 jours
-      const link = generateHashedLink('http://localhost:3000/app/casino-request-verification', pageId,'pokerapply', 10080);
+      // 7 jours
+      const link = generateHashedLink(
+        'http://localhost:3000/app/casino-request-verification',
+        pageId,
+        'pokerapply',
+        10080,
+      );
       await sendMailFunction({
         to: email,
         subject: `[PokerApply] - Invitation a devenir membre du Casino '${currentPage.name}' `,
@@ -520,7 +529,7 @@ export class GenericController<
       res.locals.data = true;
       res.locals.statusCode = HttpStatus.OK;
       next();
-    }catch(error){
+    } catch (error) {
       console.log('error', error);
       next(error);
     }
@@ -529,92 +538,94 @@ export class GenericController<
     const params = req.query;
     let data;
 
-    if (params.profileId && params.publicationId== undefined && params.eventId == undefined) {
-      data = await this.serviceSA.findByAttributes(
-          [{ profileId: params.profileId }],
-          []
-      );
-    }
-    else if (params.profileId && params.publicationId== undefined && params.eventId) {
+    if (params.profileId && params.publicationId == undefined && params.eventId == undefined) {
+      data = await this.serviceSA.findByAttributes([{ profileId: params.profileId }], []);
+    } else if (params.profileId && params.publicationId == undefined && params.eventId) {
       data = await this.serviceSA.findByAttributes(
         [{ profileId: params.profileId, eventId: new ObjectID(params.eventId) }],
-        []
+        [],
       );
-    }
-    else {
+    } else {
       data = await this.serviceSA.findByAttributes(
-          [{ profileId: params.profileId, publicationId: new ObjectID(params.publicationId) }],
-          []
+        [{ profileId: params.profileId, publicationId: new ObjectID(params.publicationId) }],
+        [],
       );
     }
 
     res.locals.data = await Promise.all(
-        data.map(async (d: any) => {
-          const profile = await this.profileSA.findById(d.profileId);
-          d['profile'] = {
-            _id: d.profileId,
-            ...profile
-          };
-          const publication = await this.publicationSA.findById(d.publicationId);
-          d['publication'] = {
-            _id: d.publicationId,
-            ...publication
-          };
-          return d;
-        })
+      data.map(async (d: any) => {
+        const profile = await this.profileSA.findById(d.profileId);
+        d['profile'] = {
+          _id: d.profileId,
+          ...profile,
+        };
+        const publication = await this.publicationSA.findById(d.publicationId);
+        d['publication'] = {
+          _id: d.publicationId,
+          ...publication,
+        };
+        return d;
+      }),
     );
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
-  getSharedNoteFor = async (req,res, next) => {
+  getSharedNoteFor = async (req, res, next) => {
     const params = req.query;
-    let data = await this.serviceSA.findByAttributes(
-        [{ profileId: params.profileId }],
-        []
-    );
+    let data = await this.serviceSA.findByAttributes([{ profileId: params.profileId }], []);
     res.locals.data = await Promise.all(
       data.map(async (d: any) => {
         d['shareNoteId'] = d.id;
         const note = await this.noteSA.findById(d.nodeId);
         Object.assign(d, note);
 
-        d['profile'] = await this.profileSA.findById(d.profileId._id  || d.profileId);
+        d['profile'] = await this.profileSA.findById(d.profileId._id || d.profileId);
         const sharedBy = await this.profileSA.findById(d.shareId);
         d['sharedBy'] = {
           _id: d.shareId,
-          ...sharedBy
+          ...sharedBy,
         };
         return d;
-      })
+      }),
     );
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
-  checkHasNotedSameUser = async (req,res, next) => {
+  checkHasNotedSameUser = async (req, res, next) => {
     const params = req.query;
     let data = await this.serviceSA.findByAttributes(
-        [{ profileId: new ObjectID(params.sharedProfileNotedId), createdBy: new ObjectID(params.profileId) }],
-        []
+      [
+        {
+          profileId: new ObjectID(params.sharedProfileNotedId),
+          createdBy: new ObjectID(params.profileId),
+        },
+      ],
+      [],
     );
     res.locals.data = data.length > 0;
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
-  comparateNoteByUser = async (req,res, next) => {
+  comparateNoteByUser = async (req, res, next) => {
     const params = req.query;
     const [myNotes, sharedNote] = await Promise.all([
       this.serviceSA.findByAttributes(
-        [{ profileId: new ObjectID(params.sharedProfileNotedId), createdBy: new ObjectID(params.profileId) }],
-        []
+        [
+          {
+            profileId: new ObjectID(params.sharedProfileNotedId),
+            createdBy: new ObjectID(params.profileId),
+          },
+        ],
+        [],
       ),
-      this.noteSA.findById(params.sharedNoteId)
+      this.noteSA.findById(params.sharedNoteId),
     ]);
-    if(myNotes.length === 0){
+    if (myNotes.length === 0) {
       res.locals.data = {
         comparison: {
           myNotes: {},
-          sharedNote: sharedNote
-        }
+          sharedNote: sharedNote,
+        },
       };
       res.locals.statusCode = HttpStatus.OK;
       next();
@@ -623,23 +634,23 @@ export class GenericController<
     sharedNote['profile'] = await this.profileSA.findById(params.sharedProfileNotedId);
     res.locals.data = {
       profileShared: sharedNote['profile'],
-        myNotes: myNotes[0],
-        sharedNote: sharedNote
+      myNotes: myNotes[0],
+      sharedNote: sharedNote,
     };
     res.locals.statusCode = HttpStatus.OK;
     next();
   };
-  findSharedNoteById = async (req,res, next) => {
+  findSharedNoteById = async (req, res, next) => {
     const params = req.query;
     let data = await this.serviceSA.findById(params.sharedNoteId);
-        const note = await this.noteSA.findById(data.nodeId);
-        Object.assign(data, note);
+    const note = await this.noteSA.findById(data.nodeId);
+    Object.assign(data, note);
 
     data['profile'] = await this.profileSA.findById(params.profileId);
-        const sharedBy = await this.profileSA.findById(data.shareId);
+    const sharedBy = await this.profileSA.findById(data.shareId);
     data['sharedBy'] = {
-          _id: data.shareId,
-          ...sharedBy
+      _id: data.shareId,
+      ...sharedBy,
     };
     res.locals.data = data;
     res.locals.statusCode = HttpStatus.OK;
@@ -650,11 +661,19 @@ export class GenericController<
     let tokens = [];
 
     try {
-      for (const userId of userIds) {
-        const devices = await this.deviceSA.findAll({ user: userId });
-        if (devices && devices.items.length) {
-          tokens.push(...devices.items.map(({ token }) => token));
-        }
+      // for (const userId of userIds) {
+      //   const devices = await this.deviceSA.findAll({ user: userId });
+      //   if (devices && devices.items.length) {
+      //     tokens.push(...devices.items.map(({ token }) => token));
+      //   }
+      // }
+
+      const devices = await this.deviceSA.findByQueries({ user: { $in: userIds } });
+      console.log('====================================');
+      console.log(devices);
+      console.log('====================================');
+      if (devices && devices.length > 0) {
+        tokens.push(...devices.items.map(({ token }) => token));
       }
 
       if (tokens.length > 0) {
@@ -676,48 +695,49 @@ export class GenericController<
     next();
   };
 
-
   // gestion de suppression de compte
   /**
    *
    *  Crée une demande de désactivation du compte. Nécessite une confirmation et un mot de passe.
    */
   deactivateRequest = async (req, res, next) => {
-  const { userId, password } = req.body;
+    const { userId, password } = req.body;
 
-  try {
-    const user = await this.userSA.findById(userId);
+    try {
+      const user = await this.userSA.findById(userId);
 
-    if (!user) {
+      if (!user) {
+        res.locals.data = false;
+        res.locals.isError = true;
+        res.locals.message =
+          "Utilisateur non trouvé. Veuillez vérifier l'ID utilisateur et réessayer.";
+        res.locals.statusCode = HttpStatus.NOT_FOUND;
+        return next();
+      }
+
+      const isPasswordValid = this.authentificationSA.validatePassword(password, user.password);
+
+      if (!isPasswordValid) {
+        res.locals.data = false;
+        res.locals.isError = true;
+        res.locals.message = 'Mot de passe incorrect. Veuillez réessayer.';
+        res.locals.statusCode = HttpStatus.UNAUTHORIZED;
+        return next();
+      }
+
+      // Si l'utilisateur et le mot de passe sont valides
+      res.locals.data = true;
+      res.locals.isError = false;
+      res.locals.message = 'Demande de désactivation du compte. Veuillez confirmer pour continuer.';
+      res.locals.statusCode = HttpStatus.OK;
+    } catch (error) {
       res.locals.data = false;
       res.locals.isError = true;
-      res.locals.message = "Utilisateur non trouvé. Veuillez vérifier l'ID utilisateur et réessayer.";
-      res.locals.statusCode = HttpStatus.NOT_FOUND;
-      return next();
+      res.locals.message =
+        "Une erreur s'est produite lors du traitement de la demande de désactivation. Veuillez réessayer plus tard.";
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Erreur lors de la demande de désactivation :', error);
     }
-
-    const isPasswordValid = this.authentificationSA.validatePassword(password, user.password);
-
-    if (!isPasswordValid) {
-      res.locals.data = false;
-      res.locals.isError = true;
-      res.locals.message = "Mot de passe incorrect. Veuillez réessayer.";
-      res.locals.statusCode = HttpStatus.UNAUTHORIZED;
-      return next();
-    }
-
-    // Si l'utilisateur et le mot de passe sont valides
-    res.locals.data = true;
-    res.locals.isError = false;
-    res.locals.message = "Demande de désactivation du compte. Veuillez confirmer pour continuer.";
-    res.locals.statusCode = HttpStatus.OK;
-  } catch (error) {
-    res.locals.data = false;
-       res.locals.isError = true;
-    res.locals.message = "Une erreur s'est produite lors du traitement de la demande de désactivation. Veuillez réessayer plus tard.";
-    res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-    console.error('Erreur lors de la demande de désactivation :', error);
-  }
 
     next();
   };
@@ -727,75 +747,68 @@ export class GenericController<
    * Valide la désactivation après la deuxième confirmation et la saisie du mot de passe.
    */
   deactivateConfirmation = async (req, res, next) => {
-    const {userId} = req.body;
-    try{
-      const user = await this.userSA.findById(userId)
+    const { userId } = req.body;
+    try {
+      const user = await this.userSA.findById(userId);
       const { _id, ...data } = user;
       // si c'est déja desactive donc pas la paine de continuer
-      if(!user.isDeactivated || typeof  user.isDeactivated === 'undefined'){
-
+      if (!user.isDeactivated || typeof user.isDeactivated === 'undefined') {
         const updatedUser = await this.userSA.updateFields(userId, {
           isDeactivated: true,
           deactivatedDate: moment().format('YYYY-MM-DD HH:mm:ss'),
         });
         res.locals.data = updatedUser;
-        res.locals.message = "Your account has been deactivated.";
+        res.locals.message = 'Your account has been deactivated.';
         res.locals.statusCode = HttpStatus.OK;
-      }else{
+      } else {
         res.locals.data = false;
-        res.locals.message = "Your account is already deactivated.";
+        res.locals.message = 'Your account is already deactivated.';
         res.locals.statusCode = HttpStatus.OK;
       }
-
-
     } catch (error) {
       res.locals.data = false;
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error desactive requesst:', error);
     }
     next();
-  }
-  reactiveAccount = async  (req, res, next) => {
-    const {userId} = req.body;
-    try{
-      const user = await this.userSA.findById(userId)
+  };
+  reactiveAccount = async (req, res, next) => {
+    const { userId } = req.body;
+    try {
+      const user = await this.userSA.findById(userId);
       // si c'est déja active donc pas la paine de continuer
-      if(user.isDeactivated && typeof  user.isDeactivated != 'undefined'){
-
+      if (user.isDeactivated && typeof user.isDeactivated != 'undefined') {
         res.locals.data = await this.userSA.updateFields(userId, {
           isDeactivated: false,
           deactivatedDate: null,
           deletionState: 'NONE',
           deletionDate: null,
           firstNotificationDate: null,
-          secondNotificationDate: null
+          secondNotificationDate: null,
         });
         res.locals.data = true;
-        res.locals.message = "Your account has been re-activated.";
+        res.locals.message = 'Your account has been re-activated.';
         res.locals.statusCode = HttpStatus.OK;
-      }else{
+      } else {
         res.locals.data = true;
-        res.locals.message = "Your account is already activated.";
+        res.locals.message = 'Your account is already activated.';
         res.locals.statusCode = HttpStatus.OK;
       }
-
-
     } catch (error) {
       res.locals.data = false;
-      res.locals.message = "Une erreur s'est produite lors du traitement de la réactivation de compte. Veuillez réessayer plus tard."
+      res.locals.message =
+        "Une erreur s'est produite lors du traitement de la réactivation de compte. Veuillez réessayer plus tard.";
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error desactive requesst:', error);
     }
     next();
-
-
-  }
+  };
   deleteAccountRequest = async (req, res, next) => {
-    const {userId, password} = req.body;
-    try{
+    const { userId, password } = req.body;
+    try {
       const user = await this.userSA.findById(userId);
       res.locals.data = this.authentificationSA.validatePassword(password, user.password);
-      res.locals.message = "Account delete requested. Please confirm to proceed.";
+      res.locals.message = 'Account delete requested. Please confirm to proceed.';
       res.locals.statusCode = HttpStatus.OK;
     } catch (error) {
       res.locals.data = false;
@@ -803,16 +816,16 @@ export class GenericController<
       console.error('Error delete request:', error);
     }
     next();
-  }
+  };
 
   calculateDeletionDates = (
-      baseDate,
-      deletionDelay,
-      deletionUnit,
-      firstNotificationDelay,
-      firstNotificationUnit,
-      secondNotificationDelay,
-      secondNotificationUnit
+    baseDate,
+    deletionDelay,
+    deletionUnit,
+    firstNotificationDelay,
+    firstNotificationUnit,
+    secondNotificationDelay,
+    secondNotificationUnit,
   ) => {
     const unitToSeconds = {
       seconds: 1,
@@ -823,13 +836,19 @@ export class GenericController<
     };
 
     const deletionDelayInSeconds = deletionDelay * (unitToSeconds[deletionUnit] || 1);
-    const firstNotificationDelayInSeconds = firstNotificationDelay * (unitToSeconds[firstNotificationUnit] || 1);
-    const secondNotificationDelayInSeconds = secondNotificationDelay * (unitToSeconds[secondNotificationUnit] || 1);
+    const firstNotificationDelayInSeconds =
+      firstNotificationDelay * (unitToSeconds[firstNotificationUnit] || 1);
+    const secondNotificationDelayInSeconds =
+      secondNotificationDelay * (unitToSeconds[secondNotificationUnit] || 1);
 
     const deletionDate = baseDate.clone().add(deletionDelayInSeconds, 'seconds');
 
-    const firstNotificationDate = deletionDate.clone().subtract(firstNotificationDelayInSeconds, 'seconds');
-    const secondNotificationDate = deletionDate.clone().subtract(secondNotificationDelayInSeconds, 'seconds');
+    const firstNotificationDate = deletionDate
+      .clone()
+      .subtract(firstNotificationDelayInSeconds, 'seconds');
+    const secondNotificationDate = deletionDate
+      .clone()
+      .subtract(secondNotificationDelayInSeconds, 'seconds');
 
     return {
       deletionDate: deletionDate,
@@ -838,11 +857,8 @@ export class GenericController<
     };
   };
 
-
-
-
-  deleteAccountConfirm = async  (req, res, next) => {
-    const {userId} = req.body;
+  deleteAccountConfirm = async (req, res, next) => {
+    const { userId } = req.body;
     /**const deletionValue = parseInt(process.env.DELETION_DELAY, 10) || 5;
     const deletionUnit = process.env.DELETION_UNIT || 'minutes';
     const firstNotificationValue = parseInt(process.env.FIRST_NOTIFICATION_DELAY, 10) || 4;
@@ -859,85 +875,114 @@ export class GenericController<
     const secondNotificationUnit = 'minutes';
     const currentDate = moment();
 
-    const { deletionDate, firstNotificationDate, secondNotificationDate } = this.calculateDeletionDates(
-        currentDate,
-        deletionValue, deletionUnit,
-        firstNotificationValue,
-        firstNotificationUnit,
-        secondNotificationValue,
-        secondNotificationUnit
+    const {
+      deletionDate,
+      firstNotificationDate,
+      secondNotificationDate,
+    } = this.calculateDeletionDates(
+      currentDate,
+      deletionValue,
+      deletionUnit,
+      firstNotificationValue,
+      firstNotificationUnit,
+      secondNotificationValue,
+      secondNotificationUnit,
     );
-    try{
+    try {
       res.locals.data = await this.userSA.updateFields(userId, {
-          isDeactivated: true,
-          deletionState: 'NONE',
-          deactivatedDate: currentDate.toISOString(),
-          deletionDate: deletionDate.toISOString(),
-          firstNotificationDate: firstNotificationDate,
-          secondNotificationDate: secondNotificationDate
-        });
-        res.locals.message = "Your account has been deactivated.";
-        res.locals.statusCode = HttpStatus.OK;
-
+        isDeactivated: true,
+        deletionState: 'NONE',
+        deactivatedDate: currentDate.toISOString(),
+        deletionDate: deletionDate.toISOString(),
+        firstNotificationDate: firstNotificationDate,
+        secondNotificationDate: secondNotificationDate,
+      });
+      res.locals.message = 'Your account has been deactivated.';
+      res.locals.statusCode = HttpStatus.OK;
     } catch (error) {
       res.locals.data = false;
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error delete confirmation:', error);
     }
     next();
-  }
+  };
   sendDeletionNotice = async () => {
     try {
       // @ts-ignore
-      const usersForFirstNotification = await this.userSA.findBetweenDates('firstNotificationDate','secondNotificationDate',{
-        deletionState:  { $ne: 'FIRST_NOTIF' }
-      });
+      const usersForFirstNotification = await this.userSA.findBetweenDates(
+        'firstNotificationDate',
+        'secondNotificationDate',
+        {
+          deletionState: { $ne: 'FIRST_NOTIF' },
+        },
+      );
 
       console.log(`Found ${usersForFirstNotification.length} users to send first notification`);
 
-      await Promise.all(usersForFirstNotification.map(async user => {
-        await this.userSA.updateFields(user.id, { deletionState: 'FIRST_NOTIF' });
-        await this.sendDeleteReminderNotification(user, 'first-process', 'First warning: Your account will be deleted soon.');
-      }));
-
+      await Promise.all(
+        usersForFirstNotification.map(async (user) => {
+          await this.userSA.updateFields(user.id, { deletionState: 'FIRST_NOTIF' });
+          await this.sendDeleteReminderNotification(
+            user,
+            'first-process',
+            'First warning: Your account will be deleted soon.',
+          );
+        }),
+      );
 
       // @ts-ignore
-      const usersForSecondNotification = await this.userSA.findBetweenDates('secondNotificationDate','deletionDate',{
-        deletionState:  { $eq: 'FIRST_NOTIF' }
-      });
+      const usersForSecondNotification = await this.userSA.findBetweenDates(
+        'secondNotificationDate',
+        'deletionDate',
+        {
+          deletionState: { $eq: 'FIRST_NOTIF' },
+        },
+      );
 
       console.log(`Found ${usersForSecondNotification.length} users to send second notification`);
 
-      await Promise.all(usersForSecondNotification.map(async user => {
-        await this.userSA.updateFields(user.id, { deletionState: 'SECOND_NOTIF' });
+      await Promise.all(
+        usersForSecondNotification.map(async (user) => {
+          await this.userSA.updateFields(user.id, { deletionState: 'SECOND_NOTIF' });
 
-        await this.sendDeleteReminderNotification(user, 'second-process', 'Second warning: Your account will be deleted imminently.');
-      }));
+          await this.sendDeleteReminderNotification(
+            user,
+            'second-process',
+            'Second warning: Your account will be deleted imminently.',
+          );
+        }),
+      );
 
-      const allUserToDelete = await this.userSA.findBetweenDates('deletionDate',undefined, {
+      const allUserToDelete = await this.userSA.findBetweenDates('deletionDate', undefined, {
         deletionState: {
-          $eq: 'SECOND_NOTIF'
-        }
+          $eq: 'SECOND_NOTIF',
+        },
       });
 
       console.log(`Found ${allUserToDelete.length} users to delete`);
 
-      await Promise.all(allUserToDelete.map(async user => {
-        //await this.userSA.delete(user.id);
+      await Promise.all(
+        allUserToDelete.map(async (user) => {
+          //await this.userSA.delete(user.id);
 
-        await this.sendDeleteReminderNotification(user, 'final-process','Your account has been deleted.');
-      }));
+          await this.sendDeleteReminderNotification(
+            user,
+            'final-process',
+            'Your account has been deleted.',
+          );
+        }),
+      );
     } catch (error) {
       console.error('Error sending deletion notices:', error);
     }
   };
-  sendDeleteReminderNotification = async (user,type, message) => {
+  sendDeleteReminderNotification = async (user, type, message) => {
     console.log(`Sending ${message} notification to user ${user.nom}`);
-    if(type !='final-process') {
+    if (type != 'final-process') {
       await sendMailFunction({
-          to: user.email,
-          subject: "[PokerApply] - Suppression de compte",
-          body: `Bonjour ${user.username || user.nom},
+        to: user.email,
+        subject: '[PokerApply] - Suppression de compte',
+        body: `Bonjour ${user.username || user.nom},
          <br /> <br />
          <span>
          <p>${message}</p>
@@ -949,20 +994,22 @@ export class GenericController<
          <br /> <br />
          L'équipe Pockerapply.
          `,
-        });
-
+      });
     }
-  }
+  };
   requestReactivateAccount = async (req, res, next) => {
-    const {userId} = req.body;
+    const { userId } = req.body;
     const code = entierAleatoire(1111, 9999).toString();
     const expirationDate = new Date();
     expirationDate.setMinutes(expirationDate.getMinutes() + 15);
-    const saved = await this.userSA.updateFields(userId, { reactivateCode: code, reactivateExpiredDate: expirationDate });
+    const saved = await this.userSA.updateFields(userId, {
+      reactivateCode: code,
+      reactivateExpiredDate: expirationDate,
+    });
 
     if (saved) {
       const user = await this.userSA.findById(userId);
-     await sendMail({
+      await sendMail({
         to: user.email,
         subject: '[Pokerapply] - Réactivation de compte',
         body: `
@@ -980,21 +1027,21 @@ export class GenericController<
       `,
       });
       res.locals.data = true;
-      res.locals.message = "The code has been sent to your email.";
+      res.locals.message = 'The code has been sent to your email.';
       res.locals.statusCode = HttpStatus.OK;
     } else {
       res.locals.data = false;
-      res.locals.message = "An error occurred. Please try again.";
+      res.locals.message = 'An error occurred. Please try again.';
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error delete confirmation:', 'user not found');
     }
     next();
-  }
-  confirmReactiveAccount = async(req, res, next) => {
-    const {userId, code} = req.body;
-    try{
+  };
+  confirmReactiveAccount = async (req, res, next) => {
+    const { userId, code } = req.body;
+    try {
       const user = await this.userSA.findById(userId);
-      if(user && user.reactivateCode == code && user.reactivateExpiredDate > new Date()){
+      if (user && user.reactivateCode == code && user.reactivateExpiredDate > new Date()) {
         res.locals.data = await this.userSA.updateFields(userId, {
           reactivateCode: null,
           reactivateExpiredDate: null,
@@ -1003,22 +1050,21 @@ export class GenericController<
           deletionDate: null,
           firstNotificationDate: null,
           secondNotificationDate: null,
-          isDeactivated: false
+          isDeactivated: false,
         });
-        res.locals.message = "Your account has been reactivated.";
+        res.locals.message = 'Your account has been reactivated.';
         res.locals.statusCode = HttpStatus.OK;
-      }else{
+      } else {
         res.locals.data = false;
-        res.locals.message = "The code entered is not valid. Please try again.";
+        res.locals.message = 'The code entered is not valid. Please try again.';
         res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
         console.error('Error delete confirmation:', 'user not found');
       }
-
     } catch (error) {
       res.locals.data = false;
       res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
       console.error('Error delete confirmation:', error);
     }
     next();
-  }
+  };
 }

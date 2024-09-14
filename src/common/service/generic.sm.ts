@@ -198,6 +198,10 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     return this.repository.find();
   }
 
+  async findByQueries(queries): Promise<any> {
+    return this.repository.find(queries);
+  }
+
   sum(options, name): Promise<any> {
     const { take = 10000, skip = 0, where = {} } = options;
 

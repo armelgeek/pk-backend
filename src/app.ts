@@ -90,9 +90,7 @@ class App {
         title: 'title',
         body: 'Push Notification for POC REACT NATIVE WEB',
       });
-      console.log('sendNotification ====================================');
-      console.log(message);
-      console.log('====================================');
+
       res.json({ message });
     });
 

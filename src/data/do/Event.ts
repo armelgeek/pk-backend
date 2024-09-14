@@ -200,6 +200,9 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   actif: boolean;
 
+  @Column({nullable: true, unique: false})
+  activityDate: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

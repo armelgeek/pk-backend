@@ -64,6 +64,7 @@ export type EventRequestDTO = {
    days?: string[];
    finish?: boolean;
    actif?: boolean;
+   activityDate?: string;
 }
 
 /**
@@ -133,5 +134,6 @@ export type EventRequestDTO = {
  * @property {array<string>} days
  * @property {boolean} finish
  * @property {boolean} actif
+ * @property {string} activityDate
  */
 

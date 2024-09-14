@@ -7,9 +7,6 @@ import { factoryObject, toQueryAnd, toQueryOr } from './transformer';
 
 import { dataTDO } from '../../data';
 import { removeId } from '../../utils';
-import { sendNotification } from '../../service/middleware/firebase-cloud-messaging';
-import { DeviceSA, deviceSA } from '../../service/applicatif/Device';
-import { DeviceRepository } from '../../repository/Device';
 
 export abstract class GenericSA<
   TDo,
@@ -34,17 +31,7 @@ export abstract class GenericSA<
     try {
       const entity = this.factory.toDo(dto);
       const result = await this.serviceSM.create(factoryObject(entity, this.name));
-      // if (this.name === 'Notification') {
-      //   // @ts-ignore
-      //   const devices = await deviceSA.findByQueries({ user: { $in: entity?.usersIds } });
-      //   console.log('================= devices ===================');
-      //   console.log(devices);
-      //   console.log('====================================');
-      //   if (devices?.length > 0) {
-      //     const tokens = devices.map(({ token }) => token);
-      //     await sendNotification({ ...result, tokens });
-      //   }
-      // }
+  
       return this.factory.toResponseDto(result);
     } catch (error) {
       return Promise.reject(error);
@@ -330,7 +317,6 @@ export abstract class GenericSA<
       const {
         take,
         skip,
-        direction,
         sortField,
         order,
         relation,

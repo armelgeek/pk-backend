@@ -13,8 +13,10 @@ export const mediasRouter = mediasRoutes();
  * @summary List Medias (getAllMedias)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {MediasResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:type,url,size,profileId,pageId,category,eventId,shares,likes,duration
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<MediasResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

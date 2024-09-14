@@ -13,8 +13,10 @@ export const restrictionRouter = restrictionRoutes();
  * @summary List Restriction (getAllRestriction)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {RestrictionResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:type,limit,frequence,action,functionality
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<RestrictionResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

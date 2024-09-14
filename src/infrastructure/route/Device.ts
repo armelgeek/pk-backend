@@ -13,8 +13,10 @@ export const deviceRouter = deviceRoutes();
  * @summary List Device (getAllDevice)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {DeviceResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:uuid,deviseInfo,token
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<DeviceResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

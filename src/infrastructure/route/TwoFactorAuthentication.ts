@@ -13,8 +13,10 @@ export const twofactorauthenticationRouter = twofactorauthenticationRoutes();
  * @summary List TwoFactorAuthentication (getAllTwoFactorAuthentication)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {TwoFactorAuthenticationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:type
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<TwoFactorAuthenticationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

@@ -85,6 +85,8 @@ export class UtilisateurSA extends GenericSA<
           take,
           skip,
           where: queries,
+          direction,
+          sortField,
         },
         this.name,
       );

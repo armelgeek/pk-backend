@@ -13,8 +13,10 @@ export const linkRouter = linkRoutes();
  * @summary List Link (getAllLink)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {LinkResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:name,link,description
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<LinkResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

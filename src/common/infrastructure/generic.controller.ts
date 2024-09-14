@@ -72,7 +72,7 @@ export class GenericController<
     GenericFactory<TDo, TRequestDto, TResponseDto>
   >
 > {
-  // name: string;
+  name?: string;
   serviceSA: TSa;
   userSA: UtilisateurSA;
   profileSA: ProfileSA;
@@ -83,7 +83,7 @@ export class GenericController<
   noteSA: NoteSA;
   authentificationSA: AuthentificationSA;
 
-  constructor(serviceSA) {
+  constructor(serviceSA: TSa, name?: string) {
     this.serviceSA = serviceSA;
     this.userSA = utilisateurSA;
     this.deviceSA = deviceSA;
@@ -93,7 +93,7 @@ export class GenericController<
     this.publicationSA = publicationSA;
     this.noteSA = noteSA;
     this.authentificationSA = authentificationSA;
-    // this.name = name
+    this.name = name
   }
 
   /**
@@ -104,6 +104,22 @@ export class GenericController<
     try {
       console.log('ici ca body', body);
       const created = await this.serviceSA.create(body);
+
+      // if (this.name === 'Notification') {
+      //   let tokens = []
+      //   // @ts-ignore
+      //   const userIds = entity?.usersIds
+      //   for (const userId of userIds) {
+      //     const devices = await this.deviceSA.findAll({ user: userId });
+      //     if (devices && devices.items.length) {
+      //       tokens.push(...devices.items.map(({ token }) => token));
+      //     }
+      //   }
+      //   const res = await sendNotification({ tokens, body: body.message, title: body.title });
+      //   console.log('====================================');
+      //   console.log(res);
+      //   console.log('====================================');
+      // }
 
       res.locals.data = created;
       res.locals.statusCode = HttpStatus.CREATED;
@@ -264,7 +280,7 @@ export class GenericController<
         search,
         match,
         sortField,
-        direction,
+        order: direction,
         queries,
         light: JSON.parse(light || 'true'),
         take: rowPerPage * 1,
@@ -274,6 +290,10 @@ export class GenericController<
         exists,
         no_exists,
       });
+
+      console.log('====================================');
+      console.log(dtos.items.map(({nom }) => nom));
+      console.log('====================================');
 
       res.locals.data = dtos;
 
@@ -350,7 +370,7 @@ export class GenericController<
         search,
         match,
         sortField,
-        direction,
+        order: direction,
         queries,
         light: JSON.parse(light || 'true'),
         take: rowPerPage * 1,
@@ -366,6 +386,7 @@ export class GenericController<
     }
   };
   sendMail = async (req, res, next) => {
+    
     try {
       const { nom, prenom, email, status, comment, profileId } = req.body;
       let tokens = [];
@@ -661,19 +682,11 @@ export class GenericController<
     let tokens = [];
 
     try {
-      // for (const userId of userIds) {
-      //   const devices = await this.deviceSA.findAll({ user: userId });
-      //   if (devices && devices.items.length) {
-      //     tokens.push(...devices.items.map(({ token }) => token));
-      //   }
-      // }
-
-      const devices = await this.deviceSA.findByQueries({ user: { $in: userIds } });
-      console.log('====================================');
-      console.log(devices);
-      console.log('====================================');
-      if (devices && devices.length > 0) {
-        tokens.push(...devices.items.map(({ token }) => token));
+      for (const userId of userIds) {
+        const devices = await this.deviceSA.findAll({ user: userId });
+        if (devices && devices.items.length) {
+          tokens.push(...devices.items.map(({ token }) => token));
+        }
       }
 
       if (tokens.length > 0) {

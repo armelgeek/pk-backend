@@ -1,8 +1,14 @@
-import { DeepPartial, FindConditions, FindManyOptions, MongoRepository, ObjectLiteral } from "typeorm";
+import {
+  DeepPartial,
+  FindConditions,
+  FindManyOptions,
+  MongoRepository,
+  ObjectLiteral,
+} from 'typeorm';
 import { ObjectID } from 'mongodb';
-import { HttpStatus } from "../../data/constants/http-status";
-import { Exception } from "../../service/middleware/exception-handler";
-import * as moment from "moment";
+import { HttpStatus } from '../../data/constants/http-status';
+import { Exception } from '../../service/middleware/exception-handler';
+import * as moment from 'moment';
 
 export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TDo>> {
   protected repository: TRepository;
@@ -33,7 +39,10 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   async updateFields(_id: ObjectID, updateData: any): Promise<any> {
     try {
-      const result = await this.repository.updateOne({ _id: new ObjectID(_id) }, { $set: updateData });
+      const result = await this.repository.updateOne(
+        { _id: new ObjectID(_id) },
+        { $set: updateData },
+      );
 
       if (result.modifiedCount === 0) {
         throw new Error('Document non trouvé ou aucune mise à jour effectuée');
@@ -146,19 +155,23 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
     const aggregate_search = search ? { $text: { $search: search } } : {};
     const { userId, utilisateurId, longitude, latitude, maxDistance, ...whereOut } = where;
-    const sort_aggregate = sortField ? { [sortField]: order } : { name: 1 };
+    const sort_aggregate = sortField ? { [sortField]: order === "ASC" ? 1 : -1 } : { name: 1 };
+
+    console.log('====================================');
+    console.log(sort_aggregate);
+    console.log('====================================');
 
     const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : [];
     const isExist = exists ? { [exists]: { $exists: true } } : {};
-    const isNotExist = no_exists ? { $or: [ { [no_exists]: { $exists: false } }, { [no_exists]: null } ] } : {};
+    const isNotExist = no_exists
+      ? { $or: [{ [no_exists]: { $exists: false } }, { [no_exists]: null }] }
+      : {};
 
     const aggregationPipeline = this.repository
       .aggregate([
         { $match: { ...isExist, ...isNotExist, ...whereOut, ...aggregate_search } },
         ...search_query,
         ...aggregate,
-        { $sort: { ...sort_aggregate } },
-
         // {
         //   $geoWithin: {
         //     $geometry: {
@@ -170,24 +183,24 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         // },
         {
           $group: {
-            _id: "$_id",
-            doc: { $first: "$$ROOT" }
+            _id: '$_id',
+            doc: { $first: '$$ROOT' },
           },
         },
         {
-          $replaceRoot: { newRoot: "$doc" } // Replace la racine avec le document complet conservé
+          $replaceRoot: { newRoot: '$doc' }, // Replace la racine avec le document complet conservé
         },
+        { $sort: { ...sort_aggregate } },
         {
           $facet: {
             metadata: [{ $count: 'total' }],
             data: [{ $skip: Number(skip) }, { $limit: Number(take) }],
           },
         },
-
       ])
       .toArray();
 
-    return aggregationPipeline
+    return aggregationPipeline;
   }
 
   async count(query: ObjectLiteral): Promise<any> {
@@ -199,7 +212,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async findByQueries(queries): Promise<any> {
-    return this.repository.find(queries);
+    return this.repository.find({ where: queries });
   }
 
   sum(options, name): Promise<any> {
@@ -222,7 +235,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   async findByAttributes(
     andConditions: FindConditions<TDo>[],
-    orConditions: FindConditions<TDo>[]
+    orConditions: FindConditions<TDo>[],
   ): Promise<TDo[]> {
     try {
       const andQuery = andConditions.length > 0 ? { $and: andConditions } : {};
@@ -236,13 +249,12 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     }
   }
   async findBetweenDates(
-      firstDate: string,
-      lastDate?: string,
-      otherCondition?: any,
+    firstDate: string,
+    lastDate?: string,
+    otherCondition?: any,
   ): Promise<TDo[]> {
     const now = new Date().toISOString();
     try {
-
       const dateQuery: any = {
         [firstDate]: { $lte: now },
       };
@@ -256,8 +268,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       if (otherCondition) {
         Object.assign(dateQuery, otherCondition);
       }
-    console.log('dateQuery',dateQuery);
-      return await this.repository.find({ where: { $and: [dateQuery] }});
+      console.log('dateQuery', dateQuery);
+      return await this.repository.find({ where: { $and: [dateQuery] } });
     } catch (error) {
       console.error('Error finding by dates:', error);
       throw new Exception(HttpStatus.INTERNAL_SERVER_ERROR, 'Error finding by dates');

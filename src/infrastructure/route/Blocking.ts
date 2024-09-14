@@ -13,8 +13,10 @@ export const blockingRouter = blockingRoutes();
  * @summary List Blocking (getAllBlocking)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {BlockingResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:profileId,blockingProfile,reason
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<BlockingResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

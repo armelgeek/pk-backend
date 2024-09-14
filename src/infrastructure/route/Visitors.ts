@@ -13,8 +13,10 @@ export const visitorsRouter = visitorsRoutes();
  * @summary List Visitors (getAllVisitors)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {VisitorsResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:eventId,profileId,target,type
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<VisitorsResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

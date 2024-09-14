@@ -24,8 +24,10 @@ export const publicationRouter = publicationRoutes();
  * @summary List Publication (getAllPublication)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {PublicationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:content,imageUrls,videoUrls,like,share,originalId,activityDate
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<PublicationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

@@ -13,8 +13,10 @@ export const identityverificationRouter = identityverificationRoutes();
  * @summary List IdentityVerification (getAllIdentityVerification)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {IdentityVerificationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:description,type,status,commentaire
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<IdentityVerificationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -66,13 +68,3 @@ export const identityverificationRouter = identityverificationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
-/**
- * POST /api/identity-verification/send-verification-mail
- * @tags IdentityVerification
- * @security BearerAuth
- * @summary Create IdentityVerification (sendMailIdentityVerification)
- * @param {IdentityVerificationRequestDTO} request.body
- * @return {object} 201
- * @return {object} 400 - Données non conformes
- * @return {object} 500 - Erreur interne du serveur
- */

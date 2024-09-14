@@ -13,8 +13,10 @@ export const albumRouter = albumRoutes();
  * @summary List Album (getAllAlbum)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {AlbumResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:type,title,media,like,share,description,cover,views
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<AlbumResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

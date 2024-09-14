@@ -11,10 +11,12 @@ export const followersRouter = followersRoutes();
  * @tags Followers
  * @security BearerAuth
  * @summary List Followers (getAllFollowers)
-
+ 
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @return {FollowersResponseDTO} 201
+ * @param {string} sortField.query - enum:
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<FollowersResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -24,8 +26,8 @@ export const followersRouter = followersRoutes();
  * @tags Followers
  * @security BearerAuth
  * @summary Remove Followers (deleteFollowers)
-
- * @param {string} id.path.required
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -37,7 +39,7 @@ export const followersRouter = followersRoutes();
  * @security BearerAuth
  * @summary Update Followers (updateFollowers)
  * @param {FollowersRequestDTO} request.body
- * @param {string} id.path.required
+ * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -48,8 +50,8 @@ export const followersRouter = followersRoutes();
  * @tags Followers
  * @security BearerAuth
  * @summary List Followers (getFollowers)
-
- * @param {string} id.path.required
+ 
+ * @param {string} id.path.required 
  * @return {FollowersResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,21 +62,7 @@ export const followersRouter = followersRoutes();
  * @tags Followers
  * @security BearerAuth
  * @summary Create Followers (addFollowers)
- * @param {FollowersRequestDTO} request.body
- * @return {FollowersResponseDTO} 201
- * @return {object} 400 - Données non conformes
- * @return {object} 500 - Erreur interne du serveur
- */
-
-
-/**
- * GET /api/followers/me/{profileId}/has-followed/{id}
- * @tags Followers
- * @security BearerAuth
- * @summary has follow (hasFollowed)
-
- * @param {string} profileId.path.required
- * @param {string} id.path.required
+ * @param {FollowersRequestDTO} request.body 
  * @return {FollowersResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur

@@ -13,8 +13,10 @@ export const dayRouter = dayRoutes();
  * @summary List Day (getAllDay)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {DayResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:titleDay,startDateDay,startTimeDay,lateReg,limitRegEntry,limitRegBuy,durationDay,nbTableDay,duration,photos,videos
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<DayResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

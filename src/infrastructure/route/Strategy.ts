@@ -13,8 +13,10 @@ export const strategyRouter = strategyRoutes();
  * @summary List Strategy (getAllStrategy)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {StrategyResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:label,description
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<StrategyResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

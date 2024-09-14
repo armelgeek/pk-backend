@@ -14,9 +14,11 @@ export const utilisateurRouter = utilisateurRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:nom,prenom,email,role,password,adresse,dateInscription,dateNaissance,socketId,nomPrenom,code,googleId,facebookId,appleId,username,deletionDate,firstNotificationDate,deletionState,secondNotificationDate,reactivateCode,reactivateExpiredDate
+ * @param {string} order.query - enum:ASC,DESC
  * @param {string} data.query
  * @param {string} TemplateParameter1.path.required 
- * @return {UtilisateurResponseDTO} 201
+ * @return {array<UtilisateurResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

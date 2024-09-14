@@ -13,8 +13,10 @@ export const settingsRouter = settingsRoutes();
  * @summary List Settings (getAllSettings)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {SettingsResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:donationDescription,countries
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<SettingsResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

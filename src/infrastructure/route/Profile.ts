@@ -24,8 +24,10 @@ export const profileRouter = profileRoutes();
  * @summary List Profile (getAllProfile)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {ProfileResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:photo,cover,type,email,gender,prenom,country,city,children,description,nom,situation,nbSignalement,banDate,endDate
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<ProfileResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

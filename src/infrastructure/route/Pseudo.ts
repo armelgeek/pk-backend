@@ -24,8 +24,10 @@ export const pseudoRouter = pseudoRoutes();
  * @summary List Pseudo (getAllPseudo)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {PseudoResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:name,link,code
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<PseudoResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

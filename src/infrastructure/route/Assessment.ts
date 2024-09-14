@@ -13,8 +13,10 @@ export const assessmentRouter = assessmentRoutes();
  * @summary List Assessment (getAllAssessment)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {AssessmentResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:note
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<AssessmentResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

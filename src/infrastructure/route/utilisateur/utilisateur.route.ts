@@ -118,7 +118,7 @@ export const utilisateurRouter = utilisateurRoutes();
  * @param {number} page.query
  * @param {number} rowPerPage.query
  * @param {string} sortField.query - enum:nom,phone,email,ville,dateInscription,dateDerniereConnexion
- * @param {string} direction.query - enum:ASC,DESC
+ * @param {string} order.query - enum:ASC,DESC
  * @param {string} nom.query
  * @return {array<UtilisateurResponseDTO>} 200
  * @return {object} 500 - Erreur côté serveur

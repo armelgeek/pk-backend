@@ -11,10 +11,12 @@ export const sharingnoteRouter = sharingnoteRoutes();
  * @tags SharingNote
  * @security BearerAuth
  * @summary List SharingNote (getAllSharingNote)
-
+ 
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @return {SharingNoteResponseDTO} 201
+ * @param {string} sortField.query - enum:profileId,shareId
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<SharingNoteResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */
@@ -24,8 +26,8 @@ export const sharingnoteRouter = sharingnoteRoutes();
  * @tags SharingNote
  * @security BearerAuth
  * @summary Remove SharingNote (deleteSharingNote)
-
- * @param {string} id.path.required
+ 
+ * @param {string} id.path.required 
  * @return {DeleteResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -37,7 +39,7 @@ export const sharingnoteRouter = sharingnoteRoutes();
  * @security BearerAuth
  * @summary Update SharingNote (updateSharingNote)
  * @param {SharingNoteRequestDTO} request.body
- * @param {string} id.path.required
+ * @param {string} id.path.required 
  * @return {UpdateResponseDTO} 200
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -48,8 +50,8 @@ export const sharingnoteRouter = sharingnoteRoutes();
  * @tags SharingNote
  * @security BearerAuth
  * @summary List SharingNote (getSharingNote)
-
- * @param {string} id.path.required
+ 
+ * @param {string} id.path.required 
  * @return {SharingNoteResponseDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
@@ -60,33 +62,8 @@ export const sharingnoteRouter = sharingnoteRoutes();
  * @tags SharingNote
  * @security BearerAuth
  * @summary Create SharingNote (addSharingNote)
- * @param {SharingNoteRequestDTO} request.body
+ * @param {SharingNoteRequestDTO} request.body 
  * @return {SharingNoteResponseDTO} 201
- * @return {object} 400 - Données non conformes
- * @return {object} 500 - Erreur interne du serveur
- */
-
-/**
- * GET /api/sharing-note/to/get
- * @tags SharingNote
- * @security BearerAuth
- * @summary get sharingNote for (getSharedNoteFor)
-
- * @param {string} profileId.path.required
- * @return {SharingNoteRequestDTO} 201
- * @return {object} 400 - Données non conformes
- * @return {object} 500 - Erreur interne du serveur
- */
-
-
-/**
- * GET /api/sharing-note/to/getById
- * @tags SharingNote
- * @security BearerAuth
- * @summary get sharingNote  (findSharedNoteById)
-
- * @param {string} profileId.path.required
- * @return {SharingNoteRequestDTO} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

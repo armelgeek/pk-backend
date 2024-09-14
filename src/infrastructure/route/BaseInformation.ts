@@ -13,8 +13,10 @@ export const baseinformationRouter = baseinformationRoutes();
  * @summary List BaseInformation (getAllBaseInformation)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {BaseInformationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:pays,email,date_of_birth,gender,nom,prenom,country,city,situation,children,description
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<BaseInformationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

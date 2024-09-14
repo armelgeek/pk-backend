@@ -24,8 +24,10 @@ export const commentRouter = commentRoutes();
  * @summary List Comment (getAllComment)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {CommentResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:content,target,type,activityDate
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<CommentResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

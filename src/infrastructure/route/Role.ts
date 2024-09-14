@@ -24,8 +24,10 @@ export const roleRouter = roleRoutes();
  * @summary List Role (getAllRole)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {RoleResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:name
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<RoleResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

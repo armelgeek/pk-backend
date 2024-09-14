@@ -13,8 +13,10 @@ export const participateRouter = participateRoutes();
  * @summary List Participate (getAllParticipate)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {ParticipateResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:numberTable,numberPlace,numberBuyIn,numberRebuy,payout,nombreBounty,chip,gain,flag,message,pseudo,note,photo,country
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<ParticipateResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

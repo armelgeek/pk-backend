@@ -24,8 +24,10 @@ export const notificationRouter = notificationRoutes();
  * @summary List Notification (getAllNotification)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {NotificationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:title,message,view,targetId,target,type,sender,receiver
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<NotificationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

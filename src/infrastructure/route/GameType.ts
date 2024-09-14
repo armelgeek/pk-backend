@@ -24,8 +24,10 @@ export const gametypeRouter = gametypeRoutes();
  * @summary List GameType (getAllGameType)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {GameTypeResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:name,description,game
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<GameTypeResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

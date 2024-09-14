@@ -13,8 +13,10 @@ export const softbanRouter = softbanRoutes();
  * @summary List Softban (getAllSoftban)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {SoftbanResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:niveau,titre,duration
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<SoftbanResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

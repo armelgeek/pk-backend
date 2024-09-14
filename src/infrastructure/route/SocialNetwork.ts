@@ -13,8 +13,10 @@ export const socialnetworkRouter = socialnetworkRoutes();
  * @summary List SocialNetwork (getAllSocialNetwork)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {SocialNetworkResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:name,profileId
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<SocialNetworkResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

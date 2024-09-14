@@ -48,8 +48,10 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  * @summary List ComplementaryInformation (getAllComplementaryInformation)
  
  * @param {number} page.query
- * @param {number} rowPerPage.query 
- * @return {ComplementaryInformationResponseDTO} 201
+ * @param {number} rowPerPage.query
+ * @param {string} sortField.query - enum:nationality,langue,email,job,headonmob,nbTitle,rangTimeMoney,nbBracelet
+ * @param {string} order.query - enum:ASC,DESC 
+ * @return {array<ComplementaryInformationResponseDTO>} 201
  * @return {object} 400 - Données non conformes
  * @return {object} 500 - Erreur interne du serveur
  */

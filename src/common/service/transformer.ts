@@ -39,7 +39,11 @@ export const factoryObject = (data, name) => {
             [key]: typeof acc[key] === "boolean" ? acc[key] : acc[key] === 'true' ? true : false,
           };
         }
-        return newAcc;
+
+        return {
+          ...newAcc,
+          [key]: { $regex: new RegExp(acc[key], 'i') }
+        };
       }, data);
   }
 

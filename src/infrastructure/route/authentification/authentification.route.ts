@@ -16,6 +16,13 @@ const authentificationRoutes = () => {
   const router = Router();
 
   router.post(
+    '/',
+    schemaValidator(authentificationRequestDTOSchema),
+    authentificationController.signin,
+    // responseFormatter,
+  );
+
+  router.post(
     '/user',
     schemaValidator(authentificationRequestDTOSchema),
     authentificationController.signin,

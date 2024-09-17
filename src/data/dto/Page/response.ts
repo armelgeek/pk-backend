@@ -15,6 +15,7 @@ export type PageResponseDTO = {
    location?: LocationRequestDTO;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -36,6 +37,7 @@ export type PageResponseDTO = {
  * @property {LocationRequestDTO} location
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

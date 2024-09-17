@@ -3,6 +3,7 @@ export type TwoFactorAuthenticationResponseDTO = {
    actif?: boolean;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -12,6 +13,7 @@ export type TwoFactorAuthenticationResponseDTO = {
  * @property {boolean} actif
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

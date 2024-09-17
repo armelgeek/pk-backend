@@ -7,6 +7,7 @@ export type BankRollResponseDTO = {
    profileId?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -20,6 +21,7 @@ export type BankRollResponseDTO = {
  * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

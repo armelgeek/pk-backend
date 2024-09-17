@@ -13,6 +13,7 @@ export type AlbumResponseDTO = {
    pageId?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -32,6 +33,7 @@ export type AlbumResponseDTO = {
  * @property {string} pageId
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

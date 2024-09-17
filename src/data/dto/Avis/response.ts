@@ -5,6 +5,7 @@ export type AvisResponseDTO = {
    object?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -16,6 +17,7 @@ export type AvisResponseDTO = {
  * @property {string} object
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

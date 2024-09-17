@@ -50,13 +50,18 @@ export class SessionDO {
   @Column({ type: 'timestamptz', default: new Date() })
   updatedAt: Date;
 
+  @Column({ type: 'timestamptz', default: new Date() })
+  lastActivityAt: Date;
+
   @BeforeInsert()
   beforeInsert() {
+    this.lastActivityAt = new Date();
     this.createdAt = new Date();
   }
 
   @BeforeUpdate()
   beforeUpdate() {
+    this.lastActivityAt = new Date();
     this.updatedAt = new Date();
   }
 }

@@ -11,6 +11,7 @@ export type SubscriptionOfferResponseDTO = {
    remiseDescription: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -28,6 +29,7 @@ export type SubscriptionOfferResponseDTO = {
  * @property {string} remiseDescription
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

@@ -16,6 +16,7 @@ export type PublicationResponseDTO = {
    audience?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -38,6 +39,7 @@ export type PublicationResponseDTO = {
  * @property {string} audience
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

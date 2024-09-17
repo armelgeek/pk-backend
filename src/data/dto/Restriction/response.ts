@@ -6,6 +6,7 @@ export type RestrictionResponseDTO = {
    functionality?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -18,6 +19,7 @@ export type RestrictionResponseDTO = {
  * @property {string} functionality
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

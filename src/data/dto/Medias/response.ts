@@ -11,6 +11,7 @@ export type MediasResponseDTO = {
    duration?: number;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -28,6 +29,7 @@ export type MediasResponseDTO = {
  * @property {number} duration
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

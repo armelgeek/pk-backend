@@ -18,7 +18,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
   }
 
   async create(entity: DeepPartial<TDo>): Promise<any> {
-    return await this.repository.save({ ...entity, createdAt: new Date() });
+    return await this.repository.save({ ...entity, createdAt: new Date(), lastActivityAt: new Date() });
   }
 
   async partialUpdate(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
@@ -26,7 +26,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
       const option = { upsert: true, new: true, setDefaultsOnInsert: true };
       const updated = await this.repository.findOneAndUpdate(
         { _id },
-        { $set: partialEntity },
+        { $set: {...partialEntity, lastActivityAt: new Date()} },
         option,
       );
 
@@ -41,7 +41,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     try {
       const result = await this.repository.updateOne(
         { _id: new ObjectID(_id) },
-        { $set: updateData },
+        { $set: {...updateData, lastActivityAt: new Date()} },
       );
 
       if (result.modifiedCount === 0) {
@@ -63,7 +63,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
         { $push: partialEntity },
         option,
       );
-
+      await this.repository.updateOne({ _id }, { lastActivityAt: new Date() });
       return updated;
     } catch (error) {
       console.log({ error });
@@ -73,7 +73,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   async update(_id: ObjectID, partialEntity: DeepPartial<TDo>): Promise<any> {
     try {
-      const updated = await this.repository.updateOne({ _id }, partialEntity);
+      const updated = await this.repository.updateOne({ _id }, {...partialEntity, lastActivityAt: new Date()});
 
       return updated;
     } catch (error) {
@@ -83,7 +83,7 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
   async updateMany(query: DeepPartial<TDo>, partialEntity: DeepPartial<TDo>): Promise<any> {
     try {
-      const updated = await this.repository.updateMany(query, partialEntity);
+      const updated = await this.repository.updateMany(query, {...partialEntity, lastActivityAt: new Date()});
 
       return updated;
     } catch (error) {
@@ -155,14 +155,14 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
 
     const aggregate_search = search ? { $text: { $search: search } } : {};
     const { userId, utilisateurId, longitude, latitude, maxDistance, ...whereOut } = where;
-    const sort_aggregate = sortField ? { [sortField]: order === "ASC" ? 1 : -1 } : { name: 1 };
+    const sort_aggregate = sortField && order ? { [sortField]: order === "ASC" ? 1 : -1 } : { lastActivityAt: order === "ASC" ? 1 : -1 };
 
     const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : [];
     const isExist = exists ? { [exists]: { $exists: true } } : {};
     const isNotExist = no_exists
       ? { $or: [{ [no_exists]: { $exists: false } }, { [no_exists]: null }] }
       : {};
-
+    
     const aggregationPipeline = this.repository
       .aggregate([
         { $match: { ...isExist, ...isNotExist, ...whereOut, ...aggregate_search } },

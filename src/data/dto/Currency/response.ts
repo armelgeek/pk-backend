@@ -5,6 +5,7 @@ export type CurrencyResponseDTO = {
    symbol?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -16,6 +17,7 @@ export type CurrencyResponseDTO = {
  * @property {string} symbol
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

@@ -6,6 +6,7 @@ export type FollowersResponseDTO = {
    cancel?: boolean;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -18,6 +19,7 @@ export type FollowersResponseDTO = {
  * @property {boolean} cancel
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

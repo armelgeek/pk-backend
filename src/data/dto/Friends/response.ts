@@ -5,6 +5,7 @@ export type FriendsResponseDTO = {
    cancel?: boolean;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -16,6 +17,7 @@ export type FriendsResponseDTO = {
  * @property {boolean} cancel
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

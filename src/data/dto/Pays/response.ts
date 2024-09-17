@@ -4,6 +4,7 @@ export type PaysResponseDTO = {
    emoji?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type PaysResponseDTO = {
  * @property {string} emoji
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

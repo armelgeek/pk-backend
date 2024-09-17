@@ -11,6 +11,7 @@ export type ComplementaryInformationResponseDTO = {
    nbBracelet?: number;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -28,6 +29,7 @@ export type ComplementaryInformationResponseDTO = {
  * @property {number} nbBracelet
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

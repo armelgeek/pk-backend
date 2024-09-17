@@ -15,6 +15,7 @@ export type PartenariatResponseDTO = {
    type?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -36,6 +37,7 @@ export type PartenariatResponseDTO = {
  * @property {string} type
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

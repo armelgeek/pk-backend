@@ -6,6 +6,7 @@ export type LevelResponseDTO = {
    name?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -18,6 +19,7 @@ export type LevelResponseDTO = {
  * @property {string} name
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

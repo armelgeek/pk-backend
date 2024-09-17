@@ -21,6 +21,7 @@ export type NoteResponseDTO = {
    isPin?: boolean;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -48,6 +49,7 @@ export type NoteResponseDTO = {
  * @property {boolean} isPin
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

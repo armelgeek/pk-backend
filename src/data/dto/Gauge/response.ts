@@ -4,6 +4,7 @@ export type GaugeResponseDTO = {
    value?: number;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type GaugeResponseDTO = {
  * @property {number} value
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

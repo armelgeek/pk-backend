@@ -3,6 +3,7 @@ export type LangueResponseDTO = {
    nom?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -12,6 +13,7 @@ export type LangueResponseDTO = {
  * @property {string} nom
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

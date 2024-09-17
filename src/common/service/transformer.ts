@@ -1,7 +1,7 @@
 import { ObjectID } from 'mongodb';
 import { LocationElementId, dataTDO } from '../../data';
 
-export const factoryObject = (data, name) => {
+export const factoryObject = (data, name, query = false) => {
   const keys = Object.keys(data);
   let newData = data;
   if (Array.isArray(dataTDO[name]?.attributes)) {
@@ -40,10 +40,15 @@ export const factoryObject = (data, name) => {
           };
         }
 
-        return {
-          ...newAcc,
+        if (query) {
+          return {
+            ...newAcc,
           [key]: { $regex: new RegExp(acc[key], 'i') }
-        };
+          }
+        }
+
+        return newAcc;
+
       }, data);
   }
 
@@ -52,7 +57,7 @@ export const factoryObject = (data, name) => {
 
 export const toQueryOr = (query, name) => {
   const queries = JSON.parse(query);
-  return { $or: queries?.map((item) => factoryObject(item, name)) };
+  return { $or: queries?.map((item) => factoryObject(item, name, true)) };
 };
 
 

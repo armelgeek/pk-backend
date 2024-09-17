@@ -14,6 +14,7 @@ export type SessionResponseDTO = {
    note?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -34,6 +35,7 @@ export type SessionResponseDTO = {
  * @property {string} note
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

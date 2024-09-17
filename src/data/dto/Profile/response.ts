@@ -27,6 +27,7 @@ export type ProfileResponseDTO = {
    endDate?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -60,6 +61,7 @@ export type ProfileResponseDTO = {
  * @property {string} endDate
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

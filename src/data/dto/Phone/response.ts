@@ -4,6 +4,7 @@ export type PhoneResponseDTO = {
    callingCode?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type PhoneResponseDTO = {
  * @property {string} callingCode
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

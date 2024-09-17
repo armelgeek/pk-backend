@@ -7,6 +7,7 @@ export type AssessmentResponseDTO = {
    link?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -20,6 +21,7 @@ export type AssessmentResponseDTO = {
  * @property {string} link
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

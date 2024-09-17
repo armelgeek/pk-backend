@@ -13,6 +13,7 @@ export type CommentResponseDTO = {
    activityDate?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -32,6 +33,7 @@ export type CommentResponseDTO = {
  * @property {string} activityDate
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

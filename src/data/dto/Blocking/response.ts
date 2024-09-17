@@ -4,6 +4,7 @@ export type BlockingResponseDTO = {
    reason?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type BlockingResponseDTO = {
  * @property {string} reason
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

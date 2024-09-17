@@ -3,6 +3,7 @@ export type CodeParrainResponseDTO = {
    percentage?: number;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -12,6 +13,7 @@ export type CodeParrainResponseDTO = {
  * @property {number} percentage
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

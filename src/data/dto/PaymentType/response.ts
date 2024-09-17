@@ -3,6 +3,7 @@ export type PaymentTypeResponseDTO = {
    logo?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -12,6 +13,7 @@ export type PaymentTypeResponseDTO = {
  * @property {string} logo
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

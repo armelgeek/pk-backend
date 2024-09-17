@@ -14,6 +14,7 @@ export type DayResponseDTO = {
    videos?: string[];
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -34,6 +35,7 @@ export type DayResponseDTO = {
  * @property {array<string>} videos
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

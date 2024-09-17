@@ -5,6 +5,7 @@ export type VisitorsResponseDTO = {
    type?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -16,6 +17,7 @@ export type VisitorsResponseDTO = {
  * @property {string} type
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

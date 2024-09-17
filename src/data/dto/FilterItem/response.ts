@@ -3,6 +3,7 @@ export type FilterItemResponseDTO = {
    value?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -12,6 +13,7 @@ export type FilterItemResponseDTO = {
  * @property {string} value
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

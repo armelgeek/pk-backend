@@ -4,6 +4,7 @@ export type ClubResponseDTO = {
    profileId?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type ClubResponseDTO = {
  * @property {string} profileId
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

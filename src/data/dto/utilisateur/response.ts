@@ -35,6 +35,7 @@ export type UtilisateurResponseDTO = {
    reactivateExpiredDate?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -76,6 +77,7 @@ export type UtilisateurResponseDTO = {
  * @property {string} reactivateExpiredDate
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

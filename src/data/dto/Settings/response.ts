@@ -4,6 +4,7 @@ export type SettingsResponseDTO = {
    countries?: string[];
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -14,6 +15,7 @@ export type SettingsResponseDTO = {
  * @property {array<string>} countries
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

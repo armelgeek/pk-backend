@@ -10,6 +10,7 @@ export type UserSubscriptionResponseDTO = {
    subscriptionStripeId?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -26,6 +27,7 @@ export type UserSubscriptionResponseDTO = {
  * @property {string} subscriptionStripeId
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

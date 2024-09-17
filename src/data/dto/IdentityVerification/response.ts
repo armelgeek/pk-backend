@@ -12,6 +12,7 @@ export type IdentityVerificationResponseDTO = {
    commentaire?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -30,6 +31,7 @@ export type IdentityVerificationResponseDTO = {
  * @property {string} commentaire
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

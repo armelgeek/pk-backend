@@ -26,6 +26,7 @@ export type ParticipateResponseDTO = {
    country?: string;
   createdAt: Date;
   updatedAt: Date;
+  lastActivityAt: Date;
   id: string;
 }
 
@@ -58,6 +59,7 @@ export type ParticipateResponseDTO = {
  * @property {string} country
  * @property {string} id
  * @property {string} updatedAt
+ * @property {string} lastActivityAt
  * @property {string} createdAt
  */
 

@@ -18,6 +18,9 @@ import { UtilisateurResponseDTO } from '../../../data/dto/Utilisateur/response';
 import { utilisateurBDL } from '../../bdl/utilisateur/utilisateur.bdl';
 import { utilisateurSM, UtilisateurSM } from '../../metier/utilisateur/utilisateur.sm';
 import { Exception } from '../../middleware/exception-handler';
+import { sendNotification } from '../../middleware/firebase-cloud-messaging';
+import { notificationSA } from '../Notification';
+import { deviceSA } from '../Device';
 
 
 const sortFieldMapper = {
@@ -31,6 +34,7 @@ export class UtilisateurSA extends GenericSA<
   UtilisateurSM,
   UtilisateurFactory
 > {
+
   async editUtilisateur(dto: UtilisateurEditRequestDTO) {
     try {
       return this.partialUpdate(dto.id, dto);
@@ -127,15 +131,15 @@ export class UtilisateurSA extends GenericSA<
 
   async sendPush(pushDto) {
     try {
-      // const { utilisateurIds, tous, titre, message } = pushDto;
-      // const { tokens, utilisateurs } = await this.getDeviceTokensFromUtilisateurIds(
-      //   utilisateurIds,
-      //   tous,
-      // );
+      const { usersIds, tous, titre, message } = pushDto;
+      const { tokens, utilisateurs } = await this.getDeviceTokensFromUtilisateurIds(
+        usersIds,
+        tous,
+      );
       // const notifications = utilisateurs.map((utilisateur) => ({ titre, message, utilisateur }));
-      // if (tokens.length) {
-      //   await sendNotification({ tokens, title: titre, body: message });
-      // }
+      if (tokens.length) {
+        await sendNotification({ tokens, title: titre, body: message });
+      }
 
       // await notificationSA.create(notifications);
 
@@ -145,22 +149,13 @@ export class UtilisateurSA extends GenericSA<
     }
   }
 
-  async getDeviceTokensFromUtilisateurIds(utilisateurIds: string[], tous: boolean) {
+  async getDeviceTokensFromUtilisateurIds(userIds: string[], tous: boolean) {
     try {
-      // const utilisateurs = tous
-      //   ? await this.serviceSM.getAllUtilisateurWithDeviceToken()
-      //   : await this.serviceSM.findByIds(utilisateurIds, {
-      //       relations: ['deviceTokens'],
-      //     });
-
-      // return {
-      //   utilisateurs,
-      //   // tokens: utilisateurs.reduce(
-      //   //   (res, { deviceTokens }) => [...res, ...deviceTokens.map(({ token }: any) => token)],
-      //   //   [],
-      //   // ),
-      // };
-      return {};
+      const data = await deviceSA.findAll({ user: userIds[0] });
+      console.log('====================================');
+      console.log(data);
+      console.log('====================================');
+      return { tokens: [], utilisateurs: [] }
     } catch (error) {
       return Promise.reject(error);
     }

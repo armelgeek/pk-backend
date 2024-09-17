@@ -48,7 +48,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF7cQFjEwfHL80="
 					},
-					"name": "usersIds",
+					"name": "userIds",
 					"type": {
 						"$ref": "AAAAAAF7dq9wlCA0k1A="
 					},
@@ -1766,7 +1766,7 @@
 									"top": 299,
 									"width": 144.1552734375,
 									"height": 13,
-									"text": "+usersIds: Utilisateur",
+									"text": "+userIds: Utilisateur",
 									"horizontalAlignment": 0
 								},
 								{
@@ -5134,7 +5134,7 @@
 									"font": "Arial;13;1",
 									"left": 37,
 									"top": 647,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "Link"
 								},
@@ -5169,7 +5169,7 @@
 							"font": "Arial;13;0",
 							"left": 32,
 							"top": 640,
-							"width": 130.326171875,
+							"width": 130.8974609375,
 							"height": 25,
 							"stereotypeLabel": {
 								"$ref": "AAAAAAGNhQE1FlAQNvU="
@@ -5206,7 +5206,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 670,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+name: string",
 									"horizontalAlignment": 0
@@ -5223,7 +5223,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 685,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+link: string",
 									"horizontalAlignment": 0
@@ -5240,7 +5240,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 700,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+description: string",
 									"horizontalAlignment": 0
@@ -5257,7 +5257,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 715,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+profileId: Profile {id}",
 									"horizontalAlignment": 0
@@ -5274,7 +5274,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 730,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+pageId: Page {id}",
 									"horizontalAlignment": 0
@@ -5283,7 +5283,7 @@
 							"font": "Arial;13;0",
 							"left": 32,
 							"top": 665,
-							"width": 130.326171875,
+							"width": 130.8974609375,
 							"height": 83
 						},
 						{
@@ -5308,7 +5308,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 753,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+getAll()",
 									"horizontalAlignment": 0
@@ -5325,7 +5325,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 768,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+add()",
 									"horizontalAlignment": 0
@@ -5342,7 +5342,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 783,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+delete()",
 									"horizontalAlignment": 0
@@ -5359,7 +5359,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 798,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+update()",
 									"horizontalAlignment": 0
@@ -5376,7 +5376,7 @@
 									"font": "Arial;13;0",
 									"left": 37,
 									"top": 813,
-									"width": 120.326171875,
+									"width": 120.8974609375,
 									"height": 13,
 									"text": "+get()",
 									"horizontalAlignment": 0
@@ -5385,7 +5385,7 @@
 							"font": "Arial;13;0",
 							"left": 32,
 							"top": 748,
-							"width": 130.326171875,
+							"width": 130.8974609375,
 							"height": 83
 						},
 						{
@@ -5425,7 +5425,7 @@
 					"containerChangeable": true,
 					"left": 32,
 					"top": 640,
-					"width": 130.326171875,
+					"width": 130.8974609375,
 					"height": 191,
 					"nameCompartment": {
 						"$ref": "AAAAAAGNhQE1FlAPovo="

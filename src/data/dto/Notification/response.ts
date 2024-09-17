@@ -2,7 +2,7 @@ export type NotificationResponseDTO = {
    title?: string;
    message?: string;
    tous?: boolean;
-   usersIds?: string[];
+   userIds?: string[];
    user?: string;
    view?: string;
    targetId?: string;
@@ -21,7 +21,7 @@ export type NotificationResponseDTO = {
  * @property {string} title
  * @property {string} message
  * @property {boolean} tous
- * @property {array<string>} usersIds
+ * @property {array<string>} userIds
  * @property {string} user
  * @property {string} view
  * @property {string} targetId

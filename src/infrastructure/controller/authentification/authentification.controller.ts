@@ -25,15 +25,39 @@ export class AuthentificationController {
     }
   };
 
-  signin = (req, res, next) => {
-    console.log('====================================');
-    console.log();
-    console.log('====================================');
+  signinAdim = (req, res, next) => {
     const {
       body: { token },
     } = req;
     passport.authenticate(passportStrategies.local, { session: false }, async (err, user) => {
-      console.log(`${err}, ${user} ====> err, user`);
+      if (err && !user) {
+        res.locals.statusCode = HttpStatus.BAD_REQUEST;
+        next(err);
+      } else {
+        try {
+          
+          const { accessToken, refreshToken } = await generateTokens(user);
+
+          res.locals.data = {
+            accessToken,
+            refreshToken,
+            deviceToken: token,
+            utilisateur: { ...user },
+          };
+
+          next();
+        } catch (error) {
+          next(error);
+        }
+      }
+    })(req, res, next);
+  };
+
+  signin = (req, res, next) => {
+    const {
+      body: { token },
+    } = req;
+    passport.authenticate(passportStrategies.local, { session: false }, async (err, user) => {
       if (err && !user) {
         res.locals.statusCode = HttpStatus.BAD_REQUEST;
         next(err);

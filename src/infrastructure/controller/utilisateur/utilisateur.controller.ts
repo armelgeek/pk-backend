@@ -1,12 +1,28 @@
+import { GenericController } from '../../../common/infrastructure/generic.controller';
+import { HttpStatus } from '../../../data/constants/http-status';
+import { UtilisateurDO } from '../../../data/do/Utilisateur';
+
+// @ts-ignore
+import { UtilisateurRequestDTO } from '../../../data/dto/Utilisateur/request';
+// @ts-ignore
+import { UtilisateurResponseDTO } from '../../data/dto/Utilisateur/response';
+
 import {
   utilisateurSA,
   UtilisateurSA,
 } from '../../../service/applicatif/utilisateur/utilisateur.sa';
+import { sendNotification } from '../../../service/middleware/firebase-cloud-messaging';
 
-export class UtilisateurController {
-  private serviceSA: UtilisateurSA;
+export class UtilisateurController extends GenericController<
+UtilisateurDO,
+UtilisateurRequestDTO,
+UtilisateurResponseDTO,
+UtilisateurSA
+> {
+  serviceSA: UtilisateurSA;
 
   constructor(serviceSA: UtilisateurSA) {
+    super(serviceSA);
     this.serviceSA = serviceSA;
   }
 
@@ -156,6 +172,36 @@ export class UtilisateurController {
     } catch (error) {
       next(error);
     }
+  };
+
+  notifyUser = async (req, res, next) => {
+    const { userIds, message, title } = req.body;
+    let tokens = [];
+    try {
+      for (const userId of userIds) {
+        const devices = await this.deviceSA.findAll({ user: userId });
+        if (devices && devices.items.length) {
+          tokens.push(...devices.items.map(({ token }) => token));
+        }
+      }
+
+      if (tokens.length > 0) {
+        await sendNotification({
+          tokens: tokens,
+          title: `[PokerApply] - ${title}`,
+          body: message,
+        });
+      }
+
+      res.locals.data = true;
+      res.locals.statusCode = HttpStatus.OK;
+    } catch (error) {
+      res.locals.data = 'error';
+      res.locals.statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
+      console.error('Error notifying users:', error);
+    }
+
+    next();
   };
 }
 

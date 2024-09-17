@@ -15,7 +15,7 @@ export class NotificationDO {
   tous: boolean;
 
   @Column("simple-array")
-  usersIds: string[];
+  userIds: string[];
 
   @Column({nullable: true, unique: false})
   user: string;

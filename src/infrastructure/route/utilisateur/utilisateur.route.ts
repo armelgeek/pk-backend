@@ -56,16 +56,19 @@ const utilisateurRoutes = () => {
     utilisateurController.toActiveUtilisateur,
   );
 
-  router.get('', utilisateurController.getAll);
+  router.post(
+    '/send/push',
+    utilisateurController.notifyUser,
+  );
+
+  // router.post('/push', conditionnalJwtPassport(isSecured, name), controller.notifyUser, responseFormatter);
+
+  router.get('/', utilisateurController.getAll);
 
   router.get('/:id', utilisateurController.getById);
   router.delete('/:id', conditionnalJwtPassport(true), utilisateurController.delete, responseFormatter);
 
-  router.post(
-    '/push',
-    schemaValidator(Jio.Notification),
-    utilisateurController.sendPush,
-  );
+  
 
   return router;
 };
@@ -156,7 +159,7 @@ export const utilisateurRouter = utilisateurRoutes();
  */
 
 /**
- * POST /api/utilisateur/push
+ * POST /api/users/send/push
  * @tags Utilisateur
  * @summary envoyer des push notifications aux tokens fournis
  * @param {NotificationRequestDTO} request.body.required

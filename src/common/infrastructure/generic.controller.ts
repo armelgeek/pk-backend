@@ -105,22 +105,6 @@ export class GenericController<
       console.log('ici ca body', body);
       const created = await this.serviceSA.create(body);
 
-      // if (this.name === 'Notification') {
-      //   let tokens = []
-      //   // @ts-ignore
-      //   const userIds = entity?.usersIds
-      //   for (const userId of userIds) {
-      //     const devices = await this.deviceSA.findAll({ user: userId });
-      //     if (devices && devices.items.length) {
-      //       tokens.push(...devices.items.map(({ token }) => token));
-      //     }
-      //   }
-      //   const res = await sendNotification({ tokens, body: body.message, title: body.title });
-      //   console.log('====================================');
-      //   console.log(res);
-      //   console.log('====================================');
-      // }
-
       res.locals.data = created;
       res.locals.statusCode = HttpStatus.CREATED;
 
@@ -290,10 +274,6 @@ export class GenericController<
         exists,
         no_exists,
       });
-
-      console.log('====================================');
-      console.log(dtos.items.map(({nom }) => nom));
-      console.log('====================================');
 
       res.locals.data = dtos;
 
@@ -678,6 +658,7 @@ export class GenericController<
     next();
   };
   notifyUser = async (req, res, next) => {
+    // console.log();
     const { userIds, message, title } = req.body;
     let tokens = [];
 

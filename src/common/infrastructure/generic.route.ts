@@ -77,7 +77,7 @@ export const genericRoute = (option: RouteOption) => {
   router.get('/to/getById', conditionnalJwtPassport(isSecured, name), controller.findSharedNoteById, responseFormatter);
   router.get('/to/check', conditionnalJwtPassport(isSecured, name), controller.checkHasNotedSameUser, responseFormatter);
   router.get('/to/compare', conditionnalJwtPassport(isSecured, name), controller.comparateNoteByUser, responseFormatter);
-  router.post('/push', conditionnalJwtPassport(isSecured, name), controller.notifyUser, responseFormatter);
+  // router.post('/push', conditionnalJwtPassport(isSecured, name), controller.notifyUser, responseFormatter);
   router.post('/deactivate-request', conditionnalJwtPassport(isSecured, name), controller.deactivateRequest, responseFormatter);
   router.post('/deactivate-confirm', conditionnalJwtPassport(isSecured, name), controller.deactivateConfirmation, responseFormatter);
   router.post('/re-activate', conditionnalJwtPassport(isSecured, name), controller.reactiveAccount, responseFormatter);

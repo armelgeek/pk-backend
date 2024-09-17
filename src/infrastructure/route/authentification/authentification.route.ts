@@ -16,7 +16,7 @@ const authentificationRoutes = () => {
   const router = Router();
 
   router.post(
-    '/',
+    '/user',
     schemaValidator(authentificationRequestDTOSchema),
     authentificationController.signin,
     // responseFormatter,
@@ -73,7 +73,7 @@ const authentificationRoutes = () => {
 export const authentificationRouter = authentificationRoutes();
 
 /**
- * POST /api/authentification
+ * POST /api/authentification/user
  * @tags Authentification
  * @summary Se connecter à la plateforme
  * @param {AuthentificationRequestDTO} request.body.required

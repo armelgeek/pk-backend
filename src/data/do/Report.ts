@@ -20,6 +20,15 @@ export class ReportDO {
   @Column({nullable: true, unique: false})
   reportProfileId: string;
 
+  @Column({nullable: true, unique: false})
+  etat: string;
+
+  @Column({nullable: true, unique: false})
+  situation: string;
+
+  @Column({nullable: true, unique: false})
+  message: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -17,6 +17,12 @@ export class AssessmentDO {
   @Column({nullable: true, unique: false})
   avis: string;
 
+  @Column({nullable: true, unique: false})
+  etat: string;
+
+  @Column({nullable: true, unique: false})
+  link: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

@@ -47,6 +47,9 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   activityDate: string;
 
+  @Column({nullable: true, unique: false})
+  audience: string;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

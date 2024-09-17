@@ -3,6 +3,8 @@ export type AssessmentResponseDTO = {
    assessmentProfile?: string;
    note?: number;
    avis?: string;
+   etat?: string;
+   link?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -14,6 +16,8 @@ export type AssessmentResponseDTO = {
  * @property {string} assessmentProfile
  * @property {number} note
  * @property {string} avis
+ * @property {string} etat
+ * @property {string} link
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

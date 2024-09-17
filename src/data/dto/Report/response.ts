@@ -4,6 +4,9 @@ export type ReportResponseDTO = {
    profileId?: string;
    type?: string;
    reportProfileId?: string;
+   etat?: string;
+   situation?: string;
+   message?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -16,6 +19,9 @@ export type ReportResponseDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {string} reportProfileId
+ * @property {string} etat
+ * @property {string} situation
+ * @property {string} message
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

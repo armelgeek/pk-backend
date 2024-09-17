@@ -13,6 +13,7 @@ export type PublicationResponseDTO = {
    isShared?: boolean;
    originalId?: string;
    activityDate?: string;
+   audience?: string;
   createdAt: Date;
   updatedAt: Date;
   id: string;
@@ -34,6 +35,7 @@ export type PublicationResponseDTO = {
  * @property {boolean} isShared
  * @property {string} originalId
  * @property {string} activityDate
+ * @property {string} audience
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} createdAt

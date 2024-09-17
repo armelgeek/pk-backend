@@ -3,6 +3,8 @@ export type AssessmentRequestDTO = {
    assessmentProfile?: string;
    note?: number;
    avis?: string;
+   etat?: string;
+   link?: string;
 }
 
 /**
@@ -11,5 +13,7 @@ export type AssessmentRequestDTO = {
  * @property {string} assessmentProfile
  * @property {number} note
  * @property {string} avis
+ * @property {string} etat
+ * @property {string} link
  */
 

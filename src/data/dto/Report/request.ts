@@ -4,6 +4,9 @@ export type ReportRequestDTO = {
    profileId?: string;
    type?: string;
    reportProfileId?: string;
+   etat?: string;
+   situation?: string;
+   message?: string;
 }
 
 /**
@@ -13,5 +16,8 @@ export type ReportRequestDTO = {
  * @property {string} profileId
  * @property {string} type
  * @property {string} reportProfileId
+ * @property {string} etat
+ * @property {string} situation
+ * @property {string} message
  */
 

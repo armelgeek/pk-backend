@@ -26,6 +26,9 @@ export class AuthentificationController {
   };
 
   signin = (req, res, next) => {
+    console.log('====================================');
+    console.log();
+    console.log('====================================');
     const {
       body: { token },
     } = req;

@@ -306,6 +306,20 @@ export class InitSeeds implements Seeder {
     if (strategyCount < 2) {
       await strategyRepository.save(strategy);
     }
+    const admin = await user.findOne({ role: 4 });
+    if (!admin) {
+      await user.insert({
+        password: await bcrypt.hashSync('AdminPockerApp#123', 10),
+        nom: 'PokerApps',
+        prenom: 'Admin',
+        email: 'admin@pokerapps.com',
+        ville: '',
+        adresse: '',
+        imageUrl: '',
+        role: 4,
+        actif: true,
+      });
+    }
     const client = await user.findOne({ email: 'thanhly26@gmail.com' });
     if (!client) {
       await user.insert({

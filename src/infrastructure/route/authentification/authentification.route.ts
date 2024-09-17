@@ -64,8 +64,8 @@ const authentificationRoutes = () => {
 
   router.post(
     '/admin',
-    schemaValidator(adminAuthentificationRequestDTOSchema),
-    adminAuthentificationController.signIn,
+    schemaValidator(authentificationRequestDTOSchema),
+    authentificationController.signin,
   );
 
   router.post(

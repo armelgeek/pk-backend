@@ -157,10 +157,6 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const { userId, utilisateurId, longitude, latitude, maxDistance, ...whereOut } = where;
     const sort_aggregate = sortField ? { [sortField]: order === "ASC" ? 1 : -1 } : { name: 1 };
 
-    console.log('====================================');
-    console.log(sort_aggregate);
-    console.log('====================================');
-
     const search_query = Object.keys(new__Queries).length > 0 ? [{ $match: new__Queries }] : [];
     const isExist = exists ? { [exists]: { $exists: true } } : {};
     const isNotExist = no_exists

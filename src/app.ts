@@ -101,19 +101,19 @@ class App {
     });
 
     this.app.use(express.static(path.resolve(__dirname, '../public/')));
-    this.app.use(express.static(path.resolve(__dirname, '../bo/dist')));
-    this.app.use(express.static(path.resolve(__dirname, '/bo/')));
+    // this.app.use(express.static(path.resolve(__dirname, '../bo/dist')));
+    // this.app.use(express.static(path.resolve(__dirname, '/bo/')));
     this.app.use('/public', express.static(path.resolve(__dirname, '../public')));
 
     this.app.get('/admin', (req, res) => {
       res.sendFile(path.join(__dirname, '/bo/index.html'));
     });
 
-    this.app.get('/public', express.static(path.resolve(__dirname, '../public')));
+    // this.app.get('/public', express.static(path.resolve(__dirname, '../public')));
 
-    // this.app.get('*', (req, res) => {
-    //   res.sendFile(path.join(__dirname, '/bo/index.html'));
-    // });
+    this.app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '/bo/index.html'));
+    });
 
     // Doit être le dernier à être appelé
     this.app.use(exceptionHandler);

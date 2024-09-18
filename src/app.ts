@@ -111,9 +111,7 @@ class App {
 
     // this.app.get('/public', express.static(path.resolve(__dirname, '../public')));
 
-    this.app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '/bo/index.html'));
-    });
+    this.app.get('*', express.static(path.resolve(__dirname, '../public')));
 
     // Doit être le dernier à être appelé
     this.app.use(exceptionHandler);

@@ -14,7 +14,7 @@ export const donationRouter = donationRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:donorsCount,profileId
+ * @param {string} sortField.query - enum:lastActivityAt,donorsCount,profileId
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<DonationResponseDTO>} 201
  * @return {object} 400 - Données non conformes

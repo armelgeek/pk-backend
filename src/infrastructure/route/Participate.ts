@@ -14,7 +14,7 @@ export const participateRouter = participateRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:numberTable,numberPlace,numberBuyIn,numberRebuy,payout,nombreBounty,chip,gain,flag,message,pseudo,note,photo,country
+ * @param {string} sortField.query - enum:lastActivityAt,numberTable,numberPlace,numberBuyIn,numberRebuy,payout,nombreBounty,chip,gain,flag,message,pseudo,note,photo,country
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<ParticipateResponseDTO>} 201
  * @return {object} 400 - Données non conformes

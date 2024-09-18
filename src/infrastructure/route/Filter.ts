@@ -14,7 +14,7 @@ export const filterRouter = filterRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:profileId,city
+ * @param {string} sortField.query - enum:lastActivityAt,profileId,city
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<FilterResponseDTO>} 201
  * @return {object} 400 - Données non conformes

@@ -14,7 +14,7 @@ export const langueRouter = langueRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:code,nom
+ * @param {string} sortField.query - enum:lastActivityAt,code,nom
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<LangueResponseDTO>} 201
  * @return {object} 400 - Données non conformes

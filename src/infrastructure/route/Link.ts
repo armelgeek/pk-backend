@@ -14,7 +14,7 @@ export const linkRouter = linkRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,link,description
+ * @param {string} sortField.query - enum:lastActivityAt,name,link,description
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<LinkResponseDTO>} 201
  * @return {object} 400 - Données non conformes

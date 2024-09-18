@@ -14,7 +14,7 @@ export const pageadditionalRouter = pageadditionalRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:monday,tuesday,wednesday,thursday,friday,saturday,sunday,members,type
+ * @param {string} sortField.query - enum:lastActivityAt,monday,tuesday,wednesday,thursday,friday,saturday,sunday,members,type
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PageAdditionalResponseDTO>} 201
  * @return {object} 400 - Données non conformes

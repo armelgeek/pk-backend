@@ -14,7 +14,7 @@ export const mediasRouter = mediasRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:type,url,size,profileId,pageId,category,eventId,shares,likes,duration
+ * @param {string} sortField.query - enum:lastActivityAt,type,url,size,profileId,pageId,category,eventId,shares,likes,duration
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<MediasResponseDTO>} 201
  * @return {object} 400 - Données non conformes

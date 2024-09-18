@@ -14,7 +14,7 @@ export const levelRouter = levelRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:smallBlind,bigBlind,anteBb,duration,name
+ * @param {string} sortField.query - enum:lastActivityAt,smallBlind,bigBlind,anteBb,duration,name
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<LevelResponseDTO>} 201
  * @return {object} 400 - Données non conformes

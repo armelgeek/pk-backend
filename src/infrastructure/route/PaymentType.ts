@@ -14,7 +14,7 @@ export const paymenttypeRouter = paymenttypeRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,logo
+ * @param {string} sortField.query - enum:lastActivityAt,name,logo
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PaymentTypeResponseDTO>} 201
  * @return {object} 400 - Données non conformes

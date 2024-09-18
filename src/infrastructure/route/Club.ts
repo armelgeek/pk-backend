@@ -25,7 +25,7 @@ export const clubRouter = clubRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name
+ * @param {string} sortField.query - enum:lastActivityAt,name
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<ClubResponseDTO>} 201
  * @return {object} 400 - Données non conformes

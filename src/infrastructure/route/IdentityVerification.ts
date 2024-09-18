@@ -14,7 +14,7 @@ export const identityverificationRouter = identityverificationRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:description,type,status,commentaire
+ * @param {string} sortField.query - enum:lastActivityAt,description,type,status,commentaire
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<IdentityVerificationResponseDTO>} 201
  * @return {object} 400 - Données non conformes

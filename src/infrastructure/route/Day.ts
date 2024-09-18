@@ -14,7 +14,7 @@ export const dayRouter = dayRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:titleDay,startDateDay,startTimeDay,lateReg,limitRegEntry,limitRegBuy,durationDay,nbTableDay,duration,photos,videos
+ * @param {string} sortField.query - enum:lastActivityAt,titleDay,startDateDay,startTimeDay,lateReg,limitRegEntry,limitRegBuy,durationDay,nbTableDay,duration,photos,videos
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<DayResponseDTO>} 201
  * @return {object} 400 - Données non conformes

@@ -14,7 +14,7 @@ export const socialnetworkRouter = socialnetworkRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,profileId
+ * @param {string} sortField.query - enum:lastActivityAt,name,profileId
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<SocialNetworkResponseDTO>} 201
  * @return {object} 400 - Données non conformes

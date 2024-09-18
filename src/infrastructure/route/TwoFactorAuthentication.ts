@@ -14,7 +14,7 @@ export const twofactorauthenticationRouter = twofactorauthenticationRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:type
+ * @param {string} sortField.query - enum:lastActivityAt,type
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<TwoFactorAuthenticationResponseDTO>} 201
  * @return {object} 400 - Données non conformes

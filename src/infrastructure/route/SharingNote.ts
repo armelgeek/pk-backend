@@ -14,7 +14,7 @@ export const sharingnoteRouter = sharingnoteRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:profileId,shareId
+ * @param {string} sortField.query - enum:lastActivityAt,profileId,shareId
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<SharingNoteResponseDTO>} 201
  * @return {object} 400 - Données non conformes

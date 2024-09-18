@@ -25,7 +25,7 @@ export const tournamenttypeRouter = tournamenttypeRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,description
+ * @param {string} sortField.query - enum:lastActivityAt,name,description
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<TournamentTypeResponseDTO>} 201
  * @return {object} 400 - Données non conformes

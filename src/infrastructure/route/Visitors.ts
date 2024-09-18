@@ -14,7 +14,7 @@ export const visitorsRouter = visitorsRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:eventId,profileId,target,type
+ * @param {string} sortField.query - enum:lastActivityAt,eventId,profileId,target,type
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<VisitorsResponseDTO>} 201
  * @return {object} 400 - Données non conformes

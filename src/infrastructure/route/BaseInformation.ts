@@ -14,7 +14,7 @@ export const baseinformationRouter = baseinformationRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:pays,email,date_of_birth,gender,nom,prenom,country,city,situation,children,description
+ * @param {string} sortField.query - enum:lastActivityAt,pays,email,date_of_birth,gender,nom,prenom,country,city,situation,children,description
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<BaseInformationResponseDTO>} 201
  * @return {object} 400 - Données non conformes

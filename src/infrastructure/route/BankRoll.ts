@@ -14,7 +14,7 @@ export const bankrollRouter = bankrollRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,capital,devise,description
+ * @param {string} sortField.query - enum:lastActivityAt,name,capital,devise,description
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<BankRollResponseDTO>} 201
  * @return {object} 400 - Données non conformes

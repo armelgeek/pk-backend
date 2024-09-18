@@ -14,7 +14,7 @@ export const codeparrainRouter = codeparrainRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:code,percentage
+ * @param {string} sortField.query - enum:lastActivityAt,code,percentage
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<CodeParrainResponseDTO>} 201
  * @return {object} 400 - Données non conformes

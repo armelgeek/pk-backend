@@ -14,7 +14,7 @@ export const messageRouter = messageRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:content
+ * @param {string} sortField.query - enum:lastActivityAt,content
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<MessageResponseDTO>} 201
  * @return {object} 400 - Données non conformes

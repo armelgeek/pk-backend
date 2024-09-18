@@ -14,7 +14,7 @@ export const followersRouter = followersRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:
+ * @param {string} sortField.query - enum:lastActivityAt,
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<FollowersResponseDTO>} 201
  * @return {object} 400 - Données non conformes

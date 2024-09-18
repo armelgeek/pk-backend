@@ -14,7 +14,7 @@ export const reportRouter = reportRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:type,etat,situation,message
+ * @param {string} sortField.query - enum:lastActivityAt,type,etat,situation,message
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<ReportResponseDTO>} 201
  * @return {object} 400 - Données non conformes

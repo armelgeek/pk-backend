@@ -14,7 +14,7 @@ export const pagepermissionsRouter = pagepermissionsRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:profileId,role
+ * @param {string} sortField.query - enum:lastActivityAt,profileId,role
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PagePermissionsResponseDTO>} 201
  * @return {object} 400 - Données non conformes

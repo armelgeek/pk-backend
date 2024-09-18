@@ -25,7 +25,7 @@ export const eventRouter = eventRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,participants,shortDescription,startTime,contact,description,reglements,photos,videos,nbDay,nbGames,startStack,nbRebu,devise,latReg,prizePool,bountyText,othersReward,jackpotText,buyin,bonusText,addonPrice,nbParticipantMax,titleDay,startTimeDay,lateReg,limitRegEntry,durationDay,duration,type,limitRegBuy,eventId,mainTournament,nbParticipantPerTable,cashBigBlind,cashSmallBlind,cashEntryMax,cashEntryMin,activityDate
+ * @param {string} sortField.query - enum:lastActivityAt,name,participants,shortDescription,startTime,contact,description,reglements,photos,videos,nbDay,nbGames,startStack,nbRebu,devise,latReg,prizePool,bountyText,othersReward,jackpotText,buyin,bonusText,addonPrice,nbParticipantMax,titleDay,startTimeDay,lateReg,limitRegEntry,durationDay,duration,type,limitRegBuy,eventId,mainTournament,nbParticipantPerTable,cashBigBlind,cashSmallBlind,cashEntryMax,cashEntryMin,activityDate
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<EventResponseDTO>} 201
  * @return {object} 400 - Données non conformes

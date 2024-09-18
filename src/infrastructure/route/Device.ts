@@ -14,7 +14,7 @@ export const deviceRouter = deviceRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:uuid,deviseInfo,token
+ * @param {string} sortField.query - enum:lastActivityAt,uuid,deviseInfo,token
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<DeviceResponseDTO>} 201
  * @return {object} 400 - Données non conformes

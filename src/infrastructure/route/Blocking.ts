@@ -14,7 +14,7 @@ export const blockingRouter = blockingRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:profileId,blockingProfile,reason
+ * @param {string} sortField.query - enum:lastActivityAt,profileId,blockingProfile,reason
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<BlockingResponseDTO>} 201
  * @return {object} 400 - Données non conformes

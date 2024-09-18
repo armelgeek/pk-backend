@@ -14,7 +14,7 @@ export const albumRouter = albumRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:type,title,media,like,share,description,cover,views
+ * @param {string} sortField.query - enum:lastActivityAt,type,title,media,like,share,description,cover,views
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<AlbumResponseDTO>} 201
  * @return {object} 400 - Données non conformes

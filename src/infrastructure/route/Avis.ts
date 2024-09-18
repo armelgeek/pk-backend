@@ -14,7 +14,7 @@ export const avisRouter = avisRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:content,object
+ * @param {string} sortField.query - enum:lastActivityAt,content,object
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<AvisResponseDTO>} 201
  * @return {object} 400 - Données non conformes

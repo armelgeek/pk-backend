@@ -26,7 +26,7 @@ export const notevalueRouter = notevalueRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:content,imageUrl,type
+ * @param {string} sortField.query - enum:lastActivityAt,content,imageUrl,type
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<NoteValueResponseDTO>} 201
  * @return {object} 400 - Données non conformes

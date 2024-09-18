@@ -14,7 +14,7 @@ export const gaugeRouter = gaugeRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:labelRight,labelLeft,value
+ * @param {string} sortField.query - enum:lastActivityAt,labelRight,labelLeft,value
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<GaugeResponseDTO>} 201
  * @return {object} 400 - Données non conformes

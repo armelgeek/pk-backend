@@ -14,7 +14,7 @@ export const sessionRouter = sessionRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:address,type,mode,gameType,hourDate,hourFin,buyIn,cashOut,smallBlind,bigBlind,note
+ * @param {string} sortField.query - enum:lastActivityAt,address,type,mode,gameType,hourDate,hourFin,buyIn,cashOut,smallBlind,bigBlind,note
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<SessionResponseDTO>} 201
  * @return {object} 400 - Données non conformes

@@ -14,7 +14,7 @@ export const settingsRouter = settingsRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:donationDescription,countries
+ * @param {string} sortField.query - enum:lastActivityAt,donationDescription,countries
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<SettingsResponseDTO>} 201
  * @return {object} 400 - Données non conformes

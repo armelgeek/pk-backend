@@ -14,7 +14,7 @@ export const partenerRouter = partenerRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,description,price,subscriptionStripeId,title,hendonmob,rangAllTimeMoney,bracelet,job,type,message
+ * @param {string} sortField.query - enum:lastActivityAt,name,description,price,subscriptionStripeId,title,hendonmob,rangAllTimeMoney,bracelet,job,type,message
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PartenerResponseDTO>} 201
  * @return {object} 400 - Données non conformes

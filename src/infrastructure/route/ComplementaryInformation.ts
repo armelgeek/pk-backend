@@ -49,7 +49,7 @@ export const complementaryinformationRouter = complementaryinformationRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:nationality,langue,email,job,headonmob,nbTitle,rangTimeMoney,nbBracelet
+ * @param {string} sortField.query - enum:lastActivityAt,nationality,langue,email,job,headonmob,nbTitle,rangTimeMoney,nbBracelet
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<ComplementaryInformationResponseDTO>} 201
  * @return {object} 400 - Données non conformes

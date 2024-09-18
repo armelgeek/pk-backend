@@ -14,7 +14,7 @@ export const partenariatRouter = partenariatRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:photo,name,title,hendonmob,rangAllTimeMoney,bracelet,job,description,message,type
+ * @param {string} sortField.query - enum:lastActivityAt,photo,name,title,hendonmob,rangAllTimeMoney,bracelet,job,description,message,type
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PartenariatResponseDTO>} 201
  * @return {object} 400 - Données non conformes

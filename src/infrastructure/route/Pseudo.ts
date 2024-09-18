@@ -25,7 +25,7 @@ export const pseudoRouter = pseudoRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:name,link,code
+ * @param {string} sortField.query - enum:lastActivityAt,name,link,code
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<PseudoResponseDTO>} 201
  * @return {object} 400 - Données non conformes

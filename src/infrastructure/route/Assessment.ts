@@ -14,7 +14,7 @@ export const assessmentRouter = assessmentRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:note,etat,link
+ * @param {string} sortField.query - enum:lastActivityAt,note,etat,link
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<AssessmentResponseDTO>} 201
  * @return {object} 400 - Données non conformes

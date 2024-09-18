@@ -14,7 +14,7 @@ export const noticedRouter = noticedRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:title,description,borderColor
+ * @param {string} sortField.query - enum:lastActivityAt,title,description,borderColor
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<NoticedResponseDTO>} 201
  * @return {object} 400 - Données non conformes

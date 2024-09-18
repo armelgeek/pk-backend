@@ -16,6 +16,7 @@ WORKDIR /var/www/backend
 
 COPY --from=build /var/www/backend/dist ./dist
 COPY --from=build /var/www/backend/src/data/Fragment.json ./dist/data/
+COPY --from=build /var/www/backend/public ./dist
 COPY --from=build /var/www/backend/package*.json ./
 COPY --from=build /var/www/backend/node_modules ./node_modules
 COPY --from=build /var/www/backend/ormconfig.js ./

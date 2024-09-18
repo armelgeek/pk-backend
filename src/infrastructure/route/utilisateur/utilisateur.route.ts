@@ -14,21 +14,10 @@ import { responseFormatter } from '../../../service/middleware/response-formatte
 import { authentificationController } from '../../controller/authentification/authentification.controller';
 // import { conditionnalJwtPassport } from '../../../service/middleware/passport/conditionnal-jwt-passport';
 import { utilisateurController } from '../../controller/utilisateur/utilisateur.controller';
+import cloudinary from '../../../utils/cloudinary';
 
 const utilisateurRoutes = () => {
   const router = Router();
-
-  router.put(
-    '/profil',
-    // conditionnalJwtPassport(true),
-    // imageUpload.fields({'image'}),
-    // imageUpload.fields([
-    //   { name: 'image', maxCount: 1 },
-    //   { name: 'cin', maxCount: 2 },
-    // ]),
-    schemaValidator(utilisateurEditRequestDTOSchema),
-    utilisateurController.editUtilisateur,
-  );
 
   router.post(
     '/signin',
@@ -67,8 +56,6 @@ const utilisateurRoutes = () => {
 
   router.get('/:id', utilisateurController.getById);
   router.delete('/:id', conditionnalJwtPassport(true), utilisateurController.delete, responseFormatter);
-
-  
 
   return router;
 };

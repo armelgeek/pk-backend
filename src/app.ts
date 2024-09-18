@@ -31,16 +31,7 @@ class App {
       await this.initMiddlewares();
       await this.initRoutes();
       this.initCron();
-      // const res = await sendNotification({
-      //   tokens: [
-      //     'c1ckbu41TDiMPCkZLlDhZg:APA91bFf8-RHrqee76aI7Kg3iOJy2H21jesHN8WEAP1bQrjQG8qh-MGhp2OHMi6JOMkJJaBy6qzKBLNtNL7Q99NBtylhe6NLjxEfh8fU1d__FMkhl145N7fHfLH5S3WKe8Cq63xgrXk6',
-      //   ],
-      //   title: 'title',
-      //   body: 'Push Notification for POC REACT NATIVE WEB',
-      // });
-      // console.log('sendNotification ====================================');
-      // console.log(res);
-      // console.log('====================================');
+
       return this.app.listen(configs.port, () => logger.info(`Listening on ${configs.port}`));
     } catch (error) {
       return Promise.reject(error);

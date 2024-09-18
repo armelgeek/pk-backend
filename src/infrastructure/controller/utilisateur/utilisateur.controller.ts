@@ -26,39 +26,6 @@ UtilisateurSA
     this.serviceSA = serviceSA;
   }
 
-  editUtilisateur = async (req, res, next) => {
-    try {
-      const { files, body } = req;
-      const { image, cin } = files || {};
-      const cinUrls = cin && cin.map(({ filename }) => filename);
-      res.locals.data = await this.serviceSA.editUtilisateur({
-        ...body,
-        ...(image?.[0] ? { imageUrl: image[0].filename } : {}),
-        ...(Array.isArray(cinUrls) && cinUrls.length
-          ? { cinUrl1: cinUrls[0], cinUrl2: cinUrls[1] }
-          : {}),
-      });
-
-      next();
-    } catch (error) {
-      next(error);
-    }
-  };
-
-  getCins = async (req, res, next) => {
-    try {
-      const {
-        params: { id },
-      } = req;
-
-      res.locals.data = await this.serviceSA.getCins(id);
-
-      next();
-    } catch (error) {
-      next(error);
-    }
-  };
-
   editUtilisateurBO = async (req, res, next) => {
     try {
       const { params, body } = req;

@@ -97,6 +97,16 @@ export abstract class GenericSA<
     return this.serviceSM.delete(id);
   }
 
+  async findByIds(ids: string[], options?: any): Promise<any> {
+    try {
+      const result = await this.serviceSM.findByIds(ids, options);
+
+      return this.factory.toResponseDto(result);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
   async findById(id: ObjectID): Promise<any> {
     try {
       const properties = dataTDO[this.name]?.attributes;

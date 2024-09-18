@@ -111,8 +111,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     return this.repository.findOne(_id);
   }
 
-  findByIds(ids: TId[], options: FindManyOptions<TDo>) {
-    return this.repository.findByIds(ids, options);
+  findByIds(ids: TId[], options?: FindManyOptions<TDo>) {
+    return this.repository.findByIds(ids);
   }
 
   findOne(option: FindConditions<TDo>): Promise<TDo> {

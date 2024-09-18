@@ -102,8 +102,12 @@ export class GenericController<
   create = async (req, res, next) => {
     const { body } = req;
     try {
-      console.log('ici ca body', body);
+      console.log('name ====>', this.name);
       const created = await this.serviceSA.create(body);
+
+      // const devices = await this.deviceSA.findByQueries({ where: {} });
+
+      // console.log(devices.map((token) => token));
 
       res.locals.data = created;
       res.locals.statusCode = HttpStatus.CREATED;
@@ -228,6 +232,27 @@ export class GenericController<
     const { params } = req;
     try {
       const found = await this.serviceSA.findOneNotFail(params);
+
+      res.locals.data = found;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  /**
+   * WS managing the recovery of an entity by its ids
+   */
+  findByIds = async (req, res, next) => {
+    const {
+      query: { ids },
+    } = req;
+    console.log('====================================');
+    console.log(ids);
+    console.log('====================================');
+    try {
+      const found = await this.serviceSA.findByIds(ids);
 
       res.locals.data = found;
 

@@ -45,6 +45,7 @@ export const genericRoute = (option: RouteOption) => {
 
   router.get('/count/elements', conditionnalJwtPassport(isSecured, name), controller.count, responseFormatter);
   router.get('/find/one', conditionnalJwtPassport(isSecured, name), controller.findOne, responseFormatter);
+  router.get('/find/by-ids', conditionnalJwtPassport(isSecured, name), controller.findByIds, responseFormatter);
 
   router.put(
     '/partialUpdate/:id',

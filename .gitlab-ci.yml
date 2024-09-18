@@ -12,7 +12,7 @@ variables:
   IMAGE_NAME_STAGING: backend-staging
   IMAGE_NAME_PREPROD: backend-preprod
 
-deploy_dev:
+deploy_neo4j_back:
   stage: deploy-dev
   image: alpine
   before_script:

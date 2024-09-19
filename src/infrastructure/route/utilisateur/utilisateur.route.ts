@@ -235,3 +235,14 @@ export const utilisateurRouter = utilisateurRoutes();
  * @return {object} 500 - Erreur côté serveur
  * @return {object} 400 - Données non conforme
  */
+
+/**
+ * GET /api/profile/find/by-ids
+ * @tags Profile
+ * @security BearerAuth
+ * @summary List Profile (getAllProfileByIds)
+ * @param {array<string>} ids.query
+ * @return {array<ProfileResponseDTO>} 201
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */

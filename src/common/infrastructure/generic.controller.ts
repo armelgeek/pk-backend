@@ -96,6 +96,14 @@ export class GenericController<
     this.name = name
   }
 
+  lastActivityAtUpdate = async (publicationId: string) => {
+    const publication = await this.publicationSA.partialUpdate(publicationId, { lastActivityAt: new Date() });
+    console.log('================= publication ===================');
+    console.log(publication);
+    console.log('====================================');
+    return publication;
+  }
+
   /**
    * WS managing the creation of an entity
    */
@@ -105,9 +113,9 @@ export class GenericController<
       console.log('name ====>', this.name);
       const created = await this.serviceSA.create(body);
 
-      // const devices = await this.deviceSA.findByQueries({ where: {} });
-
-      // console.log(devices.map((token) => token));
+      if (this.name === "Comment" && body.publicationId) {
+        await this.lastActivityAtUpdate(body.publicationId)
+      }
 
       res.locals.data = created;
       res.locals.statusCode = HttpStatus.CREATED;
@@ -128,6 +136,10 @@ export class GenericController<
     } = req;
     try {
       const updated = await this.serviceSA.update(id, body);
+
+      if (this.name === "Comment" && body.publicationId) {
+        await this.lastActivityAtUpdate(body.publicationId)
+      }
 
       res.locals.data = updated;
       res.locals.statusCode = HttpStatus.OK;
@@ -165,6 +177,9 @@ export class GenericController<
     try {
       const updated = await this.serviceSA.pushUpdate(id, body);
 
+      if (this.name === "Comment" && body.publicationId) {
+        await this.lastActivityAtUpdate(body.publicationId);
+      }
       res.locals.data = updated;
 
       next();
@@ -180,6 +195,10 @@ export class GenericController<
     } = req;
     try {
       const updated = await this.serviceSA.partialUpdate(id, body);
+
+      if (this.name === "Comment" && body.publicationId) {
+        await this.lastActivityAtUpdate(body.publicationId);
+      }
 
       res.locals.data = updated;
 

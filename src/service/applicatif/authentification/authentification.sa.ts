@@ -70,7 +70,38 @@ export class AuthentificationSA {
     }
   }
 
-  async passwordResetRequest({ email, phone }: { email?: string; phone?: PhoneRequestDTO }, boHost: string) {
+  async renewalPwdBO(user) {
+    const {email, phone, ...found } = user;
+    try {
+      if (email) {
+        await sendMail({
+          to: email,
+          subject: '[Pockerapply] - Demande de rénitialisation de mot de passe',
+          body: `
+        Bonjour ${found.username},
+        <br /> 
+        Je vous écris pour vous demander de bien vouloir procéder à la réinitialisation de mon mot de passe.
+        Je vous remercie par avance pour votre aide.
+        <br /> <br /> <br />
+        Cordialement,
+        <br /> <br />
+        L'équipe Pockerapply.
+        `,
+        });
+      } else if (found && found.phone?.callingCode && found.phone?.phoneNumber) {
+        await sendSMS(
+          `Bonjour ${found.username}, Merci de rénitialisation votre mot de passe. L'équipe Pockerapply`,
+          `${found.phone?.callingCode}${found.phone?.phoneNumber}`,
+        );
+      }
+
+      return "ok";
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  async passwordResetRequest({ email, phone }: { email?: string; phone?: PhoneRequestDTO }, boHost?: string) {
 
     try {
       let found;

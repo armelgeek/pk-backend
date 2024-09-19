@@ -5,12 +5,45 @@ import { AdministrateurRequestDTO } from '../../../data/dto/Administrateur/reque
 // @ts-ignore
 import { AdministrateurResponseDTO } from '../../../data/dto/Administrateur/response';
 import { administrateurSA, AdministrateurSA } from '../../../service/applicatif/administrateur';
+import { AuthentificationSA, authentificationSA } from '../../../service/applicatif/authentification/authentification.sa';
+import { UtilisateurSA, utilisateurSA } from '../../../service/applicatif/utilisateur/utilisateur.sa';
 
 class AdministrateurController extends GenericController<
   AdministrateurDO,
   AdministrateurRequestDTO,
   AdministrateurResponseDTO,
   AdministrateurSA
-> {}
+> {
+  utilisateurSA: UtilisateurSA;
+  administrateurSA: AdministrateurSA;
+  authentificationSA: AuthentificationSA;
+
+  constructor(administrateurSA: AdministrateurSA) {
+    super(administrateurSA);
+    this.administrateurSA = administrateurSA;
+    this.utilisateurSA = utilisateurSA;
+    this.authentificationSA = authentificationSA
+  }
+
+  renewalPwdBO = async (req, res, next) => {
+    try {
+      const { userId } = req.body;
+      let res = null;
+
+      const data = await this.utilisateurSA.findById(userId);
+      
+      if (data?.email || data?.phone) {
+        await this.serviceSA.partialUpdate(userId, { actif: false });
+        res = await this.authentificationSA.renewalPwdBO(data)
+      }
+
+      res.locals.data = res;
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  };
+}
 
 export const administrateurController = new AdministrateurController(administrateurSA);

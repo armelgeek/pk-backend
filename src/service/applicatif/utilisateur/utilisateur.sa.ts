@@ -72,7 +72,7 @@ export class UtilisateurSA extends GenericSA<
 
   async resetPassword(utilisateurId: ObjectID, password: string) {
     try {
-      const utilisateurDO = await this.serviceSM.partialUpdate(new ObjectID(utilisateurId), { password: await bcrypt.hashSync(password, 10) });
+      const utilisateurDO = await this.serviceSM.partialUpdate(new ObjectID(utilisateurId), { password: await bcrypt.hashSync(password, 10), actif: true });
       return this.factory.toResponseDto(utilisateurDO);
     } catch (error) {
       return Promise.reject(error);

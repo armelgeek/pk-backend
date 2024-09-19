@@ -14,7 +14,7 @@ import { responseFormatter } from '../../../service/middleware/response-formatte
 import { authentificationController } from '../../controller/authentification/authentification.controller';
 // import { conditionnalJwtPassport } from '../../../service/middleware/passport/conditionnal-jwt-passport';
 import { utilisateurController } from '../../controller/utilisateur/utilisateur.controller';
-import cloudinary from '../../../utils/cloudinary';
+
 
 const utilisateurRoutes = () => {
   const router = Router();

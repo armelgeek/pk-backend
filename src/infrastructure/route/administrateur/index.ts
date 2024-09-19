@@ -2,9 +2,20 @@ import { genericRoute } from '../../../common/infrastructure/generic.route';
 import Joi from '../../../constraint/validator/joi';
 import { administrateurController } from '../../controller/administrateur';
 
-const administrateurRoutes = () => genericRoute({ controller: administrateurController, schema: Joi.Administrateur });
+import { utilisateurController } from '../../controller/utilisateur/utilisateur.controller';
+
+const administrateurRoutes = () => {
+  const routes = genericRoute({ controller: administrateurController, schema: Joi.Administrateur });
+
+  routes.post(
+    '/renewal/pwd',
+    administrateurController.renewalPwdBO,
+  );
+  return routes;
+}
 
 export const administrateurRouter = administrateurRoutes();
+
 
 /**
  * POST /api/administrateur
@@ -61,4 +72,14 @@ export const administrateurRouter = administrateurRoutes();
  * @summary Nombre des administrateurs
  * @return {number} 200
  * @return {object} 500 - Erreur interne du serveur
+ */
+
+/**
+ * POST /api/administrateur/renewal/pwd
+ * @tags Administrateur
+ * @summary  Demande de renouvellement de mot de passe via la Back office
+ * @param {string} userId.path.required
+ * @return {boolean} 200
+ * @return {object} 500 - Erreur côté serveur
+ * @return {object} 400 - Données non conforme
  */

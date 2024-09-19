@@ -10,7 +10,7 @@ export type CommentRequestDTO = {
    veryhappy?: string[];
    media?: string;
    type?: string;
-   activityDate?: string;
+   collectionName?: string;
 }
 
 /**
@@ -26,6 +26,6 @@ export type CommentRequestDTO = {
  * @property {array<string>} veryhappy
  * @property {string} media
  * @property {string} type
- * @property {string} activityDate
+ * @property {string} collectionName
  */
 

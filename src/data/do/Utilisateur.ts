@@ -107,6 +107,9 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   reactivateExpiredDate: string;
 
+  @Column({nullable: true, unique: false})
+  blacklist: boolean;
+
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;
 

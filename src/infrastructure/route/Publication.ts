@@ -68,3 +68,15 @@ export const publicationRouter = publicationRoutes();
  * @return {object} 500 - Erreur interne du serveur
  */
 
+/**
+ * PUT /api/publication/pushUpdate/{id}
+ * @tags Publication
+ * @security BearerAuth
+ * @summary Update Publication (updatePublication)
+ * @param {PublicationRequestDTO} request.body
+ * @param {string} id.path.required 
+ * @return {UpdateResponseDTO} 200
+ * @return {object} 400 - Données non conformes
+ * @return {object} 500 - Erreur interne du serveur
+ */
+

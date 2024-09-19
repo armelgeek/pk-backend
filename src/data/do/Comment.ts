@@ -39,7 +39,7 @@ export class CommentDO {
   type: string;
 
   @Column({nullable: true, unique: false})
-  activityDate: string;
+  collectionName: string;
 
   @Column({ type: 'timestamptz', default: new Date() })
   createdAt: Date;

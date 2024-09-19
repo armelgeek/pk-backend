@@ -10,7 +10,7 @@ export type CommentResponseDTO = {
    veryhappy?: string[];
    media?: string;
    type?: string;
-   activityDate?: string;
+   collectionName?: string;
   createdAt: Date;
   updatedAt: Date;
   lastActivityAt: Date;
@@ -30,7 +30,7 @@ export type CommentResponseDTO = {
  * @property {array<string>} veryhappy
  * @property {string} media
  * @property {string} type
- * @property {string} activityDate
+ * @property {string} collectionName
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} lastActivityAt

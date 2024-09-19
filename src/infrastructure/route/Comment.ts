@@ -25,7 +25,7 @@ export const commentRouter = commentRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:lastActivityAt,content,target,type,activityDate
+ * @param {string} sortField.query - enum:lastActivityAt,content,target,type,collectionName
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<CommentResponseDTO>} 201
  * @return {object} 400 - Données non conformes

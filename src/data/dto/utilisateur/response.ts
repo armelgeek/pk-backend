@@ -33,6 +33,7 @@ export type UtilisateurResponseDTO = {
    secondNotificationDate?: string;
    reactivateCode?: string;
    reactivateExpiredDate?: string;
+   blacklist?: boolean;
   createdAt: Date;
   updatedAt: Date;
   lastActivityAt: Date;
@@ -75,6 +76,7 @@ export type UtilisateurResponseDTO = {
  * @property {string} secondNotificationDate
  * @property {string} reactivateCode
  * @property {string} reactivateExpiredDate
+ * @property {boolean} blacklist
  * @property {string} id
  * @property {string} updatedAt
  * @property {string} lastActivityAt

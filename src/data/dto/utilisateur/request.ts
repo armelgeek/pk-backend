@@ -33,6 +33,7 @@ export type UtilisateurRequestDTO = {
    secondNotificationDate?: string;
    reactivateCode?: string;
    reactivateExpiredDate?: string;
+   blacklist?: boolean;
 }
 
 /**
@@ -71,5 +72,6 @@ export type UtilisateurRequestDTO = {
  * @property {string} secondNotificationDate
  * @property {string} reactivateCode
  * @property {string} reactivateExpiredDate
+ * @property {boolean} blacklist
  */
 

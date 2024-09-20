@@ -11,7 +11,7 @@ export class NotificationDO {
   @Column({nullable: true, unique: false})
   message: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   tous: boolean;
 
   @Column("simple-array")

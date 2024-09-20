@@ -8,7 +8,7 @@ export class TwoFactorAuthenticationDO {
   @Column({nullable: true, unique: false})
   type: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   actif: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

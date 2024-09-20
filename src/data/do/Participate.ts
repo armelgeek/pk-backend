@@ -14,10 +14,10 @@ export class ParticipateDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isMemberClub: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   payement: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
@@ -47,7 +47,7 @@ export class ParticipateDO {
   @Column({nullable: true, unique: false})
   gain: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   eliminate: boolean;
 
   @Column({nullable: true, unique: false})

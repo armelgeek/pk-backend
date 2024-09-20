@@ -11,7 +11,7 @@ export class RoleDO {
   @Column({nullable: true, unique: false})
   profileId: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   active: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

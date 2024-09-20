@@ -29,16 +29,16 @@ export class PageAdditionalDO {
   @Column({nullable: true, unique: false})
   members: number;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   cardMember: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   restaurant: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   hotel: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   parking: boolean;
 
   @Column("simple-array")

@@ -29,10 +29,10 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   description: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   parking: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   restauration: boolean;
 
   @Column({nullable: true, unique: false})
@@ -44,7 +44,7 @@ export class EventDO {
   @Column("simple-array")
   videos: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   private: boolean;
 
   @Column("simple-array")
@@ -71,22 +71,22 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   latReg: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   dealer: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   timeClock: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   reEntry: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   memberCard: boolean;
 
   @Column({nullable: true, unique: false})
   prizePool: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   bounty: boolean;
 
   @Column({nullable: true, unique: false})
@@ -101,7 +101,7 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   gameType: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   jackpot: boolean;
 
   @Column({nullable: true, unique: false})
@@ -110,13 +110,13 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   buyin: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   bonus: boolean;
 
   @Column({nullable: true, unique: false})
   bonusText: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   addon: boolean;
 
   @Column({nullable: true, unique: false})
@@ -125,13 +125,13 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   nbParticipantMax: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   massage: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   hotel: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   qualification: boolean;
 
   @Column({nullable: true, unique: false})
@@ -164,7 +164,7 @@ export class EventDO {
   @Column({nullable: true, unique: false})
   limitRegBuy: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   status: boolean;
 
   @Column({nullable: true, unique: false})
@@ -194,10 +194,10 @@ export class EventDO {
   @Column("simple-array")
   days: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   finish: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   actif: boolean;
 
   @Column({nullable: true, unique: false})

@@ -14,10 +14,10 @@ export class SubscriptionOfferDO {
   @Column({nullable: true, unique: false})
   price: number;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isPopular: boolean;
 
-  @Column({nullable: false, unique: false})
+  @Column({ default: false })
   isActive: boolean;
 
   @Column({nullable: true, unique: false})

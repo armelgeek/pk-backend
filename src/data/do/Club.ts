@@ -8,7 +8,7 @@ export class ClubDO {
   @Column({nullable: true, unique: false})
   name: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   active: boolean;
 
   @Column({nullable: true, unique: false})

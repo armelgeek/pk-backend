@@ -71,7 +71,7 @@ export class ProfileDO {
   @Column({nullable: true, unique: false})
   filter: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   verified: boolean;
 
   @Column({nullable: true, unique: false})

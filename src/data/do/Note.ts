@@ -62,7 +62,7 @@ export class NoteDO {
   @Column("simple-array")
   noticedId: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isPin: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

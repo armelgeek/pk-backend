@@ -20,7 +20,7 @@ export class PseudoDO {
   @Column({nullable: true, unique: false})
   icon: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   active: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

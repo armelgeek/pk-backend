@@ -5,7 +5,7 @@ export class DayDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   qualification: boolean;
 
   @Column({nullable: true, unique: false})

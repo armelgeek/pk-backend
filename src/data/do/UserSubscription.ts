@@ -5,7 +5,7 @@ export class UserSubscriptionDO {
   @ObjectIdColumn()
   _id: ObjectID;
 
-  @Column({nullable: false, unique: false})
+  @Column({ default: false })
   isAutoRenewed: boolean;
 
   @Column({nullable: false, unique: false})

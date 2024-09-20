@@ -38,22 +38,22 @@ export class FilterDO {
   @Column("simple-array")
   gameType: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   player: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   cashGame: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   tournoi: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   satellite: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   page: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   event: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

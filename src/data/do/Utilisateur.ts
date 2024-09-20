@@ -44,7 +44,7 @@ export class UtilisateurDO {
   @Column({ type: 'timestamptz', default: new Date() })
   dateModification: Date;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   actif: boolean;
 
   @Column({nullable: true, unique: false})
@@ -65,7 +65,7 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   appleId: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   online: boolean;
 
   @Column({nullable: true, unique: false})
@@ -80,7 +80,7 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   twoFactorAuthentication: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isNotOnboarding: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })
@@ -95,7 +95,7 @@ export class UtilisateurDO {
   @Column({nullable: false, unique: true})
   deletionState: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isDeactivated: boolean;
 
   @Column({nullable: true, unique: false})
@@ -107,7 +107,7 @@ export class UtilisateurDO {
   @Column({nullable: true, unique: false})
   reactivateExpiredDate: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   blacklist: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

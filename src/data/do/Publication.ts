@@ -20,7 +20,7 @@ export class PublicationDO {
   @Column("simple-json")
   location: { type: string, coordinates: string[] };
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   private: boolean;
 
   @Column("simple-array")
@@ -29,7 +29,7 @@ export class PublicationDO {
   @Column("simple-array")
   share: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   actif: boolean;
 
   @Column("simple-array")
@@ -38,7 +38,7 @@ export class PublicationDO {
   @Column({nullable: true, unique: false})
   pageId: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   isShared: boolean;
 
   @Column({nullable: true, unique: false})

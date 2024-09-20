@@ -29,7 +29,7 @@ export class PartenerDO {
   @Column({nullable: true, unique: false})
   price: number;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   autoRenewed: boolean;
 
   @Column({nullable: true, unique: false})

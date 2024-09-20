@@ -11,10 +11,10 @@ export class FriendsDO {
   @Column({nullable: true, unique: false})
   follower: string;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   confirmed: boolean;
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   cancel: boolean;
 
   @Column({ type: 'timestamptz', default: new Date() })

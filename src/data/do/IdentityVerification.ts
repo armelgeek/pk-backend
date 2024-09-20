@@ -11,7 +11,7 @@ export class IdentityVerificationDO {
   @Column("simple-array")
   verifications: string[];
 
-  @Column({nullable: true, unique: false})
+  @Column({ default: false })
   validate: boolean;
 
   @Column({nullable: true, unique: false})

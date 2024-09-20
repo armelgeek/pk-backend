@@ -339,6 +339,9 @@ export abstract class GenericSA<
         exists,
         no_exists,
         sort,
+        search_or,
+        attributes_or,
+        parent_or,
       } = options;
       let newQueries = queries;
       let new__Queries = {};
@@ -499,12 +502,23 @@ export abstract class GenericSA<
               ...acc,
               [key.replace('__', '.')]: { $regex: new RegExp(queries[key], 'i') },
             };
+          } else if (key?.split('$or_')?.length === 2) {
+            return {
+              ...acc,
+              '$or':  [{ $regex: new RegExp(acc[key], 'i') }]
+            }
           }
           return {
             ...acc,
           };
         }, {});
       }
+
+      // search_or,
+      // parent_or
+      // attributes_or,
+
+      const querySearchOr = search_or && attributes_or?.length > 1 && parent_or ? { $or: attributes_or.map((attribut) => ({ [`${parent_or}.${attribut}`]: { $regex: new RegExp(search_or, 'i') } })) } : {}
 
       const data = await this.serviceSM.findAll(
         {
@@ -515,7 +529,7 @@ export abstract class GenericSA<
           match,
           aggregate,
           where: newQueries,
-          new__Queries: new__Queries,
+          new__Queries: { ...new__Queries, ...querySearchOr },
           order,
           sortField,
           exists,

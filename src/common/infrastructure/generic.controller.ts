@@ -267,9 +267,6 @@ export class GenericController<
     const {
       query: { ids },
     } = req;
-    console.log('====================================');
-    console.log(ids);
-    console.log('====================================');
     try {
       const found = await this.serviceSA.findByIds(ids);
 
@@ -299,6 +296,9 @@ export class GenericController<
         geoNear,
         exists,
         no_exists,
+        search_or,
+        attributes_or,
+        parent_or,
         ...queries
       },
     } = req;
@@ -317,6 +317,9 @@ export class GenericController<
         geoNear,
         exists,
         no_exists,
+        search_or,
+        attributes_or,
+        parent_or,
       });
 
       res.locals.data = dtos;

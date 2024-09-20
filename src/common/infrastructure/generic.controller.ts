@@ -298,7 +298,7 @@ export class GenericController<
         no_exists,
         search_or,
         attributes_or,
-        parent_or,
+        child_or,
         ...queries
       },
     } = req;
@@ -319,7 +319,7 @@ export class GenericController<
         no_exists,
         search_or,
         attributes_or,
-        parent_or,
+        child_or,
       });
 
       res.locals.data = dtos;

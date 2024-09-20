@@ -30,7 +30,7 @@ export class AuthentificationController {
       body: { token },
     } = req;
     passport.authenticate(passportStrategies.local, { session: false }, async (err, user) => {
-      if (err && !user && user.actif === true) {
+      if (err && !user || user.blacklist === true) {
         res.locals.statusCode = HttpStatus.BAD_REQUEST;
         next(err);
       } else {
@@ -57,7 +57,7 @@ export class AuthentificationController {
       body: { token },
     } = req;
     passport.authenticate(passportStrategies.local, { session: false }, async (err, user) => {
-      if (err && !user && user.actif === true) {
+      if (err && !user || user.blacklist === true) {
         res.locals.statusCode = HttpStatus.BAD_REQUEST;
         next(err);
       } else {

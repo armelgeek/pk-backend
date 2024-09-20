@@ -166,8 +166,8 @@ export abstract class GenericSM<TDo, TId, TRepository extends MongoRepository<TD
     const aggregationPipeline = this.repository
       .aggregate([
         { $match: { ...isExist, ...isNotExist, ...whereOut, ...aggregate_search } },
-        ...search_query,
         ...aggregate,
+        ...search_query,
         // {
         //   $geoWithin: {
         //     $geometry: {

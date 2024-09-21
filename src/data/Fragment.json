@@ -3691,7 +3691,7 @@
 									"top": 285,
 									"width": 280.744140625,
 									"height": 13,
-									"text": "+photo: Medias {id}",
+									"text": "+photo: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -3708,7 +3708,7 @@
 									"top": 300,
 									"width": 280.744140625,
 									"height": 13,
-									"text": "+cover: Medias {id}",
+									"text": "+cover: string",
 									"horizontalAlignment": 0
 								},
 								{
@@ -21940,10 +21940,7 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "photo",
-					"type": {
-						"$ref": "AAAAAAGPI0wu63R2tvI="
-					},
-					"isID": true
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -21952,10 +21949,7 @@
 						"$ref": "AAAAAAGNhPEOj08PCNo="
 					},
 					"name": "cover",
-					"type": {
-						"$ref": "AAAAAAGPI0wu63R2tvI="
-					},
-					"isID": true
+					"type": "string"
 				},
 				{
 					"_type": "UMLAttribute",

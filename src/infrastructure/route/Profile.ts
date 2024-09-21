@@ -25,7 +25,7 @@ export const profileRouter = profileRoutes();
  
  * @param {number} page.query
  * @param {number} rowPerPage.query
- * @param {string} sortField.query - enum:lastActivityAt,type,email,gender,prenom,country,city,children,description,nom,situation,nbSignalement,banDate,endDate
+ * @param {string} sortField.query - enum:lastActivityAt,photo,cover,type,email,gender,prenom,country,city,children,description,nom,situation,nbSignalement,banDate,endDate
  * @param {string} order.query - enum:ASC,DESC 
  * @return {array<ProfileResponseDTO>} 201
  * @return {object} 400 - Données non conformes

@@ -42,7 +42,7 @@ class AdministrateurController extends GenericController<
           title: "Renouvellement de mot de passe",
           message: "L'administrateur a demandé que vous renouveliez votre mot de passe pour des raisons de sécurité.",
           type: "renewalPwdBO",
-          receiver: data.profileId
+          receiver: data?.profileId
         })
       }
 

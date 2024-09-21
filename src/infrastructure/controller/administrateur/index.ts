@@ -7,6 +7,7 @@ import { AdministrateurResponseDTO } from '../../../data/dto/Administrateur/resp
 import { administrateurSA, AdministrateurSA } from '../../../service/applicatif/administrateur';
 import { AuthentificationSA, authentificationSA } from '../../../service/applicatif/authentification/authentification.sa';
 import { UtilisateurSA, utilisateurSA } from '../../../service/applicatif/utilisateur/utilisateur.sa';
+import { NotificationSA, notificationSA } from '../../../service/applicatif/Notification';
 
 class AdministrateurController extends GenericController<
   AdministrateurDO,
@@ -17,11 +18,13 @@ class AdministrateurController extends GenericController<
   utilisateurSA: UtilisateurSA;
   administrateurSA: AdministrateurSA;
   authentificationSA: AuthentificationSA;
+  notificationSA: NotificationSA;
 
   constructor(administrateurSA: AdministrateurSA) {
     super(administrateurSA);
     this.administrateurSA = administrateurSA;
     this.utilisateurSA = utilisateurSA;
+    this.notificationSA = notificationSA;
     this.authentificationSA = authentificationSA
   }
 
@@ -31,10 +34,16 @@ class AdministrateurController extends GenericController<
       let res = null;
 
       const data = await this.utilisateurSA.findById(userId);
-      
+
       if (data?.email || data?.phone) {
         await this.serviceSA.partialUpdate(userId, { actif: false });
         res = await this.authentificationSA.renewalPwdBO(data)
+        await this.notificationSA.create({
+          title: "Renouvellement de mot de passe",
+          message: "L'administrateur a demandé que vous renouveliez votre mot de passe pour des raisons de sécurité.",
+          type: "renewalPwdBO",
+          receiver: data.profileId
+        })
       }
 
       res.locals.data = res;

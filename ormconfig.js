@@ -1,20 +1,13 @@
 module.exports = {
   "type": "mongodb",
-  "host": "mongo",
-  // "host": "localhost",
-  "port": 27017,
-  // "password": "node1234",
-  // "username": "root",
-  "database": "docker-node-mongo",
+  "url": "mongodb+srv://superapp261:YynkPbMBt9HcFZeH@pokerapps.6euls.mongodb.net/docker-node-mongo?retryWrites=true&w=majority",
   "useUnifiedTopology": true,
   "useNewUrlParser": true,
   "synchronize": false,
   "entities": [
-    "dist/data/do/**/*.js",
-    // "src/data/do/**/*.ts"
+    "src/data/do/**/*.ts"
   ],
   "seeds": [
-    "dist/seeds/*.js",
-    // "src/seeds/*.ts"
+    "src/seeds/*.ts"
   ],
-}
+};

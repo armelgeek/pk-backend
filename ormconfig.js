@@ -5,9 +5,9 @@ module.exports = {
   "useNewUrlParser": true,
   "synchronize": false,
   "entities": [
-    "src/data/do/**/*.ts"
+    "dist/data/do/**/*.js"
   ],
   "seeds": [
-    "src/seeds/*.ts"
+    "dist/seeds/*.js"
   ],
 };
